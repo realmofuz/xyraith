@@ -269,12 +269,11 @@ class Parser(private val tokens: List<Token>) {
             if(peek(false) is Token.NewLine)
                 break
         }
-        return Ast.StaticAccess(
+        return Ast.Access(
             name,
             args,
             nameSpan,
-            Type.Void,
-            true
+            Type.Void
         )
     }
 

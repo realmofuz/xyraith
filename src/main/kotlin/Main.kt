@@ -3,7 +3,6 @@ import langimpl.error.ParserError
 import langimpl.lang.jvm.AstValidator
 import langimpl.lang.jvm.Emitter
 import langimpl.lang.parser.AstDebugger
-import langimpl.lang.parser.LegacyParser
 import langimpl.lang.parser.Parser
 import langimpl.lang.parser.VisitorContext
 import langimpl.runtime.startServer
@@ -66,7 +65,7 @@ fun runServer(withServer: Boolean) {
             val tc = AstValidator()
             ast.events.map { it.accept(tc, VisitorContext.None) }
 
-            val emitter = Emitter(tc.fields, tc.functions.map { it.key to it.value.returns }.toMap())
+            val emitter = Emitter(tc.functionTypes, tc.functions.map { it.key to it.value.returns }.toMap())
             ast.events.map { it.accept(emitter, VisitorContext.None) }
 
             for(clazz in emitter.emittedClasses) {

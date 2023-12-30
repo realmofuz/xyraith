@@ -1,6 +1,5 @@
 package langimpl.lang.jvm
 
-import langimpl.error.FailedToInferType
 import langimpl.error.InvalidClass
 import langimpl.error.InvalidFunction
 import langimpl.error.InvalidType
@@ -9,7 +8,6 @@ import langimpl.lang.parser.VisitorContext
 import parser.Ast
 import parser.PathName
 import parser.Type
-import kotlin.io.path.Path
 
 enum class FunctionType {
     STATIC_FIELD,
@@ -36,7 +34,7 @@ class AstValidator : AstVisitor {
             )
             is Ast.Access -> {
                 val funcSig = JvmMethodSignature(
-                    value.name.resolve().replace(".", "__"),
+                    value.path.resolve().replace(".", "__"),
                     currentClass.name,
                     value.arguments.map { evaluateType(it.argument) }.toList(),
                     value.returns,
@@ -103,7 +101,6 @@ class AstValidator : AstVisitor {
     }
 
     override fun visit(field: Ast.DeclareField, context: VisitorContext): Boolean {
-
         val sig = JvmMethodSignature(
             field.name,
             currentClass.name,
@@ -111,7 +108,15 @@ class AstValidator : AstVisitor {
             field.type,
             HeaderType.FIELD
         )
+
         functions[sig.generateInternalSignature()] = sig
+
+        functionTypes[sig.generateInternalSignature()] =
+            if(currentClass.static || annotations.contains(PathName.parse("static")))
+                FunctionType.STATIC_FIELD
+            else
+                FunctionType.MEMBER_FIELD
+
         if(!evaluateType(field.value).equalTo(field.type)
             && !annotations.contains(PathName.parse("native"))) {
             throw InvalidType(field.type, evaluateType(field.value), field.span)
@@ -136,9 +141,9 @@ class AstValidator : AstVisitor {
         val reserved = listOf(
             "add", "sub", "mul", "div", "return", "jvmarraylen", "jvmarrayindex"
         )
-        if(reserved.contains(access.name.resolve()))
+        if(reserved.contains(access.path.resolve()))
             return
-        val path = access.name.resolve().split(".").toMutableList()
+        val path = access.path.resolve().split(".").toMutableList()
         val fn = path.removeLast()
         val signature = JvmMethodSignature(
             fn,

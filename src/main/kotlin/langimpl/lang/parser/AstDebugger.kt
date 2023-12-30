@@ -46,12 +46,8 @@ class AstDebugger : AstVisitor {
         println("Init ${clazz.className}")
     }
 
-    override fun visit(staticAccess: Ast.StaticAccess, context: VisitorContext) {
-        println("Static Access: ${staticAccess.name.resolve()}::${staticAccess.name}")
-    }
-
-    override fun visit(memberAccess: Ast.MemberAccess, context: VisitorContext) {
-        println("Member Access: ${memberAccess.variableName}->${memberAccess.name}")
+    override fun visit(access: Ast.Access, context: VisitorContext) {
+        println("Static Access: ${access.path.resolve()}::${access.path}")
     }
 
     override fun visit(declareVariable: Ast.DeclareVariable, context: VisitorContext) {

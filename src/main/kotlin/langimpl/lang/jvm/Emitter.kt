@@ -19,7 +19,7 @@ import parser.Type
 import java.io.PrintWriter
 import java.sql.SQLIntegrityConstraintViolationException
 
-class Emitter(private val fields: Map<String, Type>, private val functions: Map<String, Type>) : AstVisitor {
+class Emitter(private val functionTypes: Map<String, FunctionType>, private val functions: Map<String, Type>) : AstVisitor {
     private lateinit var currentMappedFunction: MappedFunction
     private lateinit var currentClass: Ast.Class
     private lateinit var currentHeader: Ast.Header
@@ -52,7 +52,7 @@ class Emitter(private val fields: Map<String, Type>, private val functions: Map<
             )
             is Ast.Access -> {
                 val funcSig = JvmMethodSignature(
-                    value.name.resolve().replace(".", "__"),
+                    value.path.resolve().replace(".", "__"),
                     currentClass.name,
                     value.arguments.map { evaluateType(it.argument) }.toList(),
                     value.returns,
@@ -62,7 +62,7 @@ class Emitter(private val fields: Map<String, Type>, private val functions: Map<
                 if(!functions.containsKey(isig)) {
                     throw InvalidFunction(value.nameSpan)
                 }
-                return functions[isig]!!.returns
+                return functions[isig]!!
             }
             Ast.Null -> TODO()
             is Ast.Number -> return Type.Number
@@ -346,8 +346,8 @@ class Emitter(private val fields: Map<String, Type>, private val functions: Map<
     }
 
     override fun visit(access: Ast.Access, context: VisitorContext) {
-        println("name: ${staticAccess.name.resolve()}")
-        when(access.name.resolve()) {
+        println("name: ${access.path.resolve()}")
+        when(access.path.resolve()) {
             "jvmarraylen" -> {
                 methodVisitor.visitInsn(Opcodes.ARRAYLENGTH)
                 methodVisitor.visitInsn(Opcodes.I2D)
@@ -355,7 +355,7 @@ class Emitter(private val fields: Map<String, Type>, private val functions: Map<
             }
             "jvmarrayindex" -> {
                 methodVisitor.visitInsn(Opcodes.D2I)
-                when((evaluateType(staticAccess.arguments[0].argument) as Type.Array).type) {
+                when((evaluateType(access.arguments[0].argument) as Type.Array).type) {
                     is Type.Array -> methodVisitor.visitInsn(Opcodes.AALOAD)
                     Type.Boolean ->  methodVisitor.visitInsn(Opcodes.IALOAD)
                     Type.Number ->  methodVisitor.visitInsn(Opcodes.DALOAD)
@@ -366,13 +366,13 @@ class Emitter(private val fields: Map<String, Type>, private val functions: Map<
                 return
             }
             "add", "sub", "mul", "div" -> {
-                for(argument in staticAccess.arguments) {
+                for(argument in access.arguments) {
                     val type = evaluateType(argument.argument)
                     if(type !is Type.Number)
                         throw InvalidType(Type.Number, evaluateType(argument.argument), argument.span)
                 }
 
-                when(staticAccess.name.resolve()) {
+                when(access.path.resolve()) {
                     "add" -> methodVisitor.visitInsn(Opcodes.DADD)
                     "sub" -> methodVisitor.visitInsn(Opcodes.DSUB)
                     "mul" -> methodVisitor.visitInsn(Opcodes.DMUL)
@@ -382,12 +382,12 @@ class Emitter(private val fields: Map<String, Type>, private val functions: Map<
             }
 
             "return" -> {
-                val type = evaluateType(staticAccess.arguments.getOrNull(0)?.argument ?: Ast.Null)
+                val type = evaluateType(access.arguments.getOrNull(0)?.argument ?: Ast.Null)
                 when(currentHeader) {
                     is Ast.Annotation -> throw Unreachable()
                     is Ast.DeclareField -> throw Unreachable()
-                    is Ast.Event -> if(type !is Type.Void) throw InvalidType(Type.Void, type, staticAccess.arguments[0].span)
-                    is Ast.Function -> if(type != (currentHeader as Ast.Function).returns) throw InvalidType((currentHeader as Ast.Function).returns, type, staticAccess.arguments[0].span)
+                    is Ast.Event -> if(type !is Type.Void) throw InvalidType(Type.Void, type, access.arguments[0].span)
+                    is Ast.Function -> if(type != (currentHeader as Ast.Function).returns) throw InvalidType((currentHeader as Ast.Function).returns, type, access.arguments[0].span)
                 }
                 when(type) {
                     is Type.Array -> methodVisitor.visitInsn(Opcodes.ARETURN)
@@ -402,7 +402,7 @@ class Emitter(private val fields: Map<String, Type>, private val functions: Map<
             else -> {}
         }
 
-        val altPath = PathName.parse(access.name.resolve())
+        val altPath = PathName.parse(access.path.resolve())
         val fn = altPath.path.removeLast()
 
         val tmpSig = JvmMethodSignature(
@@ -415,95 +415,53 @@ class Emitter(private val fields: Map<String, Type>, private val functions: Map<
 
         if(functions.containsKey(tmpSig.generateInternalSignature())) {
             access.returns = functions[tmpSig.generateInternalSignature()]!!
-        } else if(!access.name.resolve().startsWith("java.")
-            && !access.name.resolve().startsWith("StdBuiltins")) {
+        } else if(!access.path.resolve().startsWith("java.")
+            && !access.path.resolve().startsWith("StdBuiltins")) {
             throw InvalidFunction(access.nameSpan)
         }
 
-        if(access.isFunctionCall) {
-            println("sa: $access")
-            println("argus: ${access.arguments}")
-            val signature = JvmMethodSignature(
-                fn,
-                altPath,
-                access.arguments.map { evaluateType(it.argument) },
-                evaluateType(access),
-                HeaderType.METHOD
-            )
-            methodVisitor.visitMethodInsn(
-                Opcodes.INVOKESTATIC,
-                signature.ownerSignature(),
-                fn,
-                signature.methodSignature(),
-                false
-            )
-            return
-        }
-        val signature = JvmMethodSignature(
+        val methodSignature = JvmMethodSignature(
             fn,
             altPath,
-            staticAccess.arguments.map { evaluateType(it.argument) },
-            evaluateType(staticAccess),
-            HeaderType.FIELD
+            access.arguments.map { evaluateType(it.argument) },
+            evaluateType(access),
+            HeaderType.METHOD
         )
-        println("owner: ${signature.ownerSignature()} ${staticAccess.name}")
-        methodVisitor.visitFieldInsn(
-            Opcodes.GETSTATIC,
-            signature.ownerSignature(),
+        val fieldSignature = JvmMethodSignature(
             fn,
-            signature.methodSignature()
-        )
-    }
-
-    override fun visit(memberAccess: Ast.MemberAccess, context: VisitorContext) {
-        val altPath = PathName.parse(memberAccess.name.resolve())
-        val fn = altPath.path.removeLast()
-
-        val tmpSig = JvmMethodSignature(
-            fn,
-            (evaluateType(Ast.Variable(memberAccess.variableName))
-                    as Type.Object).signature,
-            memberAccess.arguments.map { evaluateType(it.argument) },
-            memberAccess.returnedType,
+            altPath,
+            access.arguments.map { evaluateType(it.argument) },
+            evaluateType(access),
             HeaderType.METHOD
         )
 
-        if(functions.containsKey(tmpSig.generateInternalSignature())) {
-            memberAccess.returnedType = functions[tmpSig.generateInternalSignature()]!!
-        }
+        when(functionTypes[tmpSig.generateInternalSignature()]!!) {
+            FunctionType.STATIC_METHOD -> {
+                methodVisitor.visitMethodInsn(
+                    Opcodes.INVOKESTATIC,
+                    methodSignature.ownerSignature(),
+                    fn,
+                    methodSignature.methodSignature(),
+                    false
+                )
+            }
+            FunctionType.STATIC_FIELD -> {
+                methodVisitor.visitFieldInsn(
+                    Opcodes.GETSTATIC,
+                    methodSignature.ownerSignature(),
+                    fn,
+                    methodSignature.methodSignature()
+                )
+            }
+            FunctionType.MEMBER_METHOD -> {
 
-        if(memberAccess.isFunctionCall) {
-            val signature = JvmMethodSignature(
-                fn,
-                (evaluateType(Ast.Variable(memberAccess.variableName))
-                        as Type.Object).signature,
-                memberAccess.arguments.map { evaluateType(it.argument) },
-                memberAccess.returnedType,
-                HeaderType.METHOD
-            )
-            methodVisitor.visitMethodInsn(
-                Opcodes.INVOKEVIRTUAL,
-                signature.ownerSignature(),
-                fn,
-                signature.methodSignature(),
-                false
-            )
-            return
+            }
+            FunctionType.MEMBER_FIELD -> {
+
+            }
         }
-        val signature = JvmMethodSignature(
-            fn,
-            altPath,
-            listOf(),
-            memberAccess.returnedType,
-            HeaderType.FIELD
-        )
-        methodVisitor.visitFieldInsn(
-            Opcodes.GETFIELD,
-            signature.ownerSignature(),
-            fn,
-            signature.methodSignature()
-        )
     }
+
 
     override fun visit(declareVariable: Ast.DeclareVariable, context: VisitorContext) {
         localVariableIndex += 2

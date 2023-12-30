@@ -231,10 +231,10 @@ sealed interface Ast {
             get() = Type.Void
     }
     class Access(
-        val name: PathName, val arguments: MutableList<CommandArgument>,
-        val nameSpan: SpanData, var returns: Type, val isFunctionCall: kotlin.Boolean) : Ast, Action, Value {
+        val path: PathName, val arguments: MutableList<CommandArgument>,
+        val nameSpan: SpanData, var returns: Type) : Ast, Action, Value {
         override fun toString(): String {
-            return """{"type":"functionCall","isFunctionCall":$isFunctionCall,"name":"${name.resolve()}","arguments":$arguments}"""
+            return """{"type":"access","path":"${path.resolve()}","arguments":$arguments}"""
         }
         override fun accept(visitor: AstVisitor, context: VisitorContext) {
             arguments.forEach {
