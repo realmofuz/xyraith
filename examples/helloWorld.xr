@@ -1,0 +1,5 @@
+import "std/console"
+
+event startup {
+    console::log "Hello world!"
+}

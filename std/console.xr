@@ -1,0 +1,12 @@
+namespace std.console {
+    command log output: string -> void {
+        let console: java.io.PrintStream = (java.lang.System.out<java.io.PrintStream>)
+        console->println output
+    }
+
+    command log output: number -> void {
+        let console: java.io.PrintStream = (java.lang.System.out<java.io.PrintStream>)
+        console->println output
+    }
+}
+

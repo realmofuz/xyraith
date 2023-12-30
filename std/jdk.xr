@@ -1,0 +1,23 @@
+class xyrreserved.JDKHolder {}
+
+@native
+class java.io.OutputStream {}
+
+@native
+class java.io.FilterOutputStream : java.io.OutputStream {}
+
+@native
+class java.io.PrintStream : java.io.FilterOutputStream {
+    @native
+    command println x: number -> void {}
+
+    @native
+    command println x: string -> void {}
+}
+
+@native
+class java.lang.System {
+    @native
+    @static
+    let out: java.io.PrintStream = 0
+}
