@@ -1,1 +1,9 @@
 include "std/jdk"
+include "std/targets"
+
+class Main {
+    @static
+    command main args:array<string> -> void {
+        let o = (java.lang.System.out)
+    }
+}

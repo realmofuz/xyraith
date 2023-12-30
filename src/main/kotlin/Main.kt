@@ -59,12 +59,15 @@ fun runServer(withServer: Boolean) {
     try {
             val ast = parser.parseAll()
 
+            println("ast:\n$ast")
+
             val debugger = AstDebugger()
             ast.events.map { it.accept(debugger, VisitorContext.None) }
 
             val tc = AstValidator()
             ast.events.map { it.accept(tc, VisitorContext.None) }
 
+            println("EMITTER STEP ==================")
             val emitter = Emitter(tc.functionTypes, tc.functions.map { it.key to it.value.returns }.toMap())
             ast.events.map { it.accept(emitter, VisitorContext.None) }
 

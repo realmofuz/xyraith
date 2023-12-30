@@ -28,46 +28,46 @@ class Lexer(val source: String, val file: String) {
                     position++
                 }
                 source[position] == '(' -> {
-                    output.add(Token.OpenParen(SpanData(position, position++, file)))
+                    output.add(Token.OpenParen(SpanData(position, ++position, file)))
                 }
                 source[position] == ')' -> {
-                    output.add(Token.CloseParen(SpanData(position, position++, file)))
+                    output.add(Token.CloseParen(SpanData(position, ++position, file)))
                 }
                 source[position] == '>' -> {
-                    output.add(Token.GreaterThan(SpanData(position, position++, file)))
+                    output.add(Token.GreaterThan(SpanData(position, ++position, file)))
                 }
                 source[position] == '<' -> {
-                    output.add(Token.LessThan(SpanData(position, position++, file)))
+                    output.add(Token.LessThan(SpanData(position, ++position, file)))
                 }
                 source[position] == '{' -> {
-                    output.add(Token.OpenBrace(SpanData(position, position++, file)))
+                    output.add(Token.OpenBrace(SpanData(position, ++position, file)))
                 }
                 source[position] == '}' -> {
-                    output.add(Token.CloseBrace(SpanData(position, position++, file)))
+                    output.add(Token.CloseBrace(SpanData(position, ++position, file)))
                 }
                 source[position] == '[' -> {
-                    output.add(Token.OpenBracket(SpanData(position, position++, file)))
+                    output.add(Token.OpenBracket(SpanData(position, ++position, file)))
                 }
                 source[position] == ']' -> {
-                    output.add(Token.CloseBracket(SpanData(position, position++, file)))
+                    output.add(Token.CloseBracket(SpanData(position, ++position, file)))
                 }
                 source[position] == '@' -> {
-                    output.add(Token.At(SpanData(position, position++, file)))
+                    output.add(Token.At(SpanData(position, ++position, file)))
                 }
                 source[position] == '.' -> {
-                    output.add(Token.Dot(SpanData(position, position++, file)))
+                    output.add(Token.Dot(SpanData(position, ++position, file)))
                 }
                 source[position] == ':' -> {
-                    output.add(Token.Colon(SpanData(position, position++, file)))
+                    output.add(Token.Colon(SpanData(position, ++position, file)))
                 }
                 source[position] == '=' -> {
-                    output.add(Token.Equals(SpanData(position, position++, file)))
+                    output.add(Token.Equals(SpanData(position, ++position, file)))
                 }
                 source[position] == '!' -> {
-                    output.add(Token.Bang(SpanData(position, position++, file)))
+                    output.add(Token.Bang(SpanData(position, ++position, file)))
                 }
                 source[position] == ',' -> {
-                    output.add(Token.Comma(SpanData(position, position++, file)))
+                    output.add(Token.Comma(SpanData(position, ++position, file)))
                 }
                 source[position].isDigit() || source[position] == '-' || source[position] == '~' -> {
                     val spanStart = position

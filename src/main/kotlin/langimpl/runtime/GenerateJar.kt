@@ -14,7 +14,7 @@ fun generateJar() {
         val split = pair.key.split("/").toMutableList()
         split.removeLast()
         var cf = "./xyraithbuild"
-        println("splitting on ${split}")
+        println("splitting on $split")
         for(folder in split) {
             val f = File("$cf/$folder/")
             if(!f.exists()) {

@@ -51,14 +51,20 @@ class Emitter(private val functionTypes: Map<String, FunctionType>, private val 
                 false
             )
             is Ast.Access -> {
+                val altPath = PathName.parse(value.path.resolve())
+                val fn = altPath.path.removeLast()
                 val funcSig = JvmMethodSignature(
-                    value.path.resolve().replace(".", "__"),
-                    currentClass.name,
+                    fn,
+                    altPath,
                     value.arguments.map { evaluateType(it.argument) }.toList(),
                     value.returns,
                     HeaderType.METHOD
                 )
                 val isig = funcSig.generateInternalSignature()
+                println("""
+functions: $functions
+isig: $isig
+                """.trimIndent())
                 if(!functions.containsKey(isig)) {
                     throw InvalidFunction(value.nameSpan)
                 }
@@ -85,7 +91,6 @@ class Emitter(private val functionTypes: Map<String, FunctionType>, private val 
 
         classVisitor = CheckClassAdapter(classVisitor)
         val pw = PrintWriter(System.out)
-        classVisitor = TraceClassVisitor(classVisitor, pw)
         classVisitor = TraceClassVisitor(classVisitor, pw)
         classVisitor.visit(
             Opcodes.V1_5,
@@ -156,6 +161,7 @@ class Emitter(private val functionTypes: Map<String, FunctionType>, private val 
     }
 
     override fun visit(function: Ast.Function, context: VisitorContext): Boolean {
+        println("annotations: $annotations")
         localVariableIndex = 0
         localVariables = mutableMapOf()
 
@@ -432,7 +438,7 @@ class Emitter(private val functionTypes: Map<String, FunctionType>, private val 
             altPath,
             access.arguments.map { evaluateType(it.argument) },
             evaluateType(access),
-            HeaderType.METHOD
+            HeaderType.FIELD
         )
 
         when(functionTypes[tmpSig.generateInternalSignature()]!!) {
@@ -448,16 +454,35 @@ class Emitter(private val functionTypes: Map<String, FunctionType>, private val 
             FunctionType.STATIC_FIELD -> {
                 methodVisitor.visitFieldInsn(
                     Opcodes.GETSTATIC,
-                    methodSignature.ownerSignature(),
+                    fieldSignature.ownerSignature(),
                     fn,
-                    methodSignature.methodSignature()
+                    fieldSignature.methodSignature()
                 )
             }
             FunctionType.MEMBER_METHOD -> {
-
+                val variableName = altPath.path[0]
+                val functionName = altPath.path[1]
+                val variable = Ast.Variable(variableName)
+                visit(variable, context)
+                methodVisitor.visitMethodInsn(
+                    Opcodes.INVOKEVIRTUAL,
+                    evaluateType(variable).toJvmSignature().removePrefix("L").removeSuffix(";"),
+                    functionName,
+                    methodSignature.methodSignature(),
+                    false
+                )
             }
             FunctionType.MEMBER_FIELD -> {
-
+                val variableName = altPath.path[0]
+                val functionName = altPath.path[1]
+                val variable = Ast.Variable(variableName)
+                visit(variable, context)
+                methodVisitor.visitFieldInsn(
+                    Opcodes.INVOKEVIRTUAL,
+                    evaluateType(variable).toJvmSignature().removePrefix("L").removeSuffix(";"),
+                    functionName,
+                    fieldSignature.methodSignature()
+                )
             }
         }
     }

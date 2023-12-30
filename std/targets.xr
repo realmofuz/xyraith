@@ -1,0 +1,11 @@
+class target {
+
+    command sendMessage message:string -> void {
+
+    }
+
+    command giveItems id:string amount:number -> void {
+
+    }
+
+}

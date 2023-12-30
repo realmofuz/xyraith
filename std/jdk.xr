@@ -21,3 +21,6 @@ class java.lang.System {
     @static
     let out: java.io.PrintStream = 0
 }
+
+
+

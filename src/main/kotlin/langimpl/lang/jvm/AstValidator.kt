@@ -33,9 +33,11 @@ class AstValidator : AstVisitor {
                 false
             )
             is Ast.Access -> {
+                val altPath = PathName.parse(value.path.resolve())
+                val fn = altPath.path.removeLast()
                 val funcSig = JvmMethodSignature(
-                    value.path.resolve().replace(".", "__"),
-                    currentClass.name,
+                    fn,
+                    altPath,
                     value.arguments.map { evaluateType(it.argument) }.toList(),
                     value.returns,
                     HeaderType.METHOD

@@ -1,11 +1,13 @@
 package langimpl.lang.parser
 
+import langimpl.error.UnexpectedEOF
 import langimpl.error.UnexpectedToken
 import langimpl.lang.lexer.Token
 import parser.Ast
 import parser.CommandArgument
 import parser.PathName
 import parser.Type
+import java.lang.IndexOutOfBoundsException
 import java.sql.SQLWarning
 import kotlin.math.exp
 
@@ -16,11 +18,11 @@ class Parser(private val tokens: List<Token>) {
     Debug method to print the current location in the code.
      */
     fun printStackTrace() {
-        try {
-            throw SQLWarning()
-        } catch(e: SQLWarning) {
-            println(e.stackTraceToString())
-        }
+//        try {
+//            throw SQLWarning()
+//        } catch(e: SQLWarning) {
+//            println(e.stackTraceToString())
+//        }
     }
     /*
     Parse a series of tokens into a valid AST.
@@ -39,12 +41,17 @@ class Parser(private val tokens: List<Token>) {
     }
 
     fun nextWrapped(ignoreWhitespace: Boolean = true): Token {
-        if(ignoreWhitespace && tokens[pointer] is Token.NewLine) {
-            while(tokens[pointer] is Token.NewLine) {
-                pointer++
+        try {
+            if(ignoreWhitespace && tokens[pointer] is Token.NewLine) {
+                while(tokens[pointer] is Token.NewLine) {
+                    pointer++
+                }
             }
+            return tokens[pointer++]
+        } catch(e: IndexOutOfBoundsException) {
+            return Token.EOF(tokens.last().span)
         }
-        return tokens[pointer++]
+
     }
     /*
     Grabs the next token available.
@@ -58,13 +65,17 @@ class Parser(private val tokens: List<Token>) {
     }
 
     private fun peekWrapped(ignoreWhitespace: Boolean = true): Token {
-        var tempPointer = pointer
-        if(ignoreWhitespace && tokens[tempPointer] is Token.NewLine) {
-            while(tokens[tempPointer] is Token.NewLine) {
-                tempPointer++
+        try {
+            var tempPointer = pointer
+            if(ignoreWhitespace && tokens[tempPointer] is Token.NewLine) {
+                while(tokens[tempPointer] is Token.NewLine) {
+                    tempPointer++
+                }
             }
+            return tokens[tempPointer]
+        } catch(e: IndexOutOfBoundsException) {
+            return Token.EOF(tokens.last().span)
         }
-        return tokens[tempPointer]
     }
 
     /*
@@ -123,6 +134,7 @@ class Parser(private val tokens: List<Token>) {
     }
      */
     fun parseClass(): Ast.Class {
+        println("Parsing class {")
         val annotations: MutableList<PathName> = mutableListOf()
         while(true) {
             annotations.add(parseAnnotation()?.name ?: break)
@@ -147,6 +159,7 @@ class Parser(private val tokens: List<Token>) {
                 if(peek() is Token.CloseBrace)
                     break
                 val header = parseHeader()
+                println("Header: $header")
                 headers.add(header)
             }
             expect<Token.CloseBrace>("close braces")
@@ -154,7 +167,7 @@ class Parser(private val tokens: List<Token>) {
             return Ast.Class(
                 name,
                 listOf(),
-                listOf(),
+                headers,
                 isStaticClass,
                 extends,
                 annotations.contains(PathName.parse("native"))
@@ -174,12 +187,14 @@ class Parser(private val tokens: List<Token>) {
         val generics = mutableListOf<Type>()
         if(peek() is Token.LessThan) {
             while(true) {
+                expect<Token.LessThan>("less than")
                 generics.add(parseType())
                 if(peek() is Token.GreaterThan) {
                     break
                 }
                 expect<Token.Comma>("comma")
             }
+            expect<Token.GreaterThan>("less than")
         }
         return when(mainName.resolve()) {
             "number" -> Type.Number
@@ -201,11 +216,27 @@ class Parser(private val tokens: List<Token>) {
     for you.
      */
     fun parseHeader(): Ast.Header {
+        println("Parsing header")
         when(val keyword = peek()) {
             is Token.At -> {
                 return parseAnnotation()!!
             }
+            is Token.LetKeyword -> {
+                val letKeyword = expect<Token.LetKeyword>("let keyword")
+                val fieldName = expect<Token.Identifier>("identifier")
+                val colon = expect<Token.Colon>("colon")
+                val type = parseType()
+                val equals = expect<Token.Equals>("equals")
+                val value = parseValue()
+                return Ast.DeclareField(
+                    fieldName.value,
+                    value,
+                    fieldName.span,
+                    type,
+                )
+            }
             is Token.CommandKeyword -> {
+                println("Parsing new command")
                 expect<Token.CommandKeyword>("command keyword")
                 val name = expect<Token.Identifier>("command name")
                 val arguments = mutableMapOf<String, Type>()
@@ -241,33 +272,72 @@ class Parser(private val tokens: List<Token>) {
      */
     fun parseBlock(): Ast.Block {
         val open = expect<Token.OpenBrace>("open brace")
+        val actions = mutableListOf<Ast.Action>()
+        while(true) {
+            if(peek() is Token.CloseBrace) {
+                break
+            }
+            actions.add(parseAction())
+        }
         expect<Token.CloseBrace>("close brace")
-        return Ast.Block(mutableListOf(), "callable", open.span)
+        return Ast.Block(actions, "callable", open.span)
     }
 
+    /*
+    Returns one of the valid actions, to get a specific one use other methods.
+     */
     fun parseAction(): Ast.Action {
-        return when(val next = next()) {
+        return when(val next = peek()) {
             is Token.Identifier -> {
+                pointer++
                 if(peek() is Token.Equals) {
+                    pointer--
                     parseAccess()
                 } else {
                     parseAccess()
                 }
             }
+            is Token.LetKeyword -> {
+                expect<Token.LetKeyword>("let keyword")
+                val name = expect<Token.Identifier>("identifier")
+                val type = if(peek() is Token.Colon) {
+                    expect<Token.Colon>("colon")
+                    parseType()
+                } else {
+                    Type.Void
+                }
+                val equals = expect<Token.Equals>("equals")
+                val value = parseValue()
+                println("declaring variable")
+                return Ast.DeclareVariable(
+                    name.value,
+                    value,
+                    name.span,
+                    type
+                )
+
+            }
             else -> throw UnexpectedToken("valid action", next, next.span)
         }
     }
-
+    /*
+    Parse an access to a field or method.
+    Syntax:
+    x.y.z <values>
+     */
     private fun parseAccess(): Ast.Access {
         val nameSpan = peek().span
         val name = parsePathName()
         val args = mutableListOf<CommandArgument>()
         while(true) {
+            if(
+                peek(false) is Token.NewLine
+                || peek(false) is Token.CloseParen)
+                break
             val span = peek().span
             val value = parseValue()
             args.add(CommandArgument(value, span))
-            if(peek(false) is Token.NewLine)
-                break
+
         }
         return Ast.Access(
             name,

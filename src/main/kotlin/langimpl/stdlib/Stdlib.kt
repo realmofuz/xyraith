@@ -39,6 +39,9 @@ class java.lang.System {
     @static
     let out: java.io.PrintStream = 0
 }
+
+
+
 """
 ,"std/std" to """include "std/jdk"
 
@@ -68,5 +71,9 @@ class java.lang.System {
 
 
 """
+,"std/targets" to """class target {
+    command sendMessage message:string -> void {}
+    command giveItems id:string amount:number -> void {}
+}"""
 ,
 )
