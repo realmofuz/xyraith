@@ -1,5 +1,6 @@
 import langimpl.lang.lexer.Lexer
 import langimpl.error.ParserError
+import langimpl.lang.jvm.AstGatherer
 import langimpl.lang.jvm.AstValidator
 import langimpl.lang.jvm.Emitter
 import langimpl.lang.parser.AstDebugger
@@ -63,6 +64,9 @@ fun runServer(withServer: Boolean) {
 
 //            val debugger = AstDebugger()
 //            ast.events.map { it.accept(debugger, VisitorContext.None) }
+
+            val gatherer = AstGatherer()
+            ast.events.map { it.accept(gatherer, VisitorContext.None) }
 
             val tc = AstValidator()
             ast.events.map { it.accept(tc, VisitorContext.None) }

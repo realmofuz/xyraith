@@ -98,9 +98,17 @@ class AstValidator : AstVisitor {
 
     override fun visit(event: Ast.Event, context: VisitorContext): Boolean {
         when(event.name) {
-            "join", "startup" -> {}
+            "startup" -> {}
+            "join" -> {
+                localVariables["event"] = Type.Object(
+                    PathName.parse("org.bukkit.event.player.PlayerJoinEvent"),
+                    listOf(),
+                    false
+                )
+            }
             else -> throw InvalidFunction(event.eventNameSpan)
         }
+
         val b = !annotations.contains(PathName.parse("native"))
         annotations.clear()
         return b

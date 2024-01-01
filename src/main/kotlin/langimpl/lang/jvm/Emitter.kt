@@ -194,7 +194,6 @@ class Emitter(private val functionTypes: Map<String, FunctionType>, private val 
         classVisitor = ClassWriter(2)
         classWriter = classVisitor as ClassWriter
 
-        println("annotations: $annotations (${clazz.name})")
         if(!clazz.isNative)
             classVisitor = CheckClassAdapter(classVisitor)
 //        val pw = PrintWriter(System.out)

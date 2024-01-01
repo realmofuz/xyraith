@@ -20,7 +20,7 @@ data class JvmMethodSignature(
     }
 
     fun generateInternalSignature(): String {
-        return "${ownerSignature()}::$name(${parameters.joinToString("") { it.toJvmSignature() }})"
+        return "${owner.resolve()}::$name(${parameters.joinToString("") { it.toJvmSignature() }})"
     }
 }
 

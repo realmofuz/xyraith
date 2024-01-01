@@ -138,7 +138,6 @@ class Parser(private val tokens: List<Token>) {
         if(keyword is Token.ClassKeyword || keyword is Token.NamespaceKeyword) {
             val isStaticClass = keyword is Token.NamespaceKeyword
             val name = parsePathName()
-            println("parsed annotations ($name): ${annotations} ${annotations.contains(PathName.parse("native"))}")
             val extends: Type.Object = if(peek() is Token.Colon) {
                 expect<Token.Colon>("colon")
                 parseType() as Type.Object

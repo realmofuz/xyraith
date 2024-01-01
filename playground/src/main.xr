@@ -1,7 +1,7 @@
 include "std/papermc"
 
 namespace events {
-    event startup {
-
+    event join {
+        let player = (event.getPlayer)
     }
 }
