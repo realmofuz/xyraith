@@ -162,7 +162,6 @@ class AstValidator : AstVisitor {
             HeaderType.METHOD,
         )
         val sig = signature.generateInternalSignature()
-        println("functions:\n${functions.keys}\ncomparing: ${signature.generateInternalSignature()}")
 
         if(!functions.containsKey(signature.generateInternalSignature())) {
             if(path.size == 1 && localVariables.containsKey(path[0])) {
@@ -176,7 +175,6 @@ class AstValidator : AstVisitor {
                     access.returns,
                     HeaderType.METHOD,
                 )
-                println("comparing2: ${signature2.generateInternalSignature()}")
                 if(!functions.containsKey(signature2.generateInternalSignature())) {
                     throw InvalidFunction(access.nameSpan)
                 }
@@ -191,7 +189,6 @@ class AstValidator : AstVisitor {
             evaluateType(declareVariable.value)
         else
             declareVariable.type
-        println("type of value ${declareVariable.value} is ${evaluateType(declareVariable.value)}")
 
         if(!evaluateType(declareVariable.value).equalTo(localVariables[declareVariable.name]!!)
             && declareVariable.type !is Type.Void) {

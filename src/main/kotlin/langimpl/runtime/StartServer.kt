@@ -20,7 +20,6 @@ fun startServer() {
 
     val paperJar = File("./xyraithserver/paper.jar")
     if(!paperJar.exists()) {
-        println("Installing Paper jar file for you...")
         Thread.sleep(1000)
 
         // link: https://api.papermc.io/v2/projects/paper/versions/1.20.2/builds/318/downloads/paper-1.20.2-318.jar

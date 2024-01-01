@@ -1,7 +1,7 @@
-include "std/std"
+include "std/papermc"
 
 namespace events {
     event startup {
-        std.console.log "Bruh!"
+
     }
 }

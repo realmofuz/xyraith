@@ -54,20 +54,19 @@ dumpcommandinfo - Dump a JSON of command info to the file at `docs/commanddump.j
 fun runServer(withServer: Boolean) {
     val text = File("./src/main.xr").readText()
     val lexer = Lexer(text, "./src/main.xr")
-    val tokens = lexer.transform()
-    val parser = Parser(tokens)
+
+
     try {
+            val tokens = lexer.transform()
+            val parser = Parser(tokens)
             val ast = parser.parseAll()
 
-            println("ast:\n$ast")
-
-            val debugger = AstDebugger()
-            ast.events.map { it.accept(debugger, VisitorContext.None) }
+//            val debugger = AstDebugger()
+//            ast.events.map { it.accept(debugger, VisitorContext.None) }
 
             val tc = AstValidator()
             ast.events.map { it.accept(tc, VisitorContext.None) }
 
-            println("EMITTER STEP ==================")
             val emitter = Emitter(tc.functionTypes, tc.functions.map { it.key to it.value.returns }.toMap())
             ast.events.map { it.accept(emitter, VisitorContext.None) }
 

@@ -119,7 +119,7 @@ class Lexer(val source: String, val file: String) {
                     var iters = 0
                     while (position < source.length &&
                         !source[position].isWhitespace() &&
-                        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789_".contains(source[position])) {
+                        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_".contains(source[position])) {
                         iters++
                         symbol = "$symbol${source[position]}"
                         position++

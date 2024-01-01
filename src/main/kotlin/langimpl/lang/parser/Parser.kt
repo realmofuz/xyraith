@@ -1,6 +1,5 @@
 package langimpl.lang.parser
 
-import langimpl.error.UnexpectedEOF
 import langimpl.error.UnexpectedToken
 import langimpl.lang.lexer.Token
 import parser.Ast
@@ -8,8 +7,6 @@ import parser.CommandArgument
 import parser.PathName
 import parser.Type
 import java.lang.IndexOutOfBoundsException
-import java.sql.SQLWarning
-import kotlin.math.exp
 
 class Parser(private val tokens: List<Token>) {
     var pointer = 0
@@ -18,11 +15,11 @@ class Parser(private val tokens: List<Token>) {
     Debug method to print the current location in the code.
      */
     fun printStackTrace() {
-        try {
-            throw SQLWarning()
-        } catch(e: SQLWarning) {
-            println(e.stackTraceToString())
-        }
+//        try {
+//            throw SQLWarning()
+//        } catch(e: SQLWarning) {
+//            println(e.stackTraceToString())
+//        }
     }
     /*
     Parse a series of tokens into a valid AST.
@@ -59,7 +56,6 @@ class Parser(private val tokens: List<Token>) {
 
     fun next(ignoreWhitespace: Boolean = true): Token {
         val n = nextWrapped(ignoreWhitespace)
-        println("next returned: $n")
         printStackTrace()
         return n
     }
@@ -83,7 +79,6 @@ class Parser(private val tokens: List<Token>) {
      */
     fun peek(ignoreWhitespace: Boolean = true): Token {
         val n = peekWrapped(ignoreWhitespace)
-        println("peek returned: $n")
         printStackTrace()
         return n
     }
@@ -134,17 +129,16 @@ class Parser(private val tokens: List<Token>) {
     }
      */
     fun parseClass(): Ast.Class {
-        println("Parsing class {")
         val annotations: MutableList<PathName> = mutableListOf()
         while(true) {
             annotations.add(parseAnnotation()?.name ?: break)
         }
 
         val keyword = next()
-        println("KEYWORD: ${keyword}")
         if(keyword is Token.ClassKeyword || keyword is Token.NamespaceKeyword) {
             val isStaticClass = keyword is Token.NamespaceKeyword
             val name = parsePathName()
+            println("parsed annotations ($name): ${annotations} ${annotations.contains(PathName.parse("native"))}")
             val extends: Type.Object = if(peek() is Token.Colon) {
                 expect<Token.Colon>("colon")
                 parseType() as Type.Object
@@ -159,12 +153,10 @@ class Parser(private val tokens: List<Token>) {
                 if(peek() is Token.CloseBrace)
                     break
                 val header = parseHeader()
-                println("Header: $header")
                 headers.add(header)
             }
             expect<Token.CloseBrace>("close braces")
 
-            println("Ending class }")
             return Ast.Class(
                 name,
                 listOf(),
@@ -184,7 +176,6 @@ class Parser(private val tokens: List<Token>) {
     E.g array<number>, string, map<string, number>, java.lang.String, etc.
      */
     fun parseType(): Type {
-        println("Parsing type")
         val mainName = parsePathName()
         val generics = mutableListOf<Type>()
         if(peek() is Token.LessThan) {
@@ -218,45 +209,45 @@ class Parser(private val tokens: List<Token>) {
     for you.
      */
     fun parseHeader(): Ast.Header {
-        println("Parsing header")
         when(val keyword = peek()) {
             is Token.At -> {
                 return parseAnnotation()!!
             }
             is Token.LetKeyword -> {
                 val letKeyword = expect<Token.LetKeyword>("let keyword")
-                val fieldName = expect<Token.Identifier>("identifier")
+                val fieldSpan = peek().span
+                val fieldName = parseSafeIdentifier()
                 val colon = expect<Token.Colon>("colon")
                 val type = parseType()
                 val equals = expect<Token.Equals>("equals")
                 val value = parseValue()
                 return Ast.DeclareField(
-                    fieldName.value,
+                    fieldName,
                     value,
-                    fieldName.span,
+                    fieldSpan,
                     type,
                 )
             }
             is Token.CommandKeyword -> {
-                println("Parsing new command")
                 expect<Token.CommandKeyword>("command keyword")
-                val name = expect<Token.Identifier>("command name")
+                val nameSpan = peek().span
+                val name = parseSafeIdentifier()
                 val arguments = mutableMapOf<String, Type>()
                 while(true) {
                     if(peek() is Token.Arrow)
                         break
-                    val argumentName = expect<Token.Identifier>("name")
+                    val argumentName = parseSafeIdentifier()
                     val colon = expect<Token.Colon>("colon")
                     val type = parseType()
-                    arguments[argumentName.value] = type
+                    arguments[argumentName] = type
                 }
                 expect<Token.Arrow>("arrow")
                 val returnType = parseType()
 
                 return Ast.Function(
-                    PathName.parse(name.value),
+                    PathName.parse(name),
                     parseBlock(),
-                    name.span,
+                    nameSpan,
                     arguments,
                     returnType
                 )
@@ -319,7 +310,6 @@ class Parser(private val tokens: List<Token>) {
                 }
                 val equals = expect<Token.Equals>("equals")
                 val value = parseValue()
-                println("declaring variable")
                 return Ast.DeclareVariable(
                     name.value,
                     value,
@@ -398,11 +388,35 @@ class Parser(private val tokens: List<Token>) {
     e.g x.y.z -> PathName(["x", "y", "z"])
      */
     fun parsePathName(pathName: PathName = PathName(mutableListOf())): PathName {
-        val newIdentifier = expect<Token.Identifier>("identifier")
+        val newIdentifier = parseSafeIdentifier()
         if(peek() is Token.Dot) {
             expect<Token.Dot>("period")
-            return parsePathName(PathName((pathName.path + newIdentifier.value).toMutableList()))
+            return parsePathName(PathName((pathName.path + newIdentifier).toMutableList()))
         }
-        return PathName((pathName.path + newIdentifier.value).toMutableList())
+        return PathName((pathName.path + newIdentifier).toMutableList())
+    }
+
+    fun parseSafeIdentifier(): String {
+        return when(val v = next()) {
+            is Token.BreakKeyword -> "break"
+            is Token.BuiltinKeyword -> "builtin"
+            is Token.ClassKeyword -> "class"
+            is Token.CommandKeyword -> "command"
+            is Token.EventKeyword -> "event"
+            is Token.ForEachKeyword -> "foreach"
+            is Token.GlobalKeyword -> "global"
+            is Token.Identifier -> v.value
+            is Token.IfKeyword -> "if"
+            is Token.IncludeKeyword -> "include"
+            is Token.LetKeyword -> "let"
+            is Token.LoopKeyword -> "loop"
+            is Token.NamespaceKeyword -> "namespace"
+            is Token.NewKeyword -> "new"
+            else -> throw UnexpectedToken(
+                "identifier-ish",
+                v,
+                v.span
+            )
+        }
     }
 }

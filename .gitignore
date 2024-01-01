@@ -5,6 +5,9 @@ build/
 !**/src/test/**/build/
 xyraithserver/
 xyraithbuild/
+# PaperMC API bindings are kept local for now
+# until I figure out how to handle them lol
+bindings/
 xyrplugin.jar
 
 ### IntelliJ IDEA ###

@@ -153,10 +153,6 @@ class Emitter(private val functionTypes: Map<String, FunctionType>, private val 
                     HeaderType.METHOD
                 )
                 val isig = funcSig.generateInternalSignature()
-                println("""
-functions: $functions
-isig: $isig
-                """.trimIndent())
                 if(!functions.containsKey(isig)) {
                     if(altPath.path.size == 1) {
                         val path2 = value.path.resolve().split(".").toMutableList()
@@ -169,7 +165,6 @@ isig: $isig
                             value.returns,
                             HeaderType.METHOD,
                         )
-                        println("comparing2: ${signature2.generateInternalSignature()}")
                         if(!functions.containsKey(signature2.generateInternalSignature())) {
                             throw InvalidFunction(value.nameSpan)
                         }
@@ -199,9 +194,12 @@ isig: $isig
         classVisitor = ClassWriter(2)
         classWriter = classVisitor as ClassWriter
 
-        classVisitor = CheckClassAdapter(classVisitor)
-        val pw = PrintWriter(System.out)
-        classVisitor = TraceClassVisitor(classVisitor, pw)
+        println("annotations: $annotations (${clazz.name})")
+        if(!clazz.isNative)
+            classVisitor = CheckClassAdapter(classVisitor)
+//        val pw = PrintWriter(System.out)
+//        classVisitor = TraceClassVisitor(classVisitor, pw)
+
         when(clazz.name.resolve()) {
             "events" -> {
                 classVisitor.visit(
@@ -282,14 +280,17 @@ isig: $isig
 
     override fun visit(annotation: Ast.Annotation, context: VisitorContext) {
         annotations.add(annotation.name)
-        // aaa
     }
 
     override fun visit(function: Ast.Function, context: VisitorContext): Boolean {
-        println("annotations: $annotations")
+        currentHeader = function
+        currentMappedFunction = FunctionMapper().map(function, currentClass)
+
         localVariableIndex = 0
         localVariables = mutableMapOf()
 
+        if(annotations.contains(PathName.parse("native")))
+            return false
         if(!currentClass.static && !annotations.contains(PathName.parse("static"))) {
             localVariables["this"] = Type.Object(
                 currentClass.name,
@@ -305,8 +306,7 @@ isig: $isig
             localVariableIndices[argument.key] = localVariableIndex
             localVariableIndex += if(argument.value == Type.Number) 2 else 1
         }
-        currentHeader = function
-        currentMappedFunction = FunctionMapper().map(function, currentClass)
+
 
         if(currentClass.static && !annotations.contains(PathName.parse("static"))) {
             methodVisitor = classVisitor.visitMethod(
@@ -472,7 +472,6 @@ isig: $isig
                 methodVisitor.visitLdcInsn(value.value)
             }
             is Ast.Variable -> {
-                println("value.value: ${value.value} ${localVariableIndices[value.value]} ${localVariables[value.value]}")
                 when(localVariables[value.value]!!) {
                     is Type.Array -> methodVisitor.visitVarInsn(Opcodes.ALOAD, localVariableIndices[value.value]!!)
                     Type.Boolean -> methodVisitor.visitVarInsn(Opcodes.ILOAD, localVariableIndices[value.value]!!)
@@ -638,7 +637,6 @@ isig: $isig
         }
     }
     override fun visitEnd(access: Ast.Access, context: VisitorContext) {
-        println("name: ${access.path.resolve()}")
         if(!handleSpecialAstAccess(access, context))
             return
 
@@ -672,8 +670,6 @@ isig: $isig
                 evaluateType(access),
                 HeaderType.FIELD
             )
-
-            println("lvars: ${localVariables}\nsize:${altPath.path.size}\npath:${altPath.path}")
 
             when(functionTypes[tmpSig.generateInternalSignature()]!!) {
                 FunctionType.STATIC_METHOD -> {
@@ -824,6 +820,8 @@ isig: $isig
     }
 
     override fun visitEnd(header: Ast.Header, context: VisitorContext) {
+        if(annotations.contains(PathName.parse("native")))
+            return
         methodVisitor.visitInsn(Opcodes.RETURN)
         methodVisitor.visitMaxs(100, 100)
         methodVisitor.visitEnd()

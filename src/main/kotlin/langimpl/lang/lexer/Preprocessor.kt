@@ -55,6 +55,5 @@ fun preprocessMain(mainTokens: MutableList<Token>, directory: String): MutableLi
             outputTokens.add(token)
         }
     }
-    println("returning:\n$outputTokens")
     return outputTokens
 }
