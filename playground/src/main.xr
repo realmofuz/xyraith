@@ -1,9 +1,7 @@
-include "std/jdk"
-include "std/targets"
+include "std/std"
 
-class Main {
-    @static
+namespace Main {
     command main args:array<string> -> void {
-        let o = (java.lang.System.out)
+        std.console.log "Hello world!"
     }
 }

@@ -18,11 +18,11 @@ class Parser(private val tokens: List<Token>) {
     Debug method to print the current location in the code.
      */
     fun printStackTrace() {
-//        try {
-//            throw SQLWarning()
-//        } catch(e: SQLWarning) {
-//            println(e.stackTraceToString())
-//        }
+        try {
+            throw SQLWarning()
+        } catch(e: SQLWarning) {
+            println(e.stackTraceToString())
+        }
     }
     /*
     Parse a series of tokens into a valid AST.
@@ -164,6 +164,7 @@ class Parser(private val tokens: List<Token>) {
             }
             expect<Token.CloseBrace>("close braces")
 
+            println("Ending class }")
             return Ast.Class(
                 name,
                 listOf(),
@@ -183,6 +184,7 @@ class Parser(private val tokens: List<Token>) {
     E.g array<number>, string, map<string, number>, java.lang.String, etc.
      */
     fun parseType(): Type {
+        println("Parsing type")
         val mainName = parsePathName()
         val generics = mutableListOf<Type>()
         if(peek() is Token.LessThan) {
@@ -315,7 +317,21 @@ class Parser(private val tokens: List<Token>) {
                     name.span,
                     type
                 )
-
+            }
+            is Token.IfKeyword -> {
+                val ifKeyword = expect<Token.IfKeyword>("if keyword")
+                val condition = parseValue()
+                val block = parseBlock()
+                return Ast.IfStatement(
+                    condition, block
+                )
+            }
+            is Token.LoopKeyword -> {
+                val loopKeyword = expect<Token.LoopKeyword>("loop keyword")
+                val block = parseBlock()
+                return Ast.LoopStatement(
+                    block
+                )
             }
             else -> throw UnexpectedToken("valid action", next, next.span)
         }
@@ -350,7 +366,19 @@ class Parser(private val tokens: List<Token>) {
     private fun parseValue(): Ast.Value {
         return when(val next = next()) {
             is Token.Number -> Ast.Number(next.value)
-            is Token.OpenParen -> parseAccess()
+            is Token.OpenParen -> {
+                val a = parseAccess()
+                expect<Token.CloseParen>("close parenthesis")
+                a
+            }
+            is Token.StringText -> Ast.StringText(next.value)
+            is Token.Identifier -> {
+                when(next.value) {
+                    "true" -> Ast.Boolean(true)
+                    "false" -> Ast.Boolean(false)
+                    else -> Ast.Variable(next.value)
+                }
+            }
             is Token.ArrayOfKeyword -> TODO()
            else -> throw UnexpectedToken("valid value", next, next.span)
         }

@@ -17,7 +17,10 @@ interface AstVisitor {
     fun visit(value: Ast.Value, context: VisitorContext)
     fun visit(clazz: Ast.ConstructClass, context: VisitorContext)
 
+    // Before arguments
     fun visit(access: Ast.Access, context: VisitorContext)
+    // After arguments
+    fun visitEnd(access: Ast.Access, context: VisitorContext)
     fun visit(declareVariable: Ast.DeclareVariable, context: VisitorContext)
     fun visit(storeVariable: Ast.StoreVariable, context: VisitorContext)
     fun visit(ifStatement: Ast.IfStatement, context: VisitorContext)

@@ -1,15 +1,2 @@
 include "std/jdk"
-
-class anyclass {
-    command myCommand -> void {
-
-    }
-}
-
-namespace anynamespace {
-    command myCommand -> void {
-
-    }
-}
-
-
+include "std/console"

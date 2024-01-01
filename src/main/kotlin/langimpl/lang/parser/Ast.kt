@@ -237,10 +237,12 @@ sealed interface Ast {
             return """{"type":"access","path":"${path.resolve()}","arguments":$arguments}"""
         }
         override fun accept(visitor: AstVisitor, context: VisitorContext) {
+            visitor.visit(this, context)
             arguments.forEach {
                 it.argument.accept(visitor, context)
             }
-            visitor.visit(this, context)
+            visitor.visitEnd(this, context)
+
         }
         override val evalType: Type
             get() = Type.Void

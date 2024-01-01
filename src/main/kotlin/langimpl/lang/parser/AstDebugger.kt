@@ -50,6 +50,8 @@ class AstDebugger : AstVisitor {
         println("Static Access: ${access.path.resolve()}::${access.path}")
     }
 
+    override fun visitEnd(access: Ast.Access, context: VisitorContext) {}
+
     override fun visit(declareVariable: Ast.DeclareVariable, context: VisitorContext) {
         println("Declare Variable: ${declareVariable.name}: ${declareVariable.type}")
     }

@@ -18,6 +18,7 @@ import parser.PathName
 import parser.Type
 import java.io.PrintWriter
 import java.sql.SQLIntegrityConstraintViolationException
+import java.sql.SQLWarning
 
 class Emitter(private val functionTypes: Map<String, FunctionType>, private val functions: Map<String, Type>) : AstVisitor {
     private lateinit var currentMappedFunction: MappedFunction
@@ -32,7 +33,7 @@ class Emitter(private val functionTypes: Map<String, FunctionType>, private val 
     private var localVariableIndices: MutableMap<String, Int> = mutableMapOf()
     private var localVariableIndex: Int = 0
 
-    private val startLabels: MutableList<Label> = mutableListOf()
+    private val branchLabels: MutableList<Label> = mutableListOf()
     private val continueLabels: MutableList<Label> = mutableListOf()
 
     private val classes: MutableList<PathName> = mutableListOf()
@@ -66,7 +67,25 @@ functions: $functions
 isig: $isig
                 """.trimIndent())
                 if(!functions.containsKey(isig)) {
-                    throw InvalidFunction(value.nameSpan)
+                    if(altPath.path.size == 1) {
+                        val path2 = value.path.resolve().split(".").toMutableList()
+                        val variable = path2[0]
+                        val function = path2[1]
+                        val signature2 = JvmMethodSignature(
+                            function,
+                            (evaluateType(Ast.Variable(variable)) as Type.Object).signature,
+                            value.arguments.map { evaluateType(it.argument) },
+                            value.returns,
+                            HeaderType.METHOD,
+                        )
+                        println("comparing2: ${signature2.generateInternalSignature()}")
+                        if(!functions.containsKey(signature2.generateInternalSignature())) {
+                            throw InvalidFunction(value.nameSpan)
+                        }
+                        return functions[signature2.generateInternalSignature()]!!
+                    } else {
+                        throw InvalidFunction(value.nameSpan)
+                    }
                 }
                 return functions[isig]!!
             }
@@ -165,7 +184,7 @@ isig: $isig
         localVariableIndex = 0
         localVariables = mutableMapOf()
 
-        if(!currentClass.static && !annotations.contains(PathName.parse("jvmstatic"))) {
+        if(!currentClass.static && !annotations.contains(PathName.parse("static"))) {
             localVariables["this"] = Type.Object(
                 currentClass.name,
                 currentClass.generics,
@@ -183,7 +202,7 @@ isig: $isig
         currentHeader = function
         currentMappedFunction = FunctionMapper().map(function, currentClass)
 
-        if(currentClass.static && !annotations.contains(PathName.parse("jvmstatic"))) {
+        if(currentClass.static && !annotations.contains(PathName.parse("static"))) {
             methodVisitor = classVisitor.visitMethod(
                 Opcodes.ACC_PUBLIC + Opcodes.ACC_STATIC,
                 function.name.resolve().replace(".", "__"),
@@ -246,7 +265,7 @@ isig: $isig
         currentHeader = field
         currentMappedFunction = FunctionMapper().map(field, currentClass)
 
-        if(currentClass.static && !annotations.contains(PathName.parse("jvmstatic"))) {
+        if(currentClass.static || annotations.contains(PathName.parse("static"))) {
             classVisitor.visitField(
                 Opcodes.ACC_PUBLIC + Opcodes.ACC_STATIC,
                 field.name,
@@ -351,13 +370,49 @@ isig: $isig
         )
     }
 
-    override fun visit(access: Ast.Access, context: VisitorContext) {
-        println("name: ${access.path.resolve()}")
+    fun handleSpecialAstAccess(access: Ast.Access, context: VisitorContext): Boolean {
         when(access.path.resolve()) {
+            "eq" -> {
+                branchLabels.add(Label())
+                continueLabels.add(Label())
+                // should evaluate to 1 when true, 0 when false
+                when(evaluateType(access.arguments[0].argument)) {
+                    is Type.Array, is Type.Object, is Type.String -> {
+                        methodVisitor.visitJumpInsn(Opcodes.IF_ACMPEQ, branchLabels.last())
+                        methodVisitor.visitLdcInsn(1)
+                        methodVisitor.visitJumpInsn(Opcodes.GOTO, continueLabels.last())
+                        methodVisitor.visitLabel(branchLabels.removeLast())
+                        methodVisitor.visitLdcInsn(0)
+                        methodVisitor.visitJumpInsn(Opcodes.GOTO, continueLabels.last())
+                        methodVisitor.visitLabel(continueLabels.removeLast())
+                    }
+                    Type.Boolean -> {
+                        methodVisitor.visitJumpInsn(Opcodes.IF_ICMPEQ, branchLabels.last())
+                        methodVisitor.visitLdcInsn(1)
+                        methodVisitor.visitJumpInsn(Opcodes.GOTO, continueLabels.last())
+                        methodVisitor.visitLabel(branchLabels.removeLast())
+                        methodVisitor.visitLdcInsn(0)
+                        methodVisitor.visitJumpInsn(Opcodes.GOTO, continueLabels.last())
+                        methodVisitor.visitLabel(continueLabels.removeLast())
+                    }
+                    Type.Number -> {
+                        methodVisitor.visitInsn(Opcodes.DCMPL)
+                        methodVisitor.visitJumpInsn(Opcodes.IFEQ, branchLabels.last())
+                        methodVisitor.visitLdcInsn(1)
+                        methodVisitor.visitJumpInsn(Opcodes.GOTO, continueLabels.last())
+                        methodVisitor.visitLabel(branchLabels.removeLast())
+                        methodVisitor.visitLdcInsn(0)
+                        methodVisitor.visitJumpInsn(Opcodes.GOTO, continueLabels.last())
+                        methodVisitor.visitLabel(continueLabels.removeLast())
+                    }
+                    Type.Void -> TODO()
+                }
+                return false
+            }
             "jvmarraylen" -> {
                 methodVisitor.visitInsn(Opcodes.ARRAYLENGTH)
                 methodVisitor.visitInsn(Opcodes.I2D)
-                return
+                return false
             }
             "jvmarrayindex" -> {
                 methodVisitor.visitInsn(Opcodes.D2I)
@@ -369,7 +424,7 @@ isig: $isig
                     Type.String -> methodVisitor.visitInsn(Opcodes.AALOAD)
                     Type.Void -> TODO()
                 }
-                return
+                return false
             }
             "add", "sub", "mul", "div" -> {
                 for(argument in access.arguments) {
@@ -384,7 +439,7 @@ isig: $isig
                     "mul" -> methodVisitor.visitInsn(Opcodes.DMUL)
                     "div" -> methodVisitor.visitInsn(Opcodes.DDIV)
                 }
-                return
+                return false
             }
 
             "return" -> {
@@ -403,10 +458,45 @@ isig: $isig
                     Type.String -> methodVisitor.visitInsn(Opcodes.ARETURN)
                     Type.Void -> methodVisitor.visitInsn(Opcodes.RETURN)
                 }
+                return false
+            }
+            else -> return true
+        }
+    }
+
+    override fun visit(access: Ast.Access, context: VisitorContext) {
+        when(access.path.resolve()) {
+            "eq", "jvmarraylen", "jvmarrayindex",
+            "Add", "sub", "mul", "div", "return" -> {
                 return
             }
-            else -> {}
         }
+        if(access.path.path.size == 2
+            && localVariables.containsKey(access.path.path[0])) {
+            val variable = access.path.path[0]
+            val function = access.path.path[1]
+            val altSig = JvmMethodSignature(
+                function,
+                (evaluateType(Ast.Variable(variable)) as Type.Object).signature,
+                access.arguments.map { evaluateType(it.argument) },
+                evaluateType(access),
+                HeaderType.METHOD
+            )
+
+            if(functions.containsKey(altSig.generateInternalSignature())) {
+                when(functionTypes[altSig.generateInternalSignature()]!!) {
+                    FunctionType.STATIC_METHOD, FunctionType.STATIC_FIELD -> throw SQLIntegrityConstraintViolationException()
+                    FunctionType.MEMBER_METHOD, FunctionType.MEMBER_FIELD -> {
+                        visit(Ast.Variable(access.path.path[0]), context)
+                    }
+                }
+            }
+        }
+    }
+    override fun visitEnd(access: Ast.Access, context: VisitorContext) {
+        println("name: ${access.path.resolve()}")
+        if(!handleSpecialAstAccess(access, context))
+            return
 
         val altPath = PathName.parse(access.path.resolve())
         val fn = altPath.path.removeLast()
@@ -419,72 +509,106 @@ isig: $isig
             HeaderType.METHOD
         )
 
+
+
         if(functions.containsKey(tmpSig.generateInternalSignature())) {
             access.returns = functions[tmpSig.generateInternalSignature()]!!
-        } else if(!access.path.resolve().startsWith("java.")
-            && !access.path.resolve().startsWith("StdBuiltins")) {
+
+            val methodSignature = JvmMethodSignature(
+                fn,
+                altPath,
+                access.arguments.map { evaluateType(it.argument) },
+                evaluateType(access),
+                HeaderType.METHOD
+            )
+            val fieldSignature = JvmMethodSignature(
+                fn,
+                altPath,
+                access.arguments.map { evaluateType(it.argument) },
+                evaluateType(access),
+                HeaderType.FIELD
+            )
+
+            println("lvars: ${localVariables}\nsize:${altPath.path.size}\npath:${altPath.path}")
+
+            when(functionTypes[tmpSig.generateInternalSignature()]!!) {
+                FunctionType.STATIC_METHOD -> {
+                    methodVisitor.visitMethodInsn(
+                        Opcodes.INVOKESTATIC,
+                        methodSignature.ownerSignature(),
+                        fn,
+                        methodSignature.methodSignature(),
+                        false
+                    )
+                }
+                FunctionType.STATIC_FIELD -> {
+                    methodVisitor.visitFieldInsn(
+                        Opcodes.GETSTATIC,
+                        fieldSignature.ownerSignature(),
+                        fn,
+                        fieldSignature.methodSignature()
+                    )
+                }
+                FunctionType.MEMBER_METHOD -> throw SQLIntegrityConstraintViolationException()
+                FunctionType.MEMBER_FIELD -> throw SQLIntegrityConstraintViolationException()
+            }
+        } else if(localVariables.containsKey(altPath.path[0])
+            && access.path.path.size == 2) {
+            val variable = access.path.path[0]
+            val function = access.path.path[1]
+            val altSig = JvmMethodSignature(
+                function,
+                (evaluateType(Ast.Variable(variable)) as Type.Object).signature,
+                access.arguments.map { evaluateType(it.argument) },
+                evaluateType(access),
+                HeaderType.METHOD
+            )
+
+            if(functions.containsKey(altSig.generateInternalSignature())) {
+                val methodSignature = JvmMethodSignature(
+                    function,
+                    (evaluateType(Ast.Variable(variable)) as Type.Object).signature,
+                    access.arguments.map { evaluateType(it.argument) },
+                    evaluateType(access),
+                    HeaderType.METHOD
+                )
+                val fieldSignature = JvmMethodSignature(
+                    function,
+                    (evaluateType(Ast.Variable(variable)) as Type.Object).signature,
+                    access.arguments.map { evaluateType(it.argument) },
+                    evaluateType(access),
+                    HeaderType.FIELD
+                )
+
+                when(functionTypes[altSig.generateInternalSignature()]!!) {
+                    FunctionType.STATIC_METHOD -> throw SQLIntegrityConstraintViolationException()
+                    FunctionType.STATIC_FIELD -> throw SQLIntegrityConstraintViolationException()
+                    FunctionType.MEMBER_METHOD -> {
+                        methodVisitor.visitMethodInsn(
+                            Opcodes.INVOKEVIRTUAL,
+                            evaluateType(Ast.Variable(access.path.path[0])).toJvmSignature().removePrefix("L").removeSuffix(";"),
+                            access.path.path[1],
+                            methodSignature.methodSignature(),
+                            false
+                        )
+                    }
+                    FunctionType.MEMBER_FIELD -> {
+                        methodVisitor.visitFieldInsn(
+                            Opcodes.INVOKEVIRTUAL,
+                            evaluateType(Ast.Variable(access.path.path[0])).toJvmSignature().removePrefix("L").removeSuffix(";"),
+                            access.path.path[1],
+                            fieldSignature.methodSignature()
+                        )
+                    }
+                }
+            } else {
+                throw InvalidFunction(access.nameSpan)
+            }
+        } else {
             throw InvalidFunction(access.nameSpan)
         }
 
-        val methodSignature = JvmMethodSignature(
-            fn,
-            altPath,
-            access.arguments.map { evaluateType(it.argument) },
-            evaluateType(access),
-            HeaderType.METHOD
-        )
-        val fieldSignature = JvmMethodSignature(
-            fn,
-            altPath,
-            access.arguments.map { evaluateType(it.argument) },
-            evaluateType(access),
-            HeaderType.FIELD
-        )
 
-        when(functionTypes[tmpSig.generateInternalSignature()]!!) {
-            FunctionType.STATIC_METHOD -> {
-                methodVisitor.visitMethodInsn(
-                    Opcodes.INVOKESTATIC,
-                    methodSignature.ownerSignature(),
-                    fn,
-                    methodSignature.methodSignature(),
-                    false
-                )
-            }
-            FunctionType.STATIC_FIELD -> {
-                methodVisitor.visitFieldInsn(
-                    Opcodes.GETSTATIC,
-                    fieldSignature.ownerSignature(),
-                    fn,
-                    fieldSignature.methodSignature()
-                )
-            }
-            FunctionType.MEMBER_METHOD -> {
-                val variableName = altPath.path[0]
-                val functionName = altPath.path[1]
-                val variable = Ast.Variable(variableName)
-                visit(variable, context)
-                methodVisitor.visitMethodInsn(
-                    Opcodes.INVOKEVIRTUAL,
-                    evaluateType(variable).toJvmSignature().removePrefix("L").removeSuffix(";"),
-                    functionName,
-                    methodSignature.methodSignature(),
-                    false
-                )
-            }
-            FunctionType.MEMBER_FIELD -> {
-                val variableName = altPath.path[0]
-                val functionName = altPath.path[1]
-                val variable = Ast.Variable(variableName)
-                visit(variable, context)
-                methodVisitor.visitFieldInsn(
-                    Opcodes.INVOKEVIRTUAL,
-                    evaluateType(variable).toJvmSignature().removePrefix("L").removeSuffix(";"),
-                    functionName,
-                    fieldSignature.methodSignature()
-                )
-            }
-        }
     }
 
 
@@ -517,12 +641,12 @@ isig: $isig
     }
 
     override fun visit(ifStatement: Ast.IfStatement, context: VisitorContext) {
-        startLabels.add(Label())
+        branchLabels.add(Label())
         continueLabels.add(Label())
-        methodVisitor.visitJumpInsn(Opcodes.IFNE, startLabels.last())
+        methodVisitor.visitJumpInsn(Opcodes.IFNE, branchLabels.last())
         methodVisitor.visitJumpInsn(Opcodes.GOTO, continueLabels.last())
-        methodVisitor.visitLabel(startLabels.last())
-        startLabels.last()
+        methodVisitor.visitLabel(branchLabels.last())
+        branchLabels.last()
     }
 
     override fun visit(forEachStatement: Ast.ForEachStatement, context: VisitorContext) {
@@ -533,7 +657,7 @@ isig: $isig
         val looping = Label()
         val continued = Label()
         continueLabels.add(continued)
-        startLabels.add(looping)
+        branchLabels.add(looping)
         methodVisitor.visitJumpInsn(Opcodes.GOTO, looping)
         methodVisitor.visitLabel(looping)
     }

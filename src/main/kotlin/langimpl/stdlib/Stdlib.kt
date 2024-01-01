@@ -5,15 +5,13 @@ package stdlib
 val stdlibFiles = mutableMapOf<String, String>(
 "std/console" to """namespace std.console {
     command log output: string -> void {
-        let console: java.io.PrintStream = (java.lang.System.out<java.io.PrintStream>)
-        console->println output
+        let console: java.io.PrintStream = (java.lang.System.out)
+        console.println output
     }
 
-    command log output: number -> void {
-        let console: java.io.PrintStream = (java.lang.System.out<java.io.PrintStream>)
-        console->println output
-    }
-}
+}}
+
+
 
 """
 ,"std/jdk" to """class xyrreserved.JDKHolder {}
@@ -44,11 +42,7 @@ class java.lang.System {
 
 """
 ,"std/std" to """include "std/jdk"
-
-
-
-
-"""
+include "std/console""""
 ,"std/string" to """class std.stringbuilder {
     let jvmBuilder: java.lang.StringBuilder = (new java.lang.StringBuilder)
 
@@ -72,8 +66,15 @@ class java.lang.System {
 
 """
 ,"std/targets" to """class target {
-    command sendMessage message:string -> void {}
-    command giveItems id:string amount:number -> void {}
+
+    command sendMessage message:string -> void {
+
+    }
+
+    command giveItems id:string amount:number -> void {
+
+    }
+
 }"""
 ,
 )

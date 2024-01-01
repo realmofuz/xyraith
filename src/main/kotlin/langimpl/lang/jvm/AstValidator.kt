@@ -87,6 +87,10 @@ class AstValidator : AstVisitor {
                 FunctionType.STATIC_METHOD
             else
                 FunctionType.MEMBER_METHOD
+
+        for(argument in function.parameters) {
+            localVariables[argument.key] = argument.value
+        }
         val b = !annotations.contains(PathName.parse("native"))
         annotations.clear()
         return b
@@ -139,9 +143,12 @@ class AstValidator : AstVisitor {
         }
     }
 
+    override fun visitEnd(access: Ast.Access, context: VisitorContext) {}
+
     override fun visit(access: Ast.Access, context: VisitorContext) {
         val reserved = listOf(
-            "add", "sub", "mul", "div", "return", "jvmarraylen", "jvmarrayindex"
+            "add", "sub", "mul", "div", "return", "jvmarraylen", "jvmarrayindex",
+            "eq"
         )
         if(reserved.contains(access.path.resolve()))
             return
@@ -158,7 +165,24 @@ class AstValidator : AstVisitor {
         println("functions:\n${functions.keys}\ncomparing: ${signature.generateInternalSignature()}")
 
         if(!functions.containsKey(signature.generateInternalSignature())) {
-            throw InvalidFunction(access.nameSpan)
+            if(path.size == 1) {
+                val path2 = access.path.resolve().split(".").toMutableList()
+                val variable = path2[0]
+                val function = path2[1]
+                val signature2 = JvmMethodSignature(
+                    function,
+                    (evaluateType(Ast.Variable(variable)) as Type.Object).signature,
+                    access.arguments.map { evaluateType(it.argument) },
+                    access.returns,
+                    HeaderType.METHOD,
+                )
+                println("comparing2: ${signature2.generateInternalSignature()}")
+                if(!functions.containsKey(signature2.generateInternalSignature())) {
+                    throw InvalidFunction(access.nameSpan)
+                }
+            } else {
+                throw InvalidFunction(access.nameSpan)
+            }
         }
     }
 
