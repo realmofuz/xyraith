@@ -132,7 +132,7 @@ class Lexer(val source: String, val file: String) {
                         "let" -> output.add(Token.LetKeyword(span))
                         "if" -> output.add(Token.IfKeyword(span))
                         "foreach" -> output.add(Token.ForEachKeyword(span))
-                        "event" -> output.add(Token.EventKeyword(span))
+                        "on" -> output.add(Token.OnKeyword(span))
                         "command" -> output.add(Token.CommandKeyword(span))
                         "class" -> output.add(Token.ClassKeyword(span))
                         "namespace" -> output.add(Token.NamespaceKeyword(span))

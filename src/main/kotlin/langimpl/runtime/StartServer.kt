@@ -23,7 +23,7 @@ fun startServer() {
         Thread.sleep(1000)
 
         // link: https://api.papermc.io/v2/projects/paper/versions/1.20.2/builds/318/downloads/paper-1.20.2-318.jar
-        val url = "https://api.papermc.io/v2/projects/paper/versions/1.20.2/builds/318/downloads/paper-1.20.2-318.jar"
+        val url = "https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/365/downloads/paper-1.20.4-365.jar"
         val connection = URL(url).openConnection()
         val inputStream = connection.getInputStream()
         val outputStream = BufferedOutputStream(FileOutputStream("./xyraithserver/paper.jar"))

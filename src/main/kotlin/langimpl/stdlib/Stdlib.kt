@@ -4,7 +4,7 @@ package stdlib
 
 val stdlibFiles = mutableMapOf<String, String>(
 "std/console" to """
-class Temp_27e7606a_0d8a_47de_ac19_0b91f094619c {}
+class Temp_29bcd93b_af42_4c96_9c06_753b114213ab {}
 namespace std.console {
     command log output: string -> void {
         let console: java.io.PrintStream = (java.lang.System.out)
@@ -16,7 +16,7 @@ namespace std.console {
 
 """
 ,"std/jdk" to """
-class Temp_98ab89fb_9e5f_4366_bb37_585e55bc2cf6 {}
+class Temp_dc1c1aaa_bfec_450e_989c_a7330493ca64 {}
 class xyrreserved.JDKHolder {}
 
 @native
@@ -45,7 +45,8 @@ class java.lang.System {
 
 """
 ,"std/papermc" to """
-class Temp_e92947b4_d051_4253_965e_5a757b28c13f {}
+class Temp_29ec4aa4_589e_4ba2_9022_d96524d79551 {}
+//access: 131105
 @native
 class co.aikar.timings.FullServerTickHandler : co.aikar.timings.TimingHandler {
   @native
@@ -82,6 +83,7 @@ class co.aikar.timings.FullServerTickHandler : co.aikar.timings.TimingHandler {
   command startTimingIfSync  -> co.aikar.timings.Timing {}
 }
 
+//access: 131121
 @native
 class co.aikar.timings.NullTimingHandler : java.lang.Object {
   @native
@@ -104,6 +106,7 @@ class co.aikar.timings.NullTimingHandler : java.lang.Object {
   command close  -> void {}
 }
 
+//access: 131105
 @native
 class co.aikar.timings.TimedEventExecutor : java.lang.Object {
   @native
@@ -118,7 +121,9 @@ class co.aikar.timings.TimedEventExecutor : java.lang.Object {
   command toString  -> string {}
 }
 
+//access: 132609
 @native
+@interface
 class co.aikar.timings.Timing : java.lang.Object {
   @native
   command startTiming  -> co.aikar.timings.Timing {}
@@ -136,6 +141,7 @@ class co.aikar.timings.Timing : java.lang.Object {
   command close  -> void {}
 }
 
+//access: 32
 @native
 class co.aikar.timings.TimingData : java.lang.Object {
   @native
@@ -182,6 +188,7 @@ class co.aikar.timings.TimingData : java.lang.Object {
   command clone  -> java.lang.Object {}
 }
 
+//access: 32
 @native
 class co.aikar.timings.TimingHandler : java.lang.Object {
   @native
@@ -252,6 +259,7 @@ class co.aikar.timings.TimingHandler : java.lang.Object {
   command cloneChildren  -> array<Unknown<co.aikar.timings.TimingData>> {}
 }
 
+//access: 32
 @native
 class co.aikar.timings.TimingHistory__inacc__1 : java.lang.Object {
   @native
@@ -262,6 +270,7 @@ class co.aikar.timings.TimingHistory__inacc__1 : java.lang.Object {
   command apply arga:java.lang.Object -> java.lang.Object {}
 }
 
+//access: 32
 @native
 class co.aikar.timings.TimingHistory__inacc__2__inacc__1__inacc__1 : java.lang.Object {
   @native
@@ -274,6 +283,7 @@ class co.aikar.timings.TimingHistory__inacc__2__inacc__1__inacc__1 : java.lang.O
   command apply arga:java.lang.Object -> java.lang.Object {}
 }
 
+//access: 32
 @native
 class co.aikar.timings.TimingHistory__inacc__2__inacc__1__inacc__2 : java.lang.Object {
   @native
@@ -286,6 +296,7 @@ class co.aikar.timings.TimingHistory__inacc__2__inacc__1__inacc__2 : java.lang.O
   command apply arga:java.lang.Object -> java.lang.Object {}
 }
 
+//access: 32
 @native
 class co.aikar.timings.TimingHistory__inacc__2__inacc__1 : java.lang.Object {
   @native
@@ -298,6 +309,7 @@ class co.aikar.timings.TimingHistory__inacc__2__inacc__1 : java.lang.Object {
   command apply arga:java.lang.Object -> java.lang.Object {}
 }
 
+//access: 32
 @native
 class co.aikar.timings.TimingHistory__inacc__2 : java.lang.Object {
   @native
@@ -310,6 +322,7 @@ class co.aikar.timings.TimingHistory__inacc__2 : java.lang.Object {
   command apply arga:java.lang.Object -> java.lang.Object {}
 }
 
+//access: 32
 @native
 class co.aikar.timings.TimingHistory__inacc__3 : java.lang.Object {
   @native
@@ -322,6 +335,7 @@ class co.aikar.timings.TimingHistory__inacc__3 : java.lang.Object {
   command apply arga:java.lang.Object -> java.lang.Object {}
 }
 
+//access: 32
 @native
 class co.aikar.timings.TimingHistory__inacc__4 : java.lang.Object {
   @native
@@ -334,6 +348,7 @@ class co.aikar.timings.TimingHistory__inacc__4 : java.lang.Object {
   command apply arga:java.lang.Object -> java.lang.Object {}
 }
 
+//access: 32
 @native
 class co.aikar.timings.TimingHistory__inacc__Counter : java.lang.Object {
   @native
@@ -346,6 +361,7 @@ class co.aikar.timings.TimingHistory__inacc__Counter : java.lang.Object {
   command count  -> jvm_integer {}
 }
 
+//access: 32
 @native
 class co.aikar.timings.TimingHistory__inacc__MinuteReport : java.lang.Object {
   @native
@@ -370,6 +386,7 @@ class co.aikar.timings.TimingHistory__inacc__MinuteReport : java.lang.Object {
   command export  -> java.util.List {}
 }
 
+//access: 32
 @native
 class co.aikar.timings.TimingHistory__inacc__PingRecord : java.lang.Object {
   @native
@@ -378,6 +395,7 @@ class co.aikar.timings.TimingHistory__inacc__PingRecord : java.lang.Object {
   command construct  -> void {}
 }
 
+//access: 32
 @native
 class co.aikar.timings.TimingHistory__inacc__RegionData__inacc__1 : java.lang.Object {
   @native
@@ -388,6 +406,7 @@ class co.aikar.timings.TimingHistory__inacc__RegionData__inacc__1 : java.lang.Ob
   command apply arga:java.lang.Object -> java.lang.Object {}
 }
 
+//access: 32
 @native
 class co.aikar.timings.TimingHistory__inacc__RegionData__inacc__RegionId : java.lang.Object {
   @native
@@ -404,6 +423,7 @@ class co.aikar.timings.TimingHistory__inacc__RegionData__inacc__RegionId : java.
   command hashCode  -> jvm_integer {}
 }
 
+//access: 32
 @native
 class co.aikar.timings.TimingHistory__inacc__RegionData : java.lang.Object {
   @native
@@ -427,6 +447,7 @@ class co.aikar.timings.TimingHistory__inacc__RegionData : java.lang.Object {
   command lambda__inacc__new__inacc__0 arga:org.bukkit.entity.EntityType -> co.aikar.timings.TimingHistory__inacc__Counter {}
 }
 
+//access: 32
 @native
 class co.aikar.timings.TimingHistory__inacc__TicksRecord : java.lang.Object {
   @native
@@ -443,6 +464,7 @@ class co.aikar.timings.TimingHistory__inacc__TicksRecord : java.lang.Object {
   command construct  -> void {}
 }
 
+//access: 131105
 @native
 class co.aikar.timings.TimingHistory : java.lang.Object {
   @native
@@ -489,6 +511,7 @@ class co.aikar.timings.TimingHistory : java.lang.Object {
   command export  -> java.lang.Object {}
 }
 
+//access: 32
 @native
 class co.aikar.timings.TimingHistoryEntry__inacc__1 : java.lang.Object {
   @native
@@ -501,6 +524,7 @@ class co.aikar.timings.TimingHistoryEntry__inacc__1 : java.lang.Object {
   command apply arga:java.lang.Object -> java.lang.Object {}
 }
 
+//access: 32
 @native
 class co.aikar.timings.TimingHistoryEntry : java.lang.Object {
   @native
@@ -513,6 +537,7 @@ class co.aikar.timings.TimingHistoryEntry : java.lang.Object {
   command export  -> java.util.List {}
 }
 
+//access: 32
 @native
 class co.aikar.timings.TimingIdentifier__inacc__TimingGroup : java.lang.Object {
   @native
@@ -531,6 +556,7 @@ class co.aikar.timings.TimingIdentifier__inacc__TimingGroup : java.lang.Object {
   command hashCode  -> jvm_integer {}
 }
 
+//access: 48
 @native
 class co.aikar.timings.TimingIdentifier : java.lang.Object {
   @native
@@ -558,6 +584,7 @@ class co.aikar.timings.TimingIdentifier : java.lang.Object {
   command toString  -> string {}
 }
 
+//access: 131121
 @native
 class co.aikar.timings.Timings : java.lang.Object {
   @native
@@ -628,6 +655,7 @@ class co.aikar.timings.Timings : java.lang.Object {
   command ofSafe arga:string argb:string argc:co.aikar.timings.Timing -> co.aikar.timings.TimingHandler {}
 }
 
+//access: 131105
 @native
 class co.aikar.timings.TimingsCommand : org.bukkit.command.defaults.BukkitCommand {
   @native
@@ -642,6 +670,7 @@ class co.aikar.timings.TimingsCommand : org.bukkit.command.defaults.BukkitComman
   command tabComplete arga:org.bukkit.command.CommandSender argb:string argc:array<Unknown<string>> -> java.util.List {}
 }
 
+//access: 131121
 @native
 class co.aikar.timings.TimingsManager : java.lang.Object {
   @native
@@ -703,6 +732,7 @@ class co.aikar.timings.TimingsManager : java.lang.Object {
   command getPluginByClassloader arga:java.lang.Class -> org.bukkit.plugin.Plugin {}
 }
 
+//access: 131105
 @native
 class co.aikar.timings.TimingsReportListener : java.lang.Object {
   @native
@@ -737,6 +767,7 @@ class co.aikar.timings.TimingsReportListener : java.lang.Object {
   command lambda__inacc__sendMessage__inacc__0 arga:string argb:org.bukkit.command.CommandSender -> void {}
 }
 
+//access: 32
 @native
 class co.aikar.timings.UnsafeTimingHandler : co.aikar.timings.TimingHandler {
   @native
@@ -749,6 +780,7 @@ class co.aikar.timings.UnsafeTimingHandler : co.aikar.timings.TimingHandler {
   command stopTiming  -> void {}
 }
 
+//access: 131105
 @native
 class co.aikar.util.Counter : com.google.common.collect.ForwardingMap {
   @native
@@ -771,6 +803,7 @@ class co.aikar.util.Counter : com.google.common.collect.ForwardingMap {
   command delegate  -> java.lang.Object {}
 }
 
+//access: 33
 @native
 class co.aikar.util.JSONUtil__inacc__JSONPair : java.lang.Object {
   @native
@@ -781,6 +814,7 @@ class co.aikar.util.JSONUtil__inacc__JSONPair : java.lang.Object {
   command construct arga:string argb:java.lang.Object -> void {}
 }
 
+//access: 131121
 @native
 class co.aikar.util.JSONUtil : java.lang.Object {
   @native
@@ -805,6 +839,7 @@ class co.aikar.util.JSONUtil : java.lang.Object {
   command toObjectMapper arga:java.lang.Iterable argb:com.google.common.base.Function -> java.util.Map {}
 }
 
+//access: 1057
 @native
 class co.aikar.util.LoadingIntMap__inacc__Feeder : java.lang.Object {
   @native
@@ -815,6 +850,7 @@ class co.aikar.util.LoadingIntMap__inacc__Feeder : java.lang.Object {
   command apply  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class co.aikar.util.LoadingIntMap : it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap {
   @native
@@ -829,6 +865,7 @@ class co.aikar.util.LoadingIntMap : it.unimi.dsi.fastutil.ints.Int2ObjectOpenHas
   command get  -> java.lang.Object {}
 }
 
+//access: 32
 @native
 class co.aikar.util.LoadingMap__inacc__AutoInstantiatingLoader : java.lang.Object {
   @native
@@ -845,6 +882,7 @@ class co.aikar.util.LoadingMap__inacc__AutoInstantiatingLoader : java.lang.Objec
   command equals arga:java.lang.Object -> boolean {}
 }
 
+//access: 1057
 @native
 class co.aikar.util.LoadingMap__inacc__Feeder : java.lang.Object {
   @native
@@ -855,6 +893,7 @@ class co.aikar.util.LoadingMap__inacc__Feeder : java.lang.Object {
   command apply  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class co.aikar.util.LoadingMap : java.util.AbstractMap {
   @native
@@ -921,6 +960,7 @@ class co.aikar.util.LoadingMap : java.util.AbstractMap {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class co.aikar.util.MRUMapCache : java.util.AbstractMap {
   @native
@@ -959,7 +999,9 @@ class co.aikar.util.MRUMapCache : java.util.AbstractMap {
   command of arga:java.util.Map -> java.util.Map {}
 }
 
+//access: 132609
 @native
+@interface
 class com.destroystokyo.paper.block.BlockSoundGroup : java.lang.Object {
   @native
   command getBreakSound  -> org.bukkit.Sound {}
@@ -973,6 +1015,7 @@ class com.destroystokyo.paper.block.BlockSoundGroup : java.lang.Object {
   command getFallSound  -> org.bukkit.Sound {}
 }
 
+//access: 147505
 @native
 class com.destroystokyo.paper.block.TargetBlockInfo__inacc__FluidMode : java.lang.Enum {
   @native
@@ -995,6 +1038,7 @@ class com.destroystokyo.paper.block.TargetBlockInfo__inacc__FluidMode : java.lan
   command __inacc__values  -> array<Unknown<com.destroystokyo.paper.block.TargetBlockInfo__inacc__FluidMode>> {}
 }
 
+//access: 131105
 @native
 class com.destroystokyo.paper.block.TargetBlockInfo : java.lang.Object {
   @native
@@ -1011,6 +1055,7 @@ class com.destroystokyo.paper.block.TargetBlockInfo : java.lang.Object {
   command getRelativeBlock  -> org.bukkit.block.Block {}
 }
 
+//access: 16433
 @native
 class com.destroystokyo.paper.ClientOption__inacc__ChatVisibility : java.lang.Enum {
   @native
@@ -1041,6 +1086,7 @@ class com.destroystokyo.paper.ClientOption__inacc__ChatVisibility : java.lang.En
   command __inacc__values  -> array<Unknown<com.destroystokyo.paper.ClientOption__inacc__ChatVisibility>> {}
 }
 
+//access: 49
 @native
 class com.destroystokyo.paper.ClientOption : java.lang.Object {
   @native
@@ -1067,7 +1113,9 @@ class com.destroystokyo.paper.ClientOption : java.lang.Object {
   command getType  -> java.lang.Class {}
 }
 
+//access: 1537
 @native
+@interface
 class com.destroystokyo.paper.entity.ai.Goal : java.lang.Object {
   @native
   command shouldActivate  -> boolean {}
@@ -1085,6 +1133,7 @@ class com.destroystokyo.paper.entity.ai.Goal : java.lang.Object {
   command getTypes  -> java.util.EnumSet {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.entity.ai.GoalKey : java.lang.Object {
   @native
@@ -1107,6 +1156,7 @@ class com.destroystokyo.paper.entity.ai.GoalKey : java.lang.Object {
   command of arga:java.lang.Class argb:org.bukkit.NamespacedKey -> com.destroystokyo.paper.entity.ai.GoalKey {}
 }
 
+//access: 16433
 @native
 class com.destroystokyo.paper.entity.ai.GoalType : java.lang.Enum {
   @native
@@ -1131,7 +1181,9 @@ class com.destroystokyo.paper.entity.ai.GoalType : java.lang.Enum {
   command __inacc__values  -> array<Unknown<com.destroystokyo.paper.entity.ai.GoalType>> {}
 }
 
+//access: 1537
 @native
+@interface
 class com.destroystokyo.paper.entity.ai.MobGoals : java.lang.Object {
   @native
   command addGoal arga:org.bukkit.entity.Mob argb:jvm_integer argc:com.destroystokyo.paper.entity.ai.Goal -> void {}
@@ -1163,7 +1215,9 @@ class com.destroystokyo.paper.entity.ai.MobGoals : java.lang.Object {
   command getRunningGoalsWithout arga:org.bukkit.entity.Mob argb:com.destroystokyo.paper.entity.ai.GoalType -> java.util.Collection {}
 }
 
+//access: 1537
 @native
+@interface
 class com.destroystokyo.paper.entity.ai.VanillaGoal : java.lang.Object {
   @native
   let AVOID_ENTITY: com.destroystokyo.paper.entity.ai.GoalKey = 0
@@ -1705,7 +1759,9 @@ class com.destroystokyo.paper.entity.ai.VanillaGoal : java.lang.Object {
   let UNIVERSAL_ANGER_RESET: com.destroystokyo.paper.entity.ai.GoalKey = 0
 }
 
+//access: 1537
 @native
+@interface
 class com.destroystokyo.paper.entity.Pathfinder__inacc__PathResult : java.lang.Object {
   @native
   command getPoints  -> java.util.List {}
@@ -1717,7 +1773,9 @@ class com.destroystokyo.paper.entity.Pathfinder__inacc__PathResult : java.lang.O
   command getFinalPoint  -> org.bukkit.Location {}
 }
 
+//access: 1537
 @native
+@interface
 class com.destroystokyo.paper.entity.Pathfinder : java.lang.Object {
   @native
   command getEntity  -> org.bukkit.entity.Mob {}
@@ -1757,7 +1815,9 @@ class com.destroystokyo.paper.entity.Pathfinder : java.lang.Object {
   command setCanFloat  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class com.destroystokyo.paper.entity.RangedEntity : java.lang.Object {
   @native
   command rangedAttack arga:org.bukkit.entity.LivingEntity -> void {}
@@ -1767,6 +1827,7 @@ class com.destroystokyo.paper.entity.RangedEntity : java.lang.Object {
   command isChargingAttack  -> boolean {}
 }
 
+//access: 131105
 @native
 class com.destroystokyo.paper.entity.TargetEntityInfo : java.lang.Object {
   @native
@@ -1781,6 +1842,7 @@ class com.destroystokyo.paper.entity.TargetEntityInfo : java.lang.Object {
   command getHitVector  -> org.bukkit.util.Vector {}
 }
 
+//access: 49
 @native
 class com.destroystokyo.paper.entity.villager.Reputation : java.lang.Object {
   @native
@@ -1797,6 +1859,7 @@ class com.destroystokyo.paper.entity.villager.Reputation : java.lang.Object {
   command hasReputationSet arga:com.destroystokyo.paper.entity.villager.ReputationType -> boolean {}
 }
 
+//access: 16433
 @native
 class com.destroystokyo.paper.entity.villager.ReputationType : java.lang.Enum {
   @native
@@ -1821,6 +1884,7 @@ class com.destroystokyo.paper.entity.villager.ReputationType : java.lang.Enum {
   command __inacc__values  -> array<Unknown<com.destroystokyo.paper.entity.villager.ReputationType>> {}
 }
 
+//access: 16433
 @native
 class com.destroystokyo.paper.event.block.AnvilDamagedEvent__inacc__DamageState : java.lang.Enum {
   @native
@@ -1851,6 +1915,7 @@ class com.destroystokyo.paper.event.block.AnvilDamagedEvent__inacc__DamageState 
   command __inacc__values  -> array<Unknown<com.destroystokyo.paper.event.block.AnvilDamagedEvent__inacc__DamageState>> {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.block.AnvilDamagedEvent : org.bukkit.event.inventory.InventoryEvent {
   @native
@@ -1883,6 +1948,7 @@ class com.destroystokyo.paper.event.block.AnvilDamagedEvent : org.bukkit.event.i
   command getInventory  -> org.bukkit.inventory.Inventory {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.block.BeaconEffectEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -1915,6 +1981,7 @@ class com.destroystokyo.paper.event.block.BeaconEffectEvent : org.bukkit.event.b
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.block.BlockDestroyEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -1949,6 +2016,7 @@ class com.destroystokyo.paper.event.block.BlockDestroyEvent : org.bukkit.event.b
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class com.destroystokyo.paper.event.block.TNTPrimeEvent__inacc__PrimeReason : java.lang.Enum {
   @native
@@ -1973,6 +2041,7 @@ class com.destroystokyo.paper.event.block.TNTPrimeEvent__inacc__PrimeReason : ja
   command __inacc__values  -> array<Unknown<com.destroystokyo.paper.event.block.TNTPrimeEvent__inacc__PrimeReason>> {}
 }
 
+//access: 131105
 @native
 class com.destroystokyo.paper.event.block.TNTPrimeEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -1999,6 +2068,7 @@ class com.destroystokyo.paper.event.block.TNTPrimeEvent : org.bukkit.event.block
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.CreeperIgniteEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -2027,6 +2097,7 @@ class com.destroystokyo.paper.event.entity.CreeperIgniteEvent : org.bukkit.event
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.EnderDragonFireballHitEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -2057,6 +2128,7 @@ class com.destroystokyo.paper.event.entity.EnderDragonFireballHitEvent : org.buk
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.EnderDragonFlameEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -2083,6 +2155,7 @@ class com.destroystokyo.paper.event.entity.EnderDragonFlameEvent : org.bukkit.ev
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.EnderDragonShootFireballEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -2109,6 +2182,7 @@ class com.destroystokyo.paper.event.entity.EnderDragonShootFireballEvent : org.b
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.EndermanAttackPlayerEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -2135,6 +2209,7 @@ class com.destroystokyo.paper.event.entity.EndermanAttackPlayerEvent : org.bukki
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 16433
 @native
 class com.destroystokyo.paper.event.entity.EndermanEscapeEvent__inacc__Reason : java.lang.Enum {
   @native
@@ -2159,6 +2234,7 @@ class com.destroystokyo.paper.event.entity.EndermanEscapeEvent__inacc__Reason : 
   command __inacc__values  -> array<Unknown<com.destroystokyo.paper.event.entity.EndermanEscapeEvent__inacc__Reason>> {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.EndermanEscapeEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -2185,6 +2261,7 @@ class com.destroystokyo.paper.event.entity.EndermanEscapeEvent : org.bukkit.even
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.EntityAddToWorldEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -2197,6 +2274,7 @@ class com.destroystokyo.paper.event.entity.EntityAddToWorldEvent : org.bukkit.ev
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.EntityJumpEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -2219,6 +2297,7 @@ class com.destroystokyo.paper.event.entity.EntityJumpEvent : org.bukkit.event.en
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.EntityKnockbackByEntityEvent : io.papermc.paper.event.entity.EntityPushedByEntityAttackEvent {
   @native
@@ -2235,6 +2314,7 @@ class com.destroystokyo.paper.event.entity.EntityKnockbackByEntityEvent : io.pap
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.EntityPathfindEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -2263,6 +2343,7 @@ class com.destroystokyo.paper.event.entity.EntityPathfindEvent : org.bukkit.even
   command setCancelled  -> void {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.EntityRemoveFromWorldEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -2275,6 +2356,7 @@ class com.destroystokyo.paper.event.entity.EntityRemoveFromWorldEvent : org.bukk
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.EntityTeleportEndGatewayEvent : org.bukkit.event.entity.EntityTeleportEvent {
   @native
@@ -2285,6 +2367,7 @@ class com.destroystokyo.paper.event.entity.EntityTeleportEndGatewayEvent : org.b
   command getGateway  -> org.bukkit.block.EndGateway {}
 }
 
+//access: 16433
 @native
 class com.destroystokyo.paper.event.entity.EntityTransformedEvent__inacc__TransformedReason : java.lang.Enum {
   @native
@@ -2309,6 +2392,7 @@ class com.destroystokyo.paper.event.entity.EntityTransformedEvent__inacc__Transf
   command __inacc__values  -> array<Unknown<com.destroystokyo.paper.event.entity.EntityTransformedEvent__inacc__TransformedReason>> {}
 }
 
+//access: 131105
 @native
 class com.destroystokyo.paper.event.entity.EntityTransformedEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -2335,6 +2419,7 @@ class com.destroystokyo.paper.event.entity.EntityTransformedEvent : org.bukkit.e
   command setCancelled  -> void {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.EntityZapEvent : org.bukkit.event.entity.EntityTransformEvent {
   @native
@@ -2359,6 +2444,7 @@ class com.destroystokyo.paper.event.entity.EntityZapEvent : org.bukkit.event.ent
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.ExperienceOrbMergeEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -2385,6 +2471,7 @@ class com.destroystokyo.paper.event.entity.ExperienceOrbMergeEvent : org.bukkit.
   command setCancelled  -> void {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.PhantomPreSpawnEvent : com.destroystokyo.paper.event.entity.PreCreatureSpawnEvent {
   @native
@@ -2395,6 +2482,7 @@ class com.destroystokyo.paper.event.entity.PhantomPreSpawnEvent : com.destroysto
   command getSpawningEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.PlayerNaturallySpawnCreaturesEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -2419,6 +2507,7 @@ class com.destroystokyo.paper.event.entity.PlayerNaturallySpawnCreaturesEvent : 
   command setCancelled  -> void {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.PreCreatureSpawnEvent : org.bukkit.event.Event {
   @native
@@ -2455,6 +2544,7 @@ class com.destroystokyo.paper.event.entity.PreCreatureSpawnEvent : org.bukkit.ev
   command setCancelled  -> void {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.PreSpawnerSpawnEvent : com.destroystokyo.paper.event.entity.PreCreatureSpawnEvent {
   @native
@@ -2465,6 +2555,7 @@ class com.destroystokyo.paper.event.entity.PreSpawnerSpawnEvent : com.destroysto
   command getSpawnerLocation  -> org.bukkit.Location {}
 }
 
+//access: 131105
 @native
 class com.destroystokyo.paper.event.entity.ProjectileCollideEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -2491,6 +2582,7 @@ class com.destroystokyo.paper.event.entity.ProjectileCollideEvent : org.bukkit.e
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.SkeletonHorseTrapEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -2519,6 +2611,7 @@ class com.destroystokyo.paper.event.entity.SkeletonHorseTrapEvent : org.bukkit.e
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.SlimeChangeDirectionEvent : com.destroystokyo.paper.event.entity.SlimePathfindEvent {
   @native
@@ -2531,6 +2624,7 @@ class com.destroystokyo.paper.event.entity.SlimeChangeDirectionEvent : com.destr
   command setNewYaw  -> void {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.SlimePathfindEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -2553,12 +2647,14 @@ class com.destroystokyo.paper.event.entity.SlimePathfindEvent : org.bukkit.event
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.SlimeSwimEvent : com.destroystokyo.paper.event.entity.SlimeWanderEvent {
   @native
   command construct arga:org.bukkit.entity.Slime -> void {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.SlimeTargetLivingEntityEvent : com.destroystokyo.paper.event.entity.SlimePathfindEvent {
   @native
@@ -2569,12 +2665,14 @@ class com.destroystokyo.paper.event.entity.SlimeTargetLivingEntityEvent : com.de
   command getTarget  -> org.bukkit.entity.LivingEntity {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.SlimeWanderEvent : com.destroystokyo.paper.event.entity.SlimePathfindEvent {
   @native
   command construct arga:org.bukkit.entity.Slime -> void {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.ThrownEggHatchEvent : org.bukkit.event.Event {
   @native
@@ -2609,6 +2707,7 @@ class com.destroystokyo.paper.event.entity.ThrownEggHatchEvent : org.bukkit.even
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.TurtleGoHomeEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -2631,6 +2730,7 @@ class com.destroystokyo.paper.event.entity.TurtleGoHomeEvent : org.bukkit.event.
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.TurtleLayEggEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -2663,6 +2763,7 @@ class com.destroystokyo.paper.event.entity.TurtleLayEggEvent : org.bukkit.event.
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.TurtleStartDiggingEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -2689,6 +2790,7 @@ class com.destroystokyo.paper.event.entity.TurtleStartDiggingEvent : org.bukkit.
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.WitchConsumePotionEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -2717,6 +2819,7 @@ class com.destroystokyo.paper.event.entity.WitchConsumePotionEvent : org.bukkit.
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.WitchReadyPotionEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -2747,6 +2850,7 @@ class com.destroystokyo.paper.event.entity.WitchReadyPotionEvent : org.bukkit.ev
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.entity.WitchThrowPotionEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -2779,6 +2883,7 @@ class com.destroystokyo.paper.event.entity.WitchThrowPotionEvent : org.bukkit.ev
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.executor.asm.ASMEventExecutorGenerator : java.lang.Object {
   @native
@@ -2793,7 +2898,9 @@ class com.destroystokyo.paper.event.executor.asm.ASMEventExecutorGenerator : jav
   command generateName  -> string {}
 }
 
+//access: 1537
 @native
+@interface
 class com.destroystokyo.paper.event.executor.asm.ClassDefiner : java.lang.Object {
   @native
   command isBypassAccessChecks  -> boolean {}
@@ -2803,6 +2910,7 @@ class com.destroystokyo.paper.event.executor.asm.ClassDefiner : java.lang.Object
   command getInstance  -> com.destroystokyo.paper.event.executor.asm.ClassDefiner {}
 }
 
+//access: 32
 @native
 class com.destroystokyo.paper.event.executor.asm.SafeClassDefiner__inacc__GeneratedClassLoader : java.lang.ClassLoader {
   @native
@@ -2817,6 +2925,7 @@ class com.destroystokyo.paper.event.executor.asm.SafeClassDefiner__inacc__Genera
   command hasClass arga:string -> boolean {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.executor.asm.SafeClassDefiner : java.lang.Object {
   @native
@@ -2831,6 +2940,7 @@ class com.destroystokyo.paper.event.executor.asm.SafeClassDefiner : java.lang.Ob
   command defineClass arga:java.lang.ClassLoader argb:string -> java.lang.Class {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.executor.MethodHandleEventExecutor : java.lang.Object {
   @native
@@ -2849,6 +2959,7 @@ class com.destroystokyo.paper.event.executor.MethodHandleEventExecutor : java.la
   command toString  -> string {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.executor.StaticMethodHandleEventExecutor : java.lang.Object {
   @native
@@ -2865,6 +2976,7 @@ class com.destroystokyo.paper.event.executor.StaticMethodHandleEventExecutor : j
   command toString  -> string {}
 }
 
+//access: 131105
 @native
 class com.destroystokyo.paper.event.inventory.PrepareGrindstoneEvent : com.destroystokyo.paper.event.inventory.PrepareResultEvent {
   @native
@@ -2875,6 +2987,7 @@ class com.destroystokyo.paper.event.inventory.PrepareGrindstoneEvent : com.destr
   command getInventory  -> org.bukkit.inventory.Inventory {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.inventory.PrepareResultEvent : org.bukkit.event.inventory.PrepareInventoryResultEvent {
   @native
@@ -2885,6 +2998,7 @@ class com.destroystokyo.paper.event.inventory.PrepareResultEvent : org.bukkit.ev
   command setResult arga:org.bukkit.inventory.ItemStack -> void {}
 }
 
+//access: 131105
 @native
 class com.destroystokyo.paper.event.player.IllegalPacketEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -2919,6 +3033,7 @@ class com.destroystokyo.paper.event.player.IllegalPacketEvent : org.bukkit.event
   command process arga:org.bukkit.entity.Player argb:string argc:string argd:java.lang.Exception -> void {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.player.PlayerAdvancementCriterionGrantEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -2949,6 +3064,7 @@ class com.destroystokyo.paper.event.player.PlayerAdvancementCriterionGrantEvent 
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class com.destroystokyo.paper.event.player.PlayerArmorChangeEvent__inacc__SlotType : java.lang.Enum {
   @native
@@ -2981,6 +3097,7 @@ class com.destroystokyo.paper.event.player.PlayerArmorChangeEvent__inacc__SlotTy
   command __inacc__values  -> array<Unknown<com.destroystokyo.paper.event.player.PlayerArmorChangeEvent__inacc__SlotType>> {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.player.PlayerArmorChangeEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -3007,6 +3124,7 @@ class com.destroystokyo.paper.event.player.PlayerArmorChangeEvent : org.bukkit.e
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.player.PlayerAttackEntityCooldownResetEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -3033,6 +3151,7 @@ class com.destroystokyo.paper.event.player.PlayerAttackEntityCooldownResetEvent 
   command getAttackedEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.player.PlayerClientOptionsChangeEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -3095,6 +3214,7 @@ class com.destroystokyo.paper.event.player.PlayerClientOptionsChangeEvent : org.
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.player.PlayerConnectionCloseEvent : org.bukkit.event.Event {
   @native
@@ -3119,6 +3239,7 @@ class com.destroystokyo.paper.event.player.PlayerConnectionCloseEvent : org.bukk
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.player.PlayerElytraBoostEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -3151,6 +3272,7 @@ class com.destroystokyo.paper.event.player.PlayerElytraBoostEvent : org.bukkit.e
   command setCancelled  -> void {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.player.PlayerHandshakeEvent : org.bukkit.event.Event {
   @native
@@ -3219,12 +3341,14 @@ class com.destroystokyo.paper.event.player.PlayerHandshakeEvent : org.bukkit.eve
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 131105
 @native
 class com.destroystokyo.paper.event.player.PlayerInitialSpawnEvent : org.spigotmc.event.player.PlayerSpawnLocationEvent {
   @native
   command construct arga:org.bukkit.entity.Player argb:org.bukkit.Location -> void {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.player.PlayerJumpEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -3255,6 +3379,7 @@ class com.destroystokyo.paper.event.player.PlayerJumpEvent : org.bukkit.event.pl
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.player.PlayerLaunchProjectileEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -3287,6 +3412,7 @@ class com.destroystokyo.paper.event.player.PlayerLaunchProjectileEvent : org.buk
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 131105
 @native
 class com.destroystokyo.paper.event.player.PlayerLocaleChangeEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -3307,6 +3433,7 @@ class com.destroystokyo.paper.event.player.PlayerLocaleChangeEvent : org.bukkit.
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -3329,6 +3456,7 @@ class com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent : org.buk
   command setCancelled  -> void {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.player.PlayerPostRespawnEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -3349,6 +3477,7 @@ class com.destroystokyo.paper.event.player.PlayerPostRespawnEvent : org.bukkit.e
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.player.PlayerReadyArrowEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -3375,6 +3504,7 @@ class com.destroystokyo.paper.event.player.PlayerReadyArrowEvent : org.bukkit.ev
   command setCancelled  -> void {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.player.PlayerRecipeBookClickEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -3405,6 +3535,7 @@ class com.destroystokyo.paper.event.player.PlayerRecipeBookClickEvent : org.bukk
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class com.destroystokyo.paper.event.player.PlayerSetSpawnEvent__inacc__Cause : java.lang.Enum {
   @native
@@ -3431,6 +3562,7 @@ class com.destroystokyo.paper.event.player.PlayerSetSpawnEvent__inacc__Cause : j
   command __inacc__values  -> array<Unknown<com.destroystokyo.paper.event.player.PlayerSetSpawnEvent__inacc__Cause>> {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.player.PlayerSetSpawnEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -3477,6 +3609,7 @@ class com.destroystokyo.paper.event.player.PlayerSetSpawnEvent : org.bukkit.even
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.player.PlayerStartSpectatingEntityEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -3503,6 +3636,7 @@ class com.destroystokyo.paper.event.player.PlayerStartSpectatingEntityEvent : or
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.player.PlayerStopSpectatingEntityEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -3525,6 +3659,7 @@ class com.destroystokyo.paper.event.player.PlayerStopSpectatingEntityEvent : org
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.player.PlayerTeleportEndGatewayEvent : org.bukkit.event.player.PlayerTeleportEvent {
   @native
@@ -3535,6 +3670,7 @@ class com.destroystokyo.paper.event.player.PlayerTeleportEndGatewayEvent : org.b
   command getGateway  -> org.bukkit.block.EndGateway {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.player.PlayerUseUnknownEntityEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -3563,6 +3699,7 @@ class com.destroystokyo.paper.event.player.PlayerUseUnknownEntityEvent : org.buk
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.profile.FillProfileEvent : org.bukkit.event.Event {
   @native
@@ -3581,6 +3718,7 @@ class com.destroystokyo.paper.event.profile.FillProfileEvent : org.bukkit.event.
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.profile.LookupProfileEvent : org.bukkit.event.Event {
   @native
@@ -3597,6 +3735,7 @@ class com.destroystokyo.paper.event.profile.LookupProfileEvent : org.bukkit.even
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.profile.PreFillProfileEvent : org.bukkit.event.Event {
   @native
@@ -3615,6 +3754,7 @@ class com.destroystokyo.paper.event.profile.PreFillProfileEvent : org.bukkit.eve
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.profile.PreLookupProfileEvent : org.bukkit.event.Event {
   @native
@@ -3645,6 +3785,7 @@ class com.destroystokyo.paper.event.profile.PreLookupProfileEvent : org.bukkit.e
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.profile.ProfileWhitelistVerifyEvent : org.bukkit.event.Event {
   @native
@@ -3687,7 +3828,9 @@ class com.destroystokyo.paper.event.profile.ProfileWhitelistVerifyEvent : org.bu
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 1537
 @native
+@interface
 class com.destroystokyo.paper.event.server.AsyncTabCompleteEvent__inacc__Completion : java.lang.Object {
   @native
   command suggestion  -> string {}
@@ -3701,6 +3844,7 @@ class com.destroystokyo.paper.event.server.AsyncTabCompleteEvent__inacc__Complet
   command completion arga:string argb:net.kyori.adventure.text.Component -> com.destroystokyo.paper.event.server.AsyncTabCompleteEvent__inacc__Completion {}
 }
 
+//access: 48
 @native
 class com.destroystokyo.paper.event.server.AsyncTabCompleteEvent__inacc__CompletionImpl : java.lang.Object {
   @native
@@ -3721,6 +3865,7 @@ class com.destroystokyo.paper.event.server.AsyncTabCompleteEvent__inacc__Complet
   command toString  -> string {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.server.AsyncTabCompleteEvent : org.bukkit.event.Event {
   @native
@@ -3779,6 +3924,7 @@ class com.destroystokyo.paper.event.server.AsyncTabCompleteEvent : org.bukkit.ev
   command fromStrings arga:java.util.List -> java.util.List {}
 }
 
+//access: 49
 @native
 class com.destroystokyo.paper.event.server.GS4QueryEvent__inacc__QueryResponse__inacc__Builder : java.lang.Object {
   @native
@@ -3835,6 +3981,7 @@ class com.destroystokyo.paper.event.server.GS4QueryEvent__inacc__QueryResponse__
   command build  -> com.destroystokyo.paper.event.server.GS4QueryEvent__inacc__QueryResponse {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.server.GS4QueryEvent__inacc__QueryResponse__inacc__PluginInformation : java.lang.Object {
   @native
@@ -3855,6 +4002,7 @@ class com.destroystokyo.paper.event.server.GS4QueryEvent__inacc__QueryResponse__
   command of arga:string argb:string -> com.destroystokyo.paper.event.server.GS4QueryEvent__inacc__QueryResponse__inacc__PluginInformation {}
 }
 
+//access: 49
 @native
 class com.destroystokyo.paper.event.server.GS4QueryEvent__inacc__QueryResponse : java.lang.Object {
   @native
@@ -3905,6 +4053,7 @@ class com.destroystokyo.paper.event.server.GS4QueryEvent__inacc__QueryResponse :
   command builder  -> com.destroystokyo.paper.event.server.GS4QueryEvent__inacc__QueryResponse__inacc__Builder {}
 }
 
+//access: 16433
 @native
 class com.destroystokyo.paper.event.server.GS4QueryEvent__inacc__QueryType : java.lang.Enum {
   @native
@@ -3923,6 +4072,7 @@ class com.destroystokyo.paper.event.server.GS4QueryEvent__inacc__QueryType : jav
   command __inacc__values  -> array<Unknown<com.destroystokyo.paper.event.server.GS4QueryEvent__inacc__QueryType>> {}
 }
 
+//access: 49
 @native
 class com.destroystokyo.paper.event.server.GS4QueryEvent : org.bukkit.event.Event {
   @native
@@ -3951,6 +4101,7 @@ class com.destroystokyo.paper.event.server.GS4QueryEvent : org.bukkit.event.Even
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 48
 @native
 class com.destroystokyo.paper.event.server.PaperServerListPingEvent__inacc__PlayerIterator : java.lang.Object {
   @native
@@ -3975,6 +4126,7 @@ class com.destroystokyo.paper.event.server.PaperServerListPingEvent__inacc__Play
   command lambda__inacc__remove__inacc__0 arga:java.util.UUID argb:com.destroystokyo.paper.profile.PlayerProfile -> boolean {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.server.PaperServerListPingEvent : org.bukkit.event.server.ServerListPingEvent {
   @native
@@ -4039,6 +4191,7 @@ class com.destroystokyo.paper.event.server.PaperServerListPingEvent : org.bukkit
   command getBukkitPlayer arga:java.lang.Object -> org.bukkit.entity.Player {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.server.ServerExceptionEvent : org.bukkit.event.Event {
   @native
@@ -4055,6 +4208,7 @@ class com.destroystokyo.paper.event.server.ServerExceptionEvent : org.bukkit.eve
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.server.ServerTickEndEvent : org.bukkit.event.Event {
   @native
@@ -4079,6 +4233,7 @@ class com.destroystokyo.paper.event.server.ServerTickEndEvent : org.bukkit.event
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.server.ServerTickStartEvent : org.bukkit.event.Event {
   @native
@@ -4095,6 +4250,7 @@ class com.destroystokyo.paper.event.server.ServerTickStartEvent : org.bukkit.eve
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.event.server.WhitelistToggleEvent : org.bukkit.event.Event {
   @native
@@ -4111,6 +4267,7 @@ class com.destroystokyo.paper.event.server.WhitelistToggleEvent : org.bukkit.eve
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.exception.ServerCommandException : com.destroystokyo.paper.exception.ServerException {
   @native
@@ -4133,6 +4290,7 @@ class com.destroystokyo.paper.exception.ServerCommandException : com.destroystok
   command getArguments  -> array<Unknown<string>> {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.exception.ServerEventException : com.destroystokyo.paper.exception.ServerPluginException {
   @native
@@ -4151,6 +4309,7 @@ class com.destroystokyo.paper.exception.ServerEventException : com.destroystokyo
   command getEvent  -> org.bukkit.event.Event {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.exception.ServerException : java.lang.Exception {
   @native
@@ -4163,6 +4322,7 @@ class com.destroystokyo.paper.exception.ServerException : java.lang.Exception {
   command construct arga:string argb:java.lang.Throwable argc:boolean -> void {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.exception.ServerInternalException : com.destroystokyo.paper.exception.ServerException {
   @native
@@ -4177,6 +4337,7 @@ class com.destroystokyo.paper.exception.ServerInternalException : com.destroysto
   command reportInternalException arga:java.lang.Throwable -> void {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.exception.ServerPluginEnableDisableException : com.destroystokyo.paper.exception.ServerPluginException {
   @native
@@ -4187,6 +4348,7 @@ class com.destroystokyo.paper.exception.ServerPluginEnableDisableException : com
   command construct arga:string argb:java.lang.Throwable argc:boolean argd:boolean arge:org.bukkit.plugin.Plugin -> void {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.exception.ServerPluginException : com.destroystokyo.paper.exception.ServerException {
   @native
@@ -4201,6 +4363,7 @@ class com.destroystokyo.paper.exception.ServerPluginException : com.destroystoky
   command getResponsiblePlugin  -> org.bukkit.plugin.Plugin {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.exception.ServerPluginMessageException : com.destroystokyo.paper.exception.ServerPluginException {
   @native
@@ -4223,6 +4386,7 @@ class com.destroystokyo.paper.exception.ServerPluginMessageException : com.destr
   command getPlayer  -> org.bukkit.entity.Player {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.exception.ServerSchedulerException : com.destroystokyo.paper.exception.ServerPluginException {
   @native
@@ -4237,6 +4401,7 @@ class com.destroystokyo.paper.exception.ServerSchedulerException : com.destroyst
   command getTask  -> org.bukkit.scheduler.BukkitTask {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.exception.ServerTabCompleteException : com.destroystokyo.paper.exception.ServerCommandException {
   @native
@@ -4247,6 +4412,7 @@ class com.destroystokyo.paper.exception.ServerTabCompleteException : com.destroy
   command construct arga:string argb:java.lang.Throwable argc:boolean argd:boolean arge:org.bukkit.command.Command argf:org.bukkit.command.CommandSender argg:array<Unknown<string>> -> void {}
 }
 
+//access: 147505
 @native
 class com.destroystokyo.paper.HeightmapType : java.lang.Enum {
   @native
@@ -4271,6 +4437,7 @@ class com.destroystokyo.paper.HeightmapType : java.lang.Enum {
   command __inacc__values  -> array<Unknown<com.destroystokyo.paper.HeightmapType>> {}
 }
 
+//access: 131105
 @native
 class com.destroystokyo.paper.inventory.ItemStackRecipeChoice : java.lang.Object {
   @native
@@ -4291,7 +4458,9 @@ class com.destroystokyo.paper.inventory.ItemStackRecipeChoice : java.lang.Object
   command test arga:java.lang.Object -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class com.destroystokyo.paper.inventory.meta.ArmorStandMeta : java.lang.Object {
   @native
   command isInvisible  -> boolean {}
@@ -4315,19 +4484,25 @@ class com.destroystokyo.paper.inventory.meta.ArmorStandMeta : java.lang.Object {
   command setMarker  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class com.destroystokyo.paper.loottable.LootableBlockInventory : java.lang.Object {
   @native
   command getBlock  -> org.bukkit.block.Block {}
 }
 
+//access: 1537
 @native
+@interface
 class com.destroystokyo.paper.loottable.LootableEntityInventory : java.lang.Object {
   @native
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 1537
 @native
+@interface
 class com.destroystokyo.paper.loottable.LootableInventory : java.lang.Object {
   @native
   command isRefillEnabled  -> boolean {}
@@ -4357,6 +4532,7 @@ class com.destroystokyo.paper.loottable.LootableInventory : java.lang.Object {
   command setNextRefill  -> Unknown<J> {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.loottable.LootableInventoryReplenishEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -4379,6 +4555,7 @@ class com.destroystokyo.paper.loottable.LootableInventoryReplenishEvent : org.bu
   command setCancelled  -> void {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.MaterialSetTag : io.papermc.paper.tag.BaseTag {
   @native
@@ -4415,6 +4592,7 @@ class com.destroystokyo.paper.MaterialSetTag : io.papermc.paper.tag.BaseTag {
   command isTagged arga:org.bukkit.Keyed -> boolean {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.MaterialTags : java.lang.Object {
   @native
@@ -4617,7 +4795,9 @@ class com.destroystokyo.paper.MaterialTags : java.lang.Object {
   command lambda__inacc__static__inacc__0 arga:org.bukkit.Material -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class com.destroystokyo.paper.Namespaced : java.lang.Object {
   @native
   command getNamespace  -> string {}
@@ -4625,6 +4805,7 @@ class com.destroystokyo.paper.Namespaced : java.lang.Object {
   command getKey  -> string {}
 }
 
+//access: 49
 @native
 class com.destroystokyo.paper.NamespacedTag : java.lang.Object {
   @native
@@ -4659,7 +4840,9 @@ class com.destroystokyo.paper.NamespacedTag : java.lang.Object {
   command minecraft arga:string -> com.destroystokyo.paper.NamespacedTag {}
 }
 
+//access: 1537
 @native
+@interface
 class com.destroystokyo.paper.network.NetworkClient : java.lang.Object {
   @native
   command getAddress  -> java.net.InetSocketAddress {}
@@ -4669,12 +4852,15 @@ class com.destroystokyo.paper.network.NetworkClient : java.lang.Object {
   command getVirtualHost  -> java.net.InetSocketAddress {}
 }
 
+//access: 1537
 @native
+@interface
 class com.destroystokyo.paper.network.StatusClient : java.lang.Object {
   @native
   command isLegacy  -> boolean {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.ParticleBuilder : java.lang.Object {
   @native
@@ -4771,7 +4957,9 @@ class com.destroystokyo.paper.ParticleBuilder : java.lang.Object {
   command color arga:jvm_integer argb:jvm_integer -> com.destroystokyo.paper.ParticleBuilder {}
 }
 
+//access: 1537
 @native
+@interface
 class com.destroystokyo.paper.profile.PlayerProfile : java.lang.Object {
   @native
   command getName  -> string {}
@@ -4821,6 +5009,7 @@ class com.destroystokyo.paper.profile.PlayerProfile : java.lang.Object {
   command hasTextures  -> boolean {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.profile.ProfileProperty : java.lang.Object {
   @native
@@ -4847,7 +5036,9 @@ class com.destroystokyo.paper.profile.ProfileProperty : java.lang.Object {
   command hashCode  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class com.destroystokyo.paper.SkinParts : java.lang.Object {
   @native
   command hasCapeEnabled  -> boolean {}
@@ -4867,6 +5058,7 @@ class com.destroystokyo.paper.SkinParts : java.lang.Object {
   command getRaw  -> jvm_integer {}
 }
 
+//access: 49
 @native
 class com.destroystokyo.paper.Title__inacc__Builder : java.lang.Object {
   @native
@@ -4903,6 +5095,7 @@ class com.destroystokyo.paper.Title__inacc__Builder : java.lang.Object {
   command build  -> com.destroystokyo.paper.Title {}
 }
 
+//access: 131121
 @native
 class com.destroystokyo.paper.Title : java.lang.Object {
   @native
@@ -4961,6 +5154,7 @@ class com.destroystokyo.paper.Title : java.lang.Object {
   command builder  -> com.destroystokyo.paper.Title__inacc__Builder {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.util.SneakyThrow : java.lang.Object {
   @native
@@ -4971,6 +5165,7 @@ class com.destroystokyo.paper.util.SneakyThrow : java.lang.Object {
   command throwSneaky arga:java.lang.Throwable -> void {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.util.VersionFetcher__inacc__DummyVersionFetcher : java.lang.Object {
   @native
@@ -4981,7 +5176,9 @@ class com.destroystokyo.paper.util.VersionFetcher__inacc__DummyVersionFetcher : 
   command getVersionMessage arga:string -> net.kyori.adventure.text.Component {}
 }
 
+//access: 1537
 @native
+@interface
 class com.destroystokyo.paper.util.VersionFetcher : java.lang.Object {
   @native
   command getCacheTime  -> Unknown<J> {}
@@ -4989,6 +5186,7 @@ class com.destroystokyo.paper.util.VersionFetcher : java.lang.Object {
   command getVersionMessage arga:string -> net.kyori.adventure.text.Component {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.utils.CachedSizeConcurrentLinkedQueue : java.util.concurrent.ConcurrentLinkedQueue {
   @native
@@ -5003,6 +5201,7 @@ class com.destroystokyo.paper.utils.CachedSizeConcurrentLinkedQueue : java.util.
   command size  -> jvm_integer {}
 }
 
+//access: 33
 @native
 class com.destroystokyo.paper.utils.PaperPluginLogger : java.util.logging.Logger {
   @native
@@ -5015,6 +5214,7 @@ class com.destroystokyo.paper.utils.PaperPluginLogger : java.util.logging.Logger
   command setParent arga:java.util.logging.Logger -> void {}
 }
 
+//access: 16433
 @native
 class io.papermc.paper.advancement.AdvancementDisplay__inacc__Frame : java.lang.Enum {
   @native
@@ -5047,7 +5247,9 @@ class io.papermc.paper.advancement.AdvancementDisplay__inacc__Frame : java.lang.
   command __inacc__values  -> array<Unknown<io.papermc.paper.advancement.AdvancementDisplay__inacc__Frame>> {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.advancement.AdvancementDisplay : java.lang.Object {
   @native
   command frame  -> io.papermc.paper.advancement.AdvancementDisplay__inacc__Frame {}
@@ -5069,15 +5271,21 @@ class io.papermc.paper.advancement.AdvancementDisplay : java.lang.Object {
   command displayName  -> net.kyori.adventure.text.Component {}
 }
 
+//access: 9729
 @native
+@interface
 class io.papermc.paper.annotation.DoNotUse : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.block.LockableTileState : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.block.MovingPiston : java.lang.Object {
   @native
   command getMovingBlock  -> org.bukkit.block.data.BlockData {}
@@ -5089,17 +5297,23 @@ class io.papermc.paper.block.MovingPiston : java.lang.Object {
   command isPistonHead  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.chat.ChatRenderer__inacc__Default : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.chat.ChatRenderer__inacc__ViewerUnaware : java.lang.Object {
   @native
   command render arga:org.bukkit.entity.Player argb:net.kyori.adventure.text.Component argc:net.kyori.adventure.text.Component -> net.kyori.adventure.text.Component {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.chat.ChatRenderer : java.lang.Object {
   @native
   command render arga:org.bukkit.entity.Player argb:net.kyori.adventure.text.Component argc:net.kyori.adventure.text.Component argd:net.kyori.adventure.audience.Audience -> net.kyori.adventure.text.Component {}
@@ -5111,12 +5325,14 @@ class io.papermc.paper.chat.ChatRenderer : java.lang.Object {
   command lambda__inacc__defaultRenderer__inacc__0 arga:org.bukkit.entity.Player argb:net.kyori.adventure.text.Component argc:net.kyori.adventure.text.Component -> net.kyori.adventure.text.Component {}
 }
 
+//access: 48
 @native
 class io.papermc.paper.chat.ViewerUnawareImpl__inacc__Default : io.papermc.paper.chat.ViewerUnawareImpl {
   @native
   command construct arga:io.papermc.paper.chat.ChatRenderer__inacc__ViewerUnaware -> void {}
 }
 
+//access: 32
 @native
 class io.papermc.paper.chat.ViewerUnawareImpl : java.lang.Object {
   @native
@@ -5131,7 +5347,9 @@ class io.papermc.paper.chat.ViewerUnawareImpl : java.lang.Object {
   command render arga:org.bukkit.entity.Player argb:net.kyori.adventure.text.Component argc:net.kyori.adventure.text.Component -> net.kyori.adventure.text.Component {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.command.CommandBlockHolder : java.lang.Object {
   @native
   command getCommand  -> string {}
@@ -5147,6 +5365,7 @@ class io.papermc.paper.command.CommandBlockHolder : java.lang.Object {
   command setSuccessCount  -> void {}
 }
 
+//access: 16433
 @native
 class io.papermc.paper.datapack.Datapack__inacc__Compatibility : java.lang.Enum {
   @native
@@ -5167,7 +5386,9 @@ class io.papermc.paper.datapack.Datapack__inacc__Compatibility : java.lang.Enum 
   command __inacc__values  -> array<Unknown<io.papermc.paper.datapack.Datapack__inacc__Compatibility>> {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.datapack.Datapack : java.lang.Object {
   @native
   command getName  -> string {}
@@ -5179,7 +5400,9 @@ class io.papermc.paper.datapack.Datapack : java.lang.Object {
   command setEnabled  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.datapack.DatapackManager : java.lang.Object {
   @native
   command getPacks  -> java.util.Collection {}
@@ -5187,6 +5410,7 @@ class io.papermc.paper.datapack.DatapackManager : java.lang.Object {
   command getEnabledPacks  -> java.util.Collection {}
 }
 
+//access: 16433
 @native
 class io.papermc.paper.enchantments.EnchantmentRarity : java.lang.Enum {
   @native
@@ -5213,7 +5437,9 @@ class io.papermc.paper.enchantments.EnchantmentRarity : java.lang.Enum {
   command __inacc__values  -> array<Unknown<io.papermc.paper.enchantments.EnchantmentRarity>> {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.entity.Bucketable : java.lang.Object {
   @native
   command isFromBucket  -> boolean {}
@@ -5225,7 +5451,9 @@ class io.papermc.paper.entity.Bucketable : java.lang.Object {
   command getPickupSound  -> org.bukkit.Sound {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.entity.CollarColorable : java.lang.Object {
   @native
   command getCollarColor  -> org.bukkit.DyeColor {}
@@ -5233,7 +5461,9 @@ class io.papermc.paper.entity.CollarColorable : java.lang.Object {
   command setCollarColor arga:org.bukkit.DyeColor -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.entity.Frictional : java.lang.Object {
   @native
   command getFrictionState  -> net.kyori.adventure.util.TriState {}
@@ -5241,6 +5471,7 @@ class io.papermc.paper.entity.Frictional : java.lang.Object {
   command setFrictionState arga:net.kyori.adventure.util.TriState -> void {}
 }
 
+//access: 16433
 @native
 class io.papermc.paper.entity.LookAnchor : java.lang.Enum {
   @native
@@ -5259,7 +5490,9 @@ class io.papermc.paper.entity.LookAnchor : java.lang.Enum {
   command __inacc__values  -> array<Unknown<io.papermc.paper.entity.LookAnchor>> {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.entity.SchoolableFish : java.lang.Object {
   @native
   command startFollowing arga:io.papermc.paper.entity.SchoolableFish -> void {}
@@ -5273,7 +5506,9 @@ class io.papermc.paper.entity.SchoolableFish : java.lang.Object {
   command getSchoolLeader  -> io.papermc.paper.entity.SchoolableFish {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.entity.Shearable : java.lang.Object {
   @native
   command shear  -> void {}
@@ -5283,6 +5518,7 @@ class io.papermc.paper.entity.Shearable : java.lang.Object {
   command readyToBeSheared  -> boolean {}
 }
 
+//access: 16433
 @native
 class io.papermc.paper.entity.TeleportFlag__inacc__EntityState : java.lang.Enum {
   @native
@@ -5303,6 +5539,7 @@ class io.papermc.paper.entity.TeleportFlag__inacc__EntityState : java.lang.Enum 
   command __inacc__values  -> array<Unknown<io.papermc.paper.entity.TeleportFlag__inacc__EntityState>> {}
 }
 
+//access: 16433
 @native
 class io.papermc.paper.entity.TeleportFlag__inacc__Relative : java.lang.Enum {
   @native
@@ -5327,10 +5564,13 @@ class io.papermc.paper.entity.TeleportFlag__inacc__Relative : java.lang.Enum {
   command __inacc__values  -> array<Unknown<io.papermc.paper.entity.TeleportFlag__inacc__Relative>> {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.entity.TeleportFlag : java.lang.Object {
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.block.BeaconActivatedEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -5345,6 +5585,7 @@ class io.papermc.paper.event.block.BeaconActivatedEvent : org.bukkit.event.block
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.block.BeaconDeactivatedEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -5359,6 +5600,7 @@ class io.papermc.paper.event.block.BeaconDeactivatedEvent : org.bukkit.event.blo
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 131105
 @native
 class io.papermc.paper.event.block.BellRevealRaiderEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -5381,12 +5623,14 @@ class io.papermc.paper.event.block.BellRevealRaiderEvent : org.bukkit.event.bloc
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 131105
 @native
 class io.papermc.paper.event.block.BellRingEvent : org.bukkit.event.block.BellRingEvent {
   @native
   command construct arga:org.bukkit.block.Block argb:org.bukkit.block.BlockFace argc:org.bukkit.entity.Entity -> void {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.block.BlockBreakBlockEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -5407,6 +5651,7 @@ class io.papermc.paper.event.block.BlockBreakBlockEvent : org.bukkit.event.block
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.block.BlockFailedDispenseEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -5427,6 +5672,7 @@ class io.papermc.paper.event.block.BlockFailedDispenseEvent : org.bukkit.event.b
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.block.BlockLockCheckEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -5477,6 +5723,7 @@ class io.papermc.paper.event.block.BlockLockCheckEvent : org.bukkit.event.block.
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.block.BlockPreDispenseEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -5503,6 +5750,7 @@ class io.papermc.paper.event.block.BlockPreDispenseEvent : org.bukkit.event.bloc
   command setCancelled  -> void {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.block.CompostItemEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -5525,6 +5773,7 @@ class io.papermc.paper.event.block.CompostItemEvent : org.bukkit.event.block.Blo
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.block.DragonEggFormEvent : org.bukkit.event.block.BlockFormEvent {
   @native
@@ -5547,6 +5796,7 @@ class io.papermc.paper.event.block.DragonEggFormEvent : org.bukkit.event.block.B
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.block.PlayerShearBlockEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -5581,6 +5831,7 @@ class io.papermc.paper.event.block.PlayerShearBlockEvent : org.bukkit.event.play
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.block.TargetHitEvent : org.bukkit.event.entity.ProjectileHitEvent {
   @native
@@ -5605,6 +5856,7 @@ class io.papermc.paper.event.block.TargetHitEvent : org.bukkit.event.entity.Proj
   command setSignalStrength  -> void {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.entity.ElderGuardianAppearanceEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -5631,6 +5883,7 @@ class io.papermc.paper.event.entity.ElderGuardianAppearanceEvent : org.bukkit.ev
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.entity.EntityCompostItemEvent : io.papermc.paper.event.block.CompostItemEvent {
   @native
@@ -5647,6 +5900,7 @@ class io.papermc.paper.event.entity.EntityCompostItemEvent : io.papermc.paper.ev
   command setCancelled  -> void {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.entity.EntityDamageItemEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -5675,6 +5929,7 @@ class io.papermc.paper.event.entity.EntityDamageItemEvent : org.bukkit.event.ent
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.entity.EntityDyeEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -5703,6 +5958,7 @@ class io.papermc.paper.event.entity.EntityDyeEvent : org.bukkit.event.entity.Ent
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.entity.EntityFertilizeEggEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -5747,6 +6003,7 @@ class io.papermc.paper.event.entity.EntityFertilizeEggEvent : org.bukkit.event.e
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.entity.EntityInsideBlockEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -5769,6 +6026,7 @@ class io.papermc.paper.event.entity.EntityInsideBlockEvent : org.bukkit.event.en
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.entity.EntityLoadCrossbowEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -5805,6 +6063,7 @@ class io.papermc.paper.event.entity.EntityLoadCrossbowEvent : org.bukkit.event.e
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.entity.EntityMoveEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -5851,6 +6110,7 @@ class io.papermc.paper.event.entity.EntityMoveEvent : org.bukkit.event.entity.En
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.entity.EntityPortalReadyEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -5879,6 +6139,7 @@ class io.papermc.paper.event.entity.EntityPortalReadyEvent : org.bukkit.event.en
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.entity.EntityPushedByEntityAttackEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -5905,6 +6166,7 @@ class io.papermc.paper.event.entity.EntityPushedByEntityAttackEvent : org.bukkit
   command getAcceleration  -> org.bukkit.util.Vector {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.entity.EntityToggleSitEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -5927,6 +6189,7 @@ class io.papermc.paper.event.entity.EntityToggleSitEvent : org.bukkit.event.enti
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.entity.PufferFishStateChangeEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -5957,6 +6220,7 @@ class io.papermc.paper.event.entity.PufferFishStateChangeEvent : org.bukkit.even
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.entity.TameableDeathMessageEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -5985,6 +6249,7 @@ class io.papermc.paper.event.entity.TameableDeathMessageEvent : org.bukkit.event
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.entity.WardenAngerChangeEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -6021,6 +6286,7 @@ class io.papermc.paper.event.entity.WardenAngerChangeEvent : org.bukkit.event.en
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.entity.WaterBottleSplashEvent : org.bukkit.event.entity.PotionSplashEvent {
   @native
@@ -6049,6 +6315,7 @@ class io.papermc.paper.event.entity.WaterBottleSplashEvent : org.bukkit.event.en
   command lambda__inacc__getToDamage__inacc__0 arga:java.util.Map__inacc__Entry -> boolean {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.packet.PlayerChunkLoadEvent : org.bukkit.event.world.ChunkEvent {
   @native
@@ -6065,6 +6332,7 @@ class io.papermc.paper.event.packet.PlayerChunkLoadEvent : org.bukkit.event.worl
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.packet.PlayerChunkUnloadEvent : org.bukkit.event.world.ChunkEvent {
   @native
@@ -6081,6 +6349,7 @@ class io.papermc.paper.event.packet.PlayerChunkUnloadEvent : org.bukkit.event.wo
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 1057
 @native
 class io.papermc.paper.event.player.AbstractChatEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -6117,6 +6386,7 @@ class io.papermc.paper.event.player.AbstractChatEvent : org.bukkit.event.player.
   command setCancelled  -> void {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.AsyncChatCommandDecorateEvent : io.papermc.paper.event.player.AsyncChatDecorateEvent {
   @native
@@ -6129,6 +6399,7 @@ class io.papermc.paper.event.player.AsyncChatCommandDecorateEvent : io.papermc.p
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.AsyncChatDecorateEvent : org.bukkit.event.server.ServerEvent {
   @native
@@ -6163,6 +6434,7 @@ class io.papermc.paper.event.player.AsyncChatDecorateEvent : org.bukkit.event.se
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 49
 @native
 class io.papermc.paper.event.player.AsyncChatEvent : io.papermc.paper.event.player.AbstractChatEvent {
   @native
@@ -6175,6 +6447,7 @@ class io.papermc.paper.event.player.AsyncChatEvent : io.papermc.paper.event.play
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 131121
 @native
 class io.papermc.paper.event.player.ChatEvent : io.papermc.paper.event.player.AbstractChatEvent {
   @native
@@ -6187,6 +6460,7 @@ class io.papermc.paper.event.player.ChatEvent : io.papermc.paper.event.player.Ab
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PlayerArmSwingEvent : org.bukkit.event.player.PlayerAnimationEvent {
   @native
@@ -6197,6 +6471,7 @@ class io.papermc.paper.event.player.PlayerArmSwingEvent : org.bukkit.event.playe
   command getHand  -> org.bukkit.inventory.EquipmentSlot {}
 }
 
+//access: 16433
 @native
 class io.papermc.paper.event.player.PlayerBedFailEnterEvent__inacc__FailReason : java.lang.Enum {
   @native
@@ -6225,6 +6500,7 @@ class io.papermc.paper.event.player.PlayerBedFailEnterEvent__inacc__FailReason :
   command __inacc__values  -> array<Unknown<io.papermc.paper.event.player.PlayerBedFailEnterEvent__inacc__FailReason>> {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PlayerBedFailEnterEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -6263,6 +6539,7 @@ class io.papermc.paper.event.player.PlayerBedFailEnterEvent : org.bukkit.event.p
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PlayerChangeBeaconEffectEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -6303,6 +6580,7 @@ class io.papermc.paper.event.player.PlayerChangeBeaconEffectEvent : org.bukkit.e
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PlayerDeepSleepEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -6321,6 +6599,7 @@ class io.papermc.paper.event.player.PlayerDeepSleepEvent : org.bukkit.event.play
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class io.papermc.paper.event.player.PlayerFailMoveEvent__inacc__FailReason : java.lang.Enum {
   @native
@@ -6343,6 +6622,7 @@ class io.papermc.paper.event.player.PlayerFailMoveEvent__inacc__FailReason : jav
   command __inacc__values  -> array<Unknown<io.papermc.paper.event.player.PlayerFailMoveEvent__inacc__FailReason>> {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PlayerFailMoveEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -6379,6 +6659,7 @@ class io.papermc.paper.event.player.PlayerFailMoveEvent : org.bukkit.event.playe
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PlayerFlowerPotManipulateEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -6409,6 +6690,7 @@ class io.papermc.paper.event.player.PlayerFlowerPotManipulateEvent : org.bukkit.
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PlayerInventorySlotChangeEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -6443,6 +6725,7 @@ class io.papermc.paper.event.player.PlayerInventorySlotChangeEvent : org.bukkit.
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PlayerItemCooldownEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -6471,6 +6754,7 @@ class io.papermc.paper.event.player.PlayerItemCooldownEvent : org.bukkit.event.p
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class io.papermc.paper.event.player.PlayerItemFrameChangeEvent__inacc__ItemFrameChangeAction : java.lang.Enum {
   @native
@@ -6491,6 +6775,7 @@ class io.papermc.paper.event.player.PlayerItemFrameChangeEvent__inacc__ItemFrame
   command __inacc__values  -> array<Unknown<io.papermc.paper.event.player.PlayerItemFrameChangeEvent__inacc__ItemFrameChangeAction>> {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PlayerItemFrameChangeEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -6523,6 +6808,7 @@ class io.papermc.paper.event.player.PlayerItemFrameChangeEvent : org.bukkit.even
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class io.papermc.paper.event.player.PlayerLecternPageChangeEvent__inacc__PageChangeDirection : java.lang.Enum {
   @native
@@ -6541,6 +6827,7 @@ class io.papermc.paper.event.player.PlayerLecternPageChangeEvent__inacc__PageCha
   command __inacc__values  -> array<Unknown<io.papermc.paper.event.player.PlayerLecternPageChangeEvent__inacc__PageChangeDirection>> {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PlayerLecternPageChangeEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -6581,6 +6868,7 @@ class io.papermc.paper.event.player.PlayerLecternPageChangeEvent : org.bukkit.ev
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PlayerLoomPatternSelectEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -6609,6 +6897,7 @@ class io.papermc.paper.event.player.PlayerLoomPatternSelectEvent : org.bukkit.ev
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PlayerNameEntityEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -6645,6 +6934,7 @@ class io.papermc.paper.event.player.PlayerNameEntityEvent : org.bukkit.event.pla
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class io.papermc.paper.event.player.PlayerOpenSignEvent__inacc__Cause : java.lang.Enum {
   @native
@@ -6667,6 +6957,7 @@ class io.papermc.paper.event.player.PlayerOpenSignEvent__inacc__Cause : java.lan
   command __inacc__values  -> array<Unknown<io.papermc.paper.event.player.PlayerOpenSignEvent__inacc__Cause>> {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PlayerOpenSignEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -6697,6 +6988,7 @@ class io.papermc.paper.event.player.PlayerOpenSignEvent : org.bukkit.event.playe
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PlayerPickItemEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -6727,6 +7019,7 @@ class io.papermc.paper.event.player.PlayerPickItemEvent : org.bukkit.event.playe
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PlayerPurchaseEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -6763,6 +7056,7 @@ class io.papermc.paper.event.player.PlayerPurchaseEvent : org.bukkit.event.playe
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PlayerSignCommandPreprocessEvent : org.bukkit.event.player.PlayerCommandPreprocessEvent {
   @native
@@ -6777,6 +7071,7 @@ class io.papermc.paper.event.player.PlayerSignCommandPreprocessEvent : org.bukki
   command getSide  -> org.bukkit.block.sign.Side {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PlayerStonecutterRecipeSelectEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -6805,6 +7100,7 @@ class io.papermc.paper.event.player.PlayerStonecutterRecipeSelectEvent : org.buk
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PlayerStopUsingItemEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -6825,6 +7121,7 @@ class io.papermc.paper.event.player.PlayerStopUsingItemEvent : org.bukkit.event.
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PlayerTrackEntityEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -6847,6 +7144,7 @@ class io.papermc.paper.event.player.PlayerTrackEntityEvent : org.bukkit.event.pl
   command setCancelled  -> void {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PlayerTradeEvent : io.papermc.paper.event.player.PlayerPurchaseEvent {
   @native
@@ -6857,6 +7155,7 @@ class io.papermc.paper.event.player.PlayerTradeEvent : io.papermc.paper.event.pl
   command getVillager  -> org.bukkit.entity.AbstractVillager {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PlayerUntrackEntityEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -6873,6 +7172,7 @@ class io.papermc.paper.event.player.PlayerUntrackEntityEvent : org.bukkit.event.
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.player.PrePlayerAttackEntityEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -6899,6 +7199,7 @@ class io.papermc.paper.event.player.PrePlayerAttackEntityEvent : org.bukkit.even
   command setCancelled  -> void {}
 }
 
+//access: 16433
 @native
 class io.papermc.paper.event.server.ServerResourcesReloadedEvent__inacc__Cause : java.lang.Enum {
   @native
@@ -6917,6 +7218,7 @@ class io.papermc.paper.event.server.ServerResourcesReloadedEvent__inacc__Cause :
   command __inacc__values  -> array<Unknown<io.papermc.paper.event.server.ServerResourcesReloadedEvent__inacc__Cause>> {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.server.ServerResourcesReloadedEvent : org.bukkit.event.server.ServerEvent {
   @native
@@ -6933,6 +7235,7 @@ class io.papermc.paper.event.server.ServerResourcesReloadedEvent : org.bukkit.ev
   command getHandlers  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class io.papermc.paper.event.server.WhitelistStateUpdateEvent__inacc__WhitelistStatus : java.lang.Enum {
   @native
@@ -6951,6 +7254,7 @@ class io.papermc.paper.event.server.WhitelistStateUpdateEvent__inacc__WhitelistS
   command __inacc__values  -> array<Unknown<io.papermc.paper.event.server.WhitelistStateUpdateEvent__inacc__WhitelistStatus>> {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.server.WhitelistStateUpdateEvent : org.bukkit.event.Event {
   @native
@@ -6979,6 +7283,7 @@ class io.papermc.paper.event.server.WhitelistStateUpdateEvent : org.bukkit.event
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class io.papermc.paper.event.world.border.WorldBorderBoundsChangeEvent__inacc__Type : java.lang.Enum {
   @native
@@ -6997,6 +7302,7 @@ class io.papermc.paper.event.world.border.WorldBorderBoundsChangeEvent__inacc__T
   command __inacc__values  -> array<Unknown<io.papermc.paper.event.world.border.WorldBorderBoundsChangeEvent__inacc__Type>> {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.world.border.WorldBorderBoundsChangeEvent : io.papermc.paper.event.world.border.WorldBorderEvent {
   @native
@@ -7035,6 +7341,7 @@ class io.papermc.paper.event.world.border.WorldBorderBoundsChangeEvent : io.pape
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.world.border.WorldBorderBoundsChangeFinishEvent : io.papermc.paper.event.world.border.WorldBorderEvent {
   @native
@@ -7059,6 +7366,7 @@ class io.papermc.paper.event.world.border.WorldBorderBoundsChangeFinishEvent : i
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.world.border.WorldBorderCenterChangeEvent : io.papermc.paper.event.world.border.WorldBorderEvent {
   @native
@@ -7087,6 +7395,7 @@ class io.papermc.paper.event.world.border.WorldBorderCenterChangeEvent : io.pape
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 1057
 @native
 class io.papermc.paper.event.world.border.WorldBorderEvent : org.bukkit.event.world.WorldEvent {
   @native
@@ -7097,6 +7406,7 @@ class io.papermc.paper.event.world.border.WorldBorderEvent : org.bukkit.event.wo
   command getWorldBorder  -> org.bukkit.WorldBorder {}
 }
 
+//access: 131105
 @native
 class io.papermc.paper.event.world.StructureLocateEvent : org.bukkit.event.world.WorldEvent {
   @native
@@ -7143,6 +7453,7 @@ class io.papermc.paper.event.world.StructureLocateEvent : org.bukkit.event.world
   command setCancelled  -> void {}
 }
 
+//access: 65585
 @native
 class io.papermc.paper.event.world.StructuresLocateEvent__inacc__Result : java.lang.Record {
   @native
@@ -7169,6 +7480,7 @@ class io.papermc.paper.event.world.StructuresLocateEvent__inacc__Result : java.l
   command structure  -> org.bukkit.generator.structure.Structure {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.world.StructuresLocateEvent : org.bukkit.event.world.WorldEvent {
   @native
@@ -7221,6 +7533,7 @@ class io.papermc.paper.event.world.StructuresLocateEvent : org.bukkit.event.worl
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.event.world.WorldGameRuleChangeEvent : org.bukkit.event.world.WorldEvent {
   @native
@@ -7253,12 +7566,15 @@ class io.papermc.paper.event.world.WorldGameRuleChangeEvent : org.bukkit.event.w
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 9729
 @native
+@interface
 class io.papermc.paper.generated.GeneratedFrom : java.lang.Object {
   @native
   command value  -> string {}
 }
 
+//access: 16433
 @native
 class io.papermc.paper.inventory.ItemRarity : java.lang.Enum {
   @native
@@ -7285,13 +7601,16 @@ class io.papermc.paper.inventory.ItemRarity : java.lang.Enum {
   command __inacc__values  -> array<Unknown<io.papermc.paper.inventory.ItemRarity>> {}
 }
 
+//access: 4128
 @native
 class io.papermc.paper.math.BlockPosition__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__Axis: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.math.BlockPosition : java.lang.Object {
   @native
   command x  -> number {}
@@ -7319,6 +7638,7 @@ class io.papermc.paper.math.BlockPosition : java.lang.Object {
   command offset arga:jvm_integer argb:jvm_integer -> io.papermc.paper.math.Position {}
 }
 
+//access: 65584
 @native
 class io.papermc.paper.math.BlockPositionImpl : java.lang.Record {
   @native
@@ -7343,7 +7663,9 @@ class io.papermc.paper.math.BlockPositionImpl : java.lang.Record {
   command blockZ  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.math.FinePosition : java.lang.Object {
   @native
   command blockX  -> jvm_integer {}
@@ -7365,6 +7687,7 @@ class io.papermc.paper.math.FinePosition : java.lang.Object {
   command offset arga:jvm_integer argb:jvm_integer -> io.papermc.paper.math.Position {}
 }
 
+//access: 65584
 @native
 class io.papermc.paper.math.FinePositionImpl : java.lang.Record {
   @native
@@ -7389,7 +7712,9 @@ class io.papermc.paper.math.FinePositionImpl : java.lang.Record {
   command z  -> number {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.math.Position : java.lang.Object {
   @native
   let FINE_ZERO: io.papermc.paper.math.FinePosition = 0
@@ -7435,7 +7760,9 @@ class io.papermc.paper.math.Position : java.lang.Object {
   command fine arga:org.bukkit.Location -> io.papermc.paper.math.FinePosition {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.math.Rotations : java.lang.Object {
   @native
   let ZERO: io.papermc.paper.math.Rotations = 0
@@ -7459,6 +7786,7 @@ class io.papermc.paper.math.Rotations : java.lang.Object {
   command subtract arga:number argb:number -> io.papermc.paper.math.Rotations {}
 }
 
+//access: 65584
 @native
 class io.papermc.paper.math.RotationsImpl : java.lang.Record {
   @native
@@ -7499,11 +7827,15 @@ class io.papermc.paper.math.RotationsImpl : java.lang.Record {
   command withX  -> io.papermc.paper.math.Rotations {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.plugin.bootstrap.BootstrapContext : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.plugin.bootstrap.PluginBootstrap : java.lang.Object {
   @native
   command bootstrap arga:io.papermc.paper.plugin.bootstrap.BootstrapContext -> void {}
@@ -7511,7 +7843,9 @@ class io.papermc.paper.plugin.bootstrap.PluginBootstrap : java.lang.Object {
   command createPlugin arga:io.papermc.paper.plugin.bootstrap.PluginProviderContext -> org.bukkit.plugin.java.JavaPlugin {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.plugin.bootstrap.PluginProviderContext : java.lang.Object {
   @native
   command getConfiguration  -> io.papermc.paper.plugin.configuration.PluginMeta {}
@@ -7523,7 +7857,9 @@ class io.papermc.paper.plugin.bootstrap.PluginProviderContext : java.lang.Object
   command getPluginSource  -> java.nio.file.Path {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.plugin.configuration.PluginMeta : java.lang.Object {
   @native
   command getName  -> string {}
@@ -7561,12 +7897,15 @@ class io.papermc.paper.plugin.configuration.PluginMeta : java.lang.Object {
   command getAPIVersion  -> string {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.plugin.loader.library.ClassPathLibrary : java.lang.Object {
   @native
   command register arga:io.papermc.paper.plugin.loader.library.LibraryStore -> void {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.plugin.loader.library.impl.JarLibrary : java.lang.Object {
   @native
@@ -7577,6 +7916,7 @@ class io.papermc.paper.plugin.loader.library.impl.JarLibrary : java.lang.Object 
   command register arga:io.papermc.paper.plugin.loader.library.LibraryStore -> void {}
 }
 
+//access: 32
 @native
 class io.papermc.paper.plugin.loader.library.impl.MavenLibraryResolver__inacc__1 : org.eclipse.aether.transfer.AbstractTransferListener {
   @native
@@ -7587,6 +7927,7 @@ class io.papermc.paper.plugin.loader.library.impl.MavenLibraryResolver__inacc__1
   command transferInitiated arga:org.eclipse.aether.transfer.TransferEvent -> void {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.plugin.loader.library.impl.MavenLibraryResolver : java.lang.Object {
   @native
@@ -7609,6 +7950,7 @@ class io.papermc.paper.plugin.loader.library.impl.MavenLibraryResolver : java.la
   command register arga:io.papermc.paper.plugin.loader.library.LibraryStore -> void {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.plugin.loader.library.LibraryLoadingException : java.lang.RuntimeException {
   @native
@@ -7617,13 +7959,17 @@ class io.papermc.paper.plugin.loader.library.LibraryLoadingException : java.lang
   command construct arga:string argb:java.lang.Exception -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.plugin.loader.library.LibraryStore : java.lang.Object {
   @native
   command addLibrary arga:java.nio.file.Path -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.plugin.loader.PluginClasspathBuilder : java.lang.Object {
   @native
   command addLibrary arga:io.papermc.paper.plugin.loader.library.ClassPathLibrary -> io.papermc.paper.plugin.loader.PluginClasspathBuilder {}
@@ -7631,13 +7977,17 @@ class io.papermc.paper.plugin.loader.PluginClasspathBuilder : java.lang.Object {
   command getContext  -> io.papermc.paper.plugin.bootstrap.PluginProviderContext {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.plugin.loader.PluginLoader : java.lang.Object {
   @native
   command classloader arga:io.papermc.paper.plugin.loader.PluginClasspathBuilder -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.plugin.PermissionManager : java.lang.Object {
   @native
   command getPermission arga:string -> org.bukkit.permissions.Permission {}
@@ -7671,13 +8021,17 @@ class io.papermc.paper.plugin.PermissionManager : java.lang.Object {
   command clearPermissions  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.plugin.provider.classloader.ClassLoaderAccess : java.lang.Object {
   @native
   command canAccess arga:io.papermc.paper.plugin.provider.classloader.ConfiguredPluginClassLoader -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.plugin.provider.classloader.ConfiguredPluginClassLoader : java.lang.Object {
   @native
   command getConfiguration  -> io.papermc.paper.plugin.configuration.PluginMeta {}
@@ -7691,7 +8045,9 @@ class io.papermc.paper.plugin.provider.classloader.ConfiguredPluginClassLoader :
   command getGroup  -> io.papermc.paper.plugin.provider.classloader.PluginClassLoaderGroup {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.plugin.provider.classloader.PaperClassLoaderStorage : java.lang.Object {
   @native
   command instance  -> io.papermc.paper.plugin.provider.classloader.PaperClassLoaderStorage {}
@@ -7707,6 +8063,7 @@ class io.papermc.paper.plugin.provider.classloader.PaperClassLoaderStorage : jav
   command registerUnsafePlugin arga:io.papermc.paper.plugin.provider.classloader.ConfiguredPluginClassLoader -> boolean {}
 }
 
+//access: 32
 @native
 class io.papermc.paper.plugin.provider.classloader.PaperClassLoaderStorageAccess : java.lang.Object {
   @native
@@ -7715,7 +8072,9 @@ class io.papermc.paper.plugin.provider.classloader.PaperClassLoaderStorageAccess
   command construct  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.plugin.provider.classloader.PluginClassLoaderGroup : java.lang.Object {
   @native
   command getClassByName arga:string argb:boolean argc:io.papermc.paper.plugin.provider.classloader.ConfiguredPluginClassLoader -> java.lang.Class {}
@@ -7727,7 +8086,9 @@ class io.papermc.paper.plugin.provider.classloader.PluginClassLoaderGroup : java
   command getAccess  -> io.papermc.paper.plugin.provider.classloader.ClassLoaderAccess {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.plugin.provider.entrypoint.DependencyContext : java.lang.Object {
   @native
   command isTransitiveDependency arga:io.papermc.paper.plugin.configuration.PluginMeta argb:io.papermc.paper.plugin.configuration.PluginMeta -> boolean {}
@@ -7735,6 +8096,7 @@ class io.papermc.paper.plugin.provider.entrypoint.DependencyContext : java.lang.
   command hasDependency arga:string -> boolean {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.plugin.provider.util.ProviderUtil : java.lang.Object {
   @native
@@ -7745,6 +8107,7 @@ class io.papermc.paper.plugin.provider.util.ProviderUtil : java.lang.Object {
   command loadClass arga:string argb:java.lang.Class argc:java.lang.ClassLoader argd:java.lang.Runnable -> java.lang.Object {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.potion.PotionMix : java.lang.Object {
   @native
@@ -7775,6 +8138,7 @@ class io.papermc.paper.potion.PotionMix : java.lang.Object {
   command hashCode  -> jvm_integer {}
 }
 
+//access: 65584
 @native
 class io.papermc.paper.potion.PredicateRecipeChoice : java.lang.Record {
   @native
@@ -7801,7 +8165,9 @@ class io.papermc.paper.potion.PredicateRecipeChoice : java.lang.Record {
   command test arga:java.lang.Object -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.potion.SuspiciousEffectEntry : java.lang.Object {
   @native
   command effect  -> org.bukkit.potion.PotionEffectType {}
@@ -7811,6 +8177,7 @@ class io.papermc.paper.potion.SuspiciousEffectEntry : java.lang.Object {
   command create arga:org.bukkit.potion.PotionEffectType -> io.papermc.paper.potion.SuspiciousEffectEntry {}
 }
 
+//access: 65584
 @native
 class io.papermc.paper.potion.SuspiciousEffectEntryImpl : java.lang.Record {
   @native
@@ -7831,6 +8198,7 @@ class io.papermc.paper.potion.SuspiciousEffectEntryImpl : java.lang.Record {
   command duration  -> jvm_integer {}
 }
 
+//access: 49
 @native
 class io.papermc.paper.registry.keys.BiomeKeys : java.lang.Object {
   @native
@@ -7967,6 +8335,7 @@ class io.papermc.paper.registry.keys.BiomeKeys : java.lang.Object {
   command create arga:net.kyori.adventure.key.Key -> io.papermc.paper.registry.TypedKey {}
 }
 
+//access: 49
 @native
 class io.papermc.paper.registry.keys.GameEventKeys : java.lang.Object {
   @native
@@ -8095,6 +8464,7 @@ class io.papermc.paper.registry.keys.GameEventKeys : java.lang.Object {
   command create arga:net.kyori.adventure.key.Key -> io.papermc.paper.registry.TypedKey {}
 }
 
+//access: 49
 @native
 class io.papermc.paper.registry.keys.StructureTypeKeys : java.lang.Object {
   @native
@@ -8135,6 +8505,7 @@ class io.papermc.paper.registry.keys.StructureTypeKeys : java.lang.Object {
   command create arga:net.kyori.adventure.key.Key -> io.papermc.paper.registry.TypedKey {}
 }
 
+//access: 49
 @native
 class io.papermc.paper.registry.keys.TrimMaterialKeys : java.lang.Object {
   @native
@@ -8163,6 +8534,7 @@ class io.papermc.paper.registry.keys.TrimMaterialKeys : java.lang.Object {
   command create arga:net.kyori.adventure.key.Key -> io.papermc.paper.registry.TypedKey {}
 }
 
+//access: 49
 @native
 class io.papermc.paper.registry.keys.TrimPatternKeys : java.lang.Object {
   @native
@@ -8203,7 +8575,9 @@ class io.papermc.paper.registry.keys.TrimPatternKeys : java.lang.Object {
   command create arga:net.kyori.adventure.key.Key -> io.papermc.paper.registry.TypedKey {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.registry.Reference : java.lang.Object {
   @native
   command value  -> org.bukkit.Keyed {}
@@ -8213,6 +8587,7 @@ class io.papermc.paper.registry.Reference : java.lang.Object {
   command create arga:org.bukkit.Registry argb:org.bukkit.NamespacedKey -> io.papermc.paper.registry.Reference {}
 }
 
+//access: 65584
 @native
 class io.papermc.paper.registry.ReferenceImpl : java.lang.Record {
   @native
@@ -8241,7 +8616,9 @@ class io.papermc.paper.registry.ReferenceImpl : java.lang.Record {
   command key  -> net.kyori.adventure.key.Key {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.registry.RegistryKey : java.lang.Object {
   @native
   let GAME_EVENT: io.papermc.paper.registry.RegistryKey = 0
@@ -8255,6 +8632,7 @@ class io.papermc.paper.registry.RegistryKey : java.lang.Object {
   let TRIM_PATTERN: io.papermc.paper.registry.RegistryKey = 0
 }
 
+//access: 65584
 @native
 class io.papermc.paper.registry.RegistryKeyImpl : java.lang.Record {
   @native
@@ -8276,7 +8654,9 @@ class io.papermc.paper.registry.RegistryKeyImpl : java.lang.Record {
   command key  -> net.kyori.adventure.key.Key {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.registry.TypedKey : java.lang.Object {
   @native
   command key  -> net.kyori.adventure.key.Key {}
@@ -8286,6 +8666,7 @@ class io.papermc.paper.registry.TypedKey : java.lang.Object {
   command create arga:io.papermc.paper.registry.RegistryKey argb:net.kyori.adventure.key.Key -> io.papermc.paper.registry.TypedKey {}
 }
 
+//access: 65584
 @native
 class io.papermc.paper.registry.TypedKeyImpl : java.lang.Record {
   @native
@@ -8306,6 +8687,7 @@ class io.papermc.paper.registry.TypedKeyImpl : java.lang.Record {
   command registryKey  -> io.papermc.paper.registry.RegistryKey {}
 }
 
+//access: 1057
 @native
 class io.papermc.paper.tag.BaseTag : java.lang.Object {
   @native
@@ -8396,6 +8778,7 @@ class io.papermc.paper.tag.BaseTag : java.lang.Object {
   command lambda__inacc__new__inacc__0 arga:org.bukkit.Keyed -> boolean {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.tag.EntitySetTag : io.papermc.paper.tag.BaseTag {
   @native
@@ -8414,6 +8797,7 @@ class io.papermc.paper.tag.EntitySetTag : io.papermc.paper.tag.BaseTag {
   command getName arga:org.bukkit.Keyed -> string {}
 }
 
+//access: 33
 @native
 class io.papermc.paper.tag.EntityTags : java.lang.Object {
   @native
@@ -8432,6 +8816,7 @@ class io.papermc.paper.tag.EntityTags : java.lang.Object {
   command keyFor arga:string -> org.bukkit.NamespacedKey {}
 }
 
+//access: 49
 @native
 class io.papermc.paper.text.PaperComponents : java.lang.Object {
   @native
@@ -8454,7 +8839,9 @@ class io.papermc.paper.text.PaperComponents : java.lang.Object {
   command legacySectionSerializer  -> net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.threadedregions.scheduler.AsyncScheduler : java.lang.Object {
   @native
   command runNow arga:org.bukkit.plugin.Plugin argb:java.util.function.Consumer -> io.papermc.paper.threadedregions.scheduler.ScheduledTask {}
@@ -8466,7 +8853,9 @@ class io.papermc.paper.threadedregions.scheduler.AsyncScheduler : java.lang.Obje
   command cancelTasks arga:org.bukkit.plugin.Plugin -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.threadedregions.scheduler.EntityScheduler : java.lang.Object {
   @native
   command execute arga:org.bukkit.plugin.Plugin argb:java.lang.Runnable argc:java.lang.Runnable -> boolean {}
@@ -8478,7 +8867,9 @@ class io.papermc.paper.threadedregions.scheduler.EntityScheduler : java.lang.Obj
   command runAtFixedRate arga:org.bukkit.plugin.Plugin argb:java.util.function.Consumer argc:java.lang.Runnable -> io.papermc.paper.threadedregions.scheduler.ScheduledTask {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.threadedregions.scheduler.GlobalRegionScheduler : java.lang.Object {
   @native
   command execute arga:org.bukkit.plugin.Plugin argb:java.lang.Runnable -> void {}
@@ -8492,7 +8883,9 @@ class io.papermc.paper.threadedregions.scheduler.GlobalRegionScheduler : java.la
   command cancelTasks arga:org.bukkit.plugin.Plugin -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.threadedregions.scheduler.RegionScheduler : java.lang.Object {
   @native
   command execute arga:org.bukkit.plugin.Plugin argb:org.bukkit.World argc:jvm_integer argd:jvm_integer arge:java.lang.Runnable -> void {}
@@ -8512,6 +8905,7 @@ class io.papermc.paper.threadedregions.scheduler.RegionScheduler : java.lang.Obj
   command runAtFixedRate arga:org.bukkit.plugin.Plugin argb:org.bukkit.Location argc:java.util.function.Consumer -> io.papermc.paper.threadedregions.scheduler.ScheduledTask {}
 }
 
+//access: 16433
 @native
 class io.papermc.paper.threadedregions.scheduler.ScheduledTask__inacc__CancelledState : java.lang.Enum {
   @native
@@ -8538,6 +8932,7 @@ class io.papermc.paper.threadedregions.scheduler.ScheduledTask__inacc__Cancelled
   command __inacc__values  -> array<Unknown<io.papermc.paper.threadedregions.scheduler.ScheduledTask__inacc__CancelledState>> {}
 }
 
+//access: 16433
 @native
 class io.papermc.paper.threadedregions.scheduler.ScheduledTask__inacc__ExecutionState : java.lang.Enum {
   @native
@@ -8562,7 +8957,9 @@ class io.papermc.paper.threadedregions.scheduler.ScheduledTask__inacc__Execution
   command __inacc__values  -> array<Unknown<io.papermc.paper.threadedregions.scheduler.ScheduledTask__inacc__ExecutionState>> {}
 }
 
+//access: 1537
 @native
+@interface
 class io.papermc.paper.threadedregions.scheduler.ScheduledTask : java.lang.Object {
   @native
   command getOwningPlugin  -> org.bukkit.plugin.Plugin {}
@@ -8576,6 +8973,7 @@ class io.papermc.paper.threadedregions.scheduler.ScheduledTask : java.lang.Objec
   command isCancelled  -> boolean {}
 }
 
+//access: 49
 @native
 class io.papermc.paper.util.JarManifests : java.lang.Object {
   @native
@@ -8588,6 +8986,7 @@ class io.papermc.paper.util.JarManifests : java.lang.Object {
   command lambda__inacc__manifest__inacc__0 arga:java.lang.Class argb:java.lang.ClassLoader -> java.util.jar.Manifest {}
 }
 
+//access: 49
 @native
 class io.papermc.paper.util.Tick : java.lang.Object {
   @native
@@ -8616,6 +9015,7 @@ class io.papermc.paper.util.Tick : java.lang.Object {
   command between arga:java.time.temporal.Temporal argb:java.time.temporal.Temporal -> Unknown<J> {}
 }
 
+//access: 32
 @native
 class io.papermc.paper.util.TransformingRandomAccessList__inacc__1 : io.papermc.paper.util.TransformingRandomAccessList__inacc__TransformedListIterator {
   @native
@@ -8628,6 +9028,7 @@ class io.papermc.paper.util.TransformingRandomAccessList__inacc__1 : io.papermc.
   command transformBack arga:java.lang.Object -> java.lang.Object {}
 }
 
+//access: 1056
 @native
 class io.papermc.paper.util.TransformingRandomAccessList__inacc__TransformedListIterator : java.lang.Object {
   @native
@@ -8663,6 +9064,7 @@ class io.papermc.paper.util.TransformingRandomAccessList__inacc__TransformedList
   command remove  -> void {}
 }
 
+//access: 49
 @native
 class io.papermc.paper.util.TransformingRandomAccessList : java.util.AbstractList {
   @native
@@ -8697,6 +9099,7 @@ class io.papermc.paper.util.TransformingRandomAccessList : java.util.AbstractLis
   command lambda__inacc__removeIf__inacc__0 arga:java.util.function.Predicate argb:java.lang.Object -> boolean {}
 }
 
+//access: 16433
 @native
 class io.papermc.paper.world.MoonPhase : java.lang.Enum {
   @native
@@ -8733,6 +9136,7 @@ class io.papermc.paper.world.MoonPhase : java.lang.Enum {
   command __inacc__values  -> array<Unknown<io.papermc.paper.world.MoonPhase>> {}
 }
 
+//access: 131121
 @native
 class io.papermc.paper.world.structure.ConfiguredStructure : java.lang.Object {
   @native
@@ -8821,7 +9225,9 @@ class io.papermc.paper.world.structure.ConfiguredStructure : java.lang.Object {
   command fromModern arga:org.bukkit.generator.structure.Structure -> io.papermc.paper.world.structure.ConfiguredStructure {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.advancement.Advancement : java.lang.Object {
   @native
   command getCriteria  -> java.util.Collection {}
@@ -8837,7 +9243,9 @@ class org.bukkit.advancement.Advancement : java.lang.Object {
   command getRoot  -> org.bukkit.advancement.Advancement {}
 }
 
+//access: 132609
 @native
+@interface
 class org.bukkit.advancement.AdvancementDisplay : java.lang.Object {
   @native
   command getTitle  -> string {}
@@ -8859,6 +9267,7 @@ class org.bukkit.advancement.AdvancementDisplay : java.lang.Object {
   command getType  -> org.bukkit.advancement.AdvancementDisplayType {}
 }
 
+//access: 147505
 @native
 class org.bukkit.advancement.AdvancementDisplayType : java.lang.Enum {
   @native
@@ -8883,7 +9292,9 @@ class org.bukkit.advancement.AdvancementDisplayType : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.advancement.AdvancementDisplayType>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.advancement.AdvancementProgress : java.lang.Object {
   @native
   command getAdvancement  -> org.bukkit.advancement.Advancement {}
@@ -8901,6 +9312,7 @@ class org.bukkit.advancement.AdvancementProgress : java.lang.Object {
   command getAwardedCriteria  -> java.util.Collection {}
 }
 
+//access: 16433
 @native
 class org.bukkit.Art : java.lang.Enum {
   @native
@@ -8999,7 +9411,9 @@ class org.bukkit.Art : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.Art>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.attribute.Attributable : java.lang.Object {
   @native
   command getAttribute arga:org.bukkit.attribute.Attribute -> org.bukkit.attribute.AttributeInstance {}
@@ -9007,6 +9421,7 @@ class org.bukkit.attribute.Attributable : java.lang.Object {
   command registerAttribute arga:org.bukkit.attribute.Attribute -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.attribute.Attribute : java.lang.Enum {
   @native
@@ -9055,7 +9470,9 @@ class org.bukkit.attribute.Attribute : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.attribute.Attribute>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.attribute.AttributeInstance : java.lang.Object {
   @native
   command getAttribute  -> org.bukkit.attribute.Attribute {}
@@ -9081,6 +9498,7 @@ class org.bukkit.attribute.AttributeInstance : java.lang.Object {
   command getDefaultValue  -> number {}
 }
 
+//access: 16433
 @native
 class org.bukkit.attribute.AttributeModifier__inacc__Operation : java.lang.Enum {
   @native
@@ -9101,6 +9519,7 @@ class org.bukkit.attribute.AttributeModifier__inacc__Operation : java.lang.Enum 
   command __inacc__values  -> array<Unknown<org.bukkit.attribute.AttributeModifier__inacc__Operation>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.attribute.AttributeModifier : java.lang.Object {
   @native
@@ -9141,6 +9560,7 @@ class org.bukkit.attribute.AttributeModifier : java.lang.Object {
   command deserialize arga:java.util.Map -> org.bukkit.attribute.AttributeModifier {}
 }
 
+//access: 16433
 @native
 class org.bukkit.Axis : java.lang.Enum {
   @native
@@ -9161,11 +9581,15 @@ class org.bukkit.Axis : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.Axis>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.ban.IpBanList : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.ban.ProfileBanList : java.lang.Object {
   @native
   command addBan arga:org.bukkit.profile.PlayerProfile argb:string argc:java.util.Date argd:string -> org.bukkit.BanEntry {}
@@ -9185,7 +9609,9 @@ class org.bukkit.ban.ProfileBanList : java.lang.Object {
   command addBan arga:java.lang.Object argb:string argc:java.util.Date argd:string -> org.bukkit.BanEntry {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.BanEntry : java.lang.Object {
   @native
   command getTarget  -> string {}
@@ -9213,6 +9639,7 @@ class org.bukkit.BanEntry : java.lang.Object {
   command remove  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.BanList__inacc__Type : java.lang.Enum {
   @native
@@ -9233,7 +9660,9 @@ class org.bukkit.BanList__inacc__Type : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.BanList__inacc__Type>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.BanList : java.lang.Object {
   @native
   command getBanEntry arga:string -> org.bukkit.BanEntry {}
@@ -9261,6 +9690,7 @@ class org.bukkit.BanList : java.lang.Object {
   command pardon arga:string -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.block.banner.Pattern : java.lang.Object {
   @native
@@ -9289,6 +9719,7 @@ class org.bukkit.block.banner.Pattern : java.lang.Object {
   command equals arga:java.lang.Object -> boolean {}
 }
 
+//access: 16433
 @native
 class org.bukkit.block.banner.PatternType : java.lang.Enum {
   @native
@@ -9393,7 +9824,9 @@ class org.bukkit.block.banner.PatternType : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.banner.PatternType>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Banner : java.lang.Object {
   @native
   command getBaseColor  -> org.bukkit.DyeColor {}
@@ -9415,11 +9848,15 @@ class org.bukkit.block.Banner : java.lang.Object {
   command numberOfPatterns  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Barrel : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Beacon : java.lang.Object {
   @native
   command getEntitiesInRange  -> java.util.Collection {}
@@ -9441,7 +9878,9 @@ class org.bukkit.block.Beacon : java.lang.Object {
   command resetEffectRange  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Bed : java.lang.Object {
   @native
   command getColor  -> org.bukkit.DyeColor {}
@@ -9449,7 +9888,9 @@ class org.bukkit.block.Bed : java.lang.Object {
   command setColor arga:org.bukkit.DyeColor -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Beehive : java.lang.Object {
   @native
   command getFlower  -> org.bukkit.Location {}
@@ -9459,7 +9900,9 @@ class org.bukkit.block.Beehive : java.lang.Object {
   command isSedated  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Bell : java.lang.Object {
   @native
   command ring arga:org.bukkit.entity.Entity argb:org.bukkit.block.BlockFace -> boolean {}
@@ -9479,6 +9922,7 @@ class org.bukkit.block.Bell : java.lang.Object {
   command getResonatingTicks  -> jvm_integer {}
 }
 
+//access: 16433
 @native
 class org.bukkit.block.Biome : java.lang.Enum {
   @native
@@ -9629,11 +10073,15 @@ class org.bukkit.block.Biome : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.Biome>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.BlastFurnace : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Block : java.lang.Object {
   @native
   command getData  -> Unknown<B> {}
@@ -9781,12 +10229,14 @@ class org.bukkit.block.Block : java.lang.Object {
   command getDestroySpeed arga:org.bukkit.inventory.ItemStack -> Unknown<F> {}
 }
 
+//access: 4128
 @native
 class org.bukkit.block.BlockFace__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 16433
 @native
 class org.bukkit.block.BlockFace : java.lang.Enum {
   @native
@@ -9859,7 +10309,9 @@ class org.bukkit.block.BlockFace : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.BlockFace>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.BlockState : java.lang.Object {
   @native
   command getBlock  -> org.bukkit.block.Block {}
@@ -9915,6 +10367,7 @@ class org.bukkit.block.BlockState : java.lang.Object {
   command getDrops arga:org.bukkit.inventory.ItemStack argb:org.bukkit.entity.Entity -> java.util.Collection {}
 }
 
+//access: 16433
 @native
 class org.bukkit.block.BlockSupport : java.lang.Enum {
   @native
@@ -9935,7 +10388,9 @@ class org.bukkit.block.BlockSupport : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.BlockSupport>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.BrewingStand : java.lang.Object {
   @native
   command getBrewingTime  -> jvm_integer {}
@@ -9955,7 +10410,9 @@ class org.bukkit.block.BrewingStand : java.lang.Object {
   command getInventory  -> org.bukkit.inventory.Inventory {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.BrushableBlock : java.lang.Object {
   @native
   command getItem  -> org.bukkit.inventory.ItemStack {}
@@ -9963,11 +10420,15 @@ class org.bukkit.block.BrushableBlock : java.lang.Object {
   command setItem arga:org.bukkit.inventory.ItemStack -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.CalibratedSculkSensor : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Campfire : java.lang.Object {
   @native
   command getSize  -> jvm_integer {}
@@ -9995,13 +10456,17 @@ class org.bukkit.block.Campfire : java.lang.Object {
   command isCookingDisabled  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Chest : java.lang.Object {
   @native
   command getBlockInventory  -> org.bukkit.inventory.Inventory {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.ChiseledBookshelf : java.lang.Object {
   @native
   command getLastInteractedSlot  -> jvm_integer {}
@@ -10017,7 +10482,9 @@ class org.bukkit.block.ChiseledBookshelf : java.lang.Object {
   command getInventory  -> org.bukkit.inventory.Inventory {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.CommandBlock : java.lang.Object {
   @native
   command getCommand  -> string {}
@@ -10033,15 +10500,21 @@ class org.bukkit.block.CommandBlock : java.lang.Object {
   command name arga:net.kyori.adventure.text.Component -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Comparator : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Conduit : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Container : java.lang.Object {
   @native
   command getInventory  -> org.bukkit.inventory.Inventory {}
@@ -10049,7 +10522,9 @@ class org.bukkit.block.Container : java.lang.Object {
   command getSnapshotInventory  -> org.bukkit.inventory.Inventory {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.CreatureSpawner : java.lang.Object {
   @native
   command getSpawnedType  -> org.bukkit.entity.EntityType {}
@@ -10095,7 +10570,9 @@ class org.bukkit.block.CreatureSpawner : java.lang.Object {
   command setSpawnedItem arga:org.bukkit.inventory.ItemStack -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.Ageable : java.lang.Object {
   @native
   command getAge  -> jvm_integer {}
@@ -10105,7 +10582,9 @@ class org.bukkit.block.data.Ageable : java.lang.Object {
   command getMaximumAge  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.AnaloguePowerable : java.lang.Object {
   @native
   command getPower  -> jvm_integer {}
@@ -10115,7 +10594,9 @@ class org.bukkit.block.data.AnaloguePowerable : java.lang.Object {
   command getMaximumPower  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.Attachable : java.lang.Object {
   @native
   command isAttached  -> boolean {}
@@ -10123,6 +10604,7 @@ class org.bukkit.block.data.Attachable : java.lang.Object {
   command setAttached  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.block.data.Bisected__inacc__Half : java.lang.Enum {
   @native
@@ -10141,7 +10623,9 @@ class org.bukkit.block.data.Bisected__inacc__Half : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.data.Bisected__inacc__Half>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.Bisected : java.lang.Object {
   @native
   command getHalf  -> org.bukkit.block.data.Bisected__inacc__Half {}
@@ -10149,7 +10633,9 @@ class org.bukkit.block.data.Bisected : java.lang.Object {
   command setHalf arga:org.bukkit.block.data.Bisected__inacc__Half -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.BlockData : java.lang.Object {
   @native
   command getMaterial  -> org.bukkit.Material {}
@@ -10199,7 +10685,9 @@ class org.bukkit.block.data.BlockData : java.lang.Object {
   command isRandomlyTicked  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.Brushable : java.lang.Object {
   @native
   command getDusted  -> jvm_integer {}
@@ -10209,7 +10697,9 @@ class org.bukkit.block.data.Brushable : java.lang.Object {
   command getMaximumDusted  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.Directional : java.lang.Object {
   @native
   command getFacing  -> org.bukkit.block.BlockFace {}
@@ -10219,6 +10709,7 @@ class org.bukkit.block.data.Directional : java.lang.Object {
   command getFaces  -> java.util.Set {}
 }
 
+//access: 16433
 @native
 class org.bukkit.block.data.FaceAttachable__inacc__AttachedFace : java.lang.Enum {
   @native
@@ -10239,7 +10730,9 @@ class org.bukkit.block.data.FaceAttachable__inacc__AttachedFace : java.lang.Enum
   command __inacc__values  -> array<Unknown<org.bukkit.block.data.FaceAttachable__inacc__AttachedFace>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.FaceAttachable : java.lang.Object {
   @native
   command getAttachedFace  -> org.bukkit.block.data.FaceAttachable__inacc__AttachedFace {}
@@ -10247,7 +10740,9 @@ class org.bukkit.block.data.FaceAttachable : java.lang.Object {
   command setAttachedFace arga:org.bukkit.block.data.FaceAttachable__inacc__AttachedFace -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.Hangable : java.lang.Object {
   @native
   command isHanging  -> boolean {}
@@ -10255,7 +10750,9 @@ class org.bukkit.block.data.Hangable : java.lang.Object {
   command setHanging  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.Hatchable : java.lang.Object {
   @native
   command getHatch  -> jvm_integer {}
@@ -10265,7 +10762,9 @@ class org.bukkit.block.data.Hatchable : java.lang.Object {
   command getMaximumHatch  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.Levelled : java.lang.Object {
   @native
   command getLevel  -> jvm_integer {}
@@ -10277,7 +10776,9 @@ class org.bukkit.block.data.Levelled : java.lang.Object {
   command getMinimumLevel  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.Lightable : java.lang.Object {
   @native
   command isLit  -> boolean {}
@@ -10285,7 +10786,9 @@ class org.bukkit.block.data.Lightable : java.lang.Object {
   command setLit  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.MultipleFacing : java.lang.Object {
   @native
   command hasFace arga:org.bukkit.block.BlockFace -> boolean {}
@@ -10297,7 +10800,9 @@ class org.bukkit.block.data.MultipleFacing : java.lang.Object {
   command getAllowedFaces  -> java.util.Set {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.Openable : java.lang.Object {
   @native
   command isOpen  -> boolean {}
@@ -10305,7 +10810,9 @@ class org.bukkit.block.data.Openable : java.lang.Object {
   command setOpen  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.Orientable : java.lang.Object {
   @native
   command getAxis  -> org.bukkit.Axis {}
@@ -10315,7 +10822,9 @@ class org.bukkit.block.data.Orientable : java.lang.Object {
   command getAxes  -> java.util.Set {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.Powerable : java.lang.Object {
   @native
   command isPowered  -> boolean {}
@@ -10323,6 +10832,7 @@ class org.bukkit.block.data.Powerable : java.lang.Object {
   command setPowered  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.block.data.Rail__inacc__Shape : java.lang.Enum {
   @native
@@ -10357,7 +10867,9 @@ class org.bukkit.block.data.Rail__inacc__Shape : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.data.Rail__inacc__Shape>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.Rail : java.lang.Object {
   @native
   command getShape  -> org.bukkit.block.data.Rail__inacc__Shape {}
@@ -10367,7 +10879,9 @@ class org.bukkit.block.data.Rail : java.lang.Object {
   command getShapes  -> java.util.Set {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.Rotatable : java.lang.Object {
   @native
   command getRotation  -> org.bukkit.block.BlockFace {}
@@ -10375,7 +10889,9 @@ class org.bukkit.block.data.Rotatable : java.lang.Object {
   command setRotation arga:org.bukkit.block.BlockFace -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.Snowable : java.lang.Object {
   @native
   command isSnowy  -> boolean {}
@@ -10383,10 +10899,13 @@ class org.bukkit.block.data.Snowable : java.lang.Object {
   command setSnowy  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.AmethystCluster : java.lang.Object {
 }
 
+//access: 16433
 @native
 class org.bukkit.block.data.type.Bamboo__inacc__Leaves : java.lang.Enum {
   @native
@@ -10407,7 +10926,9 @@ class org.bukkit.block.data.type.Bamboo__inacc__Leaves : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.data.type.Bamboo__inacc__Leaves>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Bamboo : java.lang.Object {
   @native
   command getLeaves  -> org.bukkit.block.data.type.Bamboo__inacc__Leaves {}
@@ -10415,10 +10936,13 @@ class org.bukkit.block.data.type.Bamboo : java.lang.Object {
   command setLeaves arga:org.bukkit.block.data.type.Bamboo__inacc__Leaves -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Barrel : java.lang.Object {
 }
 
+//access: 16433
 @native
 class org.bukkit.block.data.type.Bed__inacc__Part : java.lang.Enum {
   @native
@@ -10437,7 +10961,9 @@ class org.bukkit.block.data.type.Bed__inacc__Part : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.data.type.Bed__inacc__Part>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Bed : java.lang.Object {
   @native
   command getPart  -> org.bukkit.block.data.type.Bed__inacc__Part {}
@@ -10449,7 +10975,9 @@ class org.bukkit.block.data.type.Bed : java.lang.Object {
   command setOccupied  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Beehive : java.lang.Object {
   @native
   command getHoneyLevel  -> jvm_integer {}
@@ -10459,6 +10987,7 @@ class org.bukkit.block.data.type.Beehive : java.lang.Object {
   command getMaximumHoneyLevel  -> jvm_integer {}
 }
 
+//access: 16433
 @native
 class org.bukkit.block.data.type.Bell__inacc__Attachment : java.lang.Enum {
   @native
@@ -10481,7 +11010,9 @@ class org.bukkit.block.data.type.Bell__inacc__Attachment : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.data.type.Bell__inacc__Attachment>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Bell : java.lang.Object {
   @native
   command getAttachment  -> org.bukkit.block.data.type.Bell__inacc__Attachment {}
@@ -10489,6 +11020,7 @@ class org.bukkit.block.data.type.Bell : java.lang.Object {
   command setAttachment arga:org.bukkit.block.data.type.Bell__inacc__Attachment -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.block.data.type.BigDripleaf__inacc__Tilt : java.lang.Enum {
   @native
@@ -10511,7 +11043,9 @@ class org.bukkit.block.data.type.BigDripleaf__inacc__Tilt : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.data.type.BigDripleaf__inacc__Tilt>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.BigDripleaf : java.lang.Object {
   @native
   command getTilt  -> org.bukkit.block.data.type.BigDripleaf__inacc__Tilt {}
@@ -10519,7 +11053,9 @@ class org.bukkit.block.data.type.BigDripleaf : java.lang.Object {
   command setTilt arga:org.bukkit.block.data.type.BigDripleaf__inacc__Tilt -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.BrewingStand : java.lang.Object {
   @native
   command hasBottle  -> boolean {}
@@ -10531,7 +11067,9 @@ class org.bukkit.block.data.type.BrewingStand : java.lang.Object {
   command getMaximumBottles  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.BubbleColumn : java.lang.Object {
   @native
   command isDrag  -> boolean {}
@@ -10539,7 +11077,9 @@ class org.bukkit.block.data.type.BubbleColumn : java.lang.Object {
   command setDrag  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Cake : java.lang.Object {
   @native
   command getBites  -> jvm_integer {}
@@ -10549,11 +11089,15 @@ class org.bukkit.block.data.type.Cake : java.lang.Object {
   command getMaximumBites  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.CalibratedSculkSensor : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Campfire : java.lang.Object {
   @native
   command isSignalFire  -> boolean {}
@@ -10561,7 +11105,9 @@ class org.bukkit.block.data.type.Campfire : java.lang.Object {
   command setSignalFire  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Candle : java.lang.Object {
   @native
   command getCandles  -> jvm_integer {}
@@ -10573,11 +11119,15 @@ class org.bukkit.block.data.type.Candle : java.lang.Object {
   command getMinimumCandles  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.CaveVines : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.CaveVinesPlant : java.lang.Object {
   @native
   command isBerries  -> boolean {}
@@ -10585,10 +11135,13 @@ class org.bukkit.block.data.type.CaveVinesPlant : java.lang.Object {
   command setBerries  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Chain : java.lang.Object {
 }
 
+//access: 16433
 @native
 class org.bukkit.block.data.type.Chest__inacc__Type : java.lang.Enum {
   @native
@@ -10609,7 +11162,9 @@ class org.bukkit.block.data.type.Chest__inacc__Type : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.data.type.Chest__inacc__Type>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Chest : java.lang.Object {
   @native
   command getType  -> org.bukkit.block.data.type.Chest__inacc__Type {}
@@ -10617,7 +11172,9 @@ class org.bukkit.block.data.type.Chest : java.lang.Object {
   command setType arga:org.bukkit.block.data.type.Chest__inacc__Type -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.ChiseledBookshelf : java.lang.Object {
   @native
   command isSlotOccupied  -> boolean {}
@@ -10629,11 +11186,15 @@ class org.bukkit.block.data.type.ChiseledBookshelf : java.lang.Object {
   command getMaximumOccupiedSlots  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Cocoa : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.CommandBlock : java.lang.Object {
   @native
   command isConditional  -> boolean {}
@@ -10641,6 +11202,7 @@ class org.bukkit.block.data.type.CommandBlock : java.lang.Object {
   command setConditional  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.block.data.type.Comparator__inacc__Mode : java.lang.Enum {
   @native
@@ -10659,7 +11221,9 @@ class org.bukkit.block.data.type.Comparator__inacc__Mode : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.data.type.Comparator__inacc__Mode>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Comparator : java.lang.Object {
   @native
   command getMode  -> org.bukkit.block.data.type.Comparator__inacc__Mode {}
@@ -10667,11 +11231,15 @@ class org.bukkit.block.data.type.Comparator : java.lang.Object {
   command setMode arga:org.bukkit.block.data.type.Comparator__inacc__Mode -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.CoralWallFan : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.DaylightDetector : java.lang.Object {
   @native
   command isInverted  -> boolean {}
@@ -10679,11 +11247,15 @@ class org.bukkit.block.data.type.DaylightDetector : java.lang.Object {
   command setInverted  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.DecoratedPot : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Dispenser : java.lang.Object {
   @native
   command isTriggered  -> boolean {}
@@ -10691,6 +11263,7 @@ class org.bukkit.block.data.type.Dispenser : java.lang.Object {
   command setTriggered  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.block.data.type.Door__inacc__Hinge : java.lang.Enum {
   @native
@@ -10709,7 +11282,9 @@ class org.bukkit.block.data.type.Door__inacc__Hinge : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.data.type.Door__inacc__Hinge>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Door : java.lang.Object {
   @native
   command getHinge  -> org.bukkit.block.data.type.Door__inacc__Hinge {}
@@ -10717,15 +11292,21 @@ class org.bukkit.block.data.type.Door : java.lang.Object {
   command setHinge arga:org.bukkit.block.data.type.Door__inacc__Hinge -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Dripleaf : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.EnderChest : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.EndPortalFrame : java.lang.Object {
   @native
   command hasEye  -> boolean {}
@@ -10733,7 +11314,9 @@ class org.bukkit.block.data.type.EndPortalFrame : java.lang.Object {
   command setEye  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Farmland : java.lang.Object {
   @native
   command getMoisture  -> jvm_integer {}
@@ -10743,19 +11326,27 @@ class org.bukkit.block.data.type.Farmland : java.lang.Object {
   command getMaximumMoisture  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Fence : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Fire : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Furnace : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Gate : java.lang.Object {
   @native
   command isInWall  -> boolean {}
@@ -10763,23 +11354,33 @@ class org.bukkit.block.data.type.Gate : java.lang.Object {
   command setInWall  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.GlassPane : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.GlowLichen : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Grindstone : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.HangingSign : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Hopper : java.lang.Object {
   @native
   command isEnabled  -> boolean {}
@@ -10787,6 +11388,7 @@ class org.bukkit.block.data.type.Hopper : java.lang.Object {
   command setEnabled  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.block.data.type.Jigsaw__inacc__Orientation : java.lang.Enum {
   @native
@@ -10825,7 +11427,9 @@ class org.bukkit.block.data.type.Jigsaw__inacc__Orientation : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.data.type.Jigsaw__inacc__Orientation>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Jigsaw : java.lang.Object {
   @native
   command getOrientation  -> org.bukkit.block.data.type.Jigsaw__inacc__Orientation {}
@@ -10833,21 +11437,29 @@ class org.bukkit.block.data.type.Jigsaw : java.lang.Object {
   command setOrientation arga:org.bukkit.block.data.type.Jigsaw__inacc__Orientation -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Jukebox : java.lang.Object {
   @native
   command hasRecord  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Ladder : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Lantern : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Leaves : java.lang.Object {
   @native
   command isPersistent  -> boolean {}
@@ -10863,25 +11475,35 @@ class org.bukkit.block.data.type.Leaves : java.lang.Object {
   command getMinimumDistance  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Lectern : java.lang.Object {
   @native
   command hasBook  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Light : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.LightningRod : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.MangrovePropagule : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.NoteBlock : java.lang.Object {
   @native
   command getInstrument  -> org.bukkit.Instrument {}
@@ -10893,11 +11515,15 @@ class org.bukkit.block.data.type.NoteBlock : java.lang.Object {
   command setNote arga:org.bukkit.Note -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Observer : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.PinkPetals : java.lang.Object {
   @native
   command getFlowerAmount  -> jvm_integer {}
@@ -10907,7 +11533,9 @@ class org.bukkit.block.data.type.PinkPetals : java.lang.Object {
   command getMaximumFlowerAmount  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Piston : java.lang.Object {
   @native
   command isExtended  -> boolean {}
@@ -10915,7 +11543,9 @@ class org.bukkit.block.data.type.Piston : java.lang.Object {
   command setExtended  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.PistonHead : java.lang.Object {
   @native
   command isShort  -> boolean {}
@@ -10923,10 +11553,13 @@ class org.bukkit.block.data.type.PistonHead : java.lang.Object {
   command setShort  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.PitcherCrop : java.lang.Object {
 }
 
+//access: 16433
 @native
 class org.bukkit.block.data.type.PointedDripstone__inacc__Thickness : java.lang.Enum {
   @native
@@ -10951,7 +11584,9 @@ class org.bukkit.block.data.type.PointedDripstone__inacc__Thickness : java.lang.
   command __inacc__values  -> array<Unknown<org.bukkit.block.data.type.PointedDripstone__inacc__Thickness>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.PointedDripstone : java.lang.Object {
   @native
   command getVerticalDirection  -> org.bukkit.block.BlockFace {}
@@ -10965,14 +11600,19 @@ class org.bukkit.block.data.type.PointedDripstone : java.lang.Object {
   command setThickness arga:org.bukkit.block.data.type.PointedDripstone__inacc__Thickness -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.RedstoneRail : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.RedstoneWallTorch : java.lang.Object {
 }
 
+//access: 16433
 @native
 class org.bukkit.block.data.type.RedstoneWire__inacc__Connection : java.lang.Enum {
   @native
@@ -10993,7 +11633,9 @@ class org.bukkit.block.data.type.RedstoneWire__inacc__Connection : java.lang.Enu
   command __inacc__values  -> array<Unknown<org.bukkit.block.data.type.RedstoneWire__inacc__Connection>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.RedstoneWire : java.lang.Object {
   @native
   command getFace arga:org.bukkit.block.BlockFace -> org.bukkit.block.data.type.RedstoneWire__inacc__Connection {}
@@ -11003,7 +11645,9 @@ class org.bukkit.block.data.type.RedstoneWire : java.lang.Object {
   command getAllowedFaces  -> java.util.Set {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Repeater : java.lang.Object {
   @native
   command getDelay  -> jvm_integer {}
@@ -11019,7 +11663,9 @@ class org.bukkit.block.data.type.Repeater : java.lang.Object {
   command setLocked  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.RespawnAnchor : java.lang.Object {
   @native
   command getCharges  -> jvm_integer {}
@@ -11029,7 +11675,9 @@ class org.bukkit.block.data.type.RespawnAnchor : java.lang.Object {
   command getMaximumCharges  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Sapling : java.lang.Object {
   @native
   command getStage  -> jvm_integer {}
@@ -11039,7 +11687,9 @@ class org.bukkit.block.data.type.Sapling : java.lang.Object {
   command getMaximumStage  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Scaffolding : java.lang.Object {
   @native
   command isBottom  -> boolean {}
@@ -11053,7 +11703,9 @@ class org.bukkit.block.data.type.Scaffolding : java.lang.Object {
   command getMaximumDistance  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.SculkCatalyst : java.lang.Object {
   @native
   command isBloom  -> boolean {}
@@ -11061,6 +11713,7 @@ class org.bukkit.block.data.type.SculkCatalyst : java.lang.Object {
   command setBloom  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.block.data.type.SculkSensor__inacc__Phase : java.lang.Enum {
   @native
@@ -11081,7 +11734,9 @@ class org.bukkit.block.data.type.SculkSensor__inacc__Phase : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.data.type.SculkSensor__inacc__Phase>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.SculkSensor : java.lang.Object {
   @native
   command getPhase  -> org.bukkit.block.data.type.SculkSensor__inacc__Phase {}
@@ -11089,7 +11744,9 @@ class org.bukkit.block.data.type.SculkSensor : java.lang.Object {
   command setPhase arga:org.bukkit.block.data.type.SculkSensor__inacc__Phase -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.SculkShrieker : java.lang.Object {
   @native
   command isCanSummon  -> boolean {}
@@ -11101,11 +11758,15 @@ class org.bukkit.block.data.type.SculkShrieker : java.lang.Object {
   command setShrieking  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.SculkVein : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.SeaPickle : java.lang.Object {
   @native
   command getPickles  -> jvm_integer {}
@@ -11117,10 +11778,13 @@ class org.bukkit.block.data.type.SeaPickle : java.lang.Object {
   command getMaximumPickles  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Sign : java.lang.Object {
 }
 
+//access: 16433
 @native
 class org.bukkit.block.data.type.Slab__inacc__Type : java.lang.Enum {
   @native
@@ -11141,7 +11805,9 @@ class org.bukkit.block.data.type.Slab__inacc__Type : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.data.type.Slab__inacc__Type>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Slab : java.lang.Object {
   @native
   command getType  -> org.bukkit.block.data.type.Slab__inacc__Type {}
@@ -11149,11 +11815,15 @@ class org.bukkit.block.data.type.Slab : java.lang.Object {
   command setType arga:org.bukkit.block.data.type.Slab__inacc__Type -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.SmallDripleaf : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Snow : java.lang.Object {
   @native
   command getLayers  -> jvm_integer {}
@@ -11165,6 +11835,7 @@ class org.bukkit.block.data.type.Snow : java.lang.Object {
   command getMaximumLayers  -> jvm_integer {}
 }
 
+//access: 16433
 @native
 class org.bukkit.block.data.type.Stairs__inacc__Shape : java.lang.Enum {
   @native
@@ -11189,7 +11860,9 @@ class org.bukkit.block.data.type.Stairs__inacc__Shape : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.data.type.Stairs__inacc__Shape>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Stairs : java.lang.Object {
   @native
   command getShape  -> org.bukkit.block.data.type.Stairs__inacc__Shape {}
@@ -11197,6 +11870,7 @@ class org.bukkit.block.data.type.Stairs : java.lang.Object {
   command setShape arga:org.bukkit.block.data.type.Stairs__inacc__Shape -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.block.data.type.StructureBlock__inacc__Mode : java.lang.Enum {
   @native
@@ -11219,7 +11893,9 @@ class org.bukkit.block.data.type.StructureBlock__inacc__Mode : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.data.type.StructureBlock__inacc__Mode>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.StructureBlock : java.lang.Object {
   @native
   command getMode  -> org.bukkit.block.data.type.StructureBlock__inacc__Mode {}
@@ -11227,6 +11903,7 @@ class org.bukkit.block.data.type.StructureBlock : java.lang.Object {
   command setMode arga:org.bukkit.block.data.type.StructureBlock__inacc__Mode -> void {}
 }
 
+//access: 147505
 @native
 class org.bukkit.block.data.type.Switch__inacc__Face : java.lang.Enum {
   @native
@@ -11247,7 +11924,9 @@ class org.bukkit.block.data.type.Switch__inacc__Face : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.data.type.Switch__inacc__Face>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Switch : java.lang.Object {
   @native
   command getFace  -> org.bukkit.block.data.type.Switch__inacc__Face {}
@@ -11255,6 +11934,7 @@ class org.bukkit.block.data.type.Switch : java.lang.Object {
   command setFace arga:org.bukkit.block.data.type.Switch__inacc__Face -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.block.data.type.TechnicalPiston__inacc__Type : java.lang.Enum {
   @native
@@ -11273,7 +11953,9 @@ class org.bukkit.block.data.type.TechnicalPiston__inacc__Type : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.data.type.TechnicalPiston__inacc__Type>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.TechnicalPiston : java.lang.Object {
   @native
   command getType  -> org.bukkit.block.data.type.TechnicalPiston__inacc__Type {}
@@ -11281,7 +11963,9 @@ class org.bukkit.block.data.type.TechnicalPiston : java.lang.Object {
   command setType arga:org.bukkit.block.data.type.TechnicalPiston__inacc__Type -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.TNT : java.lang.Object {
   @native
   command isUnstable  -> boolean {}
@@ -11289,11 +11973,15 @@ class org.bukkit.block.data.type.TNT : java.lang.Object {
   command setUnstable  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.TrapDoor : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Tripwire : java.lang.Object {
   @native
   command isDisarmed  -> boolean {}
@@ -11301,11 +11989,15 @@ class org.bukkit.block.data.type.Tripwire : java.lang.Object {
   command setDisarmed  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.TripwireHook : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.TurtleEgg : java.lang.Object {
   @native
   command getEggs  -> jvm_integer {}
@@ -11317,6 +12009,7 @@ class org.bukkit.block.data.type.TurtleEgg : java.lang.Object {
   command getMaximumEggs  -> jvm_integer {}
 }
 
+//access: 16433
 @native
 class org.bukkit.block.data.type.Wall__inacc__Height : java.lang.Enum {
   @native
@@ -11337,7 +12030,9 @@ class org.bukkit.block.data.type.Wall__inacc__Height : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.data.type.Wall__inacc__Height>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.Wall : java.lang.Object {
   @native
   command isUp  -> boolean {}
@@ -11349,15 +12044,21 @@ class org.bukkit.block.data.type.Wall : java.lang.Object {
   command setHeight arga:org.bukkit.block.BlockFace argb:org.bukkit.block.data.type.Wall__inacc__Height -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.WallHangingSign : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.type.WallSign : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.data.Waterlogged : java.lang.Object {
   @native
   command isWaterlogged  -> boolean {}
@@ -11365,10 +12066,13 @@ class org.bukkit.block.data.Waterlogged : java.lang.Object {
   command setWaterlogged  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.DaylightDetector : java.lang.Object {
 }
 
+//access: 16433
 @native
 class org.bukkit.block.DecoratedPot__inacc__Side : java.lang.Enum {
   @native
@@ -11391,7 +12095,9 @@ class org.bukkit.block.DecoratedPot__inacc__Side : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.DecoratedPot__inacc__Side>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.DecoratedPot : java.lang.Object {
   @native
   command setSherd arga:org.bukkit.block.DecoratedPot__inacc__Side argb:org.bukkit.Material -> void {}
@@ -11403,7 +12109,9 @@ class org.bukkit.block.DecoratedPot : java.lang.Object {
   command getShards  -> java.util.List {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Dispenser : java.lang.Object {
   @native
   command getBlockProjectileSource  -> org.bukkit.projectiles.BlockProjectileSource {}
@@ -11411,6 +12119,7 @@ class org.bukkit.block.Dispenser : java.lang.Object {
   command dispense  -> boolean {}
 }
 
+//access: 33
 @native
 class org.bukkit.block.DoubleChest : java.lang.Object {
   @native
@@ -11439,21 +12148,29 @@ class org.bukkit.block.DoubleChest : java.lang.Object {
   command getZ  -> number {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Dropper : java.lang.Object {
   @native
   command drop  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.EnchantingTable : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.EnderChest : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.EndGateway : java.lang.Object {
   @native
   command getExitLocation  -> org.bukkit.Location {}
@@ -11469,7 +12186,9 @@ class org.bukkit.block.EndGateway : java.lang.Object {
   command setAge  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.EntityBlockStorage : java.lang.Object {
   @native
   command isFull  -> boolean {}
@@ -11487,7 +12206,9 @@ class org.bukkit.block.EntityBlockStorage : java.lang.Object {
   command clearEntities  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Furnace : java.lang.Object {
   @native
   command getBurnTime  -> Unknown<S> {}
@@ -11525,19 +12246,27 @@ class org.bukkit.block.Furnace : java.lang.Object {
   command getInventory  -> org.bukkit.inventory.Inventory {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.HangingSign : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Hopper : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Jigsaw : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Jukebox : java.lang.Object {
   @native
   command getPlaying  -> org.bukkit.Material {}
@@ -11565,7 +12294,9 @@ class org.bukkit.block.Jukebox : java.lang.Object {
   command getInventory  -> org.bukkit.inventory.Inventory {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Lectern : java.lang.Object {
   @native
   command getPage  -> jvm_integer {}
@@ -11577,7 +12308,9 @@ class org.bukkit.block.Lectern : java.lang.Object {
   command getSnapshotInventory  -> org.bukkit.inventory.Inventory {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Lidded : java.lang.Object {
   @native
   command open  -> void {}
@@ -11587,7 +12320,9 @@ class org.bukkit.block.Lidded : java.lang.Object {
   command isOpen  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Lockable : java.lang.Object {
   @native
   command isLocked  -> boolean {}
@@ -11597,6 +12332,7 @@ class org.bukkit.block.Lockable : java.lang.Object {
   command setLock arga:string -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.block.PistonMoveReaction : java.lang.Enum {
   @native
@@ -11629,7 +12365,9 @@ class org.bukkit.block.PistonMoveReaction : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.PistonMoveReaction>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.SculkCatalyst : java.lang.Object {
   @native
   command bloom arga:org.bukkit.block.Block -> void {}
@@ -11637,7 +12375,9 @@ class org.bukkit.block.SculkCatalyst : java.lang.Object {
   command bloom arga:io.papermc.paper.math.Position -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.SculkSensor : java.lang.Object {
   @native
   command getLastVibrationFrequency  -> jvm_integer {}
@@ -11649,7 +12389,9 @@ class org.bukkit.block.SculkSensor : java.lang.Object {
   command setListenerRange  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.SculkShrieker : java.lang.Object {
   @native
   command getWarningLevel  -> jvm_integer {}
@@ -11659,12 +12401,15 @@ class org.bukkit.block.SculkShrieker : java.lang.Object {
   command tryShriek arga:org.bukkit.entity.Player -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.ShulkerBox : java.lang.Object {
   @native
   command getColor  -> org.bukkit.DyeColor {}
 }
 
+//access: 16433
 @native
 class org.bukkit.block.sign.Side : java.lang.Enum {
   @native
@@ -11683,7 +12428,9 @@ class org.bukkit.block.sign.Side : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.sign.Side>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.sign.SignSide : java.lang.Object {
   @native
   command lines  -> java.util.List {}
@@ -11703,7 +12450,9 @@ class org.bukkit.block.sign.SignSide : java.lang.Object {
   command setGlowingText  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Sign : java.lang.Object {
   @native
   command lines  -> java.util.List {}
@@ -11743,7 +12492,9 @@ class org.bukkit.block.Sign : java.lang.Object {
   command getInteractableSideFor arga:number -> org.bukkit.block.sign.Side {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Skull : java.lang.Object {
   @native
   command hasOwner  -> boolean {}
@@ -11777,10 +12528,13 @@ class org.bukkit.block.Skull : java.lang.Object {
   command setSkullType arga:org.bukkit.SkullType -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Smoker : java.lang.Object {
 }
 
+//access: 16433
 @native
 class org.bukkit.block.structure.Mirror : java.lang.Enum {
   @native
@@ -11801,6 +12555,7 @@ class org.bukkit.block.structure.Mirror : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.structure.Mirror>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.block.structure.StructureRotation : java.lang.Enum {
   @native
@@ -11823,6 +12578,7 @@ class org.bukkit.block.structure.StructureRotation : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.structure.StructureRotation>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.block.structure.UsageMode : java.lang.Enum {
   @native
@@ -11845,7 +12601,9 @@ class org.bukkit.block.structure.UsageMode : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.block.structure.UsageMode>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.Structure : java.lang.Object {
   @native
   command getStructureName  -> string {}
@@ -11903,11 +12661,15 @@ class org.bukkit.block.Structure : java.lang.Object {
   command getMetadata  -> string {}
 }
 
+//access: 132609
 @native
+@interface
 class org.bukkit.block.SuspiciousSand : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.block.TileState : java.lang.Object {
   @native
   command getPersistentDataContainer  -> org.bukkit.persistence.PersistentDataContainer {}
@@ -11915,7 +12677,9 @@ class org.bukkit.block.TileState : java.lang.Object {
   command isSnapshot  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.BlockChangeDelegate : java.lang.Object {
   @native
   command setBlockData arga:jvm_integer argb:jvm_integer argc:jvm_integer argd:org.bukkit.block.data.BlockData -> boolean {}
@@ -11927,6 +12691,7 @@ class org.bukkit.BlockChangeDelegate : java.lang.Object {
   command isEmpty arga:jvm_integer argb:jvm_integer -> boolean {}
 }
 
+//access: 16433
 @native
 class org.bukkit.boss.BarColor : java.lang.Enum {
   @native
@@ -11955,6 +12720,7 @@ class org.bukkit.boss.BarColor : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.boss.BarColor>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.boss.BarFlag : java.lang.Enum {
   @native
@@ -11975,6 +12741,7 @@ class org.bukkit.boss.BarFlag : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.boss.BarFlag>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.boss.BarStyle : java.lang.Enum {
   @native
@@ -11999,7 +12766,9 @@ class org.bukkit.boss.BarStyle : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.boss.BarStyle>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.boss.BossBar : java.lang.Object {
   @native
   command getTitle  -> string {}
@@ -12041,6 +12810,7 @@ class org.bukkit.boss.BossBar : java.lang.Object {
   command hide  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.boss.DragonBattle__inacc__RespawnPhase : java.lang.Enum {
   @native
@@ -12067,7 +12837,9 @@ class org.bukkit.boss.DragonBattle__inacc__RespawnPhase : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.boss.DragonBattle__inacc__RespawnPhase>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.boss.DragonBattle : java.lang.Object {
   @native
   command getEnderDragon  -> org.bukkit.entity.EnderDragon {}
@@ -12101,10 +12873,13 @@ class org.bukkit.boss.DragonBattle : java.lang.Object {
   command getHealingCrystals  -> java.util.List {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.boss.KeyedBossBar : java.lang.Object {
 }
 
+//access: 49
 @native
 class org.bukkit.Bukkit : java.lang.Object {
   @native
@@ -12531,6 +13306,7 @@ class org.bukkit.Bukkit : java.lang.Object {
   command spigot  -> org.bukkit.Server__inacc__Spigot {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__1 : org.bukkit.ChatColor {
   @native
@@ -12539,6 +13315,7 @@ class org.bukkit.ChatColor__inacc__1 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__10 : org.bukkit.ChatColor {
   @native
@@ -12547,6 +13324,7 @@ class org.bukkit.ChatColor__inacc__10 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__11 : org.bukkit.ChatColor {
   @native
@@ -12555,6 +13333,7 @@ class org.bukkit.ChatColor__inacc__11 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__12 : org.bukkit.ChatColor {
   @native
@@ -12563,6 +13342,7 @@ class org.bukkit.ChatColor__inacc__12 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__13 : org.bukkit.ChatColor {
   @native
@@ -12571,6 +13351,7 @@ class org.bukkit.ChatColor__inacc__13 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__14 : org.bukkit.ChatColor {
   @native
@@ -12579,6 +13360,7 @@ class org.bukkit.ChatColor__inacc__14 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__15 : org.bukkit.ChatColor {
   @native
@@ -12587,6 +13369,7 @@ class org.bukkit.ChatColor__inacc__15 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__16 : org.bukkit.ChatColor {
   @native
@@ -12595,6 +13378,7 @@ class org.bukkit.ChatColor__inacc__16 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__17 : org.bukkit.ChatColor {
   @native
@@ -12603,6 +13387,7 @@ class org.bukkit.ChatColor__inacc__17 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__18 : org.bukkit.ChatColor {
   @native
@@ -12611,6 +13396,7 @@ class org.bukkit.ChatColor__inacc__18 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__19 : org.bukkit.ChatColor {
   @native
@@ -12619,6 +13405,7 @@ class org.bukkit.ChatColor__inacc__19 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__2 : org.bukkit.ChatColor {
   @native
@@ -12627,6 +13414,7 @@ class org.bukkit.ChatColor__inacc__2 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__20 : org.bukkit.ChatColor {
   @native
@@ -12635,6 +13423,7 @@ class org.bukkit.ChatColor__inacc__20 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__21 : org.bukkit.ChatColor {
   @native
@@ -12643,6 +13432,7 @@ class org.bukkit.ChatColor__inacc__21 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__22 : org.bukkit.ChatColor {
   @native
@@ -12651,6 +13441,7 @@ class org.bukkit.ChatColor__inacc__22 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__3 : org.bukkit.ChatColor {
   @native
@@ -12659,6 +13450,7 @@ class org.bukkit.ChatColor__inacc__3 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__4 : org.bukkit.ChatColor {
   @native
@@ -12667,6 +13459,7 @@ class org.bukkit.ChatColor__inacc__4 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__5 : org.bukkit.ChatColor {
   @native
@@ -12675,6 +13468,7 @@ class org.bukkit.ChatColor__inacc__5 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__6 : org.bukkit.ChatColor {
   @native
@@ -12683,6 +13477,7 @@ class org.bukkit.ChatColor__inacc__6 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__7 : org.bukkit.ChatColor {
   @native
@@ -12691,6 +13486,7 @@ class org.bukkit.ChatColor__inacc__7 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__8 : org.bukkit.ChatColor {
   @native
@@ -12699,6 +13495,7 @@ class org.bukkit.ChatColor__inacc__8 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 16432
 @native
 class org.bukkit.ChatColor__inacc__9 : org.bukkit.ChatColor {
   @native
@@ -12707,6 +13504,7 @@ class org.bukkit.ChatColor__inacc__9 : org.bukkit.ChatColor {
   command asBungee  -> net.md_5.bungee.api.ChatColor {}
 }
 
+//access: 147489
 @native
 class org.bukkit.ChatColor : java.lang.Enum {
   @native
@@ -12805,6 +13603,7 @@ class org.bukkit.ChatColor : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.ChatColor>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.Chunk__inacc__LoadLevel : java.lang.Enum {
   @native
@@ -12829,7 +13628,9 @@ class org.bukkit.Chunk__inacc__LoadLevel : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.Chunk__inacc__LoadLevel>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.Chunk : java.lang.Object {
   @native
   command getX  -> jvm_integer {}
@@ -12895,7 +13696,9 @@ class org.bukkit.Chunk : java.lang.Object {
   command getLoadLevel  -> org.bukkit.Chunk__inacc__LoadLevel {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.ChunkSnapshot : java.lang.Object {
   @native
   command getX  -> jvm_integer {}
@@ -12933,6 +13736,7 @@ class org.bukkit.ChunkSnapshot : java.lang.Object {
   command contains arga:org.bukkit.block.Biome -> boolean {}
 }
 
+//access: 147505
 @native
 class org.bukkit.CoalType : java.lang.Enum {
   @native
@@ -12959,6 +13763,7 @@ class org.bukkit.CoalType : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.CoalType>> {}
 }
 
+//access: 49
 @native
 class org.bukkit.Color : java.lang.Object {
   @native
@@ -13065,12 +13870,15 @@ class org.bukkit.Color : java.lang.Object {
   command toString  -> string {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.command.BlockCommandSender : java.lang.Object {
   @native
   command getBlock  -> org.bukkit.block.Block {}
 }
 
+//access: 33
 @native
 class org.bukkit.command.BufferedCommandSender : java.lang.Object {
   @native
@@ -13085,6 +13893,7 @@ class org.bukkit.command.BufferedCommandSender : java.lang.Object {
   command reset  -> void {}
 }
 
+//access: 1057
 @native
 class org.bukkit.command.Command : java.lang.Object {
   @native
@@ -13179,6 +13988,7 @@ class org.bukkit.command.Command : java.lang.Object {
   command toString  -> string {}
 }
 
+//access: 33
 @native
 class org.bukkit.command.CommandException : java.lang.RuntimeException {
   @native
@@ -13189,13 +13999,17 @@ class org.bukkit.command.CommandException : java.lang.RuntimeException {
   command construct arga:string argb:java.lang.Throwable -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.command.CommandExecutor : java.lang.Object {
   @native
   command onCommand arga:org.bukkit.command.CommandSender argb:org.bukkit.command.Command argc:string argd:array<Unknown<string>> -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.command.CommandMap : java.lang.Object {
   @native
   command registerAll arga:string argb:java.util.List -> void {}
@@ -13217,6 +14031,7 @@ class org.bukkit.command.CommandMap : java.lang.Object {
   command getKnownCommands  -> java.util.Map {}
 }
 
+//access: 33
 @native
 class org.bukkit.command.CommandSender__inacc__Spigot : java.lang.Object {
   @native
@@ -13231,7 +14046,9 @@ class org.bukkit.command.CommandSender__inacc__Spigot : java.lang.Object {
   command sendMessage arga:java.util.UUID argb:array<Unknown<net.md_5.bungee.api.chat.BaseComponent>> -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.command.CommandSender : java.lang.Object {
   @native
   command sendMessage arga:string -> void {}
@@ -13263,10 +14080,13 @@ class org.bukkit.command.CommandSender : java.lang.Object {
   command sendMessage arga:array<Unknown<net.md_5.bungee.api.chat.BaseComponent>> -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.command.ConsoleCommandSender : java.lang.Object {
 }
 
+//access: 1057
 @native
 class org.bukkit.command.defaults.BukkitCommand : org.bukkit.command.Command {
   @native
@@ -13275,6 +14095,7 @@ class org.bukkit.command.defaults.BukkitCommand : org.bukkit.command.Command {
   command construct arga:string argb:string argc:string argd:java.util.List -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.command.defaults.HelpCommand : org.bukkit.command.defaults.BukkitCommand {
   @native
@@ -13289,6 +14110,7 @@ class org.bukkit.command.defaults.HelpCommand : org.bukkit.command.defaults.Bukk
   command damerauLevenshteinDistance arga:string argb:string -> jvm_integer {}
 }
 
+//access: 131105
 @native
 class org.bukkit.command.defaults.PluginsCommand : org.bukkit.command.defaults.BukkitCommand {
   @native
@@ -13301,6 +14123,7 @@ class org.bukkit.command.defaults.PluginsCommand : org.bukkit.command.defaults.B
   command getPluginList  -> string {}
 }
 
+//access: 33
 @native
 class org.bukkit.command.defaults.ReloadCommand : org.bukkit.command.defaults.BukkitCommand {
   @native
@@ -13311,6 +14134,7 @@ class org.bukkit.command.defaults.ReloadCommand : org.bukkit.command.defaults.Bu
   command tabComplete arga:org.bukkit.command.CommandSender argb:string argc:array<Unknown<string>> -> java.util.List {}
 }
 
+//access: 32
 @native
 class org.bukkit.command.defaults.VersionCommand__inacc__1 : java.lang.Object {
   @native
@@ -13321,6 +14145,7 @@ class org.bukkit.command.defaults.VersionCommand__inacc__1 : java.lang.Object {
   command run  -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.command.defaults.VersionCommand : org.bukkit.command.defaults.BukkitCommand {
   @native
@@ -13359,6 +14184,7 @@ class org.bukkit.command.defaults.VersionCommand : org.bukkit.command.defaults.B
   command getDistance arga:string argb:string -> jvm_integer {}
 }
 
+//access: 33
 @native
 class org.bukkit.command.FormattedCommandAlias : org.bukkit.command.Command {
   @native
@@ -13375,7 +14201,9 @@ class org.bukkit.command.FormattedCommandAlias : org.bukkit.command.Command {
   command inRange arga:jvm_integer argb:jvm_integer -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.command.MessageCommandSender : java.lang.Object {
   @native
   command sendMessage arga:array<Unknown<string>> -> void {}
@@ -13419,6 +14247,7 @@ class org.bukkit.command.MessageCommandSender : java.lang.Object {
   command spigot  -> org.bukkit.command.CommandSender__inacc__Spigot {}
 }
 
+//access: 33
 @native
 class org.bukkit.command.MultipleCommandAlias : org.bukkit.command.Command {
   @native
@@ -13431,6 +14260,7 @@ class org.bukkit.command.MultipleCommandAlias : org.bukkit.command.Command {
   command execute arga:org.bukkit.command.CommandSender argb:string argc:array<Unknown<string>> -> boolean {}
 }
 
+//access: 49
 @native
 class org.bukkit.command.PluginCommand : org.bukkit.command.Command {
   @native
@@ -13459,6 +14289,7 @@ class org.bukkit.command.PluginCommand : org.bukkit.command.Command {
   command toString  -> string {}
 }
 
+//access: 33
 @native
 class org.bukkit.command.PluginCommandYamlParser : java.lang.Object {
   @native
@@ -13467,13 +14298,17 @@ class org.bukkit.command.PluginCommandYamlParser : java.lang.Object {
   command parse arga:org.bukkit.plugin.Plugin -> java.util.List {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.command.PluginIdentifiableCommand : java.lang.Object {
   @native
   command getPlugin  -> org.bukkit.plugin.Plugin {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.command.ProxiedCommandSender : java.lang.Object {
   @native
   command getCaller  -> org.bukkit.command.CommandSender {}
@@ -13485,12 +14320,15 @@ class org.bukkit.command.ProxiedCommandSender : java.lang.Object {
   command audience  -> net.kyori.adventure.audience.Audience {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.command.RemoteConsoleCommandSender : java.lang.Object {
   @native
   command getAddress  -> java.net.SocketAddress {}
 }
 
+//access: 33
 @native
 class org.bukkit.command.SimpleCommandMap : java.lang.Object {
   @native
@@ -13529,17 +14367,23 @@ class org.bukkit.command.SimpleCommandMap : java.lang.Object {
   command getKnownCommands  -> java.util.Map {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.command.TabCompleter : java.lang.Object {
   @native
   command onTabComplete arga:org.bukkit.command.CommandSender argb:org.bukkit.command.Command argc:string argd:array<Unknown<string>> -> java.util.List {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.command.TabExecutor : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.configuration.Configuration : java.lang.Object {
   @native
   command addDefault arga:string argb:java.lang.Object -> void {}
@@ -13555,6 +14399,7 @@ class org.bukkit.configuration.Configuration : java.lang.Object {
   command options  -> org.bukkit.configuration.ConfigurationOptions {}
 }
 
+//access: 33
 @native
 class org.bukkit.configuration.ConfigurationOptions : java.lang.Object {
   @native
@@ -13577,7 +14422,9 @@ class org.bukkit.configuration.ConfigurationOptions : java.lang.Object {
   command copyDefaults  -> org.bukkit.configuration.ConfigurationOptions {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.configuration.ConfigurationSection : java.lang.Object {
   @native
   command getKeys  -> java.util.Set {}
@@ -13719,6 +14566,7 @@ class org.bukkit.configuration.ConfigurationSection : java.lang.Object {
   command setInlineComments arga:string argb:java.util.List -> void {}
 }
 
+//access: 1057
 @native
 class org.bukkit.configuration.file.FileConfiguration : org.bukkit.configuration.MemoryConfiguration {
   @native
@@ -13749,6 +14597,7 @@ class org.bukkit.configuration.file.FileConfiguration : org.bukkit.configuration
   command options  -> org.bukkit.configuration.ConfigurationOptions {}
 }
 
+//access: 33
 @native
 class org.bukkit.configuration.file.FileConfigurationOptions : org.bukkit.configuration.MemoryConfigurationOptions {
   @native
@@ -13801,6 +14650,7 @@ class org.bukkit.configuration.file.FileConfigurationOptions : org.bukkit.config
   command configuration  -> org.bukkit.configuration.Configuration {}
 }
 
+//access: 33
 @native
 class org.bukkit.configuration.file.YamlConfiguration : org.bukkit.configuration.file.FileConfiguration {
   @native
@@ -13853,6 +14703,7 @@ class org.bukkit.configuration.file.YamlConfiguration : org.bukkit.configuration
   command options  -> org.bukkit.configuration.ConfigurationOptions {}
 }
 
+//access: 33
 @native
 class org.bukkit.configuration.file.YamlConfigurationOptions : org.bukkit.configuration.file.FileConfigurationOptions {
   @native
@@ -13921,6 +14772,7 @@ class org.bukkit.configuration.file.YamlConfigurationOptions : org.bukkit.config
   command configuration  -> org.bukkit.configuration.Configuration {}
 }
 
+//access: 32
 @native
 class org.bukkit.configuration.file.YamlConstructor__inacc__ConstructCustomObject : org.yaml.snakeyaml.constructor.SafeConstructor__inacc__ConstructYamlMap {
   @native
@@ -13933,6 +14785,7 @@ class org.bukkit.configuration.file.YamlConstructor__inacc__ConstructCustomObjec
   command construct2ndStep arga:org.yaml.snakeyaml.nodes.Node argb:java.lang.Object -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.configuration.file.YamlConstructor : org.yaml.snakeyaml.constructor.SafeConstructor {
   @native
@@ -13945,6 +14798,7 @@ class org.bukkit.configuration.file.YamlConstructor : org.yaml.snakeyaml.constru
   command construct arga:org.yaml.snakeyaml.nodes.Node -> java.lang.Object {}
 }
 
+//access: 32
 @native
 class org.bukkit.configuration.file.YamlRepresenter__inacc__RepresentConfigurationSection : org.yaml.snakeyaml.representer.SafeRepresenter__inacc__RepresentMap {
   @native
@@ -13955,6 +14809,7 @@ class org.bukkit.configuration.file.YamlRepresenter__inacc__RepresentConfigurati
   command representData arga:java.lang.Object -> org.yaml.snakeyaml.nodes.Node {}
 }
 
+//access: 32
 @native
 class org.bukkit.configuration.file.YamlRepresenter__inacc__RepresentConfigurationSerializable : org.yaml.snakeyaml.representer.SafeRepresenter__inacc__RepresentMap {
   @native
@@ -13965,6 +14820,7 @@ class org.bukkit.configuration.file.YamlRepresenter__inacc__RepresentConfigurati
   command representData arga:java.lang.Object -> org.yaml.snakeyaml.nodes.Node {}
 }
 
+//access: 33
 @native
 class org.bukkit.configuration.file.YamlRepresenter : org.yaml.snakeyaml.representer.Representer {
   @native
@@ -13973,6 +14829,7 @@ class org.bukkit.configuration.file.YamlRepresenter : org.yaml.snakeyaml.represe
   command construct arga:org.yaml.snakeyaml.DumperOptions -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.configuration.InvalidConfigurationException : java.lang.Exception {
   @native
@@ -13985,6 +14842,7 @@ class org.bukkit.configuration.InvalidConfigurationException : java.lang.Excepti
   command construct arga:string argb:java.lang.Throwable -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.configuration.MemoryConfiguration : org.bukkit.configuration.MemorySection {
   @native
@@ -14013,6 +14871,7 @@ class org.bukkit.configuration.MemoryConfiguration : org.bukkit.configuration.Me
   command options  -> org.bukkit.configuration.ConfigurationOptions {}
 }
 
+//access: 33
 @native
 class org.bukkit.configuration.MemoryConfigurationOptions : org.bukkit.configuration.ConfigurationOptions {
   @native
@@ -14031,6 +14890,7 @@ class org.bukkit.configuration.MemoryConfigurationOptions : org.bukkit.configura
   command configuration  -> org.bukkit.configuration.Configuration {}
 }
 
+//access: 33
 @native
 class org.bukkit.configuration.MemorySection : java.lang.Object {
   @native
@@ -14203,6 +15063,7 @@ class org.bukkit.configuration.MemorySection : java.lang.Object {
   command toString  -> string {}
 }
 
+//access: 48
 @native
 class org.bukkit.configuration.SectionPathData : java.lang.Object {
   @native
@@ -14227,12 +15088,15 @@ class org.bukkit.configuration.SectionPathData : java.lang.Object {
   command setInlineComments arga:java.util.List -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.configuration.serialization.ConfigurationSerializable : java.lang.Object {
   @native
   command serialize  -> java.util.Map {}
 }
 
+//access: 33
 @native
 class org.bukkit.configuration.serialization.ConfigurationSerialization : java.lang.Object {
   @native
@@ -14271,18 +15135,23 @@ class org.bukkit.configuration.serialization.ConfigurationSerialization : java.l
   command getAlias arga:java.lang.Class -> string {}
 }
 
+//access: 9729
 @native
+@interface
 class org.bukkit.configuration.serialization.DelegateDeserialization : java.lang.Object {
   @native
   command value  -> java.lang.Class {}
 }
 
+//access: 9729
 @native
+@interface
 class org.bukkit.configuration.serialization.SerializableAs : java.lang.Object {
   @native
   command value  -> string {}
 }
 
+//access: 1057
 @native
 class org.bukkit.conversations.BooleanPrompt : org.bukkit.conversations.ValidatingPrompt {
   @native
@@ -14301,7 +15170,9 @@ class org.bukkit.conversations.BooleanPrompt : org.bukkit.conversations.Validati
   command acceptValidatedInput arga:org.bukkit.conversations.ConversationContext -> org.bukkit.conversations.Prompt {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.conversations.Conversable : java.lang.Object {
   @native
   command isConversing  -> boolean {}
@@ -14319,6 +15190,7 @@ class org.bukkit.conversations.Conversable : java.lang.Object {
   command sendRawMessage arga:java.util.UUID argb:string -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.conversations.Conversation__inacc__ConversationState : java.lang.Enum {
   @native
@@ -14339,6 +15211,7 @@ class org.bukkit.conversations.Conversation__inacc__ConversationState : java.lan
   command __inacc__values  -> array<Unknown<org.bukkit.conversations.Conversation__inacc__ConversationState>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.conversations.Conversation : java.lang.Object {
   @native
@@ -14401,6 +15274,7 @@ class org.bukkit.conversations.Conversation : java.lang.Object {
   command outputNextPrompt  -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.conversations.ConversationAbandonedEvent : java.util.EventObject {
   @native
@@ -14419,13 +15293,17 @@ class org.bukkit.conversations.ConversationAbandonedEvent : java.util.EventObjec
   command gracefulExit  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.conversations.ConversationAbandonedListener : java.lang.Object {
   @native
   command conversationAbandoned arga:org.bukkit.conversations.ConversationAbandonedEvent -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.conversations.ConversationCanceller : java.lang.Object {
   @native
   command setConversation arga:org.bukkit.conversations.Conversation -> void {}
@@ -14435,6 +15313,7 @@ class org.bukkit.conversations.ConversationCanceller : java.lang.Object {
   command clone  -> org.bukkit.conversations.ConversationCanceller {}
 }
 
+//access: 33
 @native
 class org.bukkit.conversations.ConversationContext : java.lang.Object {
   @native
@@ -14457,6 +15336,7 @@ class org.bukkit.conversations.ConversationContext : java.lang.Object {
   command setSessionData arga:java.lang.Object argb:java.lang.Object -> void {}
 }
 
+//access: 32
 @native
 class org.bukkit.conversations.ConversationFactory__inacc__NotPlayerMessagePrompt : org.bukkit.conversations.MessagePrompt {
   @native
@@ -14469,6 +15349,7 @@ class org.bukkit.conversations.ConversationFactory__inacc__NotPlayerMessagePromp
   command getNextPrompt arga:org.bukkit.conversations.ConversationContext -> org.bukkit.conversations.Prompt {}
 }
 
+//access: 33
 @native
 class org.bukkit.conversations.ConversationFactory : java.lang.Object {
   @native
@@ -14515,12 +15396,15 @@ class org.bukkit.conversations.ConversationFactory : java.lang.Object {
   command buildConversation arga:org.bukkit.conversations.Conversable -> org.bukkit.conversations.Conversation {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.conversations.ConversationPrefix : java.lang.Object {
   @native
   command getPrefix arga:org.bukkit.conversations.ConversationContext -> string {}
 }
 
+//access: 33
 @native
 class org.bukkit.conversations.ExactMatchConversationCanceller : java.lang.Object {
   @native
@@ -14537,6 +15421,7 @@ class org.bukkit.conversations.ExactMatchConversationCanceller : java.lang.Objec
   command clone  -> java.lang.Object {}
 }
 
+//access: 1057
 @native
 class org.bukkit.conversations.FixedSetPrompt : org.bukkit.conversations.ValidatingPrompt {
   @native
@@ -14551,6 +15436,7 @@ class org.bukkit.conversations.FixedSetPrompt : org.bukkit.conversations.Validat
   command formatFixedSet  -> string {}
 }
 
+//access: 32
 @native
 class org.bukkit.conversations.InactivityConversationCanceller__inacc__1 : java.lang.Object {
   @native
@@ -14561,6 +15447,7 @@ class org.bukkit.conversations.InactivityConversationCanceller__inacc__1 : java.
   command run  -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.conversations.InactivityConversationCanceller : java.lang.Object {
   @native
@@ -14589,6 +15476,7 @@ class org.bukkit.conversations.InactivityConversationCanceller : java.lang.Objec
   command clone  -> java.lang.Object {}
 }
 
+//access: 33
 @native
 class org.bukkit.conversations.ManuallyAbandonedConversationCanceller : java.lang.Object {
   @native
@@ -14603,6 +15491,7 @@ class org.bukkit.conversations.ManuallyAbandonedConversationCanceller : java.lan
   command clone  -> java.lang.Object {}
 }
 
+//access: 1057
 @native
 class org.bukkit.conversations.MessagePrompt : java.lang.Object {
   @native
@@ -14615,6 +15504,7 @@ class org.bukkit.conversations.MessagePrompt : java.lang.Object {
   command getNextPrompt arga:org.bukkit.conversations.ConversationContext -> org.bukkit.conversations.Prompt {}
 }
 
+//access: 33
 @native
 class org.bukkit.conversations.NullConversationPrefix : java.lang.Object {
   @native
@@ -14623,6 +15513,7 @@ class org.bukkit.conversations.NullConversationPrefix : java.lang.Object {
   command getPrefix arga:org.bukkit.conversations.ConversationContext -> string {}
 }
 
+//access: 1057
 @native
 class org.bukkit.conversations.NumericPrompt : org.bukkit.conversations.ValidatingPrompt {
   @native
@@ -14643,6 +15534,7 @@ class org.bukkit.conversations.NumericPrompt : org.bukkit.conversations.Validati
   command getFailedValidationText arga:org.bukkit.conversations.ConversationContext argb:java.lang.Number -> string {}
 }
 
+//access: 1057
 @native
 class org.bukkit.conversations.PlayerNamePrompt : org.bukkit.conversations.ValidatingPrompt {
   @native
@@ -14657,6 +15549,7 @@ class org.bukkit.conversations.PlayerNamePrompt : org.bukkit.conversations.Valid
   command acceptValidatedInput arga:org.bukkit.conversations.ConversationContext argb:org.bukkit.entity.Player -> org.bukkit.conversations.Prompt {}
 }
 
+//access: 33
 @native
 class org.bukkit.conversations.PluginNameConversationPrefix : java.lang.Object {
   @native
@@ -14675,7 +15568,9 @@ class org.bukkit.conversations.PluginNameConversationPrefix : java.lang.Object {
   command getPrefix arga:org.bukkit.conversations.ConversationContext -> string {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.conversations.Prompt : java.lang.Object {
   @native
   let END_OF_CONVERSATION: org.bukkit.conversations.Prompt = 0
@@ -14687,6 +15582,7 @@ class org.bukkit.conversations.Prompt : java.lang.Object {
   command acceptInput arga:org.bukkit.conversations.ConversationContext argb:string -> org.bukkit.conversations.Prompt {}
 }
 
+//access: 1057
 @native
 class org.bukkit.conversations.RegexPrompt : org.bukkit.conversations.ValidatingPrompt {
   @native
@@ -14701,6 +15597,7 @@ class org.bukkit.conversations.RegexPrompt : org.bukkit.conversations.Validating
   command isInputValid arga:org.bukkit.conversations.ConversationContext argb:string -> boolean {}
 }
 
+//access: 1057
 @native
 class org.bukkit.conversations.StringPrompt : java.lang.Object {
   @native
@@ -14709,6 +15606,7 @@ class org.bukkit.conversations.StringPrompt : java.lang.Object {
   command blocksForInput arga:org.bukkit.conversations.ConversationContext -> boolean {}
 }
 
+//access: 1057
 @native
 class org.bukkit.conversations.ValidatingPrompt : java.lang.Object {
   @native
@@ -14725,6 +15623,7 @@ class org.bukkit.conversations.ValidatingPrompt : java.lang.Object {
   command getFailedValidationText arga:org.bukkit.conversations.ConversationContext argb:string -> string {}
 }
 
+//access: 147505
 @native
 class org.bukkit.CropState : java.lang.Enum {
   @native
@@ -14763,6 +15662,7 @@ class org.bukkit.CropState : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.CropState>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.Difficulty : java.lang.Enum {
   @native
@@ -14795,6 +15695,7 @@ class org.bukkit.Difficulty : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.Difficulty>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.DyeColor : java.lang.Enum {
   @native
@@ -14875,6 +15776,7 @@ class org.bukkit.DyeColor : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.DyeColor>> {}
 }
 
+//access: 147505
 @native
 class org.bukkit.Effect__inacc__Type : java.lang.Enum {
   @native
@@ -14893,6 +15795,7 @@ class org.bukkit.Effect__inacc__Type : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.Effect__inacc__Type>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.Effect : java.lang.Enum {
   @native
@@ -15107,6 +16010,7 @@ class org.bukkit.Effect : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.Effect>> {}
 }
 
+//access: 1057
 @native
 class org.bukkit.enchantments.Enchantment : java.lang.Object {
   @native
@@ -15251,6 +16155,7 @@ class org.bukkit.enchantments.Enchantment : java.lang.Object {
   command values  -> array<Unknown<org.bukkit.enchantments.Enchantment>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.enchantments.EnchantmentOffer : java.lang.Object {
   @native
@@ -15275,6 +16180,7 @@ class org.bukkit.enchantments.EnchantmentOffer : java.lang.Object {
   command setCost  -> void {}
 }
 
+//access: 16432
 @native
 class org.bukkit.enchantments.EnchantmentTarget__inacc__1 : org.bukkit.enchantments.EnchantmentTarget {
   @native
@@ -15283,6 +16189,7 @@ class org.bukkit.enchantments.EnchantmentTarget__inacc__1 : org.bukkit.enchantme
   command includes arga:org.bukkit.Material -> boolean {}
 }
 
+//access: 16432
 @native
 class org.bukkit.enchantments.EnchantmentTarget__inacc__10 : org.bukkit.enchantments.EnchantmentTarget {
   @native
@@ -15291,6 +16198,7 @@ class org.bukkit.enchantments.EnchantmentTarget__inacc__10 : org.bukkit.enchantm
   command includes arga:org.bukkit.Material -> boolean {}
 }
 
+//access: 16432
 @native
 class org.bukkit.enchantments.EnchantmentTarget__inacc__11 : org.bukkit.enchantments.EnchantmentTarget {
   @native
@@ -15299,6 +16207,7 @@ class org.bukkit.enchantments.EnchantmentTarget__inacc__11 : org.bukkit.enchantm
   command includes arga:org.bukkit.Material -> boolean {}
 }
 
+//access: 16432
 @native
 class org.bukkit.enchantments.EnchantmentTarget__inacc__12 : org.bukkit.enchantments.EnchantmentTarget {
   @native
@@ -15307,6 +16216,7 @@ class org.bukkit.enchantments.EnchantmentTarget__inacc__12 : org.bukkit.enchantm
   command includes arga:org.bukkit.Material -> boolean {}
 }
 
+//access: 16432
 @native
 class org.bukkit.enchantments.EnchantmentTarget__inacc__13 : org.bukkit.enchantments.EnchantmentTarget {
   @native
@@ -15315,6 +16225,7 @@ class org.bukkit.enchantments.EnchantmentTarget__inacc__13 : org.bukkit.enchantm
   command includes arga:org.bukkit.Material -> boolean {}
 }
 
+//access: 16432
 @native
 class org.bukkit.enchantments.EnchantmentTarget__inacc__14 : org.bukkit.enchantments.EnchantmentTarget {
   @native
@@ -15323,6 +16234,7 @@ class org.bukkit.enchantments.EnchantmentTarget__inacc__14 : org.bukkit.enchantm
   command includes arga:org.bukkit.Material -> boolean {}
 }
 
+//access: 16432
 @native
 class org.bukkit.enchantments.EnchantmentTarget__inacc__15 : org.bukkit.enchantments.EnchantmentTarget {
   @native
@@ -15331,6 +16243,7 @@ class org.bukkit.enchantments.EnchantmentTarget__inacc__15 : org.bukkit.enchantm
   command includes arga:org.bukkit.Material -> boolean {}
 }
 
+//access: 16432
 @native
 class org.bukkit.enchantments.EnchantmentTarget__inacc__2 : org.bukkit.enchantments.EnchantmentTarget {
   @native
@@ -15339,6 +16252,7 @@ class org.bukkit.enchantments.EnchantmentTarget__inacc__2 : org.bukkit.enchantme
   command includes arga:org.bukkit.Material -> boolean {}
 }
 
+//access: 16432
 @native
 class org.bukkit.enchantments.EnchantmentTarget__inacc__3 : org.bukkit.enchantments.EnchantmentTarget {
   @native
@@ -15347,6 +16261,7 @@ class org.bukkit.enchantments.EnchantmentTarget__inacc__3 : org.bukkit.enchantme
   command includes arga:org.bukkit.Material -> boolean {}
 }
 
+//access: 16432
 @native
 class org.bukkit.enchantments.EnchantmentTarget__inacc__4 : org.bukkit.enchantments.EnchantmentTarget {
   @native
@@ -15355,6 +16270,7 @@ class org.bukkit.enchantments.EnchantmentTarget__inacc__4 : org.bukkit.enchantme
   command includes arga:org.bukkit.Material -> boolean {}
 }
 
+//access: 16432
 @native
 class org.bukkit.enchantments.EnchantmentTarget__inacc__5 : org.bukkit.enchantments.EnchantmentTarget {
   @native
@@ -15363,6 +16279,7 @@ class org.bukkit.enchantments.EnchantmentTarget__inacc__5 : org.bukkit.enchantme
   command includes arga:org.bukkit.Material -> boolean {}
 }
 
+//access: 16432
 @native
 class org.bukkit.enchantments.EnchantmentTarget__inacc__6 : org.bukkit.enchantments.EnchantmentTarget {
   @native
@@ -15371,6 +16288,7 @@ class org.bukkit.enchantments.EnchantmentTarget__inacc__6 : org.bukkit.enchantme
   command includes arga:org.bukkit.Material -> boolean {}
 }
 
+//access: 16432
 @native
 class org.bukkit.enchantments.EnchantmentTarget__inacc__7 : org.bukkit.enchantments.EnchantmentTarget {
   @native
@@ -15379,6 +16297,7 @@ class org.bukkit.enchantments.EnchantmentTarget__inacc__7 : org.bukkit.enchantme
   command includes arga:org.bukkit.Material -> boolean {}
 }
 
+//access: 16432
 @native
 class org.bukkit.enchantments.EnchantmentTarget__inacc__8 : org.bukkit.enchantments.EnchantmentTarget {
   @native
@@ -15387,6 +16306,7 @@ class org.bukkit.enchantments.EnchantmentTarget__inacc__8 : org.bukkit.enchantme
   command includes arga:org.bukkit.Material -> boolean {}
 }
 
+//access: 16432
 @native
 class org.bukkit.enchantments.EnchantmentTarget__inacc__9 : org.bukkit.enchantments.EnchantmentTarget {
   @native
@@ -15395,6 +16315,7 @@ class org.bukkit.enchantments.EnchantmentTarget__inacc__9 : org.bukkit.enchantme
   command includes arga:org.bukkit.Material -> boolean {}
 }
 
+//access: 17441
 @native
 class org.bukkit.enchantments.EnchantmentTarget : java.lang.Enum {
   @native
@@ -15443,6 +16364,7 @@ class org.bukkit.enchantments.EnchantmentTarget : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.enchantments.EnchantmentTarget>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.enchantments.EnchantmentWrapper : org.bukkit.enchantments.Enchantment {
   @native
@@ -15485,6 +16407,7 @@ class org.bukkit.enchantments.EnchantmentWrapper : org.bukkit.enchantments.Encha
   command getActiveSlots  -> java.util.Set {}
 }
 
+//access: 147505
 @native
 class org.bukkit.entity.AbstractArrow__inacc__PickupRule : java.lang.Enum {
   @native
@@ -15505,6 +16428,7 @@ class org.bukkit.entity.AbstractArrow__inacc__PickupRule : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.AbstractArrow__inacc__PickupRule>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.AbstractArrow__inacc__PickupStatus : java.lang.Enum {
   @native
@@ -15525,7 +16449,9 @@ class org.bukkit.entity.AbstractArrow__inacc__PickupStatus : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.AbstractArrow__inacc__PickupStatus>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.AbstractArrow : java.lang.Object {
   @native
   command getKnockbackStrength  -> jvm_integer {}
@@ -15575,7 +16501,9 @@ class org.bukkit.entity.AbstractArrow : java.lang.Object {
   command setPickupRule arga:org.bukkit.entity.AbstractArrow__inacc__PickupRule -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.AbstractHorse : java.lang.Object {
   @native
   command getVariant  -> org.bukkit.entity.Horse__inacc__Variant {}
@@ -15615,7 +16543,9 @@ class org.bukkit.entity.AbstractHorse : java.lang.Object {
   command getInventory  -> org.bukkit.inventory.Inventory {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.AbstractSkeleton : java.lang.Object {
   @native
   command getSkeletonType  -> org.bukkit.entity.Skeleton__inacc__SkeletonType {}
@@ -15627,7 +16557,9 @@ class org.bukkit.entity.AbstractSkeleton : java.lang.Object {
   command setShouldBurnInDay  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.AbstractVillager : java.lang.Object {
   @native
   command getInventory  -> org.bukkit.inventory.Inventory {}
@@ -15635,7 +16567,9 @@ class org.bukkit.entity.AbstractVillager : java.lang.Object {
   command resetOffers  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Ageable : java.lang.Object {
   @native
   command getAge  -> jvm_integer {}
@@ -15657,7 +16591,9 @@ class org.bukkit.entity.Ageable : java.lang.Object {
   command setBreed  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Allay : java.lang.Object {
   @native
   command canDuplicate  -> boolean {}
@@ -15683,11 +16619,15 @@ class org.bukkit.entity.Allay : java.lang.Object {
   command getJukebox  -> org.bukkit.Location {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Ambient : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Animals : java.lang.Object {
   @native
   command getBreedCause  -> java.util.UUID {}
@@ -15705,7 +16645,9 @@ class org.bukkit.entity.Animals : java.lang.Object {
   command isBreedItem arga:org.bukkit.Material -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.AnimalTamer : java.lang.Object {
   @native
   command getName  -> string {}
@@ -15713,7 +16655,9 @@ class org.bukkit.entity.AnimalTamer : java.lang.Object {
   command getUniqueId  -> java.util.UUID {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.AreaEffectCloud : java.lang.Object {
   @native
   command getDuration  -> jvm_integer {}
@@ -15783,6 +16727,7 @@ class org.bukkit.entity.AreaEffectCloud : java.lang.Object {
   command setOwnerUniqueId arga:java.util.UUID -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.ArmorStand__inacc__LockType : java.lang.Enum {
   @native
@@ -15803,7 +16748,9 @@ class org.bukkit.entity.ArmorStand__inacc__LockType : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.ArmorStand__inacc__LockType>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.ArmorStand : java.lang.Object {
   @native
   command getItemInHand  -> org.bukkit.inventory.ItemStack {}
@@ -15925,7 +16872,9 @@ class org.bukkit.entity.ArmorStand : java.lang.Object {
   command setHeadRotations arga:io.papermc.paper.math.Rotations -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Arrow : java.lang.Object {
   @native
   command setBasePotionData arga:org.bukkit.potion.PotionData -> void {}
@@ -15953,6 +16902,7 @@ class org.bukkit.entity.Arrow : java.lang.Object {
   command clearCustomEffects  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.Axolotl__inacc__Variant : java.lang.Enum {
   @native
@@ -15977,7 +16927,9 @@ class org.bukkit.entity.Axolotl__inacc__Variant : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Axolotl__inacc__Variant>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Axolotl : java.lang.Object {
   @native
   command isPlayingDead  -> boolean {}
@@ -15989,7 +16941,9 @@ class org.bukkit.entity.Axolotl : java.lang.Object {
   command setVariant arga:org.bukkit.entity.Axolotl__inacc__Variant -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Bat : java.lang.Object {
   @native
   command isAwake  -> boolean {}
@@ -16001,7 +16955,9 @@ class org.bukkit.entity.Bat : java.lang.Object {
   command setTargetLocation arga:org.bukkit.Location -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Bee : java.lang.Object {
   @native
   command getHive  -> org.bukkit.Location {}
@@ -16043,11 +16999,15 @@ class org.bukkit.entity.Bee : java.lang.Object {
   command getTicksSincePollination  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Blaze : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.BlockDisplay : java.lang.Object {
   @native
   command getBlock  -> org.bukkit.block.data.BlockData {}
@@ -16055,6 +17015,7 @@ class org.bukkit.entity.BlockDisplay : java.lang.Object {
   command setBlock arga:org.bukkit.block.data.BlockData -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.Boat__inacc__Status : java.lang.Enum {
   @native
@@ -16081,6 +17042,7 @@ class org.bukkit.entity.Boat__inacc__Status : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Boat__inacc__Status>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.Boat__inacc__Type : java.lang.Enum {
   @native
@@ -16117,7 +17079,9 @@ class org.bukkit.entity.Boat__inacc__Type : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Boat__inacc__Type>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Boat : java.lang.Object {
   @native
   command getWoodType  -> org.bukkit.TreeSpecies {}
@@ -16149,13 +17113,17 @@ class org.bukkit.entity.Boat : java.lang.Object {
   command getBoatMaterial  -> org.bukkit.Material {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Boss : java.lang.Object {
   @native
   command getBossBar  -> org.bukkit.boss.BossBar {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Breedable : java.lang.Object {
   @native
   command setAgeLock  -> void {}
@@ -16167,7 +17135,9 @@ class org.bukkit.entity.Breedable : java.lang.Object {
   command setBreed  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Camel : java.lang.Object {
   @native
   command isDashing  -> boolean {}
@@ -16175,6 +17145,7 @@ class org.bukkit.entity.Camel : java.lang.Object {
   command setDashing  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.Cat__inacc__Type : java.lang.Enum {
   @native
@@ -16215,7 +17186,9 @@ class org.bukkit.entity.Cat__inacc__Type : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Cat__inacc__Type>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Cat : java.lang.Object {
   @native
   command getCatType  -> org.bukkit.entity.Cat__inacc__Type {}
@@ -16235,15 +17208,21 @@ class org.bukkit.entity.Cat : java.lang.Object {
   command isHeadUp  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.CaveSpider : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.ChestBoat : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.ChestedHorse : java.lang.Object {
   @native
   command isCarryingChest  -> boolean {}
@@ -16251,7 +17230,9 @@ class org.bukkit.entity.ChestedHorse : java.lang.Object {
   command setCarryingChest  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Chicken : java.lang.Object {
   @native
   command isChickenJockey  -> boolean {}
@@ -16263,31 +17244,43 @@ class org.bukkit.entity.Chicken : java.lang.Object {
   command setEggLayTime  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Cod : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.ComplexEntityPart : java.lang.Object {
   @native
   command getParent  -> org.bukkit.entity.ComplexLivingEntity {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.ComplexLivingEntity : java.lang.Object {
   @native
   command getParts  -> java.util.Set {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Cow : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Creature : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Creeper : java.lang.Object {
   @native
   command isPowered  -> boolean {}
@@ -16315,7 +17308,9 @@ class org.bukkit.entity.Creeper : java.lang.Object {
   command isIgnited  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Damageable : java.lang.Object {
   @native
   command damage  -> void {}
@@ -16337,6 +17332,7 @@ class org.bukkit.entity.Damageable : java.lang.Object {
   command resetMaxHealth  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.Display__inacc__Billboard : java.lang.Enum {
   @native
@@ -16359,6 +17355,7 @@ class org.bukkit.entity.Display__inacc__Billboard : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Display__inacc__Billboard>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.entity.Display__inacc__Brightness : java.lang.Object {
   @native
@@ -16379,7 +17376,9 @@ class org.bukkit.entity.Display__inacc__Brightness : java.lang.Object {
   command toString  -> string {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Display : java.lang.Object {
   @native
   command getTransformation  -> org.bukkit.util.Transformation {}
@@ -16433,7 +17432,9 @@ class org.bukkit.entity.Display : java.lang.Object {
   command setBrightness arga:org.bukkit.entity.Display__inacc__Brightness -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Dolphin : java.lang.Object {
   @native
   command getMoistness  -> jvm_integer {}
@@ -16449,27 +17450,39 @@ class org.bukkit.entity.Dolphin : java.lang.Object {
   command setTreasureLocation arga:org.bukkit.Location -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Donkey : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.DragonFireball : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Drowned : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Egg : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.ElderGuardian : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.EnderCrystal : java.lang.Object {
   @native
   command isShowingBottom  -> boolean {}
@@ -16481,6 +17494,7 @@ class org.bukkit.entity.EnderCrystal : java.lang.Object {
   command setBeamTarget arga:org.bukkit.Location -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.EnderDragon__inacc__Phase : java.lang.Enum {
   @native
@@ -16517,7 +17531,9 @@ class org.bukkit.entity.EnderDragon__inacc__Phase : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.EnderDragon__inacc__Phase>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.EnderDragon : java.lang.Object {
   @native
   command getPhase  -> org.bukkit.entity.EnderDragon__inacc__Phase {}
@@ -16533,7 +17549,9 @@ class org.bukkit.entity.EnderDragon : java.lang.Object {
   command setPodium arga:org.bukkit.Location -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.EnderDragonPart : java.lang.Object {
   @native
   command getParent  -> org.bukkit.entity.EnderDragon {}
@@ -16541,7 +17559,9 @@ class org.bukkit.entity.EnderDragonPart : java.lang.Object {
   command getParent  -> org.bukkit.entity.ComplexLivingEntity {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Enderman : java.lang.Object {
   @native
   command teleportRandomly  -> boolean {}
@@ -16567,7 +17587,9 @@ class org.bukkit.entity.Enderman : java.lang.Object {
   command setHasBeenStaredAt  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Endermite : java.lang.Object {
   @native
   command isPlayerSpawned  -> boolean {}
@@ -16579,11 +17601,15 @@ class org.bukkit.entity.Endermite : java.lang.Object {
   command getLifetimeTicks  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.EnderPearl : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.EnderSignal : java.lang.Object {
   @native
   command getTargetLocation  -> org.bukkit.Location {}
@@ -16605,17 +17631,22 @@ class org.bukkit.entity.EnderSignal : java.lang.Object {
   command setDespawnTimer  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Enemy : java.lang.Object {
 }
 
+//access: 33
 @native
 class org.bukkit.entity.Entity__inacc__Spigot : org.bukkit.command.CommandSender__inacc__Spigot {
   @native
   command construct  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Entity : java.lang.Object {
   @native
   command getLocation  -> org.bukkit.Location {}
@@ -16855,6 +17886,7 @@ class org.bukkit.entity.Entity : java.lang.Object {
   command lambda__inacc__teleportAsync__inacc__0 arga:java.util.concurrent.CompletableFuture argb:org.bukkit.Location argc:org.bukkit.event.player.PlayerTeleportEvent__inacc__TeleportCause argd:org.bukkit.Chunk -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.EntityCategory : java.lang.Enum {
   @native
@@ -16879,6 +17911,7 @@ class org.bukkit.entity.EntityCategory : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.EntityCategory>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.EntityType : java.lang.Enum {
   @native
@@ -17187,6 +18220,7 @@ class org.bukkit.entity.EntityType : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.EntityType>> {}
 }
 
+//access: 147505
 @native
 class org.bukkit.entity.Evoker__inacc__Spell : java.lang.Enum {
   @native
@@ -17213,7 +18247,9 @@ class org.bukkit.entity.Evoker__inacc__Spell : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Evoker__inacc__Spell>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Evoker : java.lang.Object {
   @native
   command getCurrentSpell  -> org.bukkit.entity.Evoker__inacc__Spell {}
@@ -17225,7 +18261,9 @@ class org.bukkit.entity.Evoker : java.lang.Object {
   command setWololoTarget arga:org.bukkit.entity.Sheep -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.EvokerFangs : java.lang.Object {
   @native
   command getOwner  -> org.bukkit.entity.LivingEntity {}
@@ -17237,6 +18275,7 @@ class org.bukkit.entity.EvokerFangs : java.lang.Object {
   command setAttackDelay  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.ExperienceOrb__inacc__SpawnReason : java.lang.Enum {
   @native
@@ -17273,7 +18312,9 @@ class org.bukkit.entity.ExperienceOrb__inacc__SpawnReason : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.ExperienceOrb__inacc__SpawnReason>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.ExperienceOrb : java.lang.Object {
   @native
   command getExperience  -> jvm_integer {}
@@ -17289,7 +18330,9 @@ class org.bukkit.entity.ExperienceOrb : java.lang.Object {
   command getSpawnReason  -> org.bukkit.entity.ExperienceOrb__inacc__SpawnReason {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Explosive : java.lang.Object {
   @native
   command setYield  -> void {}
@@ -17301,7 +18344,9 @@ class org.bukkit.entity.Explosive : java.lang.Object {
   command isIncendiary  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.FallingBlock : java.lang.Object {
   @native
   command getMaterial  -> org.bukkit.Material {}
@@ -17341,7 +18386,9 @@ class org.bukkit.entity.FallingBlock : java.lang.Object {
   command shouldAutoExpire  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Fireball : java.lang.Object {
   @native
   command setDirection arga:org.bukkit.util.Vector -> void {}
@@ -17349,7 +18396,9 @@ class org.bukkit.entity.Fireball : java.lang.Object {
   command getDirection  -> org.bukkit.util.Vector {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Firework : java.lang.Object {
   @native
   command getFireworkMeta  -> org.bukkit.inventory.meta.FireworkMeta {}
@@ -17393,10 +18442,13 @@ class org.bukkit.entity.Firework : java.lang.Object {
   command setTicksToDetonate  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Fish : java.lang.Object {
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.FishHook__inacc__HookState : java.lang.Enum {
   @native
@@ -17417,7 +18469,9 @@ class org.bukkit.entity.FishHook__inacc__HookState : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.FishHook__inacc__HookState>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.FishHook : java.lang.Object {
   @native
   command getMinWaitTime  -> jvm_integer {}
@@ -17481,10 +18535,13 @@ class org.bukkit.entity.FishHook : java.lang.Object {
   command setWaitTime  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Flying : java.lang.Object {
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.Fox__inacc__Type : java.lang.Enum {
   @native
@@ -17503,7 +18560,9 @@ class org.bukkit.entity.Fox__inacc__Type : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Fox__inacc__Type>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Fox : java.lang.Object {
   @native
   command getFoxType  -> org.bukkit.entity.Fox__inacc__Type {}
@@ -17541,6 +18600,7 @@ class org.bukkit.entity.Fox : java.lang.Object {
   command setFaceplanted  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.Frog__inacc__Variant : java.lang.Enum {
   @native
@@ -17565,7 +18625,9 @@ class org.bukkit.entity.Frog__inacc__Variant : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Frog__inacc__Variant>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Frog : java.lang.Object {
   @native
   command getTongueTarget  -> org.bukkit.entity.Entity {}
@@ -17577,7 +18639,9 @@ class org.bukkit.entity.Frog : java.lang.Object {
   command setVariant arga:org.bukkit.entity.Frog__inacc__Variant -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Ghast : java.lang.Object {
   @native
   command isCharging  -> boolean {}
@@ -17589,15 +18653,21 @@ class org.bukkit.entity.Ghast : java.lang.Object {
   command setExplosionPower  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Giant : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.GlowItemFrame : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.GlowSquid : java.lang.Object {
   @native
   command getDarkTicksRemaining  -> jvm_integer {}
@@ -17605,7 +18675,9 @@ class org.bukkit.entity.GlowSquid : java.lang.Object {
   command setDarkTicksRemaining  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Goat : java.lang.Object {
   @native
   command hasLeftHorn  -> boolean {}
@@ -17623,11 +18695,15 @@ class org.bukkit.entity.Goat : java.lang.Object {
   command ram arga:org.bukkit.entity.LivingEntity -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Golem : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Guardian : java.lang.Object {
   @native
   command setLaser  -> boolean {}
@@ -17647,13 +18723,17 @@ class org.bukkit.entity.Guardian : java.lang.Object {
   command isMoving  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Hanging : java.lang.Object {
   @native
   command setFacingDirection arga:org.bukkit.block.BlockFace -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Hoglin : java.lang.Object {
   @native
   command isImmuneToZombification  -> boolean {}
@@ -17671,6 +18751,7 @@ class org.bukkit.entity.Hoglin : java.lang.Object {
   command isConverting  -> boolean {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.Horse__inacc__Color : java.lang.Enum {
   @native
@@ -17699,6 +18780,7 @@ class org.bukkit.entity.Horse__inacc__Color : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Horse__inacc__Color>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.Horse__inacc__Style : java.lang.Enum {
   @native
@@ -17723,6 +18805,7 @@ class org.bukkit.entity.Horse__inacc__Style : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Horse__inacc__Style>> {}
 }
 
+//access: 147505
 @native
 class org.bukkit.entity.Horse__inacc__Variant : java.lang.Enum {
   @native
@@ -17751,7 +18834,9 @@ class org.bukkit.entity.Horse__inacc__Variant : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Horse__inacc__Variant>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Horse : java.lang.Object {
   @native
   command getColor  -> org.bukkit.entity.Horse__inacc__Color {}
@@ -17773,7 +18858,9 @@ class org.bukkit.entity.Horse : java.lang.Object {
   command getInventory  -> org.bukkit.inventory.Inventory {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.HumanEntity : java.lang.Object {
   @native
   command getEquipment  -> org.bukkit.inventory.EntityEquipment {}
@@ -17929,7 +19016,9 @@ class org.bukkit.entity.HumanEntity : java.lang.Object {
   command getInventory  -> org.bukkit.inventory.Inventory {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Husk : java.lang.Object {
   @native
   command isConverting  -> boolean {}
@@ -17939,15 +19028,21 @@ class org.bukkit.entity.Husk : java.lang.Object {
   command setConversionTime  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Illager : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Illusioner : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Interaction__inacc__PreviousInteraction : java.lang.Object {
   @native
   command getPlayer  -> org.bukkit.OfflinePlayer {}
@@ -17955,7 +19050,9 @@ class org.bukkit.entity.Interaction__inacc__PreviousInteraction : java.lang.Obje
   command getTimestamp  -> Unknown<J> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Interaction : java.lang.Object {
   @native
   command getInteractionWidth  -> Unknown<F> {}
@@ -17975,7 +19072,9 @@ class org.bukkit.entity.Interaction : java.lang.Object {
   command getLastInteraction  -> org.bukkit.entity.Interaction__inacc__PreviousInteraction {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.IronGolem : java.lang.Object {
   @native
   command isPlayerCreated  -> boolean {}
@@ -17983,7 +19082,9 @@ class org.bukkit.entity.IronGolem : java.lang.Object {
   command setPlayerCreated  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Item : java.lang.Object {
   @native
   command getItemStack  -> org.bukkit.inventory.ItemStack {}
@@ -18023,6 +19124,7 @@ class org.bukkit.entity.Item : java.lang.Object {
   command setHealth  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.ItemDisplay__inacc__ItemDisplayTransform : java.lang.Enum {
   @native
@@ -18055,7 +19157,9 @@ class org.bukkit.entity.ItemDisplay__inacc__ItemDisplayTransform : java.lang.Enu
   command __inacc__values  -> array<Unknown<org.bukkit.entity.ItemDisplay__inacc__ItemDisplayTransform>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.ItemDisplay : java.lang.Object {
   @native
   command getItemStack  -> org.bukkit.inventory.ItemStack {}
@@ -18067,7 +19171,9 @@ class org.bukkit.entity.ItemDisplay : java.lang.Object {
   command setItemDisplayTransform arga:org.bukkit.entity.ItemDisplay__inacc__ItemDisplayTransform -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.ItemFrame : java.lang.Object {
   @native
   command getItem  -> org.bukkit.inventory.ItemStack {}
@@ -18093,14 +19199,19 @@ class org.bukkit.entity.ItemFrame : java.lang.Object {
   command setFixed  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.LargeFireball : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.LeashHitch : java.lang.Object {
 }
 
+//access: 131105
 @native
 class org.bukkit.entity.LightningStrike__inacc__Spigot : org.bukkit.entity.Entity__inacc__Spigot {
   @native
@@ -18109,7 +19220,9 @@ class org.bukkit.entity.LightningStrike__inacc__Spigot : org.bukkit.entity.Entit
   command isSilent  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.LightningStrike : java.lang.Object {
   @native
   command isEffect  -> boolean {}
@@ -18139,11 +19252,15 @@ class org.bukkit.entity.LightningStrike : java.lang.Object {
   command spigot  -> org.bukkit.command.CommandSender__inacc__Spigot {}
 }
 
+//access: 132609
 @native
+@interface
 class org.bukkit.entity.LingeringPotion : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.LivingEntity : java.lang.Object {
   @native
   command getEyeHeight  -> number {}
@@ -18387,6 +19504,7 @@ class org.bukkit.entity.LivingEntity : java.lang.Object {
   command setBodyYaw  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.Llama__inacc__Color : java.lang.Enum {
   @native
@@ -18409,7 +19527,9 @@ class org.bukkit.entity.Llama__inacc__Color : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Llama__inacc__Color>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Llama : java.lang.Object {
   @native
   command getColor  -> org.bukkit.entity.Llama__inacc__Color {}
@@ -18439,18 +19559,25 @@ class org.bukkit.entity.Llama : java.lang.Object {
   command getInventory  -> org.bukkit.inventory.Inventory {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.LlamaSpit : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.MagmaCube : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Marker : java.lang.Object {
 }
 
+//access: 49
 @native
 class org.bukkit.entity.memory.MemoryKey : java.lang.Object {
   @native
@@ -18519,7 +19646,9 @@ class org.bukkit.entity.memory.MemoryKey : java.lang.Object {
   command values  -> java.util.Set {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.minecart.CommandMinecart : java.lang.Object {
   @native
   command getCommand  -> string {}
@@ -18529,7 +19658,9 @@ class org.bukkit.entity.minecart.CommandMinecart : java.lang.Object {
   command setName arga:string -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.minecart.ExplosiveMinecart : java.lang.Object {
   @native
   command setFuseTicks  -> void {}
@@ -18545,7 +19676,9 @@ class org.bukkit.entity.minecart.ExplosiveMinecart : java.lang.Object {
   command explode  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.minecart.HopperMinecart : java.lang.Object {
   @native
   command isEnabled  -> boolean {}
@@ -18557,7 +19690,9 @@ class org.bukkit.entity.minecart.HopperMinecart : java.lang.Object {
   command setPickupCooldown  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.minecart.PoweredMinecart : java.lang.Object {
   @native
   command getFuel  -> jvm_integer {}
@@ -18573,19 +19708,27 @@ class org.bukkit.entity.minecart.PoweredMinecart : java.lang.Object {
   command setPushZ  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.minecart.RideableMinecart : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.minecart.SpawnerMinecart : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.minecart.StorageMinecart : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Minecart : java.lang.Object {
   @native
   command setDamage  -> void {}
@@ -18623,7 +19766,9 @@ class org.bukkit.entity.Minecart : java.lang.Object {
   command getMinecartMaterial  -> org.bukkit.Material {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Mob : java.lang.Object {
   @native
   command getEquipment  -> org.bukkit.inventory.EntityEquipment {}
@@ -18669,14 +19814,19 @@ class org.bukkit.entity.Mob : java.lang.Object {
   command getPossibleExperienceReward  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Monster : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Mule : java.lang.Object {
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.MushroomCow__inacc__Variant : java.lang.Enum {
   @native
@@ -18695,7 +19845,9 @@ class org.bukkit.entity.MushroomCow__inacc__Variant : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.MushroomCow__inacc__Variant>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.MushroomCow : java.lang.Object {
   @native
   command getVariant  -> org.bukkit.entity.MushroomCow__inacc__Variant {}
@@ -18715,10 +19867,13 @@ class org.bukkit.entity.MushroomCow : java.lang.Object {
   command setStewEffects arga:java.util.List -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.NPC : java.lang.Object {
 }
 
+//access: 147505
 @native
 class org.bukkit.entity.Ocelot__inacc__Type : java.lang.Enum {
   @native
@@ -18749,7 +19904,9 @@ class org.bukkit.entity.Ocelot__inacc__Type : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Ocelot__inacc__Type>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Ocelot : java.lang.Object {
   @native
   command isTrusting  -> boolean {}
@@ -18761,7 +19918,9 @@ class org.bukkit.entity.Ocelot : java.lang.Object {
   command setCatType arga:org.bukkit.entity.Ocelot__inacc__Type -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Painting : java.lang.Object {
   @native
   command getArt  -> org.bukkit.Art {}
@@ -18771,6 +19930,7 @@ class org.bukkit.entity.Painting : java.lang.Object {
   command setArt arga:org.bukkit.Art -> boolean {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.Panda__inacc__Gene : java.lang.Enum {
   @native
@@ -18803,7 +19963,9 @@ class org.bukkit.entity.Panda__inacc__Gene : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Panda__inacc__Gene>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Panda : java.lang.Object {
   @native
   command getMainGene  -> org.bukkit.entity.Panda__inacc__Gene {}
@@ -18855,6 +20017,7 @@ class org.bukkit.entity.Panda : java.lang.Object {
   command getCombinedGene  -> org.bukkit.entity.Panda__inacc__Gene {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.Parrot__inacc__Variant : java.lang.Enum {
   @native
@@ -18879,7 +20042,9 @@ class org.bukkit.entity.Parrot__inacc__Variant : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Parrot__inacc__Variant>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Parrot : java.lang.Object {
   @native
   command getVariant  -> org.bukkit.entity.Parrot__inacc__Variant {}
@@ -18889,7 +20054,9 @@ class org.bukkit.entity.Parrot : java.lang.Object {
   command isDancing  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Phantom : java.lang.Object {
   @native
   command getSize  -> jvm_integer {}
@@ -18907,11 +20074,15 @@ class org.bukkit.entity.Phantom : java.lang.Object {
   command setAnchorLocation arga:org.bukkit.Location -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Pig : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Piglin : java.lang.Object {
   @native
   command isAbleToHunt  -> boolean {}
@@ -18941,7 +20112,9 @@ class org.bukkit.entity.Piglin : java.lang.Object {
   command isDancing  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.PiglinAbstract : java.lang.Object {
   @native
   command isImmuneToZombification  -> boolean {}
@@ -18959,11 +20132,15 @@ class org.bukkit.entity.PiglinAbstract : java.lang.Object {
   command setBaby  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.PiglinBrute : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.PigZombie : java.lang.Object {
   @native
   command getAnger  -> jvm_integer {}
@@ -18981,10 +20158,13 @@ class org.bukkit.entity.PigZombie : java.lang.Object {
   command setConversionTime  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Pillager : java.lang.Object {
 }
 
+//access: 33
 @native
 class org.bukkit.entity.Player__inacc__Spigot : org.bukkit.entity.Entity__inacc__Spigot {
   @native
@@ -19011,7 +20191,9 @@ class org.bukkit.entity.Player__inacc__Spigot : org.bukkit.entity.Entity__inacc_
   command getPing  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Player : java.lang.Object {
   @native
   command identity  -> net.kyori.adventure.identity.Identity {}
@@ -19541,7 +20723,9 @@ class org.bukkit.entity.Player : java.lang.Object {
   command spigot  -> org.bukkit.command.CommandSender__inacc__Spigot {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.PolarBear : java.lang.Object {
   @native
   command isStanding  -> boolean {}
@@ -19549,6 +20733,7 @@ class org.bukkit.entity.PolarBear : java.lang.Object {
   command setStanding  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.Pose : java.lang.Enum {
   @native
@@ -19593,7 +20778,9 @@ class org.bukkit.entity.Pose : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Pose>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Projectile : java.lang.Object {
   @native
   command getShooter  -> org.bukkit.projectiles.ProjectileSource {}
@@ -19621,7 +20808,9 @@ class org.bukkit.entity.Projectile : java.lang.Object {
   command getOwnerUniqueId  -> java.util.UUID {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.PufferFish : java.lang.Object {
   @native
   command getPuffState  -> jvm_integer {}
@@ -19629,6 +20818,7 @@ class org.bukkit.entity.PufferFish : java.lang.Object {
   command setPuffState  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.Rabbit__inacc__Type : java.lang.Enum {
   @native
@@ -19657,7 +20847,9 @@ class org.bukkit.entity.Rabbit__inacc__Type : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Rabbit__inacc__Type>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Rabbit : java.lang.Object {
   @native
   command getRabbitType  -> org.bukkit.entity.Rabbit__inacc__Type {}
@@ -19669,7 +20861,9 @@ class org.bukkit.entity.Rabbit : java.lang.Object {
   command getMoreCarrotTicks  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Raider : java.lang.Object {
   @native
   command setRaid arga:org.bukkit.Raid -> void {}
@@ -19703,7 +20897,9 @@ class org.bukkit.entity.Raider : java.lang.Object {
   command getCelebrationSound  -> org.bukkit.Sound {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Ravager : java.lang.Object {
   @native
   command getAttackTicks  -> jvm_integer {}
@@ -19719,11 +20915,15 @@ class org.bukkit.entity.Ravager : java.lang.Object {
   command setRoarTicks  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Salmon : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Sheep : java.lang.Object {
   @native
   command isSheared  -> boolean {}
@@ -19731,7 +20931,9 @@ class org.bukkit.entity.Sheep : java.lang.Object {
   command setSheared  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Shulker : java.lang.Object {
   @native
   command getPeek  -> Unknown<F> {}
@@ -19743,7 +20945,9 @@ class org.bukkit.entity.Shulker : java.lang.Object {
   command setAttachedFace arga:org.bukkit.block.BlockFace -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.ShulkerBullet : java.lang.Object {
   @native
   command getTarget  -> org.bukkit.entity.Entity {}
@@ -19763,11 +20967,15 @@ class org.bukkit.entity.ShulkerBullet : java.lang.Object {
   command setFlightSteps  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Silverfish : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Sittable : java.lang.Object {
   @native
   command isSitting  -> boolean {}
@@ -19775,7 +20983,9 @@ class org.bukkit.entity.Sittable : java.lang.Object {
   command setSitting  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.SizedFireball : java.lang.Object {
   @native
   command getDisplayItem  -> org.bukkit.inventory.ItemStack {}
@@ -19783,6 +20993,7 @@ class org.bukkit.entity.SizedFireball : java.lang.Object {
   command setDisplayItem arga:org.bukkit.inventory.ItemStack -> void {}
 }
 
+//access: 147505
 @native
 class org.bukkit.entity.Skeleton__inacc__SkeletonType : java.lang.Enum {
   @native
@@ -19803,7 +21014,9 @@ class org.bukkit.entity.Skeleton__inacc__SkeletonType : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Skeleton__inacc__SkeletonType>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Skeleton : java.lang.Object {
   @native
   command isConverting  -> boolean {}
@@ -19815,7 +21028,9 @@ class org.bukkit.entity.Skeleton : java.lang.Object {
   command inPowderedSnowTime  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.SkeletonHorse : java.lang.Object {
   @native
   command isTrapped  -> boolean {}
@@ -19831,7 +21046,9 @@ class org.bukkit.entity.SkeletonHorse : java.lang.Object {
   command setTrap  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Slime : java.lang.Object {
   @native
   command getSize  -> jvm_integer {}
@@ -19843,10 +21060,13 @@ class org.bukkit.entity.Slime : java.lang.Object {
   command setWander  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.SmallFireball : java.lang.Object {
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.Sniffer__inacc__State : java.lang.Enum {
   @native
@@ -19875,7 +21095,9 @@ class org.bukkit.entity.Sniffer__inacc__State : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Sniffer__inacc__State>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Sniffer : java.lang.Object {
   @native
   command getExploredLocations  -> java.util.Collection {}
@@ -19893,11 +21115,15 @@ class org.bukkit.entity.Sniffer : java.lang.Object {
   command canDig  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Snowball : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Snowman : java.lang.Object {
   @native
   command isDerp  -> boolean {}
@@ -19905,6 +21131,7 @@ class org.bukkit.entity.Snowman : java.lang.Object {
   command setDerp  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.SpawnCategory : java.lang.Enum {
   @native
@@ -19935,7 +21162,9 @@ class org.bukkit.entity.SpawnCategory : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.SpawnCategory>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.SpectralArrow : java.lang.Object {
   @native
   command getGlowingTicks  -> jvm_integer {}
@@ -19943,6 +21172,7 @@ class org.bukkit.entity.SpectralArrow : java.lang.Object {
   command setGlowingTicks  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.Spellcaster__inacc__Spell : java.lang.Enum {
   @native
@@ -19969,7 +21199,9 @@ class org.bukkit.entity.Spellcaster__inacc__Spell : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Spellcaster__inacc__Spell>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Spellcaster : java.lang.Object {
   @native
   command getSpell  -> org.bukkit.entity.Spellcaster__inacc__Spell {}
@@ -19977,19 +21209,27 @@ class org.bukkit.entity.Spellcaster : java.lang.Object {
   command setSpell arga:org.bukkit.entity.Spellcaster__inacc__Spell -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Spider : java.lang.Object {
 }
 
+//access: 132609
 @native
+@interface
 class org.bukkit.entity.SplashPotion : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Squid : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Steerable : java.lang.Object {
   @native
   command hasSaddle  -> boolean {}
@@ -20007,11 +21247,15 @@ class org.bukkit.entity.Steerable : java.lang.Object {
   command getSteerMaterial  -> org.bukkit.Material {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Stray : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Strider : java.lang.Object {
   @native
   command isShivering  -> boolean {}
@@ -20019,7 +21263,9 @@ class org.bukkit.entity.Strider : java.lang.Object {
   command setShivering  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Tadpole : java.lang.Object {
   @native
   command getAge  -> jvm_integer {}
@@ -20031,7 +21277,9 @@ class org.bukkit.entity.Tadpole : java.lang.Object {
   command getAgeLock  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Tameable : java.lang.Object {
   @native
   command isTamed  -> boolean {}
@@ -20045,6 +21293,7 @@ class org.bukkit.entity.Tameable : java.lang.Object {
   command setOwner arga:org.bukkit.entity.AnimalTamer -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.TextDisplay__inacc__TextAlignment : java.lang.Enum {
   @native
@@ -20065,7 +21314,9 @@ class org.bukkit.entity.TextDisplay__inacc__TextAlignment : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.TextDisplay__inacc__TextAlignment>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.TextDisplay : java.lang.Object {
   @native
   command getText  -> string {}
@@ -20105,7 +21356,9 @@ class org.bukkit.entity.TextDisplay : java.lang.Object {
   command setAlignment arga:org.bukkit.entity.TextDisplay__inacc__TextAlignment -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.ThrowableProjectile : java.lang.Object {
   @native
   command getItem  -> org.bukkit.inventory.ItemStack {}
@@ -20113,11 +21366,15 @@ class org.bukkit.entity.ThrowableProjectile : java.lang.Object {
   command setItem arga:org.bukkit.inventory.ItemStack -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.ThrownExpBottle : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.ThrownPotion : java.lang.Object {
   @native
   command getEffects  -> java.util.Collection {}
@@ -20133,11 +21390,15 @@ class org.bukkit.entity.ThrownPotion : java.lang.Object {
   command splash  -> void {}
 }
 
+//access: 132609
 @native
+@interface
 class org.bukkit.entity.TippedArrow : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.TNTPrimed : java.lang.Object {
   @native
   command setFuseTicks  -> void {}
@@ -20151,11 +21412,15 @@ class org.bukkit.entity.TNTPrimed : java.lang.Object {
   command getSourceLoc  -> org.bukkit.Location {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.TraderLlama : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Trident : java.lang.Object {
   @native
   command hasGlint  -> boolean {}
@@ -20175,6 +21440,7 @@ class org.bukkit.entity.Trident : java.lang.Object {
   command getDamage  -> number {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.TropicalFish__inacc__Pattern : java.lang.Enum {
   @native
@@ -20213,7 +21479,9 @@ class org.bukkit.entity.TropicalFish__inacc__Pattern : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.TropicalFish__inacc__Pattern>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.TropicalFish : java.lang.Object {
   @native
   command getPatternColor  -> org.bukkit.DyeColor {}
@@ -20229,7 +21497,9 @@ class org.bukkit.entity.TropicalFish : java.lang.Object {
   command setPattern arga:org.bukkit.entity.TropicalFish__inacc__Pattern -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Turtle : java.lang.Object {
   @native
   command hasEgg  -> boolean {}
@@ -20247,7 +21517,9 @@ class org.bukkit.entity.Turtle : java.lang.Object {
   command setHasEgg  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Vehicle : java.lang.Object {
   @native
   command getVelocity  -> org.bukkit.util.Vector {}
@@ -20255,7 +21527,9 @@ class org.bukkit.entity.Vehicle : java.lang.Object {
   command setVelocity arga:org.bukkit.util.Vector -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Vex : java.lang.Object {
   @native
   command isCharging  -> boolean {}
@@ -20285,6 +21559,7 @@ class org.bukkit.entity.Vex : java.lang.Object {
   command setLimitedLifetimeTicks  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.Villager__inacc__Profession : java.lang.Enum {
   @native
@@ -20335,6 +21610,7 @@ class org.bukkit.entity.Villager__inacc__Profession : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Villager__inacc__Profession>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.Villager__inacc__Type : java.lang.Enum {
   @native
@@ -20367,7 +21643,9 @@ class org.bukkit.entity.Villager__inacc__Type : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Villager__inacc__Type>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Villager : java.lang.Object {
   @native
   command getProfession  -> org.bukkit.entity.Villager__inacc__Profession {}
@@ -20413,7 +21691,9 @@ class org.bukkit.entity.Villager : java.lang.Object {
   command clearReputations  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Vindicator : java.lang.Object {
   @native
   command isJohnny  -> boolean {}
@@ -20421,7 +21701,9 @@ class org.bukkit.entity.Vindicator : java.lang.Object {
   command setJohnny  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.WanderingTrader : java.lang.Object {
   @native
   command getDespawnDelay  -> jvm_integer {}
@@ -20441,6 +21723,7 @@ class org.bukkit.entity.WanderingTrader : java.lang.Object {
   command setWanderingTowards arga:org.bukkit.Location -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.Warden__inacc__AngerLevel : java.lang.Enum {
   @native
@@ -20461,7 +21744,9 @@ class org.bukkit.entity.Warden__inacc__AngerLevel : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Warden__inacc__AngerLevel>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Warden : java.lang.Object {
   @native
   command getAnger  -> jvm_integer {}
@@ -20483,11 +21768,15 @@ class org.bukkit.entity.Warden : java.lang.Object {
   command getAngerLevel  -> org.bukkit.entity.Warden__inacc__AngerLevel {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.WaterMob : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Witch : java.lang.Object {
   @native
   command isDrinkingPotion  -> boolean {}
@@ -20501,6 +21790,7 @@ class org.bukkit.entity.Witch : java.lang.Object {
   command setDrinkingPotion arga:org.bukkit.inventory.ItemStack -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.entity.Wither__inacc__Head : java.lang.Enum {
   @native
@@ -20521,7 +21811,9 @@ class org.bukkit.entity.Wither__inacc__Head : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.entity.Wither__inacc__Head>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Wither : java.lang.Object {
   @native
   command setTarget arga:org.bukkit.entity.LivingEntity -> void {}
@@ -20547,11 +21839,15 @@ class org.bukkit.entity.Wither : java.lang.Object {
   command enterInvulnerabilityPhase  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.WitherSkeleton : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.WitherSkull : java.lang.Object {
   @native
   command setCharged  -> void {}
@@ -20559,7 +21855,9 @@ class org.bukkit.entity.WitherSkull : java.lang.Object {
   command isCharged  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Wolf : java.lang.Object {
   @native
   command isAngry  -> boolean {}
@@ -20579,7 +21877,9 @@ class org.bukkit.entity.Wolf : java.lang.Object {
   command setInterested  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Zoglin : java.lang.Object {
   @native
   command isBaby  -> boolean {}
@@ -20587,7 +21887,9 @@ class org.bukkit.entity.Zoglin : java.lang.Object {
   command setBaby  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.Zombie : java.lang.Object {
   @native
   command isBaby  -> boolean {}
@@ -20629,11 +21931,15 @@ class org.bukkit.entity.Zombie : java.lang.Object {
   command supportsBreakingDoors  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.ZombieHorse : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.entity.ZombieVillager : java.lang.Object {
   @native
   command setVillagerProfession arga:org.bukkit.entity.Villager__inacc__Profession -> void {}
@@ -20657,6 +21963,7 @@ class org.bukkit.entity.ZombieVillager : java.lang.Object {
   command setConversionTime arga:jvm_integer -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.EntityEffect : java.lang.Enum {
   @native
@@ -20811,6 +22118,7 @@ class org.bukkit.EntityEffect : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.EntityEffect>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.block.Action : java.lang.Enum {
   @native
@@ -20839,6 +22147,7 @@ class org.bukkit.event.block.Action : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.event.block.Action>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BellResonateEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -20855,6 +22164,7 @@ class org.bukkit.event.block.BellResonateEvent : org.bukkit.event.block.BlockEve
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BellRingEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -20881,6 +22191,7 @@ class org.bukkit.event.block.BellRingEvent : org.bukkit.event.block.BlockEvent {
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockBreakEvent : org.bukkit.event.block.BlockExpEvent {
   @native
@@ -20903,6 +22214,7 @@ class org.bukkit.event.block.BlockBreakEvent : org.bukkit.event.block.BlockExpEv
   command setCancelled  -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockBurnEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -20927,6 +22239,7 @@ class org.bukkit.event.block.BlockBurnEvent : org.bukkit.event.block.BlockEvent 
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockCanBuildEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -20963,6 +22276,7 @@ class org.bukkit.event.block.BlockCanBuildEvent : org.bukkit.event.block.BlockEv
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockCookEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -20997,6 +22311,7 @@ class org.bukkit.event.block.BlockCookEvent : org.bukkit.event.block.BlockEvent 
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockDamageAbortEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21017,6 +22332,7 @@ class org.bukkit.event.block.BlockDamageAbortEvent : org.bukkit.event.block.Bloc
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockDamageEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21055,6 +22371,7 @@ class org.bukkit.event.block.BlockDamageEvent : org.bukkit.event.block.BlockEven
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockDispenseArmorEvent : org.bukkit.event.block.BlockDispenseEvent {
   @native
@@ -21065,6 +22382,7 @@ class org.bukkit.event.block.BlockDispenseArmorEvent : org.bukkit.event.block.Bl
   command getTargetEntity  -> org.bukkit.entity.LivingEntity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockDispenseEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21095,6 +22413,7 @@ class org.bukkit.event.block.BlockDispenseEvent : org.bukkit.event.block.BlockEv
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockDropItemEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21125,6 +22444,7 @@ class org.bukkit.event.block.BlockDropItemEvent : org.bukkit.event.block.BlockEv
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 1057
 @native
 class org.bukkit.event.block.BlockEvent : org.bukkit.event.Event {
   @native
@@ -21135,6 +22455,7 @@ class org.bukkit.event.block.BlockEvent : org.bukkit.event.Event {
   command getBlock  -> org.bukkit.block.Block {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockExpEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21153,6 +22474,7 @@ class org.bukkit.event.block.BlockExpEvent : org.bukkit.event.block.BlockEvent {
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockExplodeEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21187,6 +22509,7 @@ class org.bukkit.event.block.BlockExplodeEvent : org.bukkit.event.block.BlockEve
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockFadeEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21209,6 +22532,7 @@ class org.bukkit.event.block.BlockFadeEvent : org.bukkit.event.block.BlockEvent 
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockFertilizeEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21235,6 +22559,7 @@ class org.bukkit.event.block.BlockFertilizeEvent : org.bukkit.event.block.BlockE
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockFormEvent : org.bukkit.event.block.BlockGrowEvent {
   @native
@@ -21247,6 +22572,7 @@ class org.bukkit.event.block.BlockFormEvent : org.bukkit.event.block.BlockGrowEv
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockFromToEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21275,6 +22601,7 @@ class org.bukkit.event.block.BlockFromToEvent : org.bukkit.event.block.BlockEven
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockGrowEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21297,6 +22624,7 @@ class org.bukkit.event.block.BlockGrowEvent : org.bukkit.event.block.BlockEvent 
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.block.BlockIgniteEvent__inacc__IgniteCause : java.lang.Enum {
   @native
@@ -21327,6 +22655,7 @@ class org.bukkit.event.block.BlockIgniteEvent__inacc__IgniteCause : java.lang.En
   command __inacc__values  -> array<Unknown<org.bukkit.event.block.BlockIgniteEvent__inacc__IgniteCause>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockIgniteEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21363,6 +22692,7 @@ class org.bukkit.event.block.BlockIgniteEvent : org.bukkit.event.block.BlockEven
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockMultiPlaceEvent : org.bukkit.event.block.BlockPlaceEvent {
   @native
@@ -21375,6 +22705,7 @@ class org.bukkit.event.block.BlockMultiPlaceEvent : org.bukkit.event.block.Block
   command getReplacedBlockStates  -> java.util.List {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockPhysicsEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21407,6 +22738,7 @@ class org.bukkit.event.block.BlockPhysicsEvent : org.bukkit.event.block.BlockEve
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 1057
 @native
 class org.bukkit.event.block.BlockPistonEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21425,6 +22757,7 @@ class org.bukkit.event.block.BlockPistonEvent : org.bukkit.event.block.BlockEven
   command getDirection  -> org.bukkit.block.BlockFace {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockPistonExtendEvent : org.bukkit.event.block.BlockPistonEvent {
   @native
@@ -21447,6 +22780,7 @@ class org.bukkit.event.block.BlockPistonExtendEvent : org.bukkit.event.block.Blo
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockPistonRetractEvent : org.bukkit.event.block.BlockPistonEvent {
   @native
@@ -21465,6 +22799,7 @@ class org.bukkit.event.block.BlockPistonRetractEvent : org.bukkit.event.block.Bl
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockPlaceEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21513,6 +22848,7 @@ class org.bukkit.event.block.BlockPlaceEvent : org.bukkit.event.block.BlockEvent
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockReceiveGameEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21539,6 +22875,7 @@ class org.bukkit.event.block.BlockReceiveGameEvent : org.bukkit.event.block.Bloc
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockRedstoneEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21561,6 +22898,7 @@ class org.bukkit.event.block.BlockRedstoneEvent : org.bukkit.event.block.BlockEv
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockShearEntityEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21587,6 +22925,7 @@ class org.bukkit.event.block.BlockShearEntityEvent : org.bukkit.event.block.Bloc
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BlockSpreadEvent : org.bukkit.event.block.BlockFormEvent {
   @native
@@ -21603,6 +22942,7 @@ class org.bukkit.event.block.BlockSpreadEvent : org.bukkit.event.block.BlockForm
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.BrewingStartEvent : org.bukkit.event.block.InventoryBlockStartEvent {
   @native
@@ -21615,6 +22955,7 @@ class org.bukkit.event.block.BrewingStartEvent : org.bukkit.event.block.Inventor
   command setTotalBrewTime  -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.CampfireStartEvent : org.bukkit.event.block.InventoryBlockStartEvent {
   @native
@@ -21631,6 +22972,7 @@ class org.bukkit.event.block.CampfireStartEvent : org.bukkit.event.block.Invento
   command setTotalCookTime  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.block.CauldronLevelChangeEvent__inacc__ChangeReason : java.lang.Enum {
   @native
@@ -21667,6 +23009,7 @@ class org.bukkit.event.block.CauldronLevelChangeEvent__inacc__ChangeReason : jav
   command __inacc__values  -> array<Unknown<org.bukkit.event.block.CauldronLevelChangeEvent__inacc__ChangeReason>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.CauldronLevelChangeEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21703,6 +23046,7 @@ class org.bukkit.event.block.CauldronLevelChangeEvent : org.bukkit.event.block.B
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.EntityBlockFormEvent : org.bukkit.event.block.BlockFormEvent {
   @native
@@ -21713,6 +23057,7 @@ class org.bukkit.event.block.EntityBlockFormEvent : org.bukkit.event.block.Block
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.FluidLevelChangeEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21737,6 +23082,7 @@ class org.bukkit.event.block.FluidLevelChangeEvent : org.bukkit.event.block.Bloc
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.InventoryBlockStartEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21753,6 +23099,7 @@ class org.bukkit.event.block.InventoryBlockStartEvent : org.bukkit.event.block.B
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.LeavesDecayEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21771,6 +23118,7 @@ class org.bukkit.event.block.LeavesDecayEvent : org.bukkit.event.block.BlockEven
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.MoistureChangeEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21793,6 +23141,7 @@ class org.bukkit.event.block.MoistureChangeEvent : org.bukkit.event.block.BlockE
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.NotePlayEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21823,6 +23172,7 @@ class org.bukkit.event.block.NotePlayEvent : org.bukkit.event.block.BlockEvent {
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.SculkBloomEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21847,6 +23197,7 @@ class org.bukkit.event.block.SculkBloomEvent : org.bukkit.event.block.BlockEvent
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.SignChangeEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21895,6 +23246,7 @@ class org.bukkit.event.block.SignChangeEvent : org.bukkit.event.block.BlockEvent
   command lambda__inacc__getLines__inacc__0  -> array<Unknown<string>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.SpongeAbsorbEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21917,6 +23269,7 @@ class org.bukkit.event.block.SpongeAbsorbEvent : org.bukkit.event.block.BlockEve
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.block.TNTPrimeEvent__inacc__PrimeCause : java.lang.Enum {
   @native
@@ -21945,6 +23298,7 @@ class org.bukkit.event.block.TNTPrimeEvent__inacc__PrimeCause : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.event.block.TNTPrimeEvent__inacc__PrimeCause>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.block.TNTPrimeEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -21975,7 +23329,9 @@ class org.bukkit.event.block.TNTPrimeEvent : org.bukkit.event.block.BlockEvent {
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.event.Cancellable : java.lang.Object {
   @native
   command isCancelled  -> boolean {}
@@ -21983,6 +23339,7 @@ class org.bukkit.event.Cancellable : java.lang.Object {
   command setCancelled  -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.command.UnknownCommandEvent : org.bukkit.event.Event {
   @native
@@ -22013,6 +23370,7 @@ class org.bukkit.event.command.UnknownCommandEvent : org.bukkit.event.Event {
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.enchantment.EnchantItemEvent : org.bukkit.event.inventory.InventoryEvent {
   @native
@@ -22065,6 +23423,7 @@ class org.bukkit.event.enchantment.EnchantItemEvent : org.bukkit.event.inventory
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.enchantment.PrepareItemEnchantEvent : org.bukkit.event.inventory.InventoryEvent {
   @native
@@ -22105,6 +23464,7 @@ class org.bukkit.event.enchantment.PrepareItemEnchantEvent : org.bukkit.event.in
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.AreaEffectCloudApplyEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -22131,6 +23491,7 @@ class org.bukkit.event.entity.AreaEffectCloudApplyEvent : org.bukkit.event.entit
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.ArrowBodyCountChangeEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -22167,6 +23528,7 @@ class org.bukkit.event.entity.ArrowBodyCountChangeEvent : org.bukkit.event.entit
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.BatToggleSleepEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -22189,6 +23551,7 @@ class org.bukkit.event.entity.BatToggleSleepEvent : org.bukkit.event.entity.Enti
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.entity.CreatureSpawnEvent__inacc__SpawnReason : java.lang.Enum {
   @native
@@ -22281,6 +23644,7 @@ class org.bukkit.event.entity.CreatureSpawnEvent__inacc__SpawnReason : java.lang
   command __inacc__values  -> array<Unknown<org.bukkit.event.entity.CreatureSpawnEvent__inacc__SpawnReason>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.CreatureSpawnEvent : org.bukkit.event.entity.EntitySpawnEvent {
   @native
@@ -22295,6 +23659,7 @@ class org.bukkit.event.entity.CreatureSpawnEvent : org.bukkit.event.entity.Entit
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.entity.CreeperPowerEvent__inacc__PowerCause : java.lang.Enum {
   @native
@@ -22315,6 +23680,7 @@ class org.bukkit.event.entity.CreeperPowerEvent__inacc__PowerCause : java.lang.E
   command __inacc__values  -> array<Unknown<org.bukkit.event.entity.CreeperPowerEvent__inacc__PowerCause>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.CreeperPowerEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -22347,6 +23713,7 @@ class org.bukkit.event.entity.CreeperPowerEvent : org.bukkit.event.entity.Entity
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EnderDragonChangePhaseEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -22379,6 +23746,7 @@ class org.bukkit.event.entity.EnderDragonChangePhaseEvent : org.bukkit.event.ent
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityAirChangeEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -22403,6 +23771,7 @@ class org.bukkit.event.entity.EntityAirChangeEvent : org.bukkit.event.entity.Ent
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityBreakDoorEvent : org.bukkit.event.entity.EntityChangeBlockEvent {
   @native
@@ -22413,6 +23782,7 @@ class org.bukkit.event.entity.EntityBreakDoorEvent : org.bukkit.event.entity.Ent
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityBreedEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -22457,6 +23827,7 @@ class org.bukkit.event.entity.EntityBreedEvent : org.bukkit.event.entity.EntityE
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityChangeBlockEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -22485,6 +23856,7 @@ class org.bukkit.event.entity.EntityChangeBlockEvent : org.bukkit.event.entity.E
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityCombustByBlockEvent : org.bukkit.event.entity.EntityCombustEvent {
   @native
@@ -22495,6 +23867,7 @@ class org.bukkit.event.entity.EntityCombustByBlockEvent : org.bukkit.event.entit
   command getCombuster  -> org.bukkit.block.Block {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityCombustByEntityEvent : org.bukkit.event.entity.EntityCombustEvent {
   @native
@@ -22505,6 +23878,7 @@ class org.bukkit.event.entity.EntityCombustByEntityEvent : org.bukkit.event.enti
   command getCombuster  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityCombustEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -22529,6 +23903,7 @@ class org.bukkit.event.entity.EntityCombustEvent : org.bukkit.event.entity.Entit
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 131105
 @native
 class org.bukkit.event.entity.EntityCreatePortalEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -22559,6 +23934,7 @@ class org.bukkit.event.entity.EntityCreatePortalEvent : org.bukkit.event.entity.
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityDamageByBlockEvent : org.bukkit.event.entity.EntityDamageEvent {
   @native
@@ -22579,6 +23955,7 @@ class org.bukkit.event.entity.EntityDamageByBlockEvent : org.bukkit.event.entity
   command getDamagerBlockState  -> org.bukkit.block.BlockState {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityDamageByEntityEvent : org.bukkit.event.entity.EntityDamageEvent {
   @native
@@ -22597,6 +23974,7 @@ class org.bukkit.event.entity.EntityDamageByEntityEvent : org.bukkit.event.entit
   command getDamager  -> org.bukkit.entity.Entity {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.entity.EntityDamageEvent__inacc__DamageCause : java.lang.Enum {
   @native
@@ -22675,6 +24053,7 @@ class org.bukkit.event.entity.EntityDamageEvent__inacc__DamageCause : java.lang.
   command __inacc__values  -> array<Unknown<org.bukkit.event.entity.EntityDamageEvent__inacc__DamageCause>> {}
 }
 
+//access: 147505
 @native
 class org.bukkit.event.entity.EntityDamageEvent__inacc__DamageModifier : java.lang.Enum {
   @native
@@ -22703,6 +24082,7 @@ class org.bukkit.event.entity.EntityDamageEvent__inacc__DamageModifier : java.la
   command __inacc__values  -> array<Unknown<org.bukkit.event.entity.EntityDamageEvent__inacc__DamageModifier>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityDamageEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -22751,6 +24131,7 @@ class org.bukkit.event.entity.EntityDamageEvent : org.bukkit.event.entity.Entity
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityDeathEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -22821,6 +24202,7 @@ class org.bukkit.event.entity.EntityDeathEvent : org.bukkit.event.entity.EntityE
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityDropItemEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -22843,6 +24225,7 @@ class org.bukkit.event.entity.EntityDropItemEvent : org.bukkit.event.entity.Enti
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityEnterBlockEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -22865,6 +24248,7 @@ class org.bukkit.event.entity.EntityEnterBlockEvent : org.bukkit.event.entity.En
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityEnterLoveModeEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -22897,6 +24281,7 @@ class org.bukkit.event.entity.EntityEnterLoveModeEvent : org.bukkit.event.entity
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 1057
 @native
 class org.bukkit.event.entity.EntityEvent : org.bukkit.event.Event {
   @native
@@ -22909,6 +24294,7 @@ class org.bukkit.event.entity.EntityEvent : org.bukkit.event.Event {
   command getEntityType  -> org.bukkit.entity.EntityType {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.entity.EntityExhaustionEvent__inacc__ExhaustionReason : java.lang.Enum {
   @native
@@ -22951,6 +24337,7 @@ class org.bukkit.event.entity.EntityExhaustionEvent__inacc__ExhaustionReason : j
   command __inacc__values  -> array<Unknown<org.bukkit.event.entity.EntityExhaustionEvent__inacc__ExhaustionReason>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityExhaustionEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -22983,6 +24370,7 @@ class org.bukkit.event.entity.EntityExhaustionEvent : org.bukkit.event.entity.En
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityExplodeEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23015,6 +24403,7 @@ class org.bukkit.event.entity.EntityExplodeEvent : org.bukkit.event.entity.Entit
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityInteractEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23037,6 +24426,7 @@ class org.bukkit.event.entity.EntityInteractEvent : org.bukkit.event.entity.Enti
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityPickupItemEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23067,6 +24457,7 @@ class org.bukkit.event.entity.EntityPickupItemEvent : org.bukkit.event.entity.En
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityPlaceEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23103,6 +24494,7 @@ class org.bukkit.event.entity.EntityPlaceEvent : org.bukkit.event.entity.EntityE
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityPortalEnterEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23119,6 +24511,7 @@ class org.bukkit.event.entity.EntityPortalEnterEvent : org.bukkit.event.entity.E
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityPortalEvent : org.bukkit.event.entity.EntityTeleportEvent {
   @native
@@ -23149,6 +24542,7 @@ class org.bukkit.event.entity.EntityPortalEvent : org.bukkit.event.entity.Entity
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityPortalExitEvent : org.bukkit.event.entity.EntityTeleportEvent {
   @native
@@ -23171,6 +24565,7 @@ class org.bukkit.event.entity.EntityPortalExitEvent : org.bukkit.event.entity.En
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityPoseChangeEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23187,6 +24582,7 @@ class org.bukkit.event.entity.EntityPoseChangeEvent : org.bukkit.event.entity.En
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.entity.EntityPotionEffectEvent__inacc__Action : java.lang.Enum {
   @native
@@ -23209,6 +24605,7 @@ class org.bukkit.event.entity.EntityPotionEffectEvent__inacc__Action : java.lang
   command __inacc__values  -> array<Unknown<org.bukkit.event.entity.EntityPotionEffectEvent__inacc__Action>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.entity.EntityPotionEffectEvent__inacc__Cause : java.lang.Enum {
   @native
@@ -23273,6 +24670,7 @@ class org.bukkit.event.entity.EntityPotionEffectEvent__inacc__Cause : java.lang.
   command __inacc__values  -> array<Unknown<org.bukkit.event.entity.EntityPotionEffectEvent__inacc__Cause>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityPotionEffectEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23315,6 +24713,7 @@ class org.bukkit.event.entity.EntityPotionEffectEvent : org.bukkit.event.entity.
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.entity.EntityRegainHealthEvent__inacc__RegainReason : java.lang.Enum {
   @native
@@ -23347,6 +24746,7 @@ class org.bukkit.event.entity.EntityRegainHealthEvent__inacc__RegainReason : jav
   command __inacc__values  -> array<Unknown<org.bukkit.event.entity.EntityRegainHealthEvent__inacc__RegainReason>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityRegainHealthEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23381,6 +24781,7 @@ class org.bukkit.event.entity.EntityRegainHealthEvent : org.bukkit.event.entity.
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityResurrectEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23409,6 +24810,7 @@ class org.bukkit.event.entity.EntityResurrectEvent : org.bukkit.event.entity.Ent
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityShootBowEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23469,6 +24871,7 @@ class org.bukkit.event.entity.EntityShootBowEvent : org.bukkit.event.entity.Enti
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntitySpawnEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23489,6 +24892,7 @@ class org.bukkit.event.entity.EntitySpawnEvent : org.bukkit.event.entity.EntityE
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntitySpellCastEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23515,6 +24919,7 @@ class org.bukkit.event.entity.EntitySpellCastEvent : org.bukkit.event.entity.Ent
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityTameEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23541,6 +24946,7 @@ class org.bukkit.event.entity.EntityTameEvent : org.bukkit.event.entity.EntityEv
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.entity.EntityTargetEvent__inacc__TargetReason : java.lang.Enum {
   @native
@@ -23593,6 +24999,7 @@ class org.bukkit.event.entity.EntityTargetEvent__inacc__TargetReason : java.lang
   command __inacc__values  -> array<Unknown<org.bukkit.event.entity.EntityTargetEvent__inacc__TargetReason>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityTargetEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23621,6 +25028,7 @@ class org.bukkit.event.entity.EntityTargetEvent : org.bukkit.event.entity.Entity
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityTargetLivingEntityEvent : org.bukkit.event.entity.EntityTargetEvent {
   @native
@@ -23633,6 +25041,7 @@ class org.bukkit.event.entity.EntityTargetLivingEntityEvent : org.bukkit.event.e
   command getTarget  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityTeleportEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23663,6 +25072,7 @@ class org.bukkit.event.entity.EntityTeleportEvent : org.bukkit.event.entity.Enti
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityToggleGlideEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23685,6 +25095,7 @@ class org.bukkit.event.entity.EntityToggleGlideEvent : org.bukkit.event.entity.E
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityToggleSwimEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23707,6 +25118,7 @@ class org.bukkit.event.entity.EntityToggleSwimEvent : org.bukkit.event.entity.En
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.entity.EntityTransformEvent__inacc__TransformReason : java.lang.Enum {
   @native
@@ -23741,6 +25153,7 @@ class org.bukkit.event.entity.EntityTransformEvent__inacc__TransformReason : jav
   command __inacc__values  -> array<Unknown<org.bukkit.event.entity.EntityTransformEvent__inacc__TransformReason>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityTransformEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23771,6 +25184,7 @@ class org.bukkit.event.entity.EntityTransformEvent : org.bukkit.event.entity.Ent
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.entity.EntityUnleashEvent__inacc__UnleashReason : java.lang.Enum {
   @native
@@ -23793,6 +25207,7 @@ class org.bukkit.event.entity.EntityUnleashEvent__inacc__UnleashReason : java.la
   command __inacc__values  -> array<Unknown<org.bukkit.event.entity.EntityUnleashEvent__inacc__UnleashReason>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.EntityUnleashEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23823,6 +25238,7 @@ class org.bukkit.event.entity.EntityUnleashEvent : org.bukkit.event.entity.Entit
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.ExpBottleEvent : org.bukkit.event.entity.ProjectileHitEvent {
   @native
@@ -23855,6 +25271,7 @@ class org.bukkit.event.entity.ExpBottleEvent : org.bukkit.event.entity.Projectil
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.ExplosionPrimeEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23887,6 +25304,7 @@ class org.bukkit.event.entity.ExplosionPrimeEvent : org.bukkit.event.entity.Enti
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.FireworkExplodeEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23909,6 +25327,7 @@ class org.bukkit.event.entity.FireworkExplodeEvent : org.bukkit.event.entity.Ent
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.FoodLevelChangeEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23943,6 +25362,7 @@ class org.bukkit.event.entity.FoodLevelChangeEvent : org.bukkit.event.entity.Ent
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.HorseJumpEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23971,6 +25391,7 @@ class org.bukkit.event.entity.HorseJumpEvent : org.bukkit.event.entity.EntityEve
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.ItemDespawnEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -23997,6 +25418,7 @@ class org.bukkit.event.entity.ItemDespawnEvent : org.bukkit.event.entity.EntityE
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.ItemMergeEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -24023,6 +25445,7 @@ class org.bukkit.event.entity.ItemMergeEvent : org.bukkit.event.entity.EntityEve
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.ItemSpawnEvent : org.bukkit.event.entity.EntitySpawnEvent {
   @native
@@ -24035,6 +25458,7 @@ class org.bukkit.event.entity.ItemSpawnEvent : org.bukkit.event.entity.EntitySpa
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.LingeringPotionSplashEvent : org.bukkit.event.entity.ProjectileHitEvent {
   @native
@@ -24071,6 +25495,7 @@ class org.bukkit.event.entity.LingeringPotionSplashEvent : org.bukkit.event.enti
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.PiglinBarterEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -24101,6 +25526,7 @@ class org.bukkit.event.entity.PiglinBarterEvent : org.bukkit.event.entity.Entity
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.PigZapEvent : com.destroystokyo.paper.event.entity.EntityZapEvent {
   @native
@@ -24125,6 +25551,7 @@ class org.bukkit.event.entity.PigZapEvent : com.destroystokyo.paper.event.entity
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.PigZombieAngerEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -24157,6 +25584,7 @@ class org.bukkit.event.entity.PigZombieAngerEvent : org.bukkit.event.entity.Enti
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.PlayerDeathEvent : org.bukkit.event.entity.EntityDeathEvent {
   @native
@@ -24239,6 +25667,7 @@ class org.bukkit.event.entity.PlayerDeathEvent : org.bukkit.event.entity.EntityD
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.PlayerLeashEntityEvent : org.bukkit.event.Event {
   @native
@@ -24275,6 +25704,7 @@ class org.bukkit.event.entity.PlayerLeashEntityEvent : org.bukkit.event.Event {
   command setCancelled  -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.PotionSplashEvent : org.bukkit.event.entity.ProjectileHitEvent {
   @native
@@ -24311,6 +25741,7 @@ class org.bukkit.event.entity.PotionSplashEvent : org.bukkit.event.entity.Projec
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.ProjectileHitEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -24353,6 +25784,7 @@ class org.bukkit.event.entity.ProjectileHitEvent : org.bukkit.event.entity.Entit
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.ProjectileLaunchEvent : org.bukkit.event.entity.EntitySpawnEvent {
   @native
@@ -24369,6 +25801,7 @@ class org.bukkit.event.entity.ProjectileLaunchEvent : org.bukkit.event.entity.En
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.SheepDyeWoolEvent : io.papermc.paper.event.entity.EntityDyeEvent {
   @native
@@ -24381,6 +25814,7 @@ class org.bukkit.event.entity.SheepDyeWoolEvent : io.papermc.paper.event.entity.
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.SheepRegrowWoolEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -24403,6 +25837,7 @@ class org.bukkit.event.entity.SheepRegrowWoolEvent : org.bukkit.event.entity.Ent
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.SlimeSplitEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -24431,6 +25866,7 @@ class org.bukkit.event.entity.SlimeSplitEvent : org.bukkit.event.entity.EntityEv
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.SpawnerSpawnEvent : org.bukkit.event.entity.EntitySpawnEvent {
   @native
@@ -24441,6 +25877,7 @@ class org.bukkit.event.entity.SpawnerSpawnEvent : org.bukkit.event.entity.Entity
   command getSpawner  -> org.bukkit.block.CreatureSpawner {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.StriderTemperatureChangeEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -24467,6 +25904,7 @@ class org.bukkit.event.entity.StriderTemperatureChangeEvent : org.bukkit.event.e
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.VillagerAcquireTradeEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -24495,6 +25933,7 @@ class org.bukkit.event.entity.VillagerAcquireTradeEvent : org.bukkit.event.entit
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.entity.VillagerCareerChangeEvent__inacc__ChangeReason : java.lang.Enum {
   @native
@@ -24513,6 +25952,7 @@ class org.bukkit.event.entity.VillagerCareerChangeEvent__inacc__ChangeReason : j
   command __inacc__values  -> array<Unknown<org.bukkit.event.entity.VillagerCareerChangeEvent__inacc__ChangeReason>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.VillagerCareerChangeEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -24545,6 +25985,7 @@ class org.bukkit.event.entity.VillagerCareerChangeEvent : org.bukkit.event.entit
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.entity.VillagerReplenishTradeEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -24577,6 +26018,7 @@ class org.bukkit.event.entity.VillagerReplenishTradeEvent : org.bukkit.event.ent
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.Event__inacc__Result : java.lang.Enum {
   @native
@@ -24597,6 +26039,7 @@ class org.bukkit.event.Event__inacc__Result : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.event.Event__inacc__Result>> {}
 }
 
+//access: 1057
 @native
 class org.bukkit.event.Event : java.lang.Object {
   @native
@@ -24617,6 +26060,7 @@ class org.bukkit.event.Event : java.lang.Object {
   command isAsynchronous  -> boolean {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.EventException : java.lang.Exception {
   @native
@@ -24635,7 +26079,9 @@ class org.bukkit.event.EventException : java.lang.Exception {
   command getCause  -> java.lang.Throwable {}
 }
 
+//access: 9729
 @native
+@interface
 class org.bukkit.event.EventHandler : java.lang.Object {
   @native
   command priority  -> org.bukkit.event.EventPriority {}
@@ -24643,6 +26089,7 @@ class org.bukkit.event.EventHandler : java.lang.Object {
   command ignoreCancelled  -> boolean {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.EventPriority : java.lang.Enum {
   @native
@@ -24673,6 +26120,7 @@ class org.bukkit.event.EventPriority : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.event.EventPriority>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.HandlerList : java.lang.Object {
   @native
@@ -24719,6 +26167,7 @@ class org.bukkit.event.HandlerList : java.lang.Object {
   command lambda__inacc__new__inacc__0 arga:java.lang.StackWalker__inacc__StackFrame -> boolean {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.hanging.HangingBreakByEntityEvent : org.bukkit.event.hanging.HangingBreakEvent {
   @native
@@ -24731,6 +26180,7 @@ class org.bukkit.event.hanging.HangingBreakByEntityEvent : org.bukkit.event.hang
   command getRemover  -> org.bukkit.entity.Entity {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.hanging.HangingBreakEvent__inacc__RemoveCause : java.lang.Enum {
   @native
@@ -24755,6 +26205,7 @@ class org.bukkit.event.hanging.HangingBreakEvent__inacc__RemoveCause : java.lang
   command __inacc__values  -> array<Unknown<org.bukkit.event.hanging.HangingBreakEvent__inacc__RemoveCause>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.hanging.HangingBreakEvent : org.bukkit.event.hanging.HangingEvent {
   @native
@@ -24777,6 +26228,7 @@ class org.bukkit.event.hanging.HangingBreakEvent : org.bukkit.event.hanging.Hang
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 1057
 @native
 class org.bukkit.event.hanging.HangingEvent : org.bukkit.event.Event {
   @native
@@ -24787,6 +26239,7 @@ class org.bukkit.event.hanging.HangingEvent : org.bukkit.event.Event {
   command getEntity  -> org.bukkit.entity.Hanging {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.hanging.HangingPlaceEvent : org.bukkit.event.hanging.HangingEvent {
   @native
@@ -24827,6 +26280,7 @@ class org.bukkit.event.hanging.HangingPlaceEvent : org.bukkit.event.hanging.Hang
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.BrewEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -24857,6 +26311,7 @@ class org.bukkit.event.inventory.BrewEvent : org.bukkit.event.block.BlockEvent {
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.BrewingStandFuelEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -24891,6 +26346,7 @@ class org.bukkit.event.inventory.BrewingStandFuelEvent : org.bukkit.event.block.
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.inventory.ClickType : java.lang.Enum {
   @native
@@ -24945,6 +26401,7 @@ class org.bukkit.event.inventory.ClickType : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.event.inventory.ClickType>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.CraftItemEvent : org.bukkit.event.inventory.InventoryClickEvent {
   @native
@@ -24961,6 +26418,7 @@ class org.bukkit.event.inventory.CraftItemEvent : org.bukkit.event.inventory.Inv
   command getInventory  -> org.bukkit.inventory.Inventory {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.inventory.DragType : java.lang.Enum {
   @native
@@ -24979,6 +26437,7 @@ class org.bukkit.event.inventory.DragType : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.event.inventory.DragType>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.FurnaceBurnEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -25019,6 +26478,7 @@ class org.bukkit.event.inventory.FurnaceBurnEvent : org.bukkit.event.block.Block
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.FurnaceExtractEvent : org.bukkit.event.block.BlockExpEvent {
   @native
@@ -25037,6 +26497,7 @@ class org.bukkit.event.inventory.FurnaceExtractEvent : org.bukkit.event.block.Bl
   command getItemAmount  -> jvm_integer {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.FurnaceSmeltEvent : org.bukkit.event.block.BlockCookEvent {
   @native
@@ -25045,6 +26506,7 @@ class org.bukkit.event.inventory.FurnaceSmeltEvent : org.bukkit.event.block.Bloc
   command construct arga:org.bukkit.block.Block argb:org.bukkit.inventory.ItemStack argc:org.bukkit.inventory.ItemStack argd:org.bukkit.inventory.CookingRecipe -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.FurnaceStartSmeltEvent : org.bukkit.event.block.InventoryBlockStartEvent {
   @native
@@ -25063,6 +26525,7 @@ class org.bukkit.event.inventory.FurnaceStartSmeltEvent : org.bukkit.event.block
   command setTotalCookTime  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.inventory.HopperInventorySearchEvent__inacc__ContainerType : java.lang.Enum {
   @native
@@ -25081,6 +26544,7 @@ class org.bukkit.event.inventory.HopperInventorySearchEvent__inacc__ContainerTyp
   command __inacc__values  -> array<Unknown<org.bukkit.event.inventory.HopperInventorySearchEvent__inacc__ContainerType>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.HopperInventorySearchEvent : org.bukkit.event.block.BlockEvent {
   @native
@@ -25107,6 +26571,7 @@ class org.bukkit.event.inventory.HopperInventorySearchEvent : org.bukkit.event.b
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.inventory.InventoryAction : java.lang.Enum {
   @native
@@ -25159,6 +26624,7 @@ class org.bukkit.event.inventory.InventoryAction : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.event.inventory.InventoryAction>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.InventoryClickEvent : org.bukkit.event.inventory.InventoryInteractEvent {
   @native
@@ -25215,6 +26681,7 @@ class org.bukkit.event.inventory.InventoryClickEvent : org.bukkit.event.inventor
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.inventory.InventoryCloseEvent__inacc__Reason : java.lang.Enum {
   @native
@@ -25247,6 +26714,7 @@ class org.bukkit.event.inventory.InventoryCloseEvent__inacc__Reason : java.lang.
   command __inacc__values  -> array<Unknown<org.bukkit.event.inventory.InventoryCloseEvent__inacc__Reason>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.InventoryCloseEvent : org.bukkit.event.inventory.InventoryEvent {
   @native
@@ -25267,6 +26735,7 @@ class org.bukkit.event.inventory.InventoryCloseEvent : org.bukkit.event.inventor
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.InventoryCreativeEvent : org.bukkit.event.inventory.InventoryClickEvent {
   @native
@@ -25279,6 +26748,7 @@ class org.bukkit.event.inventory.InventoryCreativeEvent : org.bukkit.event.inven
   command setCursor arga:org.bukkit.inventory.ItemStack -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.InventoryDragEvent : org.bukkit.event.inventory.InventoryInteractEvent {
   @native
@@ -25315,6 +26785,7 @@ class org.bukkit.event.inventory.InventoryDragEvent : org.bukkit.event.inventory
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.InventoryEvent : org.bukkit.event.Event {
   @native
@@ -25335,6 +26806,7 @@ class org.bukkit.event.inventory.InventoryEvent : org.bukkit.event.Event {
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 1057
 @native
 class org.bukkit.event.inventory.InventoryInteractEvent : org.bukkit.event.inventory.InventoryEvent {
   @native
@@ -25353,6 +26825,7 @@ class org.bukkit.event.inventory.InventoryInteractEvent : org.bukkit.event.inven
   command setCancelled  -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.InventoryMoveItemEvent : org.bukkit.event.Event {
   @native
@@ -25389,6 +26862,7 @@ class org.bukkit.event.inventory.InventoryMoveItemEvent : org.bukkit.event.Event
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.InventoryOpenEvent : org.bukkit.event.inventory.InventoryEvent {
   @native
@@ -25415,6 +26889,7 @@ class org.bukkit.event.inventory.InventoryOpenEvent : org.bukkit.event.inventory
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.InventoryPickupItemEvent : org.bukkit.event.Event {
   @native
@@ -25441,6 +26916,7 @@ class org.bukkit.event.inventory.InventoryPickupItemEvent : org.bukkit.event.Eve
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.inventory.InventoryType__inacc__SlotType : java.lang.Enum {
   @native
@@ -25469,6 +26945,7 @@ class org.bukkit.event.inventory.InventoryType__inacc__SlotType : java.lang.Enum
   command __inacc__values  -> array<Unknown<org.bukkit.event.inventory.InventoryType__inacc__SlotType>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.inventory.InventoryType : java.lang.Enum {
   @native
@@ -25559,6 +27036,7 @@ class org.bukkit.event.inventory.InventoryType : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.event.inventory.InventoryType>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.PrepareAnvilEvent : com.destroystokyo.paper.event.inventory.PrepareResultEvent {
   @native
@@ -25571,6 +27049,7 @@ class org.bukkit.event.inventory.PrepareAnvilEvent : com.destroystokyo.paper.eve
   command getInventory  -> org.bukkit.inventory.Inventory {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.PrepareGrindstoneEvent : com.destroystokyo.paper.event.inventory.PrepareGrindstoneEvent {
   @native
@@ -25581,6 +27060,7 @@ class org.bukkit.event.inventory.PrepareGrindstoneEvent : com.destroystokyo.pape
   command getInventory  -> org.bukkit.inventory.Inventory {}
 }
 
+//access: 131105
 @native
 class org.bukkit.event.inventory.PrepareInventoryResultEvent : org.bukkit.event.inventory.InventoryEvent {
   @native
@@ -25599,6 +27079,7 @@ class org.bukkit.event.inventory.PrepareInventoryResultEvent : org.bukkit.event.
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.PrepareItemCraftEvent : org.bukkit.event.inventory.InventoryEvent {
   @native
@@ -25623,6 +27104,7 @@ class org.bukkit.event.inventory.PrepareItemCraftEvent : org.bukkit.event.invent
   command getInventory  -> org.bukkit.inventory.Inventory {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.PrepareSmithingEvent : com.destroystokyo.paper.event.inventory.PrepareResultEvent {
   @native
@@ -25633,6 +27115,7 @@ class org.bukkit.event.inventory.PrepareSmithingEvent : com.destroystokyo.paper.
   command getInventory  -> org.bukkit.inventory.Inventory {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.SmithItemEvent : org.bukkit.event.inventory.InventoryClickEvent {
   @native
@@ -25645,6 +27128,7 @@ class org.bukkit.event.inventory.SmithItemEvent : org.bukkit.event.inventory.Inv
   command getInventory  -> org.bukkit.inventory.Inventory {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.inventory.TradeSelectEvent : org.bukkit.event.inventory.InventoryInteractEvent {
   @native
@@ -25667,10 +27151,13 @@ class org.bukkit.event.inventory.TradeSelectEvent : org.bukkit.event.inventory.I
   command getInventory  -> org.bukkit.inventory.Inventory {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.event.Listener : java.lang.Object {
 }
 
+//access: 131105
 @native
 class org.bukkit.event.player.AsyncPlayerChatEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -25705,6 +27192,7 @@ class org.bukkit.event.player.AsyncPlayerChatEvent : org.bukkit.event.player.Pla
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 131105
 @native
 class org.bukkit.event.player.AsyncPlayerChatPreviewEvent : org.bukkit.event.player.AsyncPlayerChatEvent {
   @native
@@ -25717,6 +27205,7 @@ class org.bukkit.event.player.AsyncPlayerChatPreviewEvent : org.bukkit.event.pla
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.player.AsyncPlayerPreLoginEvent__inacc__Result : java.lang.Enum {
   @native
@@ -25743,6 +27232,7 @@ class org.bukkit.event.player.AsyncPlayerPreLoginEvent__inacc__Result : java.lan
   command __inacc__values  -> array<Unknown<org.bukkit.event.player.AsyncPlayerPreLoginEvent__inacc__Result>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.AsyncPlayerPreLoginEvent : org.bukkit.event.Event {
   @native
@@ -25815,6 +27305,7 @@ class org.bukkit.event.player.AsyncPlayerPreLoginEvent : org.bukkit.event.Event 
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerAdvancementDoneEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -25839,6 +27330,7 @@ class org.bukkit.event.player.PlayerAdvancementDoneEvent : org.bukkit.event.play
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerAnimationEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -25863,6 +27355,7 @@ class org.bukkit.event.player.PlayerAnimationEvent : org.bukkit.event.player.Pla
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.player.PlayerAnimationType : java.lang.Enum {
   @native
@@ -25881,6 +27374,7 @@ class org.bukkit.event.player.PlayerAnimationType : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.event.player.PlayerAnimationType>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerArmorStandManipulateEvent : org.bukkit.event.player.PlayerInteractEntityEvent {
   @native
@@ -25913,6 +27407,7 @@ class org.bukkit.event.player.PlayerArmorStandManipulateEvent : org.bukkit.event
   command getRightClicked  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerAttemptPickupItemEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -25947,6 +27442,7 @@ class org.bukkit.event.player.PlayerAttemptPickupItemEvent : org.bukkit.event.pl
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.player.PlayerBedEnterEvent__inacc__BedEnterResult : java.lang.Enum {
   @native
@@ -25975,6 +27471,7 @@ class org.bukkit.event.player.PlayerBedEnterEvent__inacc__BedEnterResult : java.
   command __inacc__values  -> array<Unknown<org.bukkit.event.player.PlayerBedEnterEvent__inacc__BedEnterResult>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerBedEnterEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26007,6 +27504,7 @@ class org.bukkit.event.player.PlayerBedEnterEvent : org.bukkit.event.player.Play
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerBedLeaveEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26035,6 +27533,7 @@ class org.bukkit.event.player.PlayerBedLeaveEvent : org.bukkit.event.player.Play
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerBucketEmptyEvent : org.bukkit.event.player.PlayerBucketEvent {
   @native
@@ -26051,6 +27550,7 @@ class org.bukkit.event.player.PlayerBucketEmptyEvent : org.bukkit.event.player.P
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerBucketEntityEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26085,6 +27585,7 @@ class org.bukkit.event.player.PlayerBucketEntityEvent : org.bukkit.event.player.
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 1057
 @native
 class org.bukkit.event.player.PlayerBucketEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26127,6 +27628,7 @@ class org.bukkit.event.player.PlayerBucketEvent : org.bukkit.event.player.Player
   command setCancelled  -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerBucketFillEvent : org.bukkit.event.player.PlayerBucketEvent {
   @native
@@ -26143,6 +27645,7 @@ class org.bukkit.event.player.PlayerBucketFillEvent : org.bukkit.event.player.Pl
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 131105
 @native
 class org.bukkit.event.player.PlayerBucketFishEvent : org.bukkit.event.player.PlayerBucketEntityEvent {
   @native
@@ -26157,6 +27660,7 @@ class org.bukkit.event.player.PlayerBucketFishEvent : org.bukkit.event.player.Pl
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerChangedMainHandEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26173,6 +27677,7 @@ class org.bukkit.event.player.PlayerChangedMainHandEvent : org.bukkit.event.play
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerChangedWorldEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26189,6 +27694,7 @@ class org.bukkit.event.player.PlayerChangedWorldEvent : org.bukkit.event.player.
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 1057
 @native
 class org.bukkit.event.player.PlayerChannelEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26205,6 +27711,7 @@ class org.bukkit.event.player.PlayerChannelEvent : org.bukkit.event.player.Playe
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 131105
 @native
 class org.bukkit.event.player.PlayerChatEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26243,6 +27750,7 @@ class org.bukkit.event.player.PlayerChatEvent : org.bukkit.event.player.PlayerEv
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 131105
 @native
 class org.bukkit.event.player.PlayerChatTabCompleteEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26267,6 +27775,7 @@ class org.bukkit.event.player.PlayerChatTabCompleteEvent : org.bukkit.event.play
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerCommandPreprocessEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26299,6 +27808,7 @@ class org.bukkit.event.player.PlayerCommandPreprocessEvent : org.bukkit.event.pl
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerCommandSendEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26315,6 +27825,7 @@ class org.bukkit.event.player.PlayerCommandSendEvent : org.bukkit.event.player.P
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerDropItemEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26337,6 +27848,7 @@ class org.bukkit.event.player.PlayerDropItemEvent : org.bukkit.event.player.Play
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerEditBookEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26375,6 +27887,7 @@ class org.bukkit.event.player.PlayerEditBookEvent : org.bukkit.event.player.Play
   command setCancelled  -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerEggThrowEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26409,6 +27922,7 @@ class org.bukkit.event.player.PlayerEggThrowEvent : org.bukkit.event.player.Play
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 1057
 @native
 class org.bukkit.event.player.PlayerEvent : org.bukkit.event.Event {
   @native
@@ -26421,6 +27935,7 @@ class org.bukkit.event.player.PlayerEvent : org.bukkit.event.Event {
   command getPlayer  -> org.bukkit.entity.Player {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerExpChangeEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26445,6 +27960,7 @@ class org.bukkit.event.player.PlayerExpChangeEvent : org.bukkit.event.player.Pla
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.player.PlayerExpCooldownChangeEvent__inacc__ChangeReason : java.lang.Enum {
   @native
@@ -26463,6 +27979,7 @@ class org.bukkit.event.player.PlayerExpCooldownChangeEvent__inacc__ChangeReason 
   command __inacc__values  -> array<Unknown<org.bukkit.event.player.PlayerExpCooldownChangeEvent__inacc__ChangeReason>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerExpCooldownChangeEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26485,6 +28002,7 @@ class org.bukkit.event.player.PlayerExpCooldownChangeEvent : org.bukkit.event.pl
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.player.PlayerFishEvent__inacc__State : java.lang.Enum {
   @native
@@ -26513,6 +28031,7 @@ class org.bukkit.event.player.PlayerFishEvent__inacc__State : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.event.player.PlayerFishEvent__inacc__State>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerFishEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26555,6 +28074,7 @@ class org.bukkit.event.player.PlayerFishEvent : org.bukkit.event.player.PlayerEv
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.player.PlayerGameModeChangeEvent__inacc__Cause : java.lang.Enum {
   @native
@@ -26579,6 +28099,7 @@ class org.bukkit.event.player.PlayerGameModeChangeEvent__inacc__Cause : java.lan
   command __inacc__values  -> array<Unknown<org.bukkit.event.player.PlayerGameModeChangeEvent__inacc__Cause>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerGameModeChangeEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26613,6 +28134,7 @@ class org.bukkit.event.player.PlayerGameModeChangeEvent : org.bukkit.event.playe
   command cancelMessage arga:net.kyori.adventure.text.Component -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerHarvestBlockEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26645,6 +28167,7 @@ class org.bukkit.event.player.PlayerHarvestBlockEvent : org.bukkit.event.player.
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerHideEntityEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26661,6 +28184,7 @@ class org.bukkit.event.player.PlayerHideEntityEvent : org.bukkit.event.player.Pl
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerInteractAtEntityEvent : org.bukkit.event.player.PlayerInteractEntityEvent {
   @native
@@ -26679,6 +28203,7 @@ class org.bukkit.event.player.PlayerInteractAtEntityEvent : org.bukkit.event.pla
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerInteractEntityEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26707,6 +28232,7 @@ class org.bukkit.event.player.PlayerInteractEntityEvent : org.bukkit.event.playe
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerInteractEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26773,6 +28299,7 @@ class org.bukkit.event.player.PlayerInteractEvent : org.bukkit.event.player.Play
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerItemBreakEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26789,6 +28316,7 @@ class org.bukkit.event.player.PlayerItemBreakEvent : org.bukkit.event.player.Pla
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerItemConsumeEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26825,6 +28353,7 @@ class org.bukkit.event.player.PlayerItemConsumeEvent : org.bukkit.event.player.P
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerItemDamageEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26859,6 +28388,7 @@ class org.bukkit.event.player.PlayerItemDamageEvent : org.bukkit.event.player.Pl
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerItemHeldEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26885,6 +28415,7 @@ class org.bukkit.event.player.PlayerItemHeldEvent : org.bukkit.event.player.Play
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerItemMendEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26935,6 +28466,7 @@ class org.bukkit.event.player.PlayerItemMendEvent : org.bukkit.event.player.Play
   command lambda__inacc__new__inacc__0  -> jvm_integer {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerJoinEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -26959,6 +28491,7 @@ class org.bukkit.event.player.PlayerJoinEvent : org.bukkit.event.player.PlayerEv
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.player.PlayerKickEvent__inacc__Cause : java.lang.Enum {
   @native
@@ -27027,6 +28560,7 @@ class org.bukkit.event.player.PlayerKickEvent__inacc__Cause : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.event.player.PlayerKickEvent__inacc__Cause>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerKickEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -27073,6 +28607,7 @@ class org.bukkit.event.player.PlayerKickEvent : org.bukkit.event.player.PlayerEv
   command getCause  -> org.bukkit.event.player.PlayerKickEvent__inacc__Cause {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerLevelChangeEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -27093,6 +28628,7 @@ class org.bukkit.event.player.PlayerLevelChangeEvent : org.bukkit.event.player.P
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerLocaleChangeEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -27113,6 +28649,7 @@ class org.bukkit.event.player.PlayerLocaleChangeEvent : org.bukkit.event.player.
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.player.PlayerLoginEvent__inacc__Result : java.lang.Enum {
   @native
@@ -27137,6 +28674,7 @@ class org.bukkit.event.player.PlayerLoginEvent__inacc__Result : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.event.player.PlayerLoginEvent__inacc__Result>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerLoginEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -27189,6 +28727,7 @@ class org.bukkit.event.player.PlayerLoginEvent : org.bukkit.event.player.PlayerE
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerMoveEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -27231,6 +28770,7 @@ class org.bukkit.event.player.PlayerMoveEvent : org.bukkit.event.player.PlayerEv
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerPickupArrowEvent : org.bukkit.event.player.PlayerPickupItemEvent {
   @native
@@ -27241,6 +28781,7 @@ class org.bukkit.event.player.PlayerPickupArrowEvent : org.bukkit.event.player.P
   command getArrow  -> org.bukkit.entity.AbstractArrow {}
 }
 
+//access: 131105
 @native
 class org.bukkit.event.player.PlayerPickupItemEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -27273,6 +28814,7 @@ class org.bukkit.event.player.PlayerPickupItemEvent : org.bukkit.event.player.Pl
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerPortalEvent : org.bukkit.event.player.PlayerTeleportEvent {
   @native
@@ -27315,6 +28857,7 @@ class org.bukkit.event.player.PlayerPortalEvent : org.bukkit.event.player.Player
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.player.PlayerPreLoginEvent__inacc__Result : java.lang.Enum {
   @native
@@ -27339,6 +28882,7 @@ class org.bukkit.event.player.PlayerPreLoginEvent__inacc__Result : java.lang.Enu
   command __inacc__values  -> array<Unknown<org.bukkit.event.player.PlayerPreLoginEvent__inacc__Result>> {}
 }
 
+//access: 131105
 @native
 class org.bukkit.event.player.PlayerPreLoginEvent : org.bukkit.event.Event {
   @native
@@ -27387,6 +28931,7 @@ class org.bukkit.event.player.PlayerPreLoginEvent : org.bukkit.event.Event {
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.player.PlayerQuitEvent__inacc__QuitReason : java.lang.Enum {
   @native
@@ -27409,6 +28954,7 @@ class org.bukkit.event.player.PlayerQuitEvent__inacc__QuitReason : java.lang.Enu
   command __inacc__values  -> array<Unknown<org.bukkit.event.player.PlayerQuitEvent__inacc__QuitReason>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerQuitEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -27441,6 +28987,7 @@ class org.bukkit.event.player.PlayerQuitEvent : org.bukkit.event.player.PlayerEv
   command getReason  -> org.bukkit.event.player.PlayerQuitEvent__inacc__QuitReason {}
 }
 
+//access: 131105
 @native
 class org.bukkit.event.player.PlayerRecipeBookClickEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -27469,6 +29016,7 @@ class org.bukkit.event.player.PlayerRecipeBookClickEvent : org.bukkit.event.play
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.player.PlayerRecipeBookSettingsChangeEvent__inacc__RecipeBookType : java.lang.Enum {
   @native
@@ -27491,6 +29039,7 @@ class org.bukkit.event.player.PlayerRecipeBookSettingsChangeEvent__inacc__Recipe
   command __inacc__values  -> array<Unknown<org.bukkit.event.player.PlayerRecipeBookSettingsChangeEvent__inacc__RecipeBookType>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerRecipeBookSettingsChangeEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -27515,6 +29064,7 @@ class org.bukkit.event.player.PlayerRecipeBookSettingsChangeEvent : org.bukkit.e
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerRecipeDiscoverEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -27537,12 +29087,14 @@ class org.bukkit.event.player.PlayerRecipeDiscoverEvent : org.bukkit.event.playe
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerRegisterChannelEvent : org.bukkit.event.player.PlayerChannelEvent {
   @native
   command construct arga:org.bukkit.entity.Player argb:string -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.player.PlayerResourcePackStatusEvent__inacc__Status : java.lang.Enum {
   @native
@@ -27565,6 +29117,7 @@ class org.bukkit.event.player.PlayerResourcePackStatusEvent__inacc__Status : jav
   command __inacc__values  -> array<Unknown<org.bukkit.event.player.PlayerResourcePackStatusEvent__inacc__Status>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerResourcePackStatusEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -27587,6 +29140,7 @@ class org.bukkit.event.player.PlayerResourcePackStatusEvent : org.bukkit.event.p
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.player.PlayerRespawnEvent__inacc__RespawnFlag : java.lang.Enum {
   @native
@@ -27607,6 +29161,7 @@ class org.bukkit.event.player.PlayerRespawnEvent__inacc__RespawnFlag : java.lang
   command __inacc__values  -> array<Unknown<org.bukkit.event.player.PlayerRespawnEvent__inacc__RespawnFlag>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.player.PlayerRespawnEvent__inacc__RespawnReason : java.lang.Enum {
   @native
@@ -27627,6 +29182,7 @@ class org.bukkit.event.player.PlayerRespawnEvent__inacc__RespawnReason : java.la
   command __inacc__values  -> array<Unknown<org.bukkit.event.player.PlayerRespawnEvent__inacc__RespawnReason>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerRespawnEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -27667,6 +29223,7 @@ class org.bukkit.event.player.PlayerRespawnEvent : org.bukkit.event.player.Playe
   command getRespawnFlags  -> java.util.Set {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerRiptideEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -27683,6 +29240,7 @@ class org.bukkit.event.player.PlayerRiptideEvent : org.bukkit.event.player.Playe
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerShearEntityEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -27715,6 +29273,7 @@ class org.bukkit.event.player.PlayerShearEntityEvent : org.bukkit.event.player.P
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerShowEntityEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -27731,6 +29290,7 @@ class org.bukkit.event.player.PlayerShowEntityEvent : org.bukkit.event.player.Pl
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.player.PlayerSignOpenEvent__inacc__Cause : java.lang.Enum {
   @native
@@ -27753,6 +29313,7 @@ class org.bukkit.event.player.PlayerSignOpenEvent__inacc__Cause : java.lang.Enum
   command __inacc__values  -> array<Unknown<org.bukkit.event.player.PlayerSignOpenEvent__inacc__Cause>> {}
 }
 
+//access: 131105
 @native
 class org.bukkit.event.player.PlayerSignOpenEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -27783,6 +29344,7 @@ class org.bukkit.event.player.PlayerSignOpenEvent : org.bukkit.event.player.Play
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.player.PlayerSpawnChangeEvent__inacc__Cause : java.lang.Enum {
   @native
@@ -27809,6 +29371,7 @@ class org.bukkit.event.player.PlayerSpawnChangeEvent__inacc__Cause : java.lang.E
   command __inacc__values  -> array<Unknown<org.bukkit.event.player.PlayerSpawnChangeEvent__inacc__Cause>> {}
 }
 
+//access: 131105
 @native
 class org.bukkit.event.player.PlayerSpawnChangeEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -27843,6 +29406,7 @@ class org.bukkit.event.player.PlayerSpawnChangeEvent : org.bukkit.event.player.P
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerStatisticIncrementEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -27885,6 +29449,7 @@ class org.bukkit.event.player.PlayerStatisticIncrementEvent : org.bukkit.event.p
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerSwapHandItemsEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -27915,6 +29480,7 @@ class org.bukkit.event.player.PlayerSwapHandItemsEvent : org.bukkit.event.player
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerTakeLecternBookEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -27939,6 +29505,7 @@ class org.bukkit.event.player.PlayerTakeLecternBookEvent : org.bukkit.event.play
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.player.PlayerTeleportEvent__inacc__TeleportCause : java.lang.Enum {
   @native
@@ -27975,6 +29542,7 @@ class org.bukkit.event.player.PlayerTeleportEvent__inacc__TeleportCause : java.l
   command __inacc__values  -> array<Unknown<org.bukkit.event.player.PlayerTeleportEvent__inacc__TeleportCause>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerTeleportEvent : org.bukkit.event.player.PlayerMoveEvent {
   @native
@@ -28003,6 +29571,7 @@ class org.bukkit.event.player.PlayerTeleportEvent : org.bukkit.event.player.Play
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerToggleFlightEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -28025,6 +29594,7 @@ class org.bukkit.event.player.PlayerToggleFlightEvent : org.bukkit.event.player.
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerToggleSneakEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -28047,6 +29617,7 @@ class org.bukkit.event.player.PlayerToggleSneakEvent : org.bukkit.event.player.P
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerToggleSprintEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -28069,6 +29640,7 @@ class org.bukkit.event.player.PlayerToggleSprintEvent : org.bukkit.event.player.
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerUnleashEntityEvent : org.bukkit.event.entity.EntityUnleashEvent {
   @native
@@ -28093,12 +29665,14 @@ class org.bukkit.event.player.PlayerUnleashEntityEvent : org.bukkit.event.entity
   command setCancelled  -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerUnregisterChannelEvent : org.bukkit.event.player.PlayerChannelEvent {
   @native
   command construct arga:org.bukkit.entity.Player argb:string -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.player.PlayerVelocityEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -28123,6 +29697,7 @@ class org.bukkit.event.player.PlayerVelocityEvent : org.bukkit.event.player.Play
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 1057
 @native
 class org.bukkit.event.raid.RaidEvent : org.bukkit.event.world.WorldEvent {
   @native
@@ -28133,6 +29708,7 @@ class org.bukkit.event.raid.RaidEvent : org.bukkit.event.world.WorldEvent {
   command getRaid  -> org.bukkit.Raid {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.raid.RaidFinishEvent : org.bukkit.event.raid.RaidEvent {
   @native
@@ -28149,6 +29725,7 @@ class org.bukkit.event.raid.RaidFinishEvent : org.bukkit.event.raid.RaidEvent {
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.raid.RaidSpawnWaveEvent : org.bukkit.event.raid.RaidEvent {
   @native
@@ -28169,6 +29746,7 @@ class org.bukkit.event.raid.RaidSpawnWaveEvent : org.bukkit.event.raid.RaidEvent
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.raid.RaidStopEvent__inacc__Reason : java.lang.Enum {
   @native
@@ -28193,6 +29771,7 @@ class org.bukkit.event.raid.RaidStopEvent__inacc__Reason : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.event.raid.RaidStopEvent__inacc__Reason>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.raid.RaidStopEvent : org.bukkit.event.raid.RaidEvent {
   @native
@@ -28209,6 +29788,7 @@ class org.bukkit.event.raid.RaidStopEvent : org.bukkit.event.raid.RaidEvent {
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.raid.RaidTriggerEvent : org.bukkit.event.raid.RaidEvent {
   @native
@@ -28231,6 +29811,7 @@ class org.bukkit.event.raid.RaidTriggerEvent : org.bukkit.event.raid.RaidEvent {
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.server.BroadcastMessageEvent : org.bukkit.event.server.ServerEvent {
   @native
@@ -28269,6 +29850,7 @@ class org.bukkit.event.server.BroadcastMessageEvent : org.bukkit.event.server.Se
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.server.MapInitializeEvent : org.bukkit.event.server.ServerEvent {
   @native
@@ -28285,6 +29867,7 @@ class org.bukkit.event.server.MapInitializeEvent : org.bukkit.event.server.Serve
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.server.PluginDisableEvent : org.bukkit.event.server.PluginEvent {
   @native
@@ -28297,6 +29880,7 @@ class org.bukkit.event.server.PluginDisableEvent : org.bukkit.event.server.Plugi
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.server.PluginEnableEvent : org.bukkit.event.server.PluginEvent {
   @native
@@ -28309,6 +29893,7 @@ class org.bukkit.event.server.PluginEnableEvent : org.bukkit.event.server.Plugin
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 1057
 @native
 class org.bukkit.event.server.PluginEvent : org.bukkit.event.server.ServerEvent {
   @native
@@ -28319,6 +29904,7 @@ class org.bukkit.event.server.PluginEvent : org.bukkit.event.server.ServerEvent 
   command getPlugin  -> org.bukkit.plugin.Plugin {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.server.RemoteServerCommandEvent : org.bukkit.event.server.ServerCommandEvent {
   @native
@@ -28331,6 +29917,7 @@ class org.bukkit.event.server.RemoteServerCommandEvent : org.bukkit.event.server
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.server.ServerCommandEvent : org.bukkit.event.server.ServerEvent {
   @native
@@ -28359,6 +29946,7 @@ class org.bukkit.event.server.ServerCommandEvent : org.bukkit.event.server.Serve
   command setCancelled  -> void {}
 }
 
+//access: 1057
 @native
 class org.bukkit.event.server.ServerEvent : org.bukkit.event.Event {
   @native
@@ -28367,6 +29955,7 @@ class org.bukkit.event.server.ServerEvent : org.bukkit.event.Event {
   command construct  -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.server.ServerListPingEvent : org.bukkit.event.server.ServerEvent {
   @native
@@ -28425,6 +30014,7 @@ class org.bukkit.event.server.ServerListPingEvent : org.bukkit.event.server.Serv
   command iterator  -> java.util.Iterator {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.server.ServerLoadEvent__inacc__LoadType : java.lang.Enum {
   @native
@@ -28443,6 +30033,7 @@ class org.bukkit.event.server.ServerLoadEvent__inacc__LoadType : java.lang.Enum 
   command __inacc__values  -> array<Unknown<org.bukkit.event.server.ServerLoadEvent__inacc__LoadType>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.server.ServerLoadEvent : org.bukkit.event.server.ServerEvent {
   @native
@@ -28459,6 +30050,7 @@ class org.bukkit.event.server.ServerLoadEvent : org.bukkit.event.server.ServerEv
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 1057
 @native
 class org.bukkit.event.server.ServiceEvent : org.bukkit.event.server.ServerEvent {
   @native
@@ -28469,6 +30061,7 @@ class org.bukkit.event.server.ServiceEvent : org.bukkit.event.server.ServerEvent
   command getProvider  -> org.bukkit.plugin.RegisteredServiceProvider {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.server.ServiceRegisterEvent : org.bukkit.event.server.ServiceEvent {
   @native
@@ -28481,6 +30074,7 @@ class org.bukkit.event.server.ServiceRegisterEvent : org.bukkit.event.server.Ser
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.server.ServiceUnregisterEvent : org.bukkit.event.server.ServiceEvent {
   @native
@@ -28493,6 +30087,7 @@ class org.bukkit.event.server.ServiceUnregisterEvent : org.bukkit.event.server.S
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.server.TabCompleteEvent : org.bukkit.event.Event {
   @native
@@ -28535,6 +30130,7 @@ class org.bukkit.event.server.TabCompleteEvent : org.bukkit.event.Event {
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.vehicle.VehicleBlockCollisionEvent : org.bukkit.event.vehicle.VehicleCollisionEvent {
   @native
@@ -28551,6 +30147,7 @@ class org.bukkit.event.vehicle.VehicleBlockCollisionEvent : org.bukkit.event.veh
   command getVelocity  -> org.bukkit.util.Vector {}
 }
 
+//access: 1057
 @native
 class org.bukkit.event.vehicle.VehicleCollisionEvent : org.bukkit.event.vehicle.VehicleEvent {
   @native
@@ -28563,6 +30160,7 @@ class org.bukkit.event.vehicle.VehicleCollisionEvent : org.bukkit.event.vehicle.
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.vehicle.VehicleCreateEvent : org.bukkit.event.vehicle.VehicleEvent {
   @native
@@ -28581,6 +30179,7 @@ class org.bukkit.event.vehicle.VehicleCreateEvent : org.bukkit.event.vehicle.Veh
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.vehicle.VehicleDamageEvent : org.bukkit.event.vehicle.VehicleEvent {
   @native
@@ -28609,6 +30208,7 @@ class org.bukkit.event.vehicle.VehicleDamageEvent : org.bukkit.event.vehicle.Veh
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.vehicle.VehicleDestroyEvent : org.bukkit.event.vehicle.VehicleEvent {
   @native
@@ -28631,6 +30231,7 @@ class org.bukkit.event.vehicle.VehicleDestroyEvent : org.bukkit.event.vehicle.Ve
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.vehicle.VehicleEnterEvent : org.bukkit.event.vehicle.VehicleEvent {
   @native
@@ -28653,6 +30254,7 @@ class org.bukkit.event.vehicle.VehicleEnterEvent : org.bukkit.event.vehicle.Vehi
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.vehicle.VehicleEntityCollisionEvent : org.bukkit.event.vehicle.VehicleCollisionEvent {
   @native
@@ -28681,6 +30283,7 @@ class org.bukkit.event.vehicle.VehicleEntityCollisionEvent : org.bukkit.event.ve
   command setCollisionCancelled  -> void {}
 }
 
+//access: 1057
 @native
 class org.bukkit.event.vehicle.VehicleEvent : org.bukkit.event.Event {
   @native
@@ -28691,6 +30294,7 @@ class org.bukkit.event.vehicle.VehicleEvent : org.bukkit.event.Event {
   command getVehicle  -> org.bukkit.entity.Vehicle {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.vehicle.VehicleExitEvent : org.bukkit.event.vehicle.VehicleEvent {
   @native
@@ -28719,6 +30323,7 @@ class org.bukkit.event.vehicle.VehicleExitEvent : org.bukkit.event.vehicle.Vehic
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.vehicle.VehicleMoveEvent : org.bukkit.event.vehicle.VehicleEvent {
   @native
@@ -28739,6 +30344,7 @@ class org.bukkit.event.vehicle.VehicleMoveEvent : org.bukkit.event.vehicle.Vehic
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.vehicle.VehicleUpdateEvent : org.bukkit.event.vehicle.VehicleEvent {
   @native
@@ -28751,6 +30357,7 @@ class org.bukkit.event.vehicle.VehicleUpdateEvent : org.bukkit.event.vehicle.Veh
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.weather.LightningStrikeEvent__inacc__Cause : java.lang.Enum {
   @native
@@ -28779,6 +30386,7 @@ class org.bukkit.event.weather.LightningStrikeEvent__inacc__Cause : java.lang.En
   command __inacc__values  -> array<Unknown<org.bukkit.event.weather.LightningStrikeEvent__inacc__Cause>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.weather.LightningStrikeEvent : org.bukkit.event.weather.WeatherEvent {
   @native
@@ -28807,6 +30415,7 @@ class org.bukkit.event.weather.LightningStrikeEvent : org.bukkit.event.weather.W
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.weather.ThunderChangeEvent__inacc__Cause : java.lang.Enum {
   @native
@@ -28831,6 +30440,7 @@ class org.bukkit.event.weather.ThunderChangeEvent__inacc__Cause : java.lang.Enum
   command __inacc__values  -> array<Unknown<org.bukkit.event.weather.ThunderChangeEvent__inacc__Cause>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.weather.ThunderChangeEvent : org.bukkit.event.weather.WeatherEvent {
   @native
@@ -28859,6 +30469,7 @@ class org.bukkit.event.weather.ThunderChangeEvent : org.bukkit.event.weather.Wea
   command getCause  -> org.bukkit.event.weather.ThunderChangeEvent__inacc__Cause {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.weather.WeatherChangeEvent__inacc__Cause : java.lang.Enum {
   @native
@@ -28883,6 +30494,7 @@ class org.bukkit.event.weather.WeatherChangeEvent__inacc__Cause : java.lang.Enum
   command __inacc__values  -> array<Unknown<org.bukkit.event.weather.WeatherChangeEvent__inacc__Cause>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.weather.WeatherChangeEvent : org.bukkit.event.weather.WeatherEvent {
   @native
@@ -28911,6 +30523,7 @@ class org.bukkit.event.weather.WeatherChangeEvent : org.bukkit.event.weather.Wea
   command getCause  -> org.bukkit.event.weather.WeatherChangeEvent__inacc__Cause {}
 }
 
+//access: 1057
 @native
 class org.bukkit.event.weather.WeatherEvent : org.bukkit.event.Event {
   @native
@@ -28921,6 +30534,7 @@ class org.bukkit.event.weather.WeatherEvent : org.bukkit.event.Event {
   command getWorld  -> org.bukkit.World {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.world.AsyncStructureGenerateEvent__inacc__Cause : java.lang.Enum {
   @native
@@ -28941,6 +30555,7 @@ class org.bukkit.event.world.AsyncStructureGenerateEvent__inacc__Cause : java.la
   command __inacc__values  -> array<Unknown<org.bukkit.event.world.AsyncStructureGenerateEvent__inacc__Cause>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.world.AsyncStructureGenerateEvent : org.bukkit.event.world.WorldEvent {
   @native
@@ -28997,6 +30612,7 @@ class org.bukkit.event.world.AsyncStructureGenerateEvent : org.bukkit.event.worl
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.world.AsyncStructureSpawnEvent : org.bukkit.event.world.WorldEvent {
   @native
@@ -29031,6 +30647,7 @@ class org.bukkit.event.world.AsyncStructureSpawnEvent : org.bukkit.event.world.W
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 1057
 @native
 class org.bukkit.event.world.ChunkEvent : org.bukkit.event.world.WorldEvent {
   @native
@@ -29041,6 +30658,7 @@ class org.bukkit.event.world.ChunkEvent : org.bukkit.event.world.WorldEvent {
   command getChunk  -> org.bukkit.Chunk {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.world.ChunkLoadEvent : org.bukkit.event.world.ChunkEvent {
   @native
@@ -29057,6 +30675,7 @@ class org.bukkit.event.world.ChunkLoadEvent : org.bukkit.event.world.ChunkEvent 
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.world.ChunkPopulateEvent : org.bukkit.event.world.ChunkEvent {
   @native
@@ -29069,6 +30688,7 @@ class org.bukkit.event.world.ChunkPopulateEvent : org.bukkit.event.world.ChunkEv
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.world.ChunkUnloadEvent : org.bukkit.event.world.ChunkEvent {
   @native
@@ -29089,6 +30709,7 @@ class org.bukkit.event.world.ChunkUnloadEvent : org.bukkit.event.world.ChunkEven
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.world.EntitiesLoadEvent : org.bukkit.event.world.ChunkEvent {
   @native
@@ -29105,6 +30726,7 @@ class org.bukkit.event.world.EntitiesLoadEvent : org.bukkit.event.world.ChunkEve
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.world.EntitiesUnloadEvent : org.bukkit.event.world.ChunkEvent {
   @native
@@ -29121,6 +30743,7 @@ class org.bukkit.event.world.EntitiesUnloadEvent : org.bukkit.event.world.ChunkE
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.world.GenericGameEvent : org.bukkit.event.world.WorldEvent {
   @native
@@ -29157,6 +30780,7 @@ class org.bukkit.event.world.GenericGameEvent : org.bukkit.event.world.WorldEven
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.world.LootGenerateEvent : org.bukkit.event.world.WorldEvent {
   @native
@@ -29201,6 +30825,7 @@ class org.bukkit.event.world.LootGenerateEvent : org.bukkit.event.world.WorldEve
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.world.PortalCreateEvent__inacc__CreateReason : java.lang.Enum {
   @native
@@ -29221,6 +30846,7 @@ class org.bukkit.event.world.PortalCreateEvent__inacc__CreateReason : java.lang.
   command __inacc__values  -> array<Unknown<org.bukkit.event.world.PortalCreateEvent__inacc__CreateReason>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.world.PortalCreateEvent : org.bukkit.event.world.WorldEvent {
   @native
@@ -29253,6 +30879,7 @@ class org.bukkit.event.world.PortalCreateEvent : org.bukkit.event.world.WorldEve
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.world.SpawnChangeEvent : org.bukkit.event.world.WorldEvent {
   @native
@@ -29269,6 +30896,7 @@ class org.bukkit.event.world.SpawnChangeEvent : org.bukkit.event.world.WorldEven
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.world.StructureGrowEvent : org.bukkit.event.world.WorldEvent {
   @native
@@ -29307,6 +30935,7 @@ class org.bukkit.event.world.StructureGrowEvent : org.bukkit.event.world.WorldEv
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 16433
 @native
 class org.bukkit.event.world.TimeSkipEvent__inacc__SkipReason : java.lang.Enum {
   @native
@@ -29327,6 +30956,7 @@ class org.bukkit.event.world.TimeSkipEvent__inacc__SkipReason : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.event.world.TimeSkipEvent__inacc__SkipReason>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.world.TimeSkipEvent : org.bukkit.event.world.WorldEvent {
   @native
@@ -29355,6 +30985,7 @@ class org.bukkit.event.world.TimeSkipEvent : org.bukkit.event.world.WorldEvent {
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 1057
 @native
 class org.bukkit.event.world.WorldEvent : org.bukkit.event.Event {
   @native
@@ -29367,6 +30998,7 @@ class org.bukkit.event.world.WorldEvent : org.bukkit.event.Event {
   command getWorld  -> org.bukkit.World {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.world.WorldInitEvent : org.bukkit.event.world.WorldEvent {
   @native
@@ -29379,6 +31011,7 @@ class org.bukkit.event.world.WorldInitEvent : org.bukkit.event.world.WorldEvent 
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.world.WorldLoadEvent : org.bukkit.event.world.WorldEvent {
   @native
@@ -29391,6 +31024,7 @@ class org.bukkit.event.world.WorldLoadEvent : org.bukkit.event.world.WorldEvent 
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.world.WorldSaveEvent : org.bukkit.event.world.WorldEvent {
   @native
@@ -29403,6 +31037,7 @@ class org.bukkit.event.world.WorldSaveEvent : org.bukkit.event.world.WorldEvent 
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.bukkit.event.world.WorldUnloadEvent : org.bukkit.event.world.WorldEvent {
   @native
@@ -29421,7 +31056,9 @@ class org.bukkit.event.world.WorldUnloadEvent : org.bukkit.event.world.WorldEven
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.FeatureFlag : java.lang.Object {
   @native
   let VANILLA: org.bukkit.FeatureFlag = 0
@@ -29433,6 +31070,7 @@ class org.bukkit.FeatureFlag : java.lang.Object {
   let TRADE_REBALANCE: org.bukkit.FeatureFlag = 0
 }
 
+//access: 49
 @native
 class org.bukkit.FireworkEffect__inacc__Builder : java.lang.Object {
   @native
@@ -29473,6 +31111,7 @@ class org.bukkit.FireworkEffect__inacc__Builder : java.lang.Object {
   command build  -> org.bukkit.FireworkEffect {}
 }
 
+//access: 16433
 @native
 class org.bukkit.FireworkEffect__inacc__Type : java.lang.Enum {
   @native
@@ -29505,6 +31144,7 @@ class org.bukkit.FireworkEffect__inacc__Type : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.FireworkEffect__inacc__Type>> {}
 }
 
+//access: 49
 @native
 class org.bukkit.FireworkEffect : java.lang.Object {
   @native
@@ -29555,6 +31195,7 @@ class org.bukkit.FireworkEffect : java.lang.Object {
   command equals arga:java.lang.Object -> boolean {}
 }
 
+//access: 16433
 @native
 class org.bukkit.Fluid : java.lang.Enum {
   @native
@@ -29583,6 +31224,7 @@ class org.bukkit.Fluid : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.Fluid>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.FluidCollisionMode : java.lang.Enum {
   @native
@@ -29603,6 +31245,7 @@ class org.bukkit.FluidCollisionMode : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.FluidCollisionMode>> {}
 }
 
+//access: 1057
 @native
 class org.bukkit.GameEvent : java.lang.Object {
   @native
@@ -29775,6 +31418,7 @@ class org.bukkit.GameEvent : java.lang.Object {
   command getEvent arga:string -> org.bukkit.GameEvent {}
 }
 
+//access: 16433
 @native
 class org.bukkit.GameMode : java.lang.Enum {
   @native
@@ -29809,6 +31453,7 @@ class org.bukkit.GameMode : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.GameMode>> {}
 }
 
+//access: 49
 @native
 class org.bukkit.GameRule : java.lang.Object {
   @native
@@ -29927,7 +31572,9 @@ class org.bukkit.GameRule : java.lang.Object {
   command translationKey  -> string {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.generator.BiomeParameterPoint : java.lang.Object {
   @native
   command getTemperature  -> number {}
@@ -29967,6 +31614,7 @@ class org.bukkit.generator.BiomeParameterPoint : java.lang.Object {
   command getMinWeirdness  -> number {}
 }
 
+//access: 1057
 @native
 class org.bukkit.generator.BiomeProvider : java.lang.Object {
   @native
@@ -29979,6 +31627,7 @@ class org.bukkit.generator.BiomeProvider : java.lang.Object {
   command getBiomes arga:org.bukkit.generator.WorldInfo -> java.util.List {}
 }
 
+//access: 1057
 @native
 class org.bukkit.generator.BlockPopulator : java.lang.Object {
   @native
@@ -29989,13 +31638,16 @@ class org.bukkit.generator.BlockPopulator : java.lang.Object {
   command populate arga:org.bukkit.generator.WorldInfo argb:java.util.Random argc:jvm_integer argd:jvm_integer arge:org.bukkit.generator.LimitedRegion -> void {}
 }
 
+//access: 4128
 @native
 class org.bukkit.generator.ChunkGenerator__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__World__inacc__Environment: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 132609
 @native
+@interface
 class org.bukkit.generator.ChunkGenerator__inacc__BiomeGrid : java.lang.Object {
   @native
   command getBiome arga:jvm_integer -> org.bukkit.block.Biome {}
@@ -30007,7 +31659,9 @@ class org.bukkit.generator.ChunkGenerator__inacc__BiomeGrid : java.lang.Object {
   command setBiome arga:jvm_integer argb:jvm_integer argc:jvm_integer argd:org.bukkit.block.Biome -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.generator.ChunkGenerator__inacc__ChunkData : java.lang.Object {
   @native
   command getMinHeight  -> jvm_integer {}
@@ -30037,6 +31691,7 @@ class org.bukkit.generator.ChunkGenerator__inacc__ChunkData : java.lang.Object {
   command getData arga:jvm_integer argb:jvm_integer -> Unknown<B> {}
 }
 
+//access: 1057
 @native
 class org.bukkit.generator.ChunkGenerator : java.lang.Object {
   @native
@@ -30095,7 +31750,9 @@ class org.bukkit.generator.ChunkGenerator : java.lang.Object {
   command shouldGenerateStructures arga:org.bukkit.generator.WorldInfo argb:java.util.Random argc:jvm_integer -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.generator.LimitedRegion : java.lang.Object {
   @native
   command getBuffer  -> jvm_integer {}
@@ -30135,6 +31792,7 @@ class org.bukkit.generator.LimitedRegion : java.lang.Object {
   command getCenterBlockZ  -> jvm_integer {}
 }
 
+//access: 1057
 @native
 class org.bukkit.generator.structure.Structure : java.lang.Object {
   @native
@@ -30211,6 +31869,7 @@ class org.bukkit.generator.structure.Structure : java.lang.Object {
   command getStructureType  -> org.bukkit.generator.structure.StructureType {}
 }
 
+//access: 1057
 @native
 class org.bukkit.generator.structure.StructureType : java.lang.Object {
   @native
@@ -30251,7 +31910,9 @@ class org.bukkit.generator.structure.StructureType : java.lang.Object {
   command getStructureType arga:string -> org.bukkit.generator.structure.StructureType {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.generator.WorldInfo : java.lang.Object {
   @native
   command getName  -> string {}
@@ -30269,6 +31930,7 @@ class org.bukkit.generator.WorldInfo : java.lang.Object {
   command vanillaBiomeProvider  -> org.bukkit.generator.BiomeProvider {}
 }
 
+//access: 147505
 @native
 class org.bukkit.GrassSpecies : java.lang.Enum {
   @native
@@ -30297,6 +31959,7 @@ class org.bukkit.GrassSpecies : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.GrassSpecies>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.HeightMap : java.lang.Enum {
   @native
@@ -30323,6 +31986,7 @@ class org.bukkit.HeightMap : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.HeightMap>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.help.GenericCommandHelpTopic : org.bukkit.help.HelpTopic {
   @native
@@ -30333,7 +31997,9 @@ class org.bukkit.help.GenericCommandHelpTopic : org.bukkit.help.HelpTopic {
   command canSee arga:org.bukkit.command.CommandSender -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.help.HelpMap : java.lang.Object {
   @native
   command getHelpTopic arga:string -> org.bukkit.help.HelpTopic {}
@@ -30349,6 +32015,7 @@ class org.bukkit.help.HelpMap : java.lang.Object {
   command getIgnoredPlugins  -> java.util.List {}
 }
 
+//access: 1057
 @native
 class org.bukkit.help.HelpTopic : java.lang.Object {
   @native
@@ -30377,6 +32044,7 @@ class org.bukkit.help.HelpTopic : java.lang.Object {
   command applyAmendment arga:string argb:string -> string {}
 }
 
+//access: 49
 @native
 class org.bukkit.help.HelpTopicComparator__inacc__TopicNameComparator : java.lang.Object {
   @native
@@ -30387,6 +32055,7 @@ class org.bukkit.help.HelpTopicComparator__inacc__TopicNameComparator : java.lan
   command compare arga:java.lang.Object argb:java.lang.Object -> jvm_integer {}
 }
 
+//access: 49
 @native
 class org.bukkit.help.HelpTopicComparator : java.lang.Object {
   @native
@@ -30405,12 +32074,15 @@ class org.bukkit.help.HelpTopicComparator : java.lang.Object {
   command compare arga:java.lang.Object argb:java.lang.Object -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.help.HelpTopicFactory : java.lang.Object {
   @native
   command createTopic arga:org.bukkit.command.Command -> org.bukkit.help.HelpTopic {}
 }
 
+//access: 33
 @native
 class org.bukkit.help.IndexHelpTopic : org.bukkit.help.HelpTopic {
   @native
@@ -30437,6 +32109,7 @@ class org.bukkit.help.IndexHelpTopic : org.bukkit.help.HelpTopic {
   command buildIndexLine arga:org.bukkit.command.CommandSender argb:org.bukkit.help.HelpTopic -> string {}
 }
 
+//access: 16433
 @native
 class org.bukkit.Instrument : java.lang.Enum {
   @native
@@ -30509,7 +32182,9 @@ class org.bukkit.Instrument : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.Instrument>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.AbstractHorseInventory : java.lang.Object {
   @native
   command getSaddle  -> org.bukkit.inventory.ItemStack {}
@@ -30517,7 +32192,9 @@ class org.bukkit.inventory.AbstractHorseInventory : java.lang.Object {
   command setSaddle arga:org.bukkit.inventory.ItemStack -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.AnvilInventory : java.lang.Object {
   @native
   command getRenameText  -> string {}
@@ -30547,7 +32224,9 @@ class org.bukkit.inventory.AnvilInventory : java.lang.Object {
   command setResult arga:org.bukkit.inventory.ItemStack -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.ArmoredHorseInventory : java.lang.Object {
   @native
   command getArmor  -> org.bukkit.inventory.ItemStack {}
@@ -30555,7 +32234,9 @@ class org.bukkit.inventory.ArmoredHorseInventory : java.lang.Object {
   command setArmor arga:org.bukkit.inventory.ItemStack -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.BeaconInventory : java.lang.Object {
   @native
   command setItem arga:org.bukkit.inventory.ItemStack -> void {}
@@ -30563,6 +32244,7 @@ class org.bukkit.inventory.BeaconInventory : java.lang.Object {
   command getItem  -> org.bukkit.inventory.ItemStack {}
 }
 
+//access: 33
 @native
 class org.bukkit.inventory.BlastingRecipe : org.bukkit.inventory.CookingRecipe {
   @native
@@ -30571,13 +32253,17 @@ class org.bukkit.inventory.BlastingRecipe : org.bukkit.inventory.CookingRecipe {
   command construct arga:org.bukkit.NamespacedKey argb:org.bukkit.inventory.ItemStack argc:org.bukkit.inventory.RecipeChoice -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.BlockInventoryHolder : java.lang.Object {
   @native
   command getBlock  -> org.bukkit.block.Block {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.BrewerInventory : java.lang.Object {
   @native
   command getIngredient  -> org.bukkit.inventory.ItemStack {}
@@ -30593,6 +32279,7 @@ class org.bukkit.inventory.BrewerInventory : java.lang.Object {
   command getHolder  -> org.bukkit.inventory.InventoryHolder {}
 }
 
+//access: 33
 @native
 class org.bukkit.inventory.CampfireRecipe : org.bukkit.inventory.CookingRecipe {
   @native
@@ -30601,11 +32288,15 @@ class org.bukkit.inventory.CampfireRecipe : org.bukkit.inventory.CookingRecipe {
   command construct arga:org.bukkit.NamespacedKey argb:org.bukkit.inventory.ItemStack argc:org.bukkit.inventory.RecipeChoice -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.CartographyInventory : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.ChiseledBookshelfInventory : java.lang.Object {
   @native
   command getHolder  -> org.bukkit.block.ChiseledBookshelf {}
@@ -30613,10 +32304,13 @@ class org.bukkit.inventory.ChiseledBookshelfInventory : java.lang.Object {
   command getHolder  -> org.bukkit.inventory.InventoryHolder {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.ComplexRecipe : java.lang.Object {
 }
 
+//access: 1057
 @native
 class org.bukkit.inventory.CookingRecipe : java.lang.Object {
   @native
@@ -30667,7 +32361,9 @@ class org.bukkit.inventory.CookingRecipe : java.lang.Object {
   command setCategory arga:org.bukkit.inventory.recipe.CookingBookCategory -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.CraftingInventory : java.lang.Object {
   @native
   command getResult  -> org.bukkit.inventory.ItemStack {}
@@ -30681,6 +32377,7 @@ class org.bukkit.inventory.CraftingInventory : java.lang.Object {
   command getRecipe  -> org.bukkit.inventory.Recipe {}
 }
 
+//access: 1057
 @native
 class org.bukkit.inventory.CraftingRecipe : java.lang.Object {
   @native
@@ -30707,6 +32404,7 @@ class org.bukkit.inventory.CraftingRecipe : java.lang.Object {
   command setCategory arga:org.bukkit.inventory.recipe.CraftingBookCategory -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.inventory.CreativeCategory : java.lang.Enum {
   @native
@@ -30743,7 +32441,9 @@ class org.bukkit.inventory.CreativeCategory : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.inventory.CreativeCategory>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.DoubleChestInventory : java.lang.Object {
   @native
   command getLeftSide  -> org.bukkit.inventory.Inventory {}
@@ -30755,7 +32455,9 @@ class org.bukkit.inventory.DoubleChestInventory : java.lang.Object {
   command getHolder  -> org.bukkit.inventory.InventoryHolder {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.EnchantingInventory : java.lang.Object {
   @native
   command setItem arga:org.bukkit.inventory.ItemStack -> void {}
@@ -30767,7 +32469,9 @@ class org.bukkit.inventory.EnchantingInventory : java.lang.Object {
   command getSecondary  -> org.bukkit.inventory.ItemStack {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.EntityEquipment : java.lang.Object {
   @native
   command setItem arga:org.bukkit.inventory.EquipmentSlot argb:org.bukkit.inventory.ItemStack -> void {}
@@ -30857,6 +32561,7 @@ class org.bukkit.inventory.EntityEquipment : java.lang.Object {
   command setDropChance arga:org.bukkit.inventory.EquipmentSlot -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.inventory.EquipmentSlot : java.lang.Enum {
   @native
@@ -30887,7 +32592,9 @@ class org.bukkit.inventory.EquipmentSlot : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.inventory.EquipmentSlot>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.FurnaceInventory : java.lang.Object {
   @native
   command getResult  -> org.bukkit.inventory.ItemStack {}
@@ -30911,6 +32618,7 @@ class org.bukkit.inventory.FurnaceInventory : java.lang.Object {
   command getHolder  -> org.bukkit.inventory.InventoryHolder {}
 }
 
+//access: 33
 @native
 class org.bukkit.inventory.FurnaceRecipe : org.bukkit.inventory.CookingRecipe {
   @native
@@ -30941,7 +32649,9 @@ class org.bukkit.inventory.FurnaceRecipe : org.bukkit.inventory.CookingRecipe {
   command setInput arga:org.bukkit.Material -> org.bukkit.inventory.CookingRecipe {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.GrindstoneInventory : java.lang.Object {
   @native
   command getUpperItem  -> org.bukkit.inventory.ItemStack {}
@@ -30957,11 +32667,15 @@ class org.bukkit.inventory.GrindstoneInventory : java.lang.Object {
   command setResult arga:org.bukkit.inventory.ItemStack -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.HorseInventory : java.lang.Object {
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.Inventory : java.lang.Object {
   @native
   command getSize  -> jvm_integer {}
@@ -31037,18 +32751,22 @@ class org.bukkit.inventory.Inventory : java.lang.Object {
   command iterator  -> java.util.Iterator {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.InventoryHolder : java.lang.Object {
   @native
   command getInventory  -> org.bukkit.inventory.Inventory {}
 }
 
+//access: 4128
 @native
 class org.bukkit.inventory.InventoryView__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__event__inacc__inventory__inacc__InventoryType: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 16433
 @native
 class org.bukkit.inventory.InventoryView__inacc__Property : java.lang.Enum {
   @native
@@ -31113,6 +32831,7 @@ class org.bukkit.inventory.InventoryView__inacc__Property : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.inventory.InventoryView__inacc__Property>> {}
 }
 
+//access: 1057
 @native
 class org.bukkit.inventory.InventoryView : java.lang.Object {
   @native
@@ -31157,7 +32876,9 @@ class org.bukkit.inventory.InventoryView : java.lang.Object {
   command setTitle arga:string -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.ItemCraftResult : java.lang.Object {
   @native
   command getResult  -> org.bukkit.inventory.ItemStack {}
@@ -31167,7 +32888,9 @@ class org.bukkit.inventory.ItemCraftResult : java.lang.Object {
   command getOverflowItems  -> java.util.List {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.ItemFactory : java.lang.Object {
   @native
   command getItemMeta arga:org.bukkit.Material -> org.bukkit.inventory.meta.ItemMeta {}
@@ -31217,6 +32940,7 @@ class org.bukkit.inventory.ItemFactory : java.lang.Object {
   command enchantWithLevels arga:org.bukkit.inventory.ItemStack argb:jvm_integer argc:boolean argd:java.util.Random -> org.bukkit.inventory.ItemStack {}
 }
 
+//access: 16433
 @native
 class org.bukkit.inventory.ItemFlag : java.lang.Enum {
   @native
@@ -31249,6 +32973,7 @@ class org.bukkit.inventory.ItemFlag : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.inventory.ItemFlag>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.inventory.ItemStack : java.lang.Object {
   @native
@@ -31397,7 +33122,9 @@ class org.bukkit.inventory.ItemStack : java.lang.Object {
   command clone  -> java.lang.Object {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.JukeboxInventory : java.lang.Object {
   @native
   command setRecord arga:org.bukkit.inventory.ItemStack -> void {}
@@ -31409,7 +33136,9 @@ class org.bukkit.inventory.JukeboxInventory : java.lang.Object {
   command getHolder  -> org.bukkit.inventory.InventoryHolder {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.LecternInventory : java.lang.Object {
   @native
   command getHolder  -> org.bukkit.block.Lectern {}
@@ -31421,7 +33150,9 @@ class org.bukkit.inventory.LecternInventory : java.lang.Object {
   command getHolder  -> org.bukkit.inventory.InventoryHolder {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.LlamaInventory : java.lang.Object {
   @native
   command getDecor  -> org.bukkit.inventory.ItemStack {}
@@ -31429,10 +33160,13 @@ class org.bukkit.inventory.LlamaInventory : java.lang.Object {
   command setDecor arga:org.bukkit.inventory.ItemStack -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.LoomInventory : java.lang.Object {
 }
 
+//access: 16433
 @native
 class org.bukkit.inventory.MainHand : java.lang.Enum {
   @native
@@ -31451,7 +33185,9 @@ class org.bukkit.inventory.MainHand : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.inventory.MainHand>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.Merchant : java.lang.Object {
   @native
   command getRecipes  -> java.util.List {}
@@ -31469,7 +33205,9 @@ class org.bukkit.inventory.Merchant : java.lang.Object {
   command getTrader  -> org.bukkit.entity.HumanEntity {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.MerchantInventory : java.lang.Object {
   @native
   command getSelectedRecipeIndex  -> jvm_integer {}
@@ -31479,6 +33217,7 @@ class org.bukkit.inventory.MerchantInventory : java.lang.Object {
   command getMerchant  -> org.bukkit.inventory.Merchant {}
 }
 
+//access: 33
 @native
 class org.bukkit.inventory.MerchantRecipe : java.lang.Object {
   @native
@@ -31563,7 +33302,9 @@ class org.bukkit.inventory.MerchantRecipe : java.lang.Object {
   command setIgnoreDiscounts  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.ArmorMeta : java.lang.Object {
   @native
   command hasTrim  -> boolean {}
@@ -31577,7 +33318,9 @@ class org.bukkit.inventory.meta.ArmorMeta : java.lang.Object {
   command clone  -> org.bukkit.inventory.meta.ItemMeta {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.AxolotlBucketMeta : java.lang.Object {
   @native
   command getVariant  -> org.bukkit.entity.Axolotl__inacc__Variant {}
@@ -31591,7 +33334,9 @@ class org.bukkit.inventory.meta.AxolotlBucketMeta : java.lang.Object {
   command clone  -> org.bukkit.inventory.meta.ItemMeta {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.BannerMeta : java.lang.Object {
   @native
   command getBaseColor  -> org.bukkit.DyeColor {}
@@ -31613,7 +33358,9 @@ class org.bukkit.inventory.meta.BannerMeta : java.lang.Object {
   command numberOfPatterns  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.BlockDataMeta : java.lang.Object {
   @native
   command hasBlockData  -> boolean {}
@@ -31623,7 +33370,9 @@ class org.bukkit.inventory.meta.BlockDataMeta : java.lang.Object {
   command setBlockData arga:org.bukkit.block.data.BlockData -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.BlockStateMeta : java.lang.Object {
   @native
   command hasBlockState  -> boolean {}
@@ -31633,7 +33382,9 @@ class org.bukkit.inventory.meta.BlockStateMeta : java.lang.Object {
   command setBlockState arga:org.bukkit.block.BlockState -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.BookMeta__inacc__BookMetaBuilder : java.lang.Object {
   @native
   command title arga:net.kyori.adventure.text.Component -> org.bukkit.inventory.meta.BookMeta__inacc__BookMetaBuilder {}
@@ -31663,6 +33414,7 @@ class org.bukkit.inventory.meta.BookMeta__inacc__BookMetaBuilder : java.lang.Obj
   command build  -> java.lang.Object {}
 }
 
+//access: 16433
 @native
 class org.bukkit.inventory.meta.BookMeta__inacc__Generation : java.lang.Enum {
   @native
@@ -31685,6 +33437,7 @@ class org.bukkit.inventory.meta.BookMeta__inacc__Generation : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.inventory.meta.BookMeta__inacc__Generation>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.inventory.meta.BookMeta__inacc__Spigot : java.lang.Object {
   @native
@@ -31703,7 +33456,9 @@ class org.bukkit.inventory.meta.BookMeta__inacc__Spigot : java.lang.Object {
   command addPage arga:array<Unknown<net.md_5.bungee.api.chat.BaseComponent>> -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.BookMeta : java.lang.Object {
   @native
   command hasTitle  -> boolean {}
@@ -31771,7 +33526,9 @@ class org.bukkit.inventory.meta.BookMeta : java.lang.Object {
   command toBuilder  -> net.kyori.adventure.util.Buildable__inacc__Builder {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.BundleMeta : java.lang.Object {
   @native
   command hasItems  -> boolean {}
@@ -31783,7 +33540,9 @@ class org.bukkit.inventory.meta.BundleMeta : java.lang.Object {
   command addItem arga:org.bukkit.inventory.ItemStack -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.ColorableArmorMeta : java.lang.Object {
   @native
   command clone  -> org.bukkit.inventory.meta.ColorableArmorMeta {}
@@ -31795,7 +33554,9 @@ class org.bukkit.inventory.meta.ColorableArmorMeta : java.lang.Object {
   command clone  -> org.bukkit.inventory.meta.LeatherArmorMeta {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.CompassMeta : java.lang.Object {
   @native
   command hasLodestone  -> boolean {}
@@ -31813,7 +33574,9 @@ class org.bukkit.inventory.meta.CompassMeta : java.lang.Object {
   command clone  -> org.bukkit.inventory.meta.ItemMeta {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.CrossbowMeta : java.lang.Object {
   @native
   command hasChargedProjectiles  -> boolean {}
@@ -31825,7 +33588,9 @@ class org.bukkit.inventory.meta.CrossbowMeta : java.lang.Object {
   command addChargedProjectile arga:org.bukkit.inventory.ItemStack -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.Damageable : java.lang.Object {
   @native
   command hasDamage  -> boolean {}
@@ -31839,7 +33604,9 @@ class org.bukkit.inventory.meta.Damageable : java.lang.Object {
   command clone  -> org.bukkit.inventory.meta.ItemMeta {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.EnchantmentStorageMeta : java.lang.Object {
   @native
   command hasStoredEnchants  -> boolean {}
@@ -31861,7 +33628,9 @@ class org.bukkit.inventory.meta.EnchantmentStorageMeta : java.lang.Object {
   command clone  -> org.bukkit.inventory.meta.ItemMeta {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.FireworkEffectMeta : java.lang.Object {
   @native
   command setEffect arga:org.bukkit.FireworkEffect -> void {}
@@ -31875,7 +33644,9 @@ class org.bukkit.inventory.meta.FireworkEffectMeta : java.lang.Object {
   command clone  -> org.bukkit.inventory.meta.ItemMeta {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.FireworkMeta : java.lang.Object {
   @native
   command addEffect arga:org.bukkit.FireworkEffect -> void {}
@@ -31903,7 +33674,9 @@ class org.bukkit.inventory.meta.FireworkMeta : java.lang.Object {
   command clone  -> org.bukkit.inventory.meta.ItemMeta {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.ItemMeta : java.lang.Object {
   @native
   command hasDisplayName  -> boolean {}
@@ -32019,7 +33792,9 @@ class org.bukkit.inventory.meta.ItemMeta : java.lang.Object {
   command hasDestroyableKeys  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.KnowledgeBookMeta : java.lang.Object {
   @native
   command hasRecipes  -> boolean {}
@@ -32035,7 +33810,9 @@ class org.bukkit.inventory.meta.KnowledgeBookMeta : java.lang.Object {
   command clone  -> org.bukkit.inventory.meta.ItemMeta {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.LeatherArmorMeta : java.lang.Object {
   @native
   command getColor  -> org.bukkit.Color {}
@@ -32047,7 +33824,9 @@ class org.bukkit.inventory.meta.LeatherArmorMeta : java.lang.Object {
   command clone  -> org.bukkit.inventory.meta.ItemMeta {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.MapMeta : java.lang.Object {
   @native
   command hasMapId  -> boolean {}
@@ -32083,7 +33862,9 @@ class org.bukkit.inventory.meta.MapMeta : java.lang.Object {
   command clone  -> org.bukkit.inventory.meta.ItemMeta {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.MusicInstrumentMeta : java.lang.Object {
   @native
   command setInstrument arga:org.bukkit.MusicInstrument -> void {}
@@ -32095,7 +33876,9 @@ class org.bukkit.inventory.meta.MusicInstrumentMeta : java.lang.Object {
   command clone  -> org.bukkit.inventory.meta.ItemMeta {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.PotionMeta : java.lang.Object {
   @native
   command setBasePotionData arga:org.bukkit.potion.PotionData -> void {}
@@ -32131,7 +33914,9 @@ class org.bukkit.inventory.meta.PotionMeta : java.lang.Object {
   command clone  -> org.bukkit.inventory.meta.ItemMeta {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.Repairable : java.lang.Object {
   @native
   command hasRepairCost  -> boolean {}
@@ -32145,7 +33930,9 @@ class org.bukkit.inventory.meta.Repairable : java.lang.Object {
   command clone  -> org.bukkit.inventory.meta.ItemMeta {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.SkullMeta : java.lang.Object {
   @native
   command getOwner  -> string {}
@@ -32175,7 +33962,9 @@ class org.bukkit.inventory.meta.SkullMeta : java.lang.Object {
   command clone  -> org.bukkit.inventory.meta.ItemMeta {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.SpawnEggMeta : java.lang.Object {
   @native
   command getSpawnedType  -> org.bukkit.entity.EntityType {}
@@ -32191,7 +33980,9 @@ class org.bukkit.inventory.meta.SpawnEggMeta : java.lang.Object {
   command clone  -> org.bukkit.inventory.meta.ItemMeta {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.SuspiciousStewMeta : java.lang.Object {
   @native
   command hasCustomEffects  -> boolean {}
@@ -32211,7 +34002,9 @@ class org.bukkit.inventory.meta.SuspiciousStewMeta : java.lang.Object {
   command clone  -> org.bukkit.inventory.meta.ItemMeta {}
 }
 
+//access: 132609
 @native
+@interface
 class org.bukkit.inventory.meta.tags.CustomItemTagContainer : java.lang.Object {
   @native
   command setCustomTag arga:org.bukkit.NamespacedKey argb:org.bukkit.inventory.meta.tags.ItemTagType argc:java.lang.Object -> void {}
@@ -32227,12 +34020,15 @@ class org.bukkit.inventory.meta.tags.CustomItemTagContainer : java.lang.Object {
   command getAdapterContext  -> org.bukkit.inventory.meta.tags.ItemTagAdapterContext {}
 }
 
+//access: 132609
 @native
+@interface
 class org.bukkit.inventory.meta.tags.ItemTagAdapterContext : java.lang.Object {
   @native
   command newTagContainer  -> org.bukkit.inventory.meta.tags.CustomItemTagContainer {}
 }
 
+//access: 33
 @native
 class org.bukkit.inventory.meta.tags.ItemTagType__inacc__PrimitiveTagType : java.lang.Object {
   @native
@@ -32249,7 +34045,9 @@ class org.bukkit.inventory.meta.tags.ItemTagType__inacc__PrimitiveTagType : java
   command fromPrimitive arga:java.lang.Object argb:org.bukkit.inventory.meta.tags.ItemTagAdapterContext -> java.lang.Object {}
 }
 
+//access: 132609
 @native
+@interface
 class org.bukkit.inventory.meta.tags.ItemTagType : java.lang.Object {
   @native
   let BYTE: org.bukkit.inventory.meta.tags.ItemTagType = 0
@@ -32283,6 +34081,7 @@ class org.bukkit.inventory.meta.tags.ItemTagType : java.lang.Object {
   command fromPrimitive arga:java.lang.Object argb:org.bukkit.inventory.meta.tags.ItemTagAdapterContext -> java.lang.Object {}
 }
 
+//access: 33
 @native
 class org.bukkit.inventory.meta.trim.ArmorTrim : java.lang.Object {
   @native
@@ -32301,7 +34100,9 @@ class org.bukkit.inventory.meta.trim.ArmorTrim : java.lang.Object {
   command equals arga:java.lang.Object -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.trim.TrimMaterial : java.lang.Object {
   @native
   let QUARTZ: org.bukkit.inventory.meta.trim.TrimMaterial = 0
@@ -32325,7 +34126,9 @@ class org.bukkit.inventory.meta.trim.TrimMaterial : java.lang.Object {
   let AMETHYST: org.bukkit.inventory.meta.trim.TrimMaterial = 0
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.trim.TrimPattern : java.lang.Object {
   @native
   let SENTRY: org.bukkit.inventory.meta.trim.TrimPattern = 0
@@ -32361,7 +34164,9 @@ class org.bukkit.inventory.meta.trim.TrimPattern : java.lang.Object {
   let HOST: org.bukkit.inventory.meta.trim.TrimPattern = 0
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.meta.TropicalFishBucketMeta : java.lang.Object {
   @native
   command getPatternColor  -> org.bukkit.DyeColor {}
@@ -32383,7 +34188,9 @@ class org.bukkit.inventory.meta.TropicalFishBucketMeta : java.lang.Object {
   command clone  -> org.bukkit.inventory.meta.ItemMeta {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.PlayerInventory : java.lang.Object {
   @native
   command getArmorContents  -> array<Unknown<org.bukkit.inventory.ItemStack>> {}
@@ -32437,6 +34244,7 @@ class org.bukkit.inventory.PlayerInventory : java.lang.Object {
   command getHolder  -> org.bukkit.inventory.InventoryHolder {}
 }
 
+//access: 16433
 @native
 class org.bukkit.inventory.recipe.CookingBookCategory : java.lang.Enum {
   @native
@@ -32457,6 +34265,7 @@ class org.bukkit.inventory.recipe.CookingBookCategory : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.inventory.recipe.CookingBookCategory>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.inventory.recipe.CraftingBookCategory : java.lang.Enum {
   @native
@@ -32479,12 +34288,15 @@ class org.bukkit.inventory.recipe.CraftingBookCategory : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.inventory.recipe.CraftingBookCategory>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.Recipe : java.lang.Object {
   @native
   command getResult  -> org.bukkit.inventory.ItemStack {}
 }
 
+//access: 33
 @native
 class org.bukkit.inventory.RecipeChoice__inacc__ExactChoice : java.lang.Object {
   @native
@@ -32517,6 +34329,7 @@ class org.bukkit.inventory.RecipeChoice__inacc__ExactChoice : java.lang.Object {
   command test arga:java.lang.Object -> boolean {}
 }
 
+//access: 33
 @native
 class org.bukkit.inventory.RecipeChoice__inacc__MaterialChoice : java.lang.Object {
   @native
@@ -32551,7 +34364,9 @@ class org.bukkit.inventory.RecipeChoice__inacc__MaterialChoice : java.lang.Objec
   command test arga:java.lang.Object -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.RecipeChoice : java.lang.Object {
   @native
   command getItemStack  -> org.bukkit.inventory.ItemStack {}
@@ -32563,10 +34378,13 @@ class org.bukkit.inventory.RecipeChoice : java.lang.Object {
   command test arga:java.lang.Object -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.SaddledHorseInventory : java.lang.Object {
 }
 
+//access: 33
 @native
 class org.bukkit.inventory.ShapedRecipe : org.bukkit.inventory.CraftingRecipe {
   @native
@@ -32597,6 +34415,7 @@ class org.bukkit.inventory.ShapedRecipe : org.bukkit.inventory.CraftingRecipe {
   command getShape  -> array<Unknown<string>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.inventory.ShapelessRecipe : org.bukkit.inventory.CraftingRecipe {
   @native
@@ -32647,7 +34466,9 @@ class org.bukkit.inventory.ShapelessRecipe : org.bukkit.inventory.CraftingRecipe
   command getChoiceList  -> java.util.List {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.SmithingInventory : java.lang.Object {
   @native
   command getResult  -> org.bukkit.inventory.ItemStack {}
@@ -32669,6 +34490,7 @@ class org.bukkit.inventory.SmithingInventory : java.lang.Object {
   command setInputMineral arga:org.bukkit.inventory.ItemStack -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.inventory.SmithingRecipe : java.lang.Object {
   @native
@@ -32697,6 +34519,7 @@ class org.bukkit.inventory.SmithingRecipe : java.lang.Object {
   command willCopyNbt  -> boolean {}
 }
 
+//access: 33
 @native
 class org.bukkit.inventory.SmithingTransformRecipe : org.bukkit.inventory.SmithingRecipe {
   @native
@@ -32709,6 +34532,7 @@ class org.bukkit.inventory.SmithingTransformRecipe : org.bukkit.inventory.Smithi
   command getTemplate  -> org.bukkit.inventory.RecipeChoice {}
 }
 
+//access: 33
 @native
 class org.bukkit.inventory.SmithingTrimRecipe : org.bukkit.inventory.SmithingRecipe {
   @native
@@ -32721,6 +34545,7 @@ class org.bukkit.inventory.SmithingTrimRecipe : org.bukkit.inventory.SmithingRec
   command getTemplate  -> org.bukkit.inventory.RecipeChoice {}
 }
 
+//access: 33
 @native
 class org.bukkit.inventory.SmokingRecipe : org.bukkit.inventory.CookingRecipe {
   @native
@@ -32729,7 +34554,9 @@ class org.bukkit.inventory.SmokingRecipe : org.bukkit.inventory.CookingRecipe {
   command construct arga:org.bukkit.NamespacedKey argb:org.bukkit.inventory.ItemStack argc:org.bukkit.inventory.RecipeChoice -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.inventory.StonecutterInventory : java.lang.Object {
   @native
   command getInputItem  -> org.bukkit.inventory.ItemStack {}
@@ -32741,6 +34568,7 @@ class org.bukkit.inventory.StonecutterInventory : java.lang.Object {
   command setResult arga:org.bukkit.inventory.ItemStack -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.inventory.StonecuttingRecipe : java.lang.Object {
   @native
@@ -32773,7 +34601,9 @@ class org.bukkit.inventory.StonecuttingRecipe : java.lang.Object {
   command setGroup arga:string -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.Keyed : java.lang.Object {
   @native
   command getKey  -> org.bukkit.NamespacedKey {}
@@ -32781,6 +34611,7 @@ class org.bukkit.Keyed : java.lang.Object {
   command key  -> net.kyori.adventure.key.Key {}
 }
 
+//access: 33
 @native
 class org.bukkit.Location : java.lang.Object {
   @native
@@ -32971,7 +34802,9 @@ class org.bukkit.Location : java.lang.Object {
   command clone  -> java.lang.Object {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.loot.Lootable : java.lang.Object {
   @native
   command setLootTable arga:org.bukkit.loot.LootTable -> void {}
@@ -32989,6 +34822,7 @@ class org.bukkit.loot.Lootable : java.lang.Object {
   command getSeed  -> Unknown<J> {}
 }
 
+//access: 33
 @native
 class org.bukkit.loot.LootContext__inacc__Builder : java.lang.Object {
   @native
@@ -33015,6 +34849,7 @@ class org.bukkit.loot.LootContext__inacc__Builder : java.lang.Object {
   command build  -> org.bukkit.loot.LootContext {}
 }
 
+//access: 49
 @native
 class org.bukkit.loot.LootContext : java.lang.Object {
   @native
@@ -33043,7 +34878,9 @@ class org.bukkit.loot.LootContext : java.lang.Object {
   command getKiller  -> org.bukkit.entity.HumanEntity {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.loot.LootTable : java.lang.Object {
   @native
   command populateLoot arga:java.util.Random argb:org.bukkit.loot.LootContext -> java.util.Collection {}
@@ -33051,6 +34888,7 @@ class org.bukkit.loot.LootTable : java.lang.Object {
   command fillInventory arga:org.bukkit.inventory.Inventory argb:java.util.Random argc:org.bukkit.loot.LootContext -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.loot.LootTables : java.lang.Enum {
   @native
@@ -33393,7 +35231,9 @@ class org.bukkit.loot.LootTables : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.loot.LootTables>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.map.MapCanvas : java.lang.Object {
   @native
   command getMapView  -> org.bukkit.map.MapView {}
@@ -33419,6 +35259,7 @@ class org.bukkit.map.MapCanvas : java.lang.Object {
   command drawText arga:jvm_integer argb:jvm_integer argc:org.bukkit.map.MapFont argd:string -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.map.MapCursor__inacc__Type : java.lang.Enum {
   @native
@@ -33507,6 +35348,7 @@ class org.bukkit.map.MapCursor__inacc__Type : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.map.MapCursor__inacc__Type>> {}
 }
 
+//access: 49
 @native
 class org.bukkit.map.MapCursor : java.lang.Object {
   @native
@@ -33567,6 +35409,7 @@ class org.bukkit.map.MapCursor : java.lang.Object {
   command setCaption arga:string -> void {}
 }
 
+//access: 49
 @native
 class org.bukkit.map.MapCursorCollection : java.lang.Object {
   @native
@@ -33593,6 +35436,7 @@ class org.bukkit.map.MapCursorCollection : java.lang.Object {
   command addCursor arga:jvm_integer argb:jvm_integer argc:boolean argd:net.kyori.adventure.text.Component -> org.bukkit.map.MapCursor {}
 }
 
+//access: 33
 @native
 class org.bukkit.map.MapFont__inacc__CharacterSprite : java.lang.Object {
   @native
@@ -33611,6 +35455,7 @@ class org.bukkit.map.MapFont__inacc__CharacterSprite : java.lang.Object {
   command getHeight  -> jvm_integer {}
 }
 
+//access: 33
 @native
 class org.bukkit.map.MapFont : java.lang.Object {
   @native
@@ -33633,7 +35478,9 @@ class org.bukkit.map.MapFont : java.lang.Object {
   command isValid arga:string -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.map.MapPalette__inacc__MapColorCache : java.lang.Object {
   @native
   command isCached  -> boolean {}
@@ -33641,6 +35488,7 @@ class org.bukkit.map.MapPalette__inacc__MapColorCache : java.lang.Object {
   command matchColor arga:java.awt.Color -> Unknown<B> {}
 }
 
+//access: 49
 @native
 class org.bukkit.map.MapPalette : java.lang.Object {
   @native
@@ -33697,6 +35545,7 @@ class org.bukkit.map.MapPalette : java.lang.Object {
   command setMapColorCache arga:org.bukkit.map.MapPalette__inacc__MapColorCache -> void {}
 }
 
+//access: 1057
 @native
 class org.bukkit.map.MapRenderer : java.lang.Object {
   @native
@@ -33713,6 +35562,7 @@ class org.bukkit.map.MapRenderer : java.lang.Object {
   command render arga:org.bukkit.map.MapView argb:org.bukkit.map.MapCanvas argc:org.bukkit.entity.Player -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.map.MapView__inacc__Scale : java.lang.Enum {
   @native
@@ -33743,7 +35593,9 @@ class org.bukkit.map.MapView__inacc__Scale : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.map.MapView__inacc__Scale>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.map.MapView : java.lang.Object {
   @native
   command getId  -> jvm_integer {}
@@ -33785,6 +35637,7 @@ class org.bukkit.map.MapView : java.lang.Object {
   command setLocked  -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.map.MinecraftFont : org.bukkit.map.MapFont {
   @native
@@ -33801,18 +35654,22 @@ class org.bukkit.map.MinecraftFont : org.bukkit.map.MapFont {
   command construct  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.material.Attachable : java.lang.Object {
   @native
   command getAttachedFace  -> org.bukkit.block.BlockFace {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Banner__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Banner : org.bukkit.material.MaterialData {
   @native
@@ -33839,12 +35696,14 @@ class org.bukkit.material.Banner : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Bed__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Bed : org.bukkit.material.MaterialData {
   @native
@@ -33873,12 +35732,14 @@ class org.bukkit.material.Bed : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Button__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Button : org.bukkit.material.SimpleAttachableMaterialData {
   @native
@@ -33907,6 +35768,7 @@ class org.bukkit.material.Button : org.bukkit.material.SimpleAttachableMaterialD
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Cake : org.bukkit.material.MaterialData {
   @native
@@ -33933,6 +35795,7 @@ class org.bukkit.material.Cake : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Cauldron : org.bukkit.material.MaterialData {
   @native
@@ -33959,6 +35822,7 @@ class org.bukkit.material.Cauldron : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Chest : org.bukkit.material.DirectionalContainer {
   @native
@@ -33979,6 +35843,7 @@ class org.bukkit.material.Chest : org.bukkit.material.DirectionalContainer {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Coal : org.bukkit.material.MaterialData {
   @native
@@ -34003,6 +35868,7 @@ class org.bukkit.material.Coal : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.CocoaPlant__inacc__1 : java.lang.Object {
   @native
@@ -34011,6 +35877,7 @@ class org.bukkit.material.CocoaPlant__inacc__1 : java.lang.Object {
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 16433
 @native
 class org.bukkit.material.CocoaPlant__inacc__CocoaPlantSize : java.lang.Enum {
   @native
@@ -34031,6 +35898,7 @@ class org.bukkit.material.CocoaPlant__inacc__CocoaPlantSize : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.material.CocoaPlant__inacc__CocoaPlantSize>> {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.CocoaPlant : org.bukkit.material.MaterialData {
   @native
@@ -34061,7 +35929,9 @@ class org.bukkit.material.CocoaPlant : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.material.Colorable : java.lang.Object {
   @native
   command getColor  -> org.bukkit.DyeColor {}
@@ -34069,6 +35939,7 @@ class org.bukkit.material.Colorable : java.lang.Object {
   command setColor arga:org.bukkit.DyeColor -> void {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Command : org.bukkit.material.MaterialData {
   @native
@@ -34091,12 +35962,14 @@ class org.bukkit.material.Command : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Comparator__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Comparator : org.bukkit.material.MaterialData {
   @native
@@ -34139,12 +36012,14 @@ class org.bukkit.material.Comparator : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Crops__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__Material: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Crops : org.bukkit.material.MaterialData {
   @native
@@ -34175,6 +36050,7 @@ class org.bukkit.material.Crops : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.DetectorRail : org.bukkit.material.ExtendedRails {
   @native
@@ -34199,12 +36075,14 @@ class org.bukkit.material.DetectorRail : org.bukkit.material.ExtendedRails {
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Diode__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Diode : org.bukkit.material.MaterialData {
   @native
@@ -34245,7 +36123,9 @@ class org.bukkit.material.Diode : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.material.Directional : java.lang.Object {
   @native
   command setFacingDirection arga:org.bukkit.block.BlockFace -> void {}
@@ -34253,12 +36133,14 @@ class org.bukkit.material.Directional : java.lang.Object {
   command getFacing  -> org.bukkit.block.BlockFace {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.DirectionalContainer__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.DirectionalContainer : org.bukkit.material.MaterialData {
   @native
@@ -34279,12 +36161,14 @@ class org.bukkit.material.DirectionalContainer : org.bukkit.material.MaterialDat
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Dispenser__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Dispenser : org.bukkit.material.FurnaceAndDispenser {
   @native
@@ -34311,6 +36195,7 @@ class org.bukkit.material.Dispenser : org.bukkit.material.FurnaceAndDispenser {
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Door__inacc__1 : java.lang.Object {
   @native
@@ -34319,6 +36204,7 @@ class org.bukkit.material.Door__inacc__1 : java.lang.Object {
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Door : org.bukkit.material.MaterialData {
   @native
@@ -34369,6 +36255,7 @@ class org.bukkit.material.Door : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Dye : org.bukkit.material.MaterialData {
   @native
@@ -34393,6 +36280,7 @@ class org.bukkit.material.Dye : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.EnderChest : org.bukkit.material.DirectionalContainer {
   @native
@@ -34413,6 +36301,7 @@ class org.bukkit.material.EnderChest : org.bukkit.material.DirectionalContainer 
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.ExtendedRails : org.bukkit.material.Rails {
   @native
@@ -34435,6 +36324,7 @@ class org.bukkit.material.ExtendedRails : org.bukkit.material.Rails {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.FlowerPot : org.bukkit.material.MaterialData {
   @native
@@ -34457,6 +36347,7 @@ class org.bukkit.material.FlowerPot : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Furnace : org.bukkit.material.FurnaceAndDispenser {
   @native
@@ -34479,6 +36370,7 @@ class org.bukkit.material.Furnace : org.bukkit.material.FurnaceAndDispenser {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.FurnaceAndDispenser : org.bukkit.material.DirectionalContainer {
   @native
@@ -34495,12 +36387,14 @@ class org.bukkit.material.FurnaceAndDispenser : org.bukkit.material.DirectionalC
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Gate__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Gate : org.bukkit.material.MaterialData {
   @native
@@ -34539,12 +36433,14 @@ class org.bukkit.material.Gate : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Hopper__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Hopper : org.bukkit.material.MaterialData {
   @native
@@ -34581,12 +36477,14 @@ class org.bukkit.material.Hopper : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Ladder__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Ladder : org.bukkit.material.SimpleAttachableMaterialData {
   @native
@@ -34609,6 +36507,7 @@ class org.bukkit.material.Ladder : org.bukkit.material.SimpleAttachableMaterialD
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Leaves : org.bukkit.material.Wood {
   @native
@@ -34649,12 +36548,14 @@ class org.bukkit.material.Leaves : org.bukkit.material.Wood {
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Lever__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Lever : org.bukkit.material.SimpleAttachableMaterialData {
   @native
@@ -34683,6 +36584,7 @@ class org.bukkit.material.Lever : org.bukkit.material.SimpleAttachableMaterialDa
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.LongGrass : org.bukkit.material.MaterialData {
   @native
@@ -34707,6 +36609,7 @@ class org.bukkit.material.LongGrass : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.MaterialData : java.lang.Object {
   @native
@@ -34739,6 +36642,7 @@ class org.bukkit.material.MaterialData : java.lang.Object {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.MonsterEggs : org.bukkit.material.TexturedMaterial {
   @native
@@ -34761,12 +36665,14 @@ class org.bukkit.material.MonsterEggs : org.bukkit.material.TexturedMaterial {
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Mushroom__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Mushroom : org.bukkit.material.MaterialData {
   @native
@@ -34815,12 +36721,14 @@ class org.bukkit.material.Mushroom : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.NetherWarts__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__NetherWartsState: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.NetherWarts : org.bukkit.material.MaterialData {
   @native
@@ -34845,12 +36753,14 @@ class org.bukkit.material.NetherWarts : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Observer__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Observer : org.bukkit.material.MaterialData {
   @native
@@ -34877,7 +36787,9 @@ class org.bukkit.material.Observer : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 132609
 @native
+@interface
 class org.bukkit.material.Openable : java.lang.Object {
   @native
   command isOpen  -> boolean {}
@@ -34885,12 +36797,14 @@ class org.bukkit.material.Openable : java.lang.Object {
   command setOpen  -> void {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.PistonBaseMaterial__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.PistonBaseMaterial : org.bukkit.material.MaterialData {
   @native
@@ -34915,12 +36829,14 @@ class org.bukkit.material.PistonBaseMaterial : org.bukkit.material.MaterialData 
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.PistonExtensionMaterial__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.PistonExtensionMaterial : org.bukkit.material.MaterialData {
   @native
@@ -34945,6 +36861,7 @@ class org.bukkit.material.PistonExtensionMaterial : org.bukkit.material.Material
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.PoweredRail : org.bukkit.material.ExtendedRails {
   @native
@@ -34969,6 +36886,7 @@ class org.bukkit.material.PoweredRail : org.bukkit.material.ExtendedRails {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.PressurePlate : org.bukkit.material.MaterialData {
   @native
@@ -34989,18 +36907,22 @@ class org.bukkit.material.PressurePlate : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.material.PressureSensor : java.lang.Object {
   @native
   command isPressed  -> boolean {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Pumpkin__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Pumpkin : org.bukkit.material.MaterialData {
   @native
@@ -35027,12 +36949,14 @@ class org.bukkit.material.Pumpkin : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Rails__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Rails : org.bukkit.material.MaterialData {
   @native
@@ -35061,12 +36985,15 @@ class org.bukkit.material.Rails : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 132609
 @native
+@interface
 class org.bukkit.material.Redstone : java.lang.Object {
   @native
   command isPowered  -> boolean {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.RedstoneTorch : org.bukkit.material.Torch {
   @native
@@ -35091,6 +37018,7 @@ class org.bukkit.material.RedstoneTorch : org.bukkit.material.Torch {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.RedstoneWire : org.bukkit.material.MaterialData {
   @native
@@ -35111,6 +37039,7 @@ class org.bukkit.material.RedstoneWire : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Sandstone : org.bukkit.material.MaterialData {
   @native
@@ -35135,6 +37064,7 @@ class org.bukkit.material.Sandstone : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Sapling : org.bukkit.material.Wood {
   @native
@@ -35167,12 +37097,14 @@ class org.bukkit.material.Sapling : org.bukkit.material.Wood {
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Sign__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Sign : org.bukkit.material.MaterialData {
   @native
@@ -35199,6 +37131,7 @@ class org.bukkit.material.Sign : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 132129
 @native
 class org.bukkit.material.SimpleAttachableMaterialData : org.bukkit.material.MaterialData {
   @native
@@ -35219,12 +37152,14 @@ class org.bukkit.material.SimpleAttachableMaterialData : org.bukkit.material.Mat
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Skull__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Skull : org.bukkit.material.MaterialData {
   @native
@@ -35249,6 +37184,7 @@ class org.bukkit.material.Skull : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.SmoothBrick : org.bukkit.material.TexturedMaterial {
   @native
@@ -35271,6 +37207,7 @@ class org.bukkit.material.SmoothBrick : org.bukkit.material.TexturedMaterial {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.SpawnEgg : org.bukkit.material.MaterialData {
   @native
@@ -35295,12 +37232,14 @@ class org.bukkit.material.SpawnEgg : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Stairs__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Stairs : org.bukkit.material.MaterialData {
   @native
@@ -35329,6 +37268,7 @@ class org.bukkit.material.Stairs : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Step : org.bukkit.material.TexturedMaterial {
   @native
@@ -35361,6 +37301,7 @@ class org.bukkit.material.Step : org.bukkit.material.TexturedMaterial {
   command clone  -> java.lang.Object {}
 }
 
+//access: 132129
 @native
 class org.bukkit.material.TexturedMaterial : org.bukkit.material.MaterialData {
   @native
@@ -35387,12 +37328,14 @@ class org.bukkit.material.TexturedMaterial : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Torch__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Torch : org.bukkit.material.SimpleAttachableMaterialData {
   @native
@@ -35415,12 +37358,14 @@ class org.bukkit.material.Torch : org.bukkit.material.SimpleAttachableMaterialDa
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.TrapDoor__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.TrapDoor : org.bukkit.material.SimpleAttachableMaterialData {
   @native
@@ -35453,12 +37398,14 @@ class org.bukkit.material.TrapDoor : org.bukkit.material.SimpleAttachableMateria
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Tree__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Tree : org.bukkit.material.Wood {
   @native
@@ -35495,6 +37442,7 @@ class org.bukkit.material.Tree : org.bukkit.material.Wood {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Tripwire : org.bukkit.material.MaterialData {
   @native
@@ -35519,12 +37467,14 @@ class org.bukkit.material.Tripwire : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.TripwireHook__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.TripwireHook : org.bukkit.material.SimpleAttachableMaterialData {
   @native
@@ -35559,6 +37509,7 @@ class org.bukkit.material.TripwireHook : org.bukkit.material.SimpleAttachableMat
   command clone  -> java.lang.Object {}
 }
 
+//access: 147505
 @native
 class org.bukkit.material.types.MushroomBlockTexture : java.lang.Enum {
   @native
@@ -35615,12 +37566,14 @@ class org.bukkit.material.types.MushroomBlockTexture : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.material.types.MushroomBlockTexture>> {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Vine__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__block__inacc__BlockFace: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Vine : org.bukkit.material.MaterialData {
   @native
@@ -35659,6 +37612,7 @@ class org.bukkit.material.Vine : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.material.Wood__inacc__1 : java.lang.Object {
   @native
@@ -35667,6 +37621,7 @@ class org.bukkit.material.Wood__inacc__1 : java.lang.Object {
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__TreeSpecies: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Wood : org.bukkit.material.MaterialData {
   @native
@@ -35699,6 +37654,7 @@ class org.bukkit.material.Wood : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.WoodenStep : org.bukkit.material.Wood {
   @native
@@ -35729,6 +37685,7 @@ class org.bukkit.material.WoodenStep : org.bukkit.material.Wood {
   command clone  -> java.lang.Object {}
 }
 
+//access: 131105
 @native
 class org.bukkit.material.Wool : org.bukkit.material.MaterialData {
   @native
@@ -35753,12 +37710,14 @@ class org.bukkit.material.Wool : org.bukkit.material.MaterialData {
   command clone  -> java.lang.Object {}
 }
 
+//access: 4128
 @native
 class org.bukkit.Material__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__Material: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 16433
 @native
 class org.bukkit.Material : java.lang.Enum {
   @native
@@ -39621,6 +41580,7 @@ class org.bukkit.Material : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.Material>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.metadata.FixedMetadataValue : org.bukkit.metadata.LazyMetadataValue {
   @native
@@ -39633,6 +41593,7 @@ class org.bukkit.metadata.FixedMetadataValue : org.bukkit.metadata.LazyMetadataV
   command value  -> java.lang.Object {}
 }
 
+//access: 16433
 @native
 class org.bukkit.metadata.LazyMetadataValue__inacc__CacheStrategy : java.lang.Enum {
   @native
@@ -39653,6 +41614,7 @@ class org.bukkit.metadata.LazyMetadataValue__inacc__CacheStrategy : java.lang.En
   command __inacc__values  -> array<Unknown<org.bukkit.metadata.LazyMetadataValue__inacc__CacheStrategy>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.metadata.LazyMetadataValue : org.bukkit.metadata.MetadataValueAdapter {
   @native
@@ -39677,7 +41639,9 @@ class org.bukkit.metadata.LazyMetadataValue : org.bukkit.metadata.MetadataValueA
   command invalidate  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.metadata.Metadatable : java.lang.Object {
   @native
   command setMetadata arga:string argb:org.bukkit.metadata.MetadataValue -> void {}
@@ -39689,19 +41653,23 @@ class org.bukkit.metadata.Metadatable : java.lang.Object {
   command removeMetadata arga:string argb:org.bukkit.plugin.Plugin -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.metadata.MetadataConversionException : java.lang.RuntimeException {
   @native
   command construct arga:string -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.metadata.MetadataEvaluationException : java.lang.RuntimeException {
   @native
   command construct arga:java.lang.Throwable -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.metadata.MetadataStore : java.lang.Object {
   @native
   command setMetadata arga:java.lang.Object argb:string argc:org.bukkit.metadata.MetadataValue -> void {}
@@ -39715,6 +41683,7 @@ class org.bukkit.metadata.MetadataStore : java.lang.Object {
   command invalidateAll arga:org.bukkit.plugin.Plugin -> void {}
 }
 
+//access: 1057
 @native
 class org.bukkit.metadata.MetadataStoreBase : java.lang.Object {
   @native
@@ -39737,7 +41706,9 @@ class org.bukkit.metadata.MetadataStoreBase : java.lang.Object {
   command disambiguate arga:java.lang.Object argb:string -> string {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.metadata.MetadataValue : java.lang.Object {
   @native
   command value  -> java.lang.Object {}
@@ -39763,6 +41734,7 @@ class org.bukkit.metadata.MetadataValue : java.lang.Object {
   command invalidate  -> void {}
 }
 
+//access: 1057
 @native
 class org.bukkit.metadata.MetadataValueAdapter : java.lang.Object {
   @native
@@ -39789,12 +41761,15 @@ class org.bukkit.metadata.MetadataValueAdapter : java.lang.Object {
   command asString  -> string {}
 }
 
+//access: 9729
 @native
+@interface
 class org.bukkit.MinecraftExperimental : java.lang.Object {
   @native
   command value  -> string {}
 }
 
+//access: 1057
 @native
 class org.bukkit.MusicInstrument : java.lang.Object {
   @native
@@ -39825,7 +41800,9 @@ class org.bukkit.MusicInstrument : java.lang.Object {
   command translationKey  -> string {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.Nameable : java.lang.Object {
   @native
   command customName  -> net.kyori.adventure.text.Component {}
@@ -39837,6 +41814,7 @@ class org.bukkit.Nameable : java.lang.Object {
   command setCustomName arga:string -> void {}
 }
 
+//access: 49
 @native
 class org.bukkit.NamespacedKey : java.lang.Object {
   @native
@@ -39885,6 +41863,7 @@ class org.bukkit.NamespacedKey : java.lang.Object {
   command asString  -> string {}
 }
 
+//access: 147505
 @native
 class org.bukkit.NetherWartsState : java.lang.Enum {
   @native
@@ -39907,6 +41886,7 @@ class org.bukkit.NetherWartsState : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.NetherWartsState>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.Note__inacc__Tone : java.lang.Enum {
   @native
@@ -39953,6 +41933,7 @@ class org.bukkit.Note__inacc__Tone : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.Note__inacc__Tone>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.Note : java.lang.Object {
   @native
@@ -39993,7 +41974,9 @@ class org.bukkit.Note : java.lang.Object {
   command toString  -> string {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.OfflinePlayer : java.lang.Object {
   @native
   command isOnline  -> boolean {}
@@ -40081,6 +42064,7 @@ class org.bukkit.OfflinePlayer : java.lang.Object {
   command getLastDeathLocation  -> org.bukkit.Location {}
 }
 
+//access: 16433
 @native
 class org.bukkit.packs.DataPack__inacc__Compatibility : java.lang.Enum {
   @native
@@ -40101,6 +42085,7 @@ class org.bukkit.packs.DataPack__inacc__Compatibility : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.packs.DataPack__inacc__Compatibility>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.packs.DataPack__inacc__Source : java.lang.Enum {
   @native
@@ -40125,7 +42110,9 @@ class org.bukkit.packs.DataPack__inacc__Source : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.packs.DataPack__inacc__Source>> {}
 }
 
+//access: 132609
 @native
+@interface
 class org.bukkit.packs.DataPack : java.lang.Object {
   @native
   command getTitle  -> string {}
@@ -40149,7 +42136,9 @@ class org.bukkit.packs.DataPack : java.lang.Object {
   command getSource  -> org.bukkit.packs.DataPack__inacc__Source {}
 }
 
+//access: 132609
 @native
+@interface
 class org.bukkit.packs.DataPackManager : java.lang.Object {
   @native
   command getDataPacks  -> java.util.Collection {}
@@ -40165,10 +42154,13 @@ class org.bukkit.packs.DataPackManager : java.lang.Object {
   command isEnabledByFeature arga:org.bukkit.entity.EntityType argb:org.bukkit.World -> boolean {}
 }
 
+//access: 5632
 @native
+@interface
 class org.bukkit.packs.java__package_info : java.lang.Object {
 }
 
+//access: 33
 @native
 class org.bukkit.Particle__inacc__DustOptions : java.lang.Object {
   @native
@@ -40183,6 +42175,7 @@ class org.bukkit.Particle__inacc__DustOptions : java.lang.Object {
   command getSize  -> Unknown<F> {}
 }
 
+//access: 33
 @native
 class org.bukkit.Particle__inacc__DustTransition : org.bukkit.Particle__inacc__DustOptions {
   @native
@@ -40193,6 +42186,7 @@ class org.bukkit.Particle__inacc__DustTransition : org.bukkit.Particle__inacc__D
   command getToColor  -> org.bukkit.Color {}
 }
 
+//access: 16433
 @native
 class org.bukkit.Particle : java.lang.Enum {
   @native
@@ -40427,7 +42421,9 @@ class org.bukkit.Particle : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.Particle>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.permissions.Permissible : java.lang.Object {
   @native
   command isPermissionSet arga:string -> boolean {}
@@ -40457,6 +42453,7 @@ class org.bukkit.permissions.Permissible : java.lang.Object {
   command permissionValue arga:string -> net.kyori.adventure.util.TriState {}
 }
 
+//access: 32
 @native
 class org.bukkit.permissions.PermissibleBase__inacc__RemoveAttachmentRunnable : java.lang.Object {
   @native
@@ -40467,6 +42464,7 @@ class org.bukkit.permissions.PermissibleBase__inacc__RemoveAttachmentRunnable : 
   command run  -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.permissions.PermissibleBase : java.lang.Object {
   @native
@@ -40511,6 +42509,7 @@ class org.bukkit.permissions.PermissibleBase : java.lang.Object {
   command getEffectivePermissions  -> java.util.Set {}
 }
 
+//access: 33
 @native
 class org.bukkit.permissions.Permission : java.lang.Object {
   @native
@@ -40569,6 +42568,7 @@ class org.bukkit.permissions.Permission : java.lang.Object {
   command extractChildren arga:java.util.Map argb:string argc:org.bukkit.permissions.PermissionDefault argd:java.util.List -> java.util.Map {}
 }
 
+//access: 33
 @native
 class org.bukkit.permissions.PermissionAttachment : java.lang.Object {
   @native
@@ -40603,6 +42603,7 @@ class org.bukkit.permissions.PermissionAttachment : java.lang.Object {
   command remove  -> boolean {}
 }
 
+//access: 33
 @native
 class org.bukkit.permissions.PermissionAttachmentInfo : java.lang.Object {
   @native
@@ -40625,12 +42626,14 @@ class org.bukkit.permissions.PermissionAttachmentInfo : java.lang.Object {
   command getValue  -> boolean {}
 }
 
+//access: 4128
 @native
 class org.bukkit.permissions.PermissionDefault__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__permissions__inacc__PermissionDefault: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 16433
 @native
 class org.bukkit.permissions.PermissionDefault : java.lang.Enum {
   @native
@@ -40663,13 +42666,17 @@ class org.bukkit.permissions.PermissionDefault : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.permissions.PermissionDefault>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.permissions.PermissionRemovedExecutor : java.lang.Object {
   @native
   command attachmentRemoved arga:org.bukkit.permissions.PermissionAttachment -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.permissions.ServerOperator : java.lang.Object {
   @native
   command isOp  -> boolean {}
@@ -40677,13 +42684,17 @@ class org.bukkit.permissions.ServerOperator : java.lang.Object {
   command setOp  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.persistence.PersistentDataAdapterContext : java.lang.Object {
   @native
   command newPersistentDataContainer  -> org.bukkit.persistence.PersistentDataContainer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.persistence.PersistentDataContainer : java.lang.Object {
   @native
   command set arga:org.bukkit.NamespacedKey argb:org.bukkit.persistence.PersistentDataType argc:java.lang.Object -> void {}
@@ -40711,12 +42722,15 @@ class org.bukkit.persistence.PersistentDataContainer : java.lang.Object {
   command readFromBytes  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.persistence.PersistentDataHolder : java.lang.Object {
   @native
   command getPersistentDataContainer  -> org.bukkit.persistence.PersistentDataContainer {}
 }
 
+//access: 33
 @native
 class org.bukkit.persistence.PersistentDataType__inacc__BooleanPersistentDataType : java.lang.Object {
   @native
@@ -40735,6 +42749,7 @@ class org.bukkit.persistence.PersistentDataType__inacc__BooleanPersistentDataTyp
   command toPrimitive arga:java.lang.Object argb:org.bukkit.persistence.PersistentDataAdapterContext -> java.lang.Object {}
 }
 
+//access: 33
 @native
 class org.bukkit.persistence.PersistentDataType__inacc__PrimitivePersistentDataType : java.lang.Object {
   @native
@@ -40751,7 +42766,9 @@ class org.bukkit.persistence.PersistentDataType__inacc__PrimitivePersistentDataT
   command fromPrimitive arga:java.lang.Object argb:org.bukkit.persistence.PersistentDataAdapterContext -> java.lang.Object {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.persistence.PersistentDataType : java.lang.Object {
   @native
   let BYTE: org.bukkit.persistence.PersistentDataType = 0
@@ -40789,6 +42806,7 @@ class org.bukkit.persistence.PersistentDataType : java.lang.Object {
   command fromPrimitive arga:java.lang.Object argb:org.bukkit.persistence.PersistentDataAdapterContext -> java.lang.Object {}
 }
 
+//access: 33
 @native
 class org.bukkit.plugin.AuthorNagException : java.lang.RuntimeException {
   @native
@@ -40799,6 +42817,7 @@ class org.bukkit.plugin.AuthorNagException : java.lang.RuntimeException {
   command getMessage  -> string {}
 }
 
+//access: 32
 @native
 class org.bukkit.plugin.EventExecutor__inacc__1 : java.util.concurrent.ConcurrentHashMap {
   @native
@@ -40809,6 +42828,7 @@ class org.bukkit.plugin.EventExecutor__inacc__1 : java.util.concurrent.Concurren
   command computeIfAbsent arga:java.lang.Object argb:java.util.function.Function -> java.lang.Object {}
 }
 
+//access: 32
 @native
 class org.bukkit.plugin.EventExecutor__inacc__2 : java.lang.Object {
   @native
@@ -40825,7 +42845,9 @@ class org.bukkit.plugin.EventExecutor__inacc__2 : java.lang.Object {
   command toString  -> string {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.plugin.EventExecutor : java.lang.Object {
   @native
   let eventExecutorMap: java.util.concurrent.ConcurrentMap = 0
@@ -40837,6 +42859,7 @@ class org.bukkit.plugin.EventExecutor : java.lang.Object {
   command lambda__inacc__create__inacc__0 arga:java.lang.reflect.Method argb:com.destroystokyo.paper.event.executor.asm.ClassDefiner argc:java.lang.reflect.Method -> java.lang.Class {}
 }
 
+//access: 33
 @native
 class org.bukkit.plugin.IllegalPluginAccessException : java.lang.RuntimeException {
   @native
@@ -40845,6 +42868,7 @@ class org.bukkit.plugin.IllegalPluginAccessException : java.lang.RuntimeExceptio
   command construct arga:string -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.plugin.InvalidDescriptionException : java.lang.Exception {
   @native
@@ -40859,6 +42883,7 @@ class org.bukkit.plugin.InvalidDescriptionException : java.lang.Exception {
   command construct  -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.plugin.InvalidPluginException : java.lang.Exception {
   @native
@@ -40873,6 +42898,7 @@ class org.bukkit.plugin.InvalidPluginException : java.lang.Exception {
   command construct arga:string -> void {}
 }
 
+//access: 32
 @native
 class org.bukkit.plugin.java.JavaPlugin__inacc__DummyPluginLoaderImplHolder : java.lang.Object {
   @native
@@ -40881,6 +42907,7 @@ class org.bukkit.plugin.java.JavaPlugin__inacc__DummyPluginLoaderImplHolder : ja
   command construct  -> void {}
 }
 
+//access: 1057
 @native
 class org.bukkit.plugin.java.JavaPlugin : org.bukkit.plugin.PluginBase {
   @native
@@ -40977,6 +43004,7 @@ class org.bukkit.plugin.java.JavaPlugin : org.bukkit.plugin.PluginBase {
   command getProvidingPlugin arga:java.lang.Class -> org.bukkit.plugin.java.JavaPlugin {}
 }
 
+//access: 32
 @native
 class org.bukkit.plugin.java.JavaPluginLoader__inacc__1 : java.lang.Object {
   @native
@@ -40991,6 +43019,7 @@ class org.bukkit.plugin.java.JavaPluginLoader__inacc__1 : java.lang.Object {
   command execute arga:org.bukkit.event.Listener argb:org.bukkit.event.Event -> void {}
 }
 
+//access: 131121
 @native
 class org.bukkit.plugin.java.JavaPluginLoader : java.lang.Object {
   @native
@@ -41023,6 +43052,7 @@ class org.bukkit.plugin.java.JavaPluginLoader : java.lang.Object {
   command disablePlugin arga:org.bukkit.plugin.Plugin -> void {}
 }
 
+//access: 32
 @native
 class org.bukkit.plugin.java.LibraryLoader__inacc__1 : org.eclipse.aether.transfer.AbstractTransferListener {
   @native
@@ -41035,6 +43065,7 @@ class org.bukkit.plugin.java.LibraryLoader__inacc__1 : org.eclipse.aether.transf
   command transferStarted arga:org.eclipse.aether.transfer.TransferEvent -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.plugin.java.LibraryLoader : java.lang.Object {
   @native
@@ -41051,6 +43082,7 @@ class org.bukkit.plugin.java.LibraryLoader : java.lang.Object {
   command createLoader arga:org.bukkit.plugin.PluginDescriptionFile -> java.lang.ClassLoader {}
 }
 
+//access: 49
 @native
 class org.bukkit.plugin.java.PluginClassLoader : java.net.URLClassLoader {
   @native
@@ -41123,6 +43155,7 @@ class org.bukkit.plugin.java.PluginClassLoader : java.net.URLClassLoader {
   command getGroup  -> io.papermc.paper.plugin.provider.classloader.PluginClassLoaderGroup {}
 }
 
+//access: 33
 @native
 class org.bukkit.plugin.messaging.ChannelNameTooLongException : java.lang.RuntimeException {
   @native
@@ -41131,6 +43164,7 @@ class org.bukkit.plugin.messaging.ChannelNameTooLongException : java.lang.Runtim
   command construct arga:string -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.plugin.messaging.ChannelNotRegisteredException : java.lang.RuntimeException {
   @native
@@ -41139,6 +43173,7 @@ class org.bukkit.plugin.messaging.ChannelNotRegisteredException : java.lang.Runt
   command construct arga:string -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.plugin.messaging.MessageTooLargeException : java.lang.RuntimeException {
   @native
@@ -41151,7 +43186,9 @@ class org.bukkit.plugin.messaging.MessageTooLargeException : java.lang.RuntimeEx
   command construct arga:string -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.plugin.messaging.Messenger : java.lang.Object {
   @native
   let MAX_MESSAGE_SIZE: jvm_integer = 0
@@ -41197,6 +43234,7 @@ class org.bukkit.plugin.messaging.Messenger : java.lang.Object {
   command dispatchIncomingMessage arga:org.bukkit.entity.Player argb:string -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.plugin.messaging.PluginChannelDirection : java.lang.Enum {
   @native
@@ -41215,12 +43253,15 @@ class org.bukkit.plugin.messaging.PluginChannelDirection : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.plugin.messaging.PluginChannelDirection>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.plugin.messaging.PluginMessageListener : java.lang.Object {
   @native
   command onPluginMessageReceived arga:string argb:org.bukkit.entity.Player -> void {}
 }
 
+//access: 49
 @native
 class org.bukkit.plugin.messaging.PluginMessageListenerRegistration : java.lang.Object {
   @native
@@ -41247,7 +43288,9 @@ class org.bukkit.plugin.messaging.PluginMessageListenerRegistration : java.lang.
   command hashCode  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.plugin.messaging.PluginMessageRecipient : java.lang.Object {
   @native
   command sendPluginMessage arga:org.bukkit.plugin.Plugin argb:string -> void {}
@@ -41255,6 +43298,7 @@ class org.bukkit.plugin.messaging.PluginMessageRecipient : java.lang.Object {
   command getListeningPluginChannels  -> java.util.Set {}
 }
 
+//access: 33
 @native
 class org.bukkit.plugin.messaging.ReservedChannelException : java.lang.RuntimeException {
   @native
@@ -41263,6 +43307,7 @@ class org.bukkit.plugin.messaging.ReservedChannelException : java.lang.RuntimeEx
   command construct arga:string -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.plugin.messaging.StandardMessenger : java.lang.Object {
   @native
@@ -41339,7 +43384,9 @@ class org.bukkit.plugin.messaging.StandardMessenger : java.lang.Object {
   command validatePluginMessage arga:org.bukkit.plugin.messaging.Messenger argb:org.bukkit.plugin.Plugin argc:string -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.plugin.Plugin : java.lang.Object {
   @native
   command getDataFolder  -> java.io.File {}
@@ -41391,6 +43438,7 @@ class org.bukkit.plugin.Plugin : java.lang.Object {
   command getName  -> string {}
 }
 
+//access: 16433
 @native
 class org.bukkit.plugin.PluginAwareness__inacc__Flags : java.lang.Enum {
   @native
@@ -41407,10 +43455,13 @@ class org.bukkit.plugin.PluginAwareness__inacc__Flags : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.plugin.PluginAwareness__inacc__Flags>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.plugin.PluginAwareness : java.lang.Object {
 }
 
+//access: 1057
 @native
 class org.bukkit.plugin.PluginBase : java.lang.Object {
   @native
@@ -41423,6 +43474,7 @@ class org.bukkit.plugin.PluginBase : java.lang.Object {
   command getName  -> string {}
 }
 
+//access: 32
 @native
 class org.bukkit.plugin.PluginDescriptionFile__inacc__1__inacc__1__inacc__1__inacc__1 : java.lang.Object {
   @native
@@ -41435,6 +43487,7 @@ class org.bukkit.plugin.PluginDescriptionFile__inacc__1__inacc__1__inacc__1__ina
   command toString  -> string {}
 }
 
+//access: 32
 @native
 class org.bukkit.plugin.PluginDescriptionFile__inacc__1__inacc__1__inacc__1 : org.yaml.snakeyaml.constructor.AbstractConstruct {
   @native
@@ -41445,6 +43498,7 @@ class org.bukkit.plugin.PluginDescriptionFile__inacc__1__inacc__1__inacc__1 : or
   command construct arga:org.yaml.snakeyaml.nodes.Node -> java.lang.Object {}
 }
 
+//access: 32
 @native
 class org.bukkit.plugin.PluginDescriptionFile__inacc__1__inacc__1__inacc__2 : org.yaml.snakeyaml.constructor.AbstractConstruct {
   @native
@@ -41459,6 +43513,7 @@ class org.bukkit.plugin.PluginDescriptionFile__inacc__1__inacc__1__inacc__2 : or
   command construct arga:org.yaml.snakeyaml.nodes.Node -> java.lang.Object {}
 }
 
+//access: 32
 @native
 class org.bukkit.plugin.PluginDescriptionFile__inacc__1__inacc__1 : org.yaml.snakeyaml.constructor.SafeConstructor {
   @native
@@ -41467,6 +43522,7 @@ class org.bukkit.plugin.PluginDescriptionFile__inacc__1__inacc__1 : org.yaml.sna
   command construct arga:org.bukkit.plugin.PluginDescriptionFile__inacc__1 argb:org.yaml.snakeyaml.LoaderOptions -> void {}
 }
 
+//access: 32
 @native
 class org.bukkit.plugin.PluginDescriptionFile__inacc__1 : java.lang.ThreadLocal {
   @native
@@ -41477,6 +43533,7 @@ class org.bukkit.plugin.PluginDescriptionFile__inacc__1 : java.lang.ThreadLocal 
   command initialValue  -> java.lang.Object {}
 }
 
+//access: 49
 @native
 class org.bukkit.plugin.PluginDescriptionFile : java.lang.Object {
   @native
@@ -41605,6 +43662,7 @@ class org.bukkit.plugin.PluginDescriptionFile : java.lang.Object {
   command getRawName  -> string {}
 }
 
+//access: 48
 @native
 class org.bukkit.plugin.PluginDescriptionResolver : org.yaml.snakeyaml.resolver.Resolver {
   @native
@@ -41613,7 +43671,9 @@ class org.bukkit.plugin.PluginDescriptionResolver : org.yaml.snakeyaml.resolver.
   command addImplicitResolvers  -> void {}
 }
 
+//access: 132609
 @native
+@interface
 class org.bukkit.plugin.PluginLoader : java.lang.Object {
   @native
   command loadPlugin arga:java.io.File -> org.bukkit.plugin.Plugin {}
@@ -41629,6 +43689,7 @@ class org.bukkit.plugin.PluginLoader : java.lang.Object {
   command disablePlugin arga:org.bukkit.plugin.Plugin -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.plugin.PluginLoadOrder : java.lang.Enum {
   @native
@@ -41647,6 +43708,7 @@ class org.bukkit.plugin.PluginLoadOrder : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.plugin.PluginLoadOrder>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.plugin.PluginLogger : java.util.logging.Logger {
   @native
@@ -41657,7 +43719,9 @@ class org.bukkit.plugin.PluginLogger : java.util.logging.Logger {
   command log arga:java.util.logging.LogRecord -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.plugin.PluginManager : java.lang.Object {
   @native
   command registerInterface arga:java.lang.Class -> void {}
@@ -41723,6 +43787,7 @@ class org.bukkit.plugin.PluginManager : java.lang.Object {
   command overridePermissionManager arga:org.bukkit.plugin.Plugin argb:io.papermc.paper.plugin.PermissionManager -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.plugin.RegisteredListener : java.lang.Object {
   @native
@@ -41753,6 +43818,7 @@ class org.bukkit.plugin.RegisteredListener : java.lang.Object {
   command toString  -> string {}
 }
 
+//access: 33
 @native
 class org.bukkit.plugin.RegisteredServiceProvider : java.lang.Object {
   @native
@@ -41779,6 +43845,7 @@ class org.bukkit.plugin.RegisteredServiceProvider : java.lang.Object {
   command compareTo arga:java.lang.Object -> jvm_integer {}
 }
 
+//access: 16433
 @native
 class org.bukkit.plugin.ServicePriority : java.lang.Enum {
   @native
@@ -41803,7 +43870,9 @@ class org.bukkit.plugin.ServicePriority : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.plugin.ServicePriority>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.plugin.ServicesManager : java.lang.Object {
   @native
   command register arga:java.lang.Class argb:java.lang.Object argc:org.bukkit.plugin.Plugin argd:org.bukkit.plugin.ServicePriority -> void {}
@@ -41827,6 +43896,7 @@ class org.bukkit.plugin.ServicesManager : java.lang.Object {
   command isProvidedFor arga:java.lang.Class -> boolean {}
 }
 
+//access: 131121
 @native
 class org.bukkit.plugin.SimplePluginManager : java.lang.Object {
   @native
@@ -41949,6 +44019,7 @@ class org.bukkit.plugin.SimplePluginManager : java.lang.Object {
   command addPermissions arga:java.util.List -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.plugin.SimpleServicesManager : java.lang.Object {
   @native
@@ -41981,6 +44052,7 @@ class org.bukkit.plugin.SimpleServicesManager : java.lang.Object {
   command getRegistrations arga:java.lang.Class -> java.util.Collection {}
 }
 
+//access: 33
 @native
 class org.bukkit.plugin.TimedRegisteredListener : org.bukkit.plugin.RegisteredListener {
   @native
@@ -42009,6 +44081,7 @@ class org.bukkit.plugin.TimedRegisteredListener : org.bukkit.plugin.RegisteredLi
   command hasMultiple  -> boolean {}
 }
 
+//access: 33
 @native
 class org.bukkit.plugin.UnknownDependencyException : java.lang.RuntimeException {
   @native
@@ -42025,6 +44098,7 @@ class org.bukkit.plugin.UnknownDependencyException : java.lang.RuntimeException 
   command construct arga:java.util.Collection argb:string -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.PortalType : java.lang.Enum {
   @native
@@ -42045,6 +44119,7 @@ class org.bukkit.PortalType : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.PortalType>> {}
 }
 
+//access: 131105
 @native
 class org.bukkit.potion.Potion : java.lang.Object {
   @native
@@ -42121,7 +44196,9 @@ class org.bukkit.potion.Potion : java.lang.Object {
   command getNameId  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.potion.PotionBrewer : java.lang.Object {
   @native
   command createEffect arga:org.bukkit.potion.PotionEffectType argb:jvm_integer -> org.bukkit.potion.PotionEffect {}
@@ -42137,6 +44214,7 @@ class org.bukkit.potion.PotionBrewer : java.lang.Object {
   command resetPotionMixes  -> void {}
 }
 
+//access: 131121
 @native
 class org.bukkit.potion.PotionData : java.lang.Object {
   @native
@@ -42161,6 +44239,7 @@ class org.bukkit.potion.PotionData : java.lang.Object {
   command equals arga:java.lang.Object -> boolean {}
 }
 
+//access: 33
 @native
 class org.bukkit.potion.PotionEffect : java.lang.Object {
   @native
@@ -42247,6 +44326,7 @@ class org.bukkit.potion.PotionEffect : java.lang.Object {
   command toString  -> string {}
 }
 
+//access: 16433
 @native
 class org.bukkit.potion.PotionEffectType__inacc__Category : java.lang.Enum {
   @native
@@ -42271,6 +44351,7 @@ class org.bukkit.potion.PotionEffectType__inacc__Category : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.potion.PotionEffectType__inacc__Category>> {}
 }
 
+//access: 1057
 @native
 class org.bukkit.potion.PotionEffectType : java.lang.Object {
   @native
@@ -42393,6 +44474,7 @@ class org.bukkit.potion.PotionEffectType : java.lang.Object {
   command getEffectCategory  -> org.bukkit.potion.PotionEffectType__inacc__Category {}
 }
 
+//access: 33
 @native
 class org.bukkit.potion.PotionEffectTypeWrapper : org.bukkit.potion.PotionEffectType {
   @native
@@ -42419,7 +44501,9 @@ class org.bukkit.potion.PotionEffectTypeWrapper : org.bukkit.potion.PotionEffect
   command translationKey  -> string {}
 }
 
+//access: 132609
 @native
+@interface
 class org.bukkit.potion.PotionType__inacc__InternalPotionData : java.lang.Object {
   @native
   command getEffectType  -> org.bukkit.potion.PotionEffectType {}
@@ -42435,6 +44519,7 @@ class org.bukkit.potion.PotionType__inacc__InternalPotionData : java.lang.Object
   command getMaxLevel  -> jvm_integer {}
 }
 
+//access: 16433
 @native
 class org.bukkit.potion.PotionType : java.lang.Enum {
   @native
@@ -42557,7 +44642,9 @@ class org.bukkit.potion.PotionType : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.potion.PotionType>> {}
 }
 
+//access: 132609
 @native
+@interface
 class org.bukkit.profile.PlayerProfile : java.lang.Object {
   @native
   command getUniqueId  -> java.util.UUID {}
@@ -42575,6 +44662,7 @@ class org.bukkit.profile.PlayerProfile : java.lang.Object {
   command clone  -> org.bukkit.profile.PlayerProfile {}
 }
 
+//access: 16433
 @native
 class org.bukkit.profile.PlayerTextures__inacc__SkinModel : java.lang.Enum {
   @native
@@ -42593,7 +44681,9 @@ class org.bukkit.profile.PlayerTextures__inacc__SkinModel : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.profile.PlayerTextures__inacc__SkinModel>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.profile.PlayerTextures : java.lang.Object {
   @native
   command isEmpty  -> boolean {}
@@ -42617,13 +44707,17 @@ class org.bukkit.profile.PlayerTextures : java.lang.Object {
   command isSigned  -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.projectiles.BlockProjectileSource : java.lang.Object {
   @native
   command getBlock  -> org.bukkit.block.Block {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.projectiles.ProjectileSource : java.lang.Object {
   @native
   command launchProjectile arga:java.lang.Class -> org.bukkit.entity.Projectile {}
@@ -42633,6 +44727,7 @@ class org.bukkit.projectiles.ProjectileSource : java.lang.Object {
   command launchProjectile arga:java.lang.Class argb:org.bukkit.util.Vector argc:java.util.function.Consumer -> org.bukkit.entity.Projectile {}
 }
 
+//access: 16433
 @native
 class org.bukkit.Raid__inacc__RaidStatus : java.lang.Enum {
   @native
@@ -42655,7 +44750,9 @@ class org.bukkit.Raid__inacc__RaidStatus : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.Raid__inacc__RaidStatus>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.Raid : java.lang.Object {
   @native
   command isStarted  -> boolean {}
@@ -42683,7 +44780,9 @@ class org.bukkit.Raid : java.lang.Object {
   command getRaiders  -> java.util.List {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.RegionAccessor : java.lang.Object {
   @native
   command getBiome arga:org.bukkit.Location -> org.bukkit.block.Biome {}
@@ -42767,6 +44866,7 @@ class org.bukkit.RegionAccessor : java.lang.Object {
   command hasCollisionsIn arga:org.bukkit.util.BoundingBox -> boolean {}
 }
 
+//access: 32
 @native
 class org.bukkit.Registry__inacc__1 : java.lang.Object {
   @native
@@ -42781,6 +44881,7 @@ class org.bukkit.Registry__inacc__1 : java.lang.Object {
   command get arga:org.bukkit.NamespacedKey -> org.bukkit.Keyed {}
 }
 
+//access: 32
 @native
 class org.bukkit.Registry__inacc__2 : java.lang.Object {
   @native
@@ -42795,6 +44896,7 @@ class org.bukkit.Registry__inacc__2 : java.lang.Object {
   command get arga:org.bukkit.NamespacedKey -> org.bukkit.Keyed {}
 }
 
+//access: 32
 @native
 class org.bukkit.Registry__inacc__3 : java.lang.Object {
   @native
@@ -42809,6 +44911,7 @@ class org.bukkit.Registry__inacc__3 : java.lang.Object {
   command get arga:org.bukkit.NamespacedKey -> org.bukkit.Keyed {}
 }
 
+//access: 32
 @native
 class org.bukkit.Registry__inacc__4 : java.lang.Object {
   @native
@@ -42823,6 +44926,7 @@ class org.bukkit.Registry__inacc__4 : java.lang.Object {
   command get arga:org.bukkit.NamespacedKey -> org.bukkit.Keyed {}
 }
 
+//access: 32
 @native
 class org.bukkit.Registry__inacc__5 : java.lang.Object {
   @native
@@ -42837,6 +44941,7 @@ class org.bukkit.Registry__inacc__5 : java.lang.Object {
   command get arga:org.bukkit.NamespacedKey -> org.bukkit.Keyed {}
 }
 
+//access: 49
 @native
 class org.bukkit.Registry__inacc__SimpleRegistry : java.lang.Object {
   @native
@@ -42855,7 +44960,9 @@ class org.bukkit.Registry__inacc__SimpleRegistry : java.lang.Object {
   command get arga:org.bukkit.NamespacedKey -> org.bukkit.Keyed {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.Registry : java.lang.Object {
   @native
   let ADVANCEMENT: org.bukkit.Registry = 0
@@ -42923,6 +45030,7 @@ class org.bukkit.Registry : java.lang.Object {
   command lambda__inacc__static__inacc__0 arga:org.bukkit.entity.EntityType -> boolean {}
 }
 
+//access: 16433
 @native
 class org.bukkit.Rotation : java.lang.Enum {
   @native
@@ -42959,6 +45067,7 @@ class org.bukkit.Rotation : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.Rotation>> {}
 }
 
+//access: 147505
 @native
 class org.bukkit.SandstoneType : java.lang.Enum {
   @native
@@ -42987,6 +45096,7 @@ class org.bukkit.SandstoneType : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.SandstoneType>> {}
 }
 
+//access: 1057
 @native
 class org.bukkit.scheduler.BukkitRunnable : java.lang.Object {
   @native
@@ -43019,7 +45129,9 @@ class org.bukkit.scheduler.BukkitRunnable : java.lang.Object {
   command setupTask arga:org.bukkit.scheduler.BukkitTask -> org.bukkit.scheduler.BukkitTask {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.scheduler.BukkitScheduler : java.lang.Object {
   @native
   command scheduleSyncDelayedTask arga:org.bukkit.plugin.Plugin argb:java.lang.Runnable -> jvm_integer {}
@@ -43093,7 +45205,9 @@ class org.bukkit.scheduler.BukkitScheduler : java.lang.Object {
   command getMainThreadExecutor arga:org.bukkit.plugin.Plugin -> java.util.concurrent.Executor {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.scheduler.BukkitTask : java.lang.Object {
   @native
   command getTaskId  -> jvm_integer {}
@@ -43107,7 +45221,9 @@ class org.bukkit.scheduler.BukkitTask : java.lang.Object {
   command cancel  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.scheduler.BukkitWorker : java.lang.Object {
   @native
   command getTaskId  -> jvm_integer {}
@@ -43117,13 +45233,16 @@ class org.bukkit.scheduler.BukkitWorker : java.lang.Object {
   command getThread  -> java.lang.Thread {}
 }
 
+//access: 4128
 @native
 class org.bukkit.scoreboard.Criteria__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__Statistic: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.scoreboard.Criteria : java.lang.Object {
   @native
   let DUMMY: org.bukkit.scoreboard.Criteria = 0
@@ -43227,6 +45346,7 @@ class org.bukkit.scoreboard.Criteria : java.lang.Object {
   command create arga:string -> org.bukkit.scoreboard.Criteria {}
 }
 
+//access: 131121
 @native
 class org.bukkit.scoreboard.Criterias : java.lang.Object {
   @native
@@ -43241,6 +45361,7 @@ class org.bukkit.scoreboard.Criterias : java.lang.Object {
   command construct  -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.scoreboard.DisplaySlot : java.lang.Enum {
   @native
@@ -43303,6 +45424,7 @@ class org.bukkit.scoreboard.DisplaySlot : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.scoreboard.DisplaySlot>> {}
 }
 
+//access: 147505
 @native
 class org.bukkit.scoreboard.NameTagVisibility : java.lang.Enum {
   @native
@@ -43325,7 +45447,9 @@ class org.bukkit.scoreboard.NameTagVisibility : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.scoreboard.NameTagVisibility>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.scoreboard.Objective : java.lang.Object {
   @native
   command getName  -> string {}
@@ -43363,6 +45487,7 @@ class org.bukkit.scoreboard.Objective : java.lang.Object {
   command getScoreFor arga:org.bukkit.entity.Entity -> org.bukkit.scoreboard.Score {}
 }
 
+//access: 16433
 @native
 class org.bukkit.scoreboard.RenderType : java.lang.Enum {
   @native
@@ -43381,7 +45506,9 @@ class org.bukkit.scoreboard.RenderType : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.scoreboard.RenderType>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.scoreboard.Score : java.lang.Object {
   @native
   command getPlayer  -> org.bukkit.OfflinePlayer {}
@@ -43401,7 +45528,9 @@ class org.bukkit.scoreboard.Score : java.lang.Object {
   command resetScore  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.scoreboard.Scoreboard : java.lang.Object {
   @native
   command registerNewObjective arga:string argb:string -> org.bukkit.scoreboard.Objective {}
@@ -43463,7 +45592,9 @@ class org.bukkit.scoreboard.Scoreboard : java.lang.Object {
   command getEntityTeam arga:org.bukkit.entity.Entity -> org.bukkit.scoreboard.Team {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.scoreboard.ScoreboardManager : java.lang.Object {
   @native
   command getMainScoreboard  -> org.bukkit.scoreboard.Scoreboard {}
@@ -43471,6 +45602,7 @@ class org.bukkit.scoreboard.ScoreboardManager : java.lang.Object {
   command getNewScoreboard  -> org.bukkit.scoreboard.Scoreboard {}
 }
 
+//access: 16433
 @native
 class org.bukkit.scoreboard.Team__inacc__Option : java.lang.Enum {
   @native
@@ -43491,6 +45623,7 @@ class org.bukkit.scoreboard.Team__inacc__Option : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.scoreboard.Team__inacc__Option>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.scoreboard.Team__inacc__OptionStatus : java.lang.Enum {
   @native
@@ -43513,7 +45646,9 @@ class org.bukkit.scoreboard.Team__inacc__OptionStatus : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.scoreboard.Team__inacc__OptionStatus>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.scoreboard.Team : java.lang.Object {
   @native
   command getName  -> string {}
@@ -43613,6 +45748,7 @@ class org.bukkit.scoreboard.Team : java.lang.Object {
   command hasEntity arga:org.bukkit.entity.Entity -> boolean {}
 }
 
+//access: 33
 @native
 class org.bukkit.Server__inacc__Spigot : java.lang.Object {
   @native
@@ -43633,7 +45769,9 @@ class org.bukkit.Server__inacc__Spigot : java.lang.Object {
   command restart  -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.Server : java.lang.Object {
   @native
   let BROADCAST_CHANNEL_ADMINISTRATIVE: string = 0
@@ -44053,6 +46191,7 @@ class org.bukkit.Server : java.lang.Object {
   command isOwnedByCurrentRegion arga:org.bukkit.entity.Entity -> boolean {}
 }
 
+//access: 147505
 @native
 class org.bukkit.SkullType : java.lang.Enum {
   @native
@@ -44081,6 +46220,7 @@ class org.bukkit.SkullType : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.SkullType>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.Sound : java.lang.Enum {
   @native
@@ -47071,12 +49211,14 @@ class org.bukkit.Sound : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.Sound>> {}
 }
 
+//access: 4128
 @native
 class org.bukkit.SoundCategory__inacc__1 : java.lang.Object {
   @native
   let __inacc__SwitchMap__inacc__org__inacc__bukkit__inacc__SoundCategory: array<Unknown<jvm_integer>> = 0
 }
 
+//access: 16433
 @native
 class org.bukkit.SoundCategory : java.lang.Enum {
   @native
@@ -47113,7 +49255,9 @@ class org.bukkit.SoundCategory : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.SoundCategory>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.SoundGroup : java.lang.Object {
   @native
   command getVolume  -> Unknown<F> {}
@@ -47131,6 +49275,7 @@ class org.bukkit.SoundGroup : java.lang.Object {
   command getFallSound  -> org.bukkit.Sound {}
 }
 
+//access: 16433
 @native
 class org.bukkit.Statistic__inacc__Type : java.lang.Enum {
   @native
@@ -47153,6 +49298,7 @@ class org.bukkit.Statistic__inacc__Type : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.Statistic__inacc__Type>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.Statistic : java.lang.Enum {
   @native
@@ -47347,7 +49493,9 @@ class org.bukkit.Statistic : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.Statistic>> {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.structure.Palette : java.lang.Object {
   @native
   command getBlocks  -> java.util.List {}
@@ -47355,7 +49503,9 @@ class org.bukkit.structure.Palette : java.lang.Object {
   command getBlockCount  -> jvm_integer {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.structure.Structure : java.lang.Object {
   @native
   command getSize  -> org.bukkit.util.BlockVector {}
@@ -47377,7 +49527,9 @@ class org.bukkit.structure.Structure : java.lang.Object {
   command fill arga:org.bukkit.Location argb:org.bukkit.util.BlockVector -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.structure.StructureManager : java.lang.Object {
   @native
   command getStructures  -> java.util.Map {}
@@ -47415,6 +49567,7 @@ class org.bukkit.structure.StructureManager : java.lang.Object {
   command copy arga:org.bukkit.structure.Structure -> org.bukkit.structure.Structure {}
 }
 
+//access: 131121
 @native
 class org.bukkit.StructureType : java.lang.Object {
   @native
@@ -47479,7 +49632,9 @@ class org.bukkit.StructureType : java.lang.Object {
   command getKey  -> org.bukkit.NamespacedKey {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.Tag : java.lang.Object {
   @native
   let REGISTRY_BLOCKS: string = 0
@@ -47957,12 +50112,15 @@ class org.bukkit.Tag : java.lang.Object {
   command getValues  -> java.util.Set {}
 }
 
+//access: 132609
 @native
+@interface
 class org.bukkit.Translatable : java.lang.Object {
   @native
   command getTranslationKey  -> string {}
 }
 
+//access: 147505
 @native
 class org.bukkit.TreeSpecies : java.lang.Enum {
   @native
@@ -47997,6 +50155,7 @@ class org.bukkit.TreeSpecies : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.TreeSpecies>> {}
 }
 
+//access: 16433
 @native
 class org.bukkit.TreeType : java.lang.Enum {
   @native
@@ -48057,13 +50216,17 @@ class org.bukkit.TreeType : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.TreeType>> {}
 }
 
+//access: 140801
 @native
+@interface
 class org.bukkit.UndefinedNullability : java.lang.Object {
   @native
   command value  -> string {}
 }
 
+//access: 132609
 @native
+@interface
 class org.bukkit.UnsafeValues : java.lang.Object {
   @native
   command componentFlattener  -> net.kyori.adventure.text.flattener.ComponentFlattener {}
@@ -48167,7 +50330,9 @@ class org.bukkit.UnsafeValues : java.lang.Object {
   command getStatisticCriteriaKey arga:org.bukkit.Statistic -> string {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.util.BiomeSearchResult : java.lang.Object {
   @native
   command getBiome  -> org.bukkit.block.Biome {}
@@ -48175,6 +50340,7 @@ class org.bukkit.util.BiomeSearchResult : java.lang.Object {
   command getLocation  -> org.bukkit.Location {}
 }
 
+//access: 33
 @native
 class org.bukkit.util.BlockIterator : java.lang.Object {
   @native
@@ -48253,7 +50419,9 @@ class org.bukkit.util.BlockIterator : java.lang.Object {
   command next  -> java.lang.Object {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.util.BlockTransformer__inacc__TransformationState : java.lang.Object {
   @native
   command getOriginal  -> org.bukkit.block.BlockState {}
@@ -48261,12 +50429,15 @@ class org.bukkit.util.BlockTransformer__inacc__TransformationState : java.lang.O
   command getWorld  -> org.bukkit.block.BlockState {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.util.BlockTransformer : java.lang.Object {
   @native
   command transform arga:org.bukkit.generator.LimitedRegion argb:jvm_integer argc:jvm_integer argd:jvm_integer arge:org.bukkit.block.BlockState argf:org.bukkit.util.BlockTransformer__inacc__TransformationState -> org.bukkit.block.BlockState {}
 }
 
+//access: 33
 @native
 class org.bukkit.util.BlockVector : org.bukkit.util.Vector {
   @native
@@ -48293,6 +50464,7 @@ class org.bukkit.util.BlockVector : org.bukkit.util.Vector {
   command clone  -> java.lang.Object {}
 }
 
+//access: 33
 @native
 class org.bukkit.util.BoundingBox : java.lang.Object {
   @native
@@ -48427,7 +50599,9 @@ class org.bukkit.util.BoundingBox : java.lang.Object {
   command clone  -> java.lang.Object {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.util.CachedServerIcon : java.lang.Object {
   @native
   command getData  -> string {}
@@ -48435,6 +50609,7 @@ class org.bukkit.util.CachedServerIcon : java.lang.Object {
   command isEmpty  -> boolean {}
 }
 
+//access: 33
 @native
 class org.bukkit.util.ChatPaginator__inacc__ChatPage : java.lang.Object {
   @native
@@ -48453,6 +50628,7 @@ class org.bukkit.util.ChatPaginator__inacc__ChatPage : java.lang.Object {
   command getLines  -> array<Unknown<string>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.util.ChatPaginator : java.lang.Object {
   @native
@@ -48477,18 +50653,23 @@ class org.bukkit.util.ChatPaginator : java.lang.Object {
   command wordWrap arga:string -> array<Unknown<string>> {}
 }
 
+//access: 132609
 @native
+@interface
 class org.bukkit.util.Consumer : java.lang.Object {
   @native
   command accept arga:java.lang.Object -> void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.util.EntityTransformer : java.lang.Object {
   @native
   command transform arga:org.bukkit.generator.LimitedRegion argb:jvm_integer argc:jvm_integer argd:jvm_integer arge:org.bukkit.entity.Entity -> boolean {}
 }
 
+//access: 33
 @native
 class org.bukkit.util.EulerAngle : java.lang.Object {
   @native
@@ -48523,6 +50704,7 @@ class org.bukkit.util.EulerAngle : java.lang.Object {
   command hashCode  -> jvm_integer {}
 }
 
+//access: 33
 @native
 class org.bukkit.util.FileUtil : java.lang.Object {
   @native
@@ -48531,6 +50713,7 @@ class org.bukkit.util.FileUtil : java.lang.Object {
   command copy arga:java.io.File argb:java.io.File -> boolean {}
 }
 
+//access: 33
 @native
 class org.bukkit.util.io.BukkitObjectInputStream : java.io.ObjectInputStream {
   @native
@@ -48543,6 +50726,7 @@ class org.bukkit.util.io.BukkitObjectInputStream : java.io.ObjectInputStream {
   command newIOException arga:string argb:java.lang.Throwable -> java.io.IOException {}
 }
 
+//access: 33
 @native
 class org.bukkit.util.io.BukkitObjectOutputStream : java.io.ObjectOutputStream {
   @native
@@ -48553,6 +50737,7 @@ class org.bukkit.util.io.BukkitObjectOutputStream : java.io.ObjectOutputStream {
   command replaceObject arga:java.lang.Object -> java.lang.Object {}
 }
 
+//access: 48
 @native
 class org.bukkit.util.io.Wrapper : java.lang.Object {
   @native
@@ -48566,6 +50751,7 @@ class org.bukkit.util.io.Wrapper : java.lang.Object {
   command construct arga:java.util.Map -> void {}
 }
 
+//access: 1057
 @native
 class org.bukkit.util.noise.NoiseGenerator : java.lang.Object {
   @native
@@ -48606,6 +50792,7 @@ class org.bukkit.util.noise.NoiseGenerator : java.lang.Object {
   command noise arga:number argb:number argc:number argd:jvm_integer arge:number argf:number -> number {}
 }
 
+//access: 1057
 @native
 class org.bukkit.util.noise.OctaveGenerator : java.lang.Object {
   @native
@@ -48648,6 +50835,7 @@ class org.bukkit.util.noise.OctaveGenerator : java.lang.Object {
   command noise arga:number argb:number argc:number argd:number arge:number -> number {}
 }
 
+//access: 33
 @native
 class org.bukkit.util.noise.PerlinNoiseGenerator : org.bukkit.util.noise.NoiseGenerator {
   @native
@@ -48680,6 +50868,7 @@ class org.bukkit.util.noise.PerlinNoiseGenerator : org.bukkit.util.noise.NoiseGe
   command getNoise arga:number argb:number argc:number argd:jvm_integer arge:number -> number {}
 }
 
+//access: 33
 @native
 class org.bukkit.util.noise.PerlinOctaveGenerator : org.bukkit.util.noise.OctaveGenerator {
   @native
@@ -48692,6 +50881,7 @@ class org.bukkit.util.noise.PerlinOctaveGenerator : org.bukkit.util.noise.Octave
   command createOctaves arga:java.util.Random -> array<Unknown<org.bukkit.util.noise.NoiseGenerator>> {}
 }
 
+//access: 33
 @native
 class org.bukkit.util.noise.SimplexNoiseGenerator : org.bukkit.util.noise.PerlinNoiseGenerator {
   @native
@@ -48758,6 +50948,7 @@ class org.bukkit.util.noise.SimplexNoiseGenerator : org.bukkit.util.noise.Perlin
   command getInstance  -> org.bukkit.util.noise.SimplexNoiseGenerator {}
 }
 
+//access: 33
 @native
 class org.bukkit.util.noise.SimplexOctaveGenerator : org.bukkit.util.noise.OctaveGenerator {
   @native
@@ -48782,6 +50973,7 @@ class org.bukkit.util.noise.SimplexOctaveGenerator : org.bukkit.util.noise.Octav
   command createOctaves arga:java.util.Random -> array<Unknown<org.bukkit.util.noise.NoiseGenerator>> {}
 }
 
+//access: 49
 @native
 class org.bukkit.util.NumberConversions : java.lang.Object {
   @native
@@ -48816,6 +51008,7 @@ class org.bukkit.util.NumberConversions : java.lang.Object {
   command checkFinite arga:string -> void {}
 }
 
+//access: 49
 @native
 class org.bukkit.util.permissions.BroadcastPermissions : java.lang.Object {
   @native
@@ -48828,6 +51021,7 @@ class org.bukkit.util.permissions.BroadcastPermissions : java.lang.Object {
   command registerPermissions arga:org.bukkit.permissions.Permission -> org.bukkit.permissions.Permission {}
 }
 
+//access: 49
 @native
 class org.bukkit.util.permissions.CommandPermissions : java.lang.Object {
   @native
@@ -48840,6 +51034,7 @@ class org.bukkit.util.permissions.CommandPermissions : java.lang.Object {
   command registerPermissions arga:org.bukkit.permissions.Permission -> org.bukkit.permissions.Permission {}
 }
 
+//access: 49
 @native
 class org.bukkit.util.permissions.DefaultPermissions : java.lang.Object {
   @native
@@ -48872,6 +51067,7 @@ class org.bukkit.util.permissions.DefaultPermissions : java.lang.Object {
   command registerCorePermissions  -> void {}
 }
 
+//access: 33
 @native
 class org.bukkit.util.RayTraceResult : java.lang.Object {
   @native
@@ -48910,6 +51106,7 @@ class org.bukkit.util.RayTraceResult : java.lang.Object {
   command toString  -> string {}
 }
 
+//access: 33
 @native
 class org.bukkit.util.StringUtil : java.lang.Object {
   @native
@@ -48920,7 +51117,9 @@ class org.bukkit.util.StringUtil : java.lang.Object {
   command startsWithIgnoreCase arga:string argb:string -> boolean {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.util.StructureSearchResult : java.lang.Object {
   @native
   command getStructure  -> org.bukkit.generator.structure.Structure {}
@@ -48928,6 +51127,7 @@ class org.bukkit.util.StructureSearchResult : java.lang.Object {
   command getLocation  -> org.bukkit.Location {}
 }
 
+//access: 33
 @native
 class org.bukkit.util.Transformation : java.lang.Object {
   @native
@@ -48958,6 +51158,7 @@ class org.bukkit.util.Transformation : java.lang.Object {
   command toString  -> string {}
 }
 
+//access: 33
 @native
 class org.bukkit.util.Vector : java.lang.Object {
   @native
@@ -49116,7 +51317,9 @@ class org.bukkit.util.Vector : java.lang.Object {
   command clone  -> java.lang.Object {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.util.VoxelShape : java.lang.Object {
   @native
   command getBoundingBoxes  -> java.util.Collection {}
@@ -49124,10 +51327,13 @@ class org.bukkit.util.VoxelShape : java.lang.Object {
   command overlaps arga:org.bukkit.util.BoundingBox -> boolean {}
 }
 
+//access: 9729
 @native
+@interface
 class org.bukkit.Utility : java.lang.Object {
 }
 
+//access: 33
 @native
 class org.bukkit.Vibration__inacc__Destination__inacc__BlockDestination : java.lang.Object {
   @native
@@ -49142,6 +51348,7 @@ class org.bukkit.Vibration__inacc__Destination__inacc__BlockDestination : java.l
   command getBlock  -> org.bukkit.block.Block {}
 }
 
+//access: 33
 @native
 class org.bukkit.Vibration__inacc__Destination__inacc__EntityDestination : java.lang.Object {
   @native
@@ -49152,10 +51359,13 @@ class org.bukkit.Vibration__inacc__Destination__inacc__EntityDestination : java.
   command getEntity  -> org.bukkit.entity.Entity {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.Vibration__inacc__Destination : java.lang.Object {
 }
 
+//access: 33
 @native
 class org.bukkit.Vibration : java.lang.Object {
   @native
@@ -49176,6 +51386,7 @@ class org.bukkit.Vibration : java.lang.Object {
   command getArrivalTime  -> jvm_integer {}
 }
 
+//access: 16433
 @native
 class org.bukkit.Warning__inacc__WarningState : java.lang.Enum {
   @native
@@ -49202,7 +51413,9 @@ class org.bukkit.Warning__inacc__WarningState : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.Warning__inacc__WarningState>> {}
 }
 
+//access: 9729
 @native
+@interface
 class org.bukkit.Warning : java.lang.Object {
   @native
   command value  -> boolean {}
@@ -49210,6 +51423,7 @@ class org.bukkit.Warning : java.lang.Object {
   command reason  -> string {}
 }
 
+//access: 16433
 @native
 class org.bukkit.WeatherType : java.lang.Enum {
   @native
@@ -49228,7 +51442,9 @@ class org.bukkit.WeatherType : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.WeatherType>> {}
 }
 
+//access: 132609
 @native
+@interface
 class org.bukkit.World__inacc__ChunkLoadCallback : java.lang.Object {
   @native
   command onLoad arga:org.bukkit.Chunk -> void {}
@@ -49238,6 +51454,7 @@ class org.bukkit.World__inacc__ChunkLoadCallback : java.lang.Object {
   command accept arga:java.lang.Object -> void {}
 }
 
+//access: 16433
 @native
 class org.bukkit.World__inacc__Environment : java.lang.Enum {
   @native
@@ -49268,6 +51485,7 @@ class org.bukkit.World__inacc__Environment : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.World__inacc__Environment>> {}
 }
 
+//access: 131105
 @native
 class org.bukkit.World__inacc__Spigot : java.lang.Object {
   @native
@@ -49278,7 +51496,9 @@ class org.bukkit.World__inacc__Spigot : java.lang.Object {
   command strikeLightningEffect arga:org.bukkit.Location -> org.bukkit.entity.LightningStrike {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.World : java.lang.Object {
   @native
   command getEntityCount  -> jvm_integer {}
@@ -49882,7 +52102,9 @@ class org.bukkit.World : java.lang.Object {
   command lambda__inacc__getChunkAtAsync__inacc__0 arga:java.lang.Throwable -> java.lang.Void {}
 }
 
+//access: 1537
 @native
+@interface
 class org.bukkit.WorldBorder : java.lang.Object {
   @native
   command getWorld  -> org.bukkit.World {}
@@ -49928,6 +52150,7 @@ class org.bukkit.WorldBorder : java.lang.Object {
   command isInBounds arga:org.bukkit.Location -> boolean {}
 }
 
+//access: 33
 @native
 class org.bukkit.WorldCreator : java.lang.Object {
   @native
@@ -50030,6 +52253,7 @@ class org.bukkit.WorldCreator : java.lang.Object {
   command keepSpawnLoaded arga:net.kyori.adventure.util.TriState -> org.bukkit.WorldCreator {}
 }
 
+//access: 16433
 @native
 class org.bukkit.WorldType : java.lang.Enum {
   @native
@@ -50060,6 +52284,7 @@ class org.bukkit.WorldType : java.lang.Enum {
   command __inacc__values  -> array<Unknown<org.bukkit.WorldType>> {}
 }
 
+//access: 131121
 @native
 class org.spigotmc.CustomTimingsHandler : java.lang.Object {
   @native
@@ -50072,6 +52297,7 @@ class org.spigotmc.CustomTimingsHandler : java.lang.Object {
   command stopTiming  -> void {}
 }
 
+//access: 33
 @native
 class org.spigotmc.event.entity.EntityDismountEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -50100,6 +52326,7 @@ class org.spigotmc.event.entity.EntityDismountEvent : org.bukkit.event.entity.En
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.spigotmc.event.entity.EntityMountEvent : org.bukkit.event.entity.EntityEvent {
   @native
@@ -50122,6 +52349,7 @@ class org.spigotmc.event.entity.EntityMountEvent : org.bukkit.event.entity.Entit
   command getHandlerList  -> org.bukkit.event.HandlerList {}
 }
 
+//access: 33
 @native
 class org.spigotmc.event.player.PlayerSpawnLocationEvent : org.bukkit.event.player.PlayerEvent {
   @native
@@ -50142,11 +52370,11 @@ class org.spigotmc.event.player.PlayerSpawnLocationEvent : org.bukkit.event.play
 
 """
 ,"std/std" to """
-class Temp_6c5ad58a_3381_4ae5_ac21_b540cf36d4d8 {}
+class Temp_c94de5de_6735_4abd_a4b5_f094a0cfa04b {}
 include "std/jdk"
 include "std/console""""
 ,"std/string" to """
-class Temp_3d178025_b922_4e78_b1bf_cee9fe9a37dc {}
+class Temp_1edd8435_721f_4feb_8760_f3b47b22bb0d {}
 class std.stringbuilder {
     let jvmBuilder: java.lang.StringBuilder = (new java.lang.StringBuilder)
 
@@ -50170,7 +52398,7 @@ class std.stringbuilder {
 
 """
 ,"std/targets" to """
-class Temp_6905b101_782d_4820_b8d0_4877a3b917de {}
+class Temp_dbc4be3e_30da_431a_bf64_02550a51a66d {}
 class target {
     command sendMessage message:string -> void {
 

@@ -30,7 +30,7 @@ sealed class Token {
     class ForEachKeyword(override val span: SpanData) : Token()
     class IfKeyword(override val span: SpanData) : Token()
     class GlobalKeyword(override val span: SpanData) : Token()
-    class EventKeyword(override val span: SpanData) : Token()
+    class OnKeyword(override val span: SpanData) : Token()
     class CommandKeyword(override val span: SpanData) : Token()
     class ArrayOfKeyword(override val span: SpanData) : Token()
     class LoopKeyword(override val span: SpanData) : Token()
@@ -72,7 +72,7 @@ sealed class Token {
             is At -> """{"type":"at","span":$span}"""
             is Arrow -> """{"type":"arrow","span":$span}"""
 
-            is EventKeyword -> """{"type":"event","span":$span}"""
+            is OnKeyword -> """{"type":"event","span":$span}"""
             is BuiltinKeyword -> """{"type":"native","span":$span}"""
             is CommandKeyword -> """{"type":"function","span":$span}"""
             is GlobalKeyword -> """{"type":"global","span":$span}"""

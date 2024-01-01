@@ -47,7 +47,19 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
                     value.arguments.map { evaluateType(it.argument) }.toList()
                 )
                 if(!property.exists) {
-                    throw InvalidFunction(value.nameSpan)
+                    if(value.path.path.size == 2) {
+                        val variable = value.path.path[0]
+                        val function = value.path.path[1]
+                        val type = evaluateType(Ast.Variable(variable)) as Type.Object
+                        return gatherer.computeType(
+                            type.signature.resolve(),
+                            function,
+                            value.arguments.map { evaluateType(it.argument) }.toList(),
+                            value.nameSpan
+                        )
+                    } else {
+                        throw InvalidFunction(value.nameSpan)
+                    }
                 }
                 return gatherer.computeType(altPath.resolve(), fn, value.arguments.map { evaluateType(it.argument) }.toList(), value.nameSpan)
             }
@@ -155,8 +167,13 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
             return
         val path = access.path.resolve().split(".").toMutableList()
         val fn = path.removeLast()
-
-        if(!gatherer.getProperty(path.joinToString("."), fn, access.arguments.map { evaluateType(it.argument) }).exists) {
+        val prop = gatherer.getProperty(
+            path.joinToString("."),
+            fn,
+            access.arguments.map { evaluateType(it.argument) }
+        )
+        println("path: $path | lvars: ${localVariables}")
+        if(!prop.exists) {
             if(path.size == 1 && localVariables.containsKey(path[0])) {
                 val path2 = access.path.resolve().split(".").toMutableList()
                 val variable = path2[0]

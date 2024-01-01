@@ -111,7 +111,12 @@ class BindingVisitor : ClassVisitor(Opcodes.ASM9) {
         superName: String?,
         interfaces: Array<out String>?
     ) {
-        bindingString += "@native\nclass ${name!!.replace("/", ".")} : ${superName!!.replace("/", ".")} {\n"
+
+        val inters = if(access and 512 == 512)
+            "@interface\n"
+        else
+            ""
+        bindingString += "//access: ${access}\n@native\n${inters}class ${name!!.replace("/", ".")} : ${superName!!.replace("/", ".")} {\n"
     }
 
     override fun visitEnd() {
@@ -128,6 +133,7 @@ class BindingVisitor : ClassVisitor(Opcodes.ASM9) {
             "\t@static\n"
         else
             ""
+
         if(name == "<init>") {
             bindingString += "  @native\n${accessing}  command construct ${stripDescriptor(descriptor!!)} {}\n"
         } else if(name == "<clinit>") {} else {

@@ -12,9 +12,11 @@ import org.objectweb.asm.Label
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes
 import org.objectweb.asm.util.CheckClassAdapter
+import org.objectweb.asm.util.TraceClassVisitor
 import parser.Ast
 import parser.PathName
 import parser.Type
+import java.io.PrintWriter
 import java.sql.SQLIntegrityConstraintViolationException
 import java.util.UUID
 
@@ -201,8 +203,8 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
 
         if(!clazz.isNative)
             classVisitor = CheckClassAdapter(classVisitor)
-//        val pw = PrintWriter(System.out)
-//        classVisitor = TraceClassVisitor(classVisitor, pw)
+        val pw = PrintWriter(System.out)
+        classVisitor = TraceClassVisitor(classVisitor, pw)
 
         when(clazz.name.resolve()) {
             "events" -> {
@@ -226,6 +228,8 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                 )
             }
         }
+
+        classVisitor.visitSource(clazz.span.file, "File: ${clazz.span.file}; Class: ${clazz.name}")
 
 
         if(clazz.isNative) {
@@ -287,6 +291,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
     }
 
     override fun visit(function: Ast.Function, context: VisitorContext): Boolean {
+
         currentHeader = function
         currentMappedFunction = FunctionMapper().map(function, currentClass)
 
@@ -330,6 +335,10 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
             )
         }
         methodVisitor.visitCode()
+        val label = Label()
+        methodVisitor.visitLabel(label)
+        methodVisitor.visitLineNumber(function.eventNameSpan.calculateLineNumber(), label)
+
 
         val b = !annotations.contains(PathName.parse("native"))
         annotations.clear()
@@ -347,13 +356,6 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         currentHeader = event
         currentMappedFunction = FunctionMapper().map(event, currentClass)
 
-        localVariables["this"] = Type.Object(
-            PathName.parse("events"),
-            listOf(),
-            false
-        )
-        localVariableIndices["this"] = localVariableIndex
-        localVariableIndex++
         when(event.name) {
             "startup" -> {
                 methodVisitor = classVisitor.visitMethod(
@@ -386,13 +388,16 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         }
         if(event.name != "startup") {
             methodVisitor.visitAnnotation(
-                "org/bukkit/event/EventHandler",
+                "Lorg/bukkit/event/EventHandler;",
                 true
             )
-
         }
 
         methodVisitor.visitCode()
+
+        val label = Label()
+        methodVisitor.visitLabel(label)
+        methodVisitor.visitLineNumber(event.eventNameSpan.calculateLineNumber(), label)
 
         val b = !annotations.contains(PathName.parse("native"))
         annotations.clear()
@@ -502,6 +507,9 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
     }
 
     override fun visit(clazz: Ast.ConstructClass, context: VisitorContext) {
+        val label = Label()
+        methodVisitor.visitLabel(label)
+        methodVisitor.visitLineNumber(clazz.classSpan.calculateLineNumber(), label)
         if(!clazz.className.resolve().startsWith("java.")
             && !classes.contains(clazz.className)) {
             throw InvalidClass(clazz.classSpan)
@@ -518,6 +526,9 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
     }
 
     fun handleSpecialAstAccess(access: Ast.Access, context: VisitorContext): Boolean {
+        val label = Label()
+        methodVisitor.visitLabel(label)
+        methodVisitor.visitLineNumber(access.nameSpan.calculateLineNumber(), label)
         when(access.path.resolve()) {
             "eq" -> {
                 branchLabels.add(Label())
@@ -757,13 +768,13 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                 )
 
                 if(property.isInterface) {
-                    when(gatherer.functionTypes[altSig.generateInternalSignature()]!!) {
+                    when(gatherer.functionTypes[methodSignature.generateInternalSignature()]!!) {
                         FunctionType.STATIC_METHOD -> throw SQLIntegrityConstraintViolationException()
                         FunctionType.STATIC_FIELD -> throw SQLIntegrityConstraintViolationException()
                         FunctionType.MEMBER_METHOD -> {
                             methodVisitor.visitMethodInsn(
-                                Opcodes.INVOKEVIRTUAL,
-                                evaluateType(Ast.Variable(access.path.path[0])).toJvmSignature().removePrefix("L").removeSuffix(";"),
+                                Opcodes.INVOKEINTERFACE,
+                                property.resultClass.replace(".", "/"),
                                 access.path.path[1],
                                 methodSignature.methodSignature(),
                                 true
@@ -771,21 +782,21 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                         }
                         FunctionType.MEMBER_FIELD -> {
                             methodVisitor.visitFieldInsn(
-                                Opcodes.INVOKEVIRTUAL,
-                                evaluateType(Ast.Variable(access.path.path[0])).toJvmSignature().removePrefix("L").removeSuffix(";"),
+                                Opcodes.GETFIELD,
+                                property.resultClass.replace(".", "/"),
                                 access.path.path[1],
                                 fieldSignature.methodSignature()
                             )
                         }
                     }
                 } else {
-                    when(gatherer.functionTypes[altSig.generateInternalSignature()]!!) {
+                    when(gatherer.functionTypes[methodSignature.generateInternalSignature()]!!) {
                         FunctionType.STATIC_METHOD -> throw SQLIntegrityConstraintViolationException()
                         FunctionType.STATIC_FIELD -> throw SQLIntegrityConstraintViolationException()
                         FunctionType.MEMBER_METHOD -> {
                             methodVisitor.visitMethodInsn(
                                 Opcodes.INVOKEVIRTUAL,
-                                evaluateType(Ast.Variable(access.path.path[0])).toJvmSignature().removePrefix("L").removeSuffix(";"),
+                                property.resultClass.replace(".", "/"),
                                 access.path.path[1],
                                 methodSignature.methodSignature(),
                                 false
@@ -793,8 +804,8 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                         }
                         FunctionType.MEMBER_FIELD -> {
                             methodVisitor.visitFieldInsn(
-                                Opcodes.INVOKEVIRTUAL,
-                                evaluateType(Ast.Variable(access.path.path[0])).toJvmSignature().removePrefix("L").removeSuffix(";"),
+                                Opcodes.GETFIELD,
+                                property.resultClass.replace(".", "/"),
                                 access.path.path[1],
                                 fieldSignature.methodSignature()
                             )
@@ -814,6 +825,10 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
 
 
     override fun visit(declareVariable: Ast.DeclareVariable, context: VisitorContext) {
+        val label = Label()
+        methodVisitor.visitLabel(label)
+        methodVisitor.visitLineNumber(declareVariable.span.calculateLineNumber(), label)
+
         localVariableIndex += 2
         localVariableIndices[declareVariable.name] = localVariableIndex
 
@@ -842,6 +857,10 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
     }
 
     override fun visit(ifStatement: Ast.IfStatement, context: VisitorContext) {
+        val label = Label()
+        methodVisitor.visitLabel(label)
+        methodVisitor.visitLineNumber(ifStatement.ifTrue.span.calculateLineNumber(), label)
+
         branchLabels.add(Label())
         continueLabels.add(Label())
         methodVisitor.visitJumpInsn(Opcodes.IFNE, branchLabels.last())
@@ -855,6 +874,10 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
     }
 
     override fun visit(loopStatement: Ast.LoopStatement, context: VisitorContext) {
+        val label = Label()
+        methodVisitor.visitLabel(label)
+        methodVisitor.visitLineNumber(loopStatement.block.span.calculateLineNumber(), label)
+
         val looping = Label()
         val continued = Label()
         continueLabels.add(continued)

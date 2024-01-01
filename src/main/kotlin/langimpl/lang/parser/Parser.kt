@@ -163,7 +163,8 @@ class Parser(private val tokens: List<Token>) {
                 isStaticClass,
                 extends,
                 annotations.contains(PathName.parse("native")),
-                annotations.contains(PathName.parse("interface"))
+                annotations.contains(PathName.parse("interface")),
+                keyword.span
             )
         } else {
             throw UnexpectedToken("class or namespace keyword", keyword, keyword.span)
@@ -252,8 +253,8 @@ class Parser(private val tokens: List<Token>) {
                     returnType
                 )
             }
-            is Token.EventKeyword -> {
-                val eventKeyword = expect<Token.EventKeyword>("event keyword")
+            is Token.OnKeyword -> {
+                val eventKeyword = expect<Token.OnKeyword>("event keyword")
                 val eventName = expect<Token.Identifier>("event name")
                 val block = parseBlock()
                 return Ast.Event(
@@ -402,7 +403,7 @@ class Parser(private val tokens: List<Token>) {
             is Token.BuiltinKeyword -> "builtin"
             is Token.ClassKeyword -> "class"
             is Token.CommandKeyword -> "command"
-            is Token.EventKeyword -> "event"
+            is Token.OnKeyword -> "event"
             is Token.ForEachKeyword -> "foreach"
             is Token.GlobalKeyword -> "global"
             is Token.Identifier -> v.value

@@ -64,16 +64,14 @@ class AstGatherer : AstVisitor {
     }
 
     fun computeType(clazz: String, name: String, parameters: List<Type>, span: SpanData): Type {
-        if(!getProperty(clazz, name, parameters).exists) {
-            if(clazz != "java.lang.Object") {
-                return computeType(data[clazz]!!.superClass.signature.resolve(), name, parameters, span)
-            } else {
-                throw InvalidFunction(span)
-            }
+        val property = getProperty(clazz, name, parameters)
+        if(!property.exists) {
+            throw InvalidFunction(span)
         }
-        data[clazz]!!.properties.forEach {
-            if(it.parameters == parameters
-                && it.name == name) {
+        data[property.resultClass]!!.properties.forEach {
+            println("${it.name} && ${it.parameters} vs. ${name} && ${parameters}")
+            if(it.name == name
+                && it.parameters == parameters) {
                 return it.returns
             }
         }

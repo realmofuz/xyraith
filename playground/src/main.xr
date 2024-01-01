@@ -3,7 +3,11 @@ include "std/jdk"
 include "std/console"
 
 namespace events {
-    event startup {
-        std.console.log "Hello world!"
+    on startup {
+
+    }
+    on join {
+        let p = (event.getPlayer)
+        std.console.log (p.getName)
     }
 }
