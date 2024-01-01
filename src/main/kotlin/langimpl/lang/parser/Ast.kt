@@ -99,6 +99,7 @@ sealed interface Ast {
         val static: kotlin.Boolean,
         val inheritsFrom: Type.Object,
         val isNative: kotlin.Boolean,
+        val isInterface: kotlin.Boolean,
     ) : Ast {
         override fun toString(): String {
             return """{"type":"class","name":"$name","headers":$headers,"static":$static}""".trimIndent()

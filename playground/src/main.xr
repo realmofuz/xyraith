@@ -1,7 +1,9 @@
 include "std/papermc"
+include "std/jdk"
+include "std/console"
 
 namespace events {
-    event join {
-        let player = (event.getPlayer)
+    event startup {
+        std.console.log "Hello world!"
     }
 }

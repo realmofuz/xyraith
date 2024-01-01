@@ -68,10 +68,10 @@ fun runServer(withServer: Boolean) {
             val gatherer = AstGatherer()
             ast.events.map { it.accept(gatherer, VisitorContext.None) }
 
-            val tc = AstValidator()
+            val tc = AstValidator(gatherer)
             ast.events.map { it.accept(tc, VisitorContext.None) }
 
-            val emitter = Emitter(tc.functionTypes, tc.functions.map { it.key to it.value.returns }.toMap())
+            val emitter = Emitter(gatherer)
             ast.events.map { it.accept(emitter, VisitorContext.None) }
 
             for(clazz in emitter.emittedClasses) {

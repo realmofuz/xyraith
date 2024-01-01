@@ -1,5 +1,8 @@
 package langimpl.lang.jvm
 
+import langimpl.error.InvalidFunction
+import langimpl.error.Unreachable
+import langimpl.lang.lexer.SpanData
 import langimpl.lang.parser.AstVisitor
 import langimpl.lang.parser.VisitorContext
 import parser.Ast
@@ -8,34 +11,81 @@ import parser.Type
 data class ClassData(
     val superClass: Type.Object,
     val interfaces: MutableList<Type.Object>,
-    val properties: MutableList<JvmMethodSignature>
+    val properties: MutableList<JvmMethodSignature>,
+    val isInterface: Boolean,
+)
+
+data class PropertyResult(
+    val exists: Boolean,
+    val isInterface: Boolean,
+    val resultClass: String,
 )
 class AstGatherer : AstVisitor {
     /*
-    Represents inheritance.
+    Represents class data.
+    Name is the name of the class, with package delimited by `.`.
+    E.g `java.lang.Object`
      */
     val data: MutableMap<String, ClassData> = mutableMapOf()
     val returnTypes: MutableMap<String, Type> = mutableMapOf()
+    val functionTypes: MutableMap<String, FunctionType> = mutableMapOf()
+    val annotations: MutableList<String> = mutableListOf()
 
     lateinit var currentClass: Ast.Class
     lateinit var currentClassName: String
 
-    fun hasProperty(clazz: String, name: String, parameters: List<Type>, returns: Type): Boolean {
+    fun getProperty(clazz: String, name: String, parameters: List<Type>): PropertyResult {
+        println("searching for: $clazz::$name w/ format: ${data.keys}")
+        if(!data.containsKey(clazz)) {
+            return PropertyResult(
+                false,
+                false,
+                ""
+            )
+        }
         data[clazz]!!.properties.forEach {
             if(it.parameters == parameters
-                && it.name == name
-                && it.returns == returns) {
-                return true
+                && it.name == name) {
+                return PropertyResult(
+                    true,
+                    data[clazz]!!.isInterface,
+                    clazz
+                )
             }
         }
-        return false
+        if(clazz == "java.lang.Object") {
+            return PropertyResult(
+                false,
+                false,
+                ""
+            )
+        }
+        return getProperty(data[clazz]!!.superClass.signature.resolve(), name, parameters)
+    }
+
+    fun computeType(clazz: String, name: String, parameters: List<Type>, span: SpanData): Type {
+        if(!getProperty(clazz, name, parameters).exists) {
+            if(clazz != "java.lang.Object") {
+                return computeType(data[clazz]!!.superClass.signature.resolve(), name, parameters, span)
+            } else {
+                throw InvalidFunction(span)
+            }
+        }
+        data[clazz]!!.properties.forEach {
+            if(it.parameters == parameters
+                && it.name == name) {
+                return it.returns
+            }
+        }
+        throw Unreachable()
     }
 
     override fun visit(clazz: Ast.Class, context: VisitorContext) {
         data[clazz.name.resolve()] = ClassData(
             clazz.inheritsFrom,
             mutableListOf(),
-            mutableListOf()
+            mutableListOf(),
+            clazz.isInterface,
         )
         currentClass = clazz
         currentClassName = clazz.name.resolve()
@@ -46,7 +96,7 @@ class AstGatherer : AstVisitor {
     }
 
     override fun visit(annotation: Ast.Annotation, context: VisitorContext) {
-
+        annotations.add(annotation.name.resolve())
     }
 
     override fun visit(function: Ast.Function, context: VisitorContext): Boolean {
@@ -59,6 +109,13 @@ class AstGatherer : AstVisitor {
         )
         data[currentClassName]!!.properties.add(signature)
         returnTypes[signature.generateInternalSignature()] = function.returns
+
+        if(currentClass.static || annotations.contains("static"))
+            functionTypes[signature.generateInternalSignature()] = FunctionType.STATIC_METHOD
+        else
+            functionTypes[signature.generateInternalSignature()] = FunctionType.MEMBER_METHOD
+
+        annotations.clear()
         return true
     }
 
@@ -76,6 +133,13 @@ class AstGatherer : AstVisitor {
         )
         data[currentClassName]!!.properties.add(signature)
         returnTypes[signature.generateInternalSignature()] = field.type
+
+        if(currentClass.static || annotations.contains("static"))
+            functionTypes[signature.generateInternalSignature()] = FunctionType.STATIC_FIELD
+        else
+            functionTypes[signature.generateInternalSignature()] = FunctionType.MEMBER_FIELD
+
+        annotations.clear()
         return true
     }
 

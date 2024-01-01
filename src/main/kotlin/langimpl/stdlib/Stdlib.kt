@@ -4,20 +4,19 @@ package stdlib
 
 val stdlibFiles = mutableMapOf<String, String>(
 "std/console" to """
-class Temp_3f810fe1_7cdd_4788_9fbd_80ca75123ff2 {}
+class Temp_27e7606a_0d8a_47de_ac19_0b91f094619c {}
 namespace std.console {
     command log output: string -> void {
         let console: java.io.PrintStream = (java.lang.System.out)
         console.println output
     }
-
-}}
+}
 
 
 
 """
 ,"std/jdk" to """
-class Temp_de87ed7e_3b69_411d_966d_7f7988439f59 {}
+class Temp_98ab89fb_9e5f_4366_bb37_585e55bc2cf6 {}
 class xyrreserved.JDKHolder {}
 
 @native
@@ -46,7 +45,7 @@ class java.lang.System {
 
 """
 ,"std/papermc" to """
-class Temp_e01e97f3_1192_4adb_a131_1e207b0c622f {}
+class Temp_e92947b4_d051_4253_965e_5a757b28c13f {}
 @native
 class co.aikar.timings.FullServerTickHandler : co.aikar.timings.TimingHandler {
   @native
@@ -50143,11 +50142,11 @@ class org.spigotmc.event.player.PlayerSpawnLocationEvent : org.bukkit.event.play
 
 """
 ,"std/std" to """
-class Temp_44988070_ce8c_44d6_9d28_bf065ce8e27b {}
+class Temp_6c5ad58a_3381_4ae5_ac21_b540cf36d4d8 {}
 include "std/jdk"
 include "std/console""""
 ,"std/string" to """
-class Temp_ff5e8bff_cb45_48bb_8c01_5fcffa650cea {}
+class Temp_3d178025_b922_4e78_b1bf_cee9fe9a37dc {}
 class std.stringbuilder {
     let jvmBuilder: java.lang.StringBuilder = (new java.lang.StringBuilder)
 
@@ -50171,9 +50170,8 @@ class std.stringbuilder {
 
 """
 ,"std/targets" to """
-class Temp_99b83acb_5368_4708_befd_2a207be88455 {}
+class Temp_6905b101_782d_4820_b8d0_4877a3b917de {}
 class target {
-
     command sendMessage message:string -> void {
 
     }
@@ -50181,7 +50179,6 @@ class target {
     command giveItems id:string amount:number -> void {
 
     }
-
 }"""
 ,
 )

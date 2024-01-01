@@ -12,24 +12,21 @@ import org.objectweb.asm.Label
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes
 import org.objectweb.asm.util.CheckClassAdapter
-import org.objectweb.asm.util.TraceClassVisitor
 import parser.Ast
 import parser.PathName
 import parser.Type
-import java.io.PrintWriter
 import java.sql.SQLIntegrityConstraintViolationException
-import java.sql.SQLWarning
 import java.util.UUID
 
 var className = ""
 
-class Emitter(private val functionTypes: Map<String, FunctionType>, private val functions: Map<String, Type>) : AstVisitor {
+class Emitter(private val gatherer: AstGatherer) : AstVisitor {
     private lateinit var currentMappedFunction: MappedFunction
     private lateinit var currentClass: Ast.Class
     private lateinit var currentHeader: Ast.Header
 
-    private lateinit var classVisitor: ClassVisitor
-    private lateinit var classWriter: ClassWriter
+    private var classVisitor: ClassVisitor
+    private var classWriter: ClassWriter
     private lateinit var methodVisitor: MethodVisitor
 
     private var localVariables: MutableMap<String, Type> = mutableMapOf()
@@ -153,7 +150,7 @@ class Emitter(private val functionTypes: Map<String, FunctionType>, private val 
                     HeaderType.METHOD
                 )
                 val isig = funcSig.generateInternalSignature()
-                if(!functions.containsKey(isig)) {
+                if(!gatherer.getProperty(altPath.resolve(), fn, value.arguments.map { evaluateType(it.argument) }.toList()).exists) {
                     if(altPath.path.size == 1) {
                         val path2 = value.path.resolve().split(".").toMutableList()
                         val variable = path2[0]
@@ -165,15 +162,23 @@ class Emitter(private val functionTypes: Map<String, FunctionType>, private val 
                             value.returns,
                             HeaderType.METHOD,
                         )
-                        if(!functions.containsKey(signature2.generateInternalSignature())) {
+                        val property = gatherer.getProperty((evaluateType(Ast.Variable(variable)) as Type.Object).signature.resolve(),
+                            function,
+                            value.arguments.map { evaluateType(it.argument) })
+                        if(!property.exists) {
                             throw InvalidFunction(value.nameSpan)
                         }
-                        return functions[signature2.generateInternalSignature()]!!
+                        return gatherer.computeType(
+                            (evaluateType(Ast.Variable(variable)) as Type.Object).signature.resolve(),
+                            function,
+                            value.arguments.map { evaluateType(it.argument) },
+                            value.nameSpan
+                        )
                     } else {
                         throw InvalidFunction(value.nameSpan)
                     }
                 }
-                return functions[isig]!!
+                return gatherer.computeType(altPath.resolve(), fn, value.arguments.map { evaluateType(it.argument) }.toList(), value.nameSpan)
             }
             Ast.Null -> TODO()
             is Ast.Number -> return Type.Number
@@ -625,13 +630,12 @@ class Emitter(private val functionTypes: Map<String, FunctionType>, private val 
                 HeaderType.METHOD
             )
 
-            if(functions.containsKey(altSig.generateInternalSignature())) {
-                when(functionTypes[altSig.generateInternalSignature()]!!) {
-                    FunctionType.STATIC_METHOD, FunctionType.STATIC_FIELD -> throw SQLIntegrityConstraintViolationException()
-                    FunctionType.MEMBER_METHOD, FunctionType.MEMBER_FIELD -> {
-                        visit(Ast.Variable(access.path.path[0]), context)
-                    }
-                }
+            if(gatherer.getProperty(
+                    (evaluateType(Ast.Variable(variable)) as Type.Object).signature.resolve(),
+                    function,
+                    access.arguments.map { evaluateType(it.argument) }
+            ).exists) {
+                visit(Ast.Variable(access.path.path[0]), context)
             }
         }
     }
@@ -650,47 +654,76 @@ class Emitter(private val functionTypes: Map<String, FunctionType>, private val 
             HeaderType.METHOD
         )
 
+        val property = gatherer.getProperty(
+            altPath.resolve(),
+            fn,
+            access.arguments.map { evaluateType(it.argument) }
+        )
 
-
-        if(functions.containsKey(tmpSig.generateInternalSignature())) {
-            access.returns = functions[tmpSig.generateInternalSignature()]!!
+        if(property.exists) {
+            access.returns = gatherer.returnTypes[tmpSig.generateInternalSignature()]!!
 
             val methodSignature = JvmMethodSignature(
                 fn,
-                altPath,
+                PathName.parse(property.resultClass),
                 access.arguments.map { evaluateType(it.argument) },
                 evaluateType(access),
                 HeaderType.METHOD
             )
             val fieldSignature = JvmMethodSignature(
                 fn,
-                altPath,
+                PathName.parse(property.resultClass),
                 access.arguments.map { evaluateType(it.argument) },
                 evaluateType(access),
                 HeaderType.FIELD
             )
 
-            when(functionTypes[tmpSig.generateInternalSignature()]!!) {
-                FunctionType.STATIC_METHOD -> {
-                    methodVisitor.visitMethodInsn(
-                        Opcodes.INVOKESTATIC,
-                        methodSignature.ownerSignature(),
-                        fn,
-                        methodSignature.methodSignature(),
-                        false
-                    )
+            if(property.isInterface) {
+                when(gatherer.functionTypes[tmpSig.generateInternalSignature()]!!) {
+                    FunctionType.STATIC_METHOD -> {
+                        methodVisitor.visitMethodInsn(
+                            Opcodes.INVOKEINTERFACE,
+                            methodSignature.ownerSignature(),
+                            fn,
+                            methodSignature.methodSignature(),
+                            true
+                        )
+                    }
+                    FunctionType.STATIC_FIELD -> {
+                        methodVisitor.visitFieldInsn(
+                            Opcodes.GETSTATIC,
+                            fieldSignature.ownerSignature(),
+                            fn,
+                            fieldSignature.methodSignature()
+                        )
+                    }
+                    FunctionType.MEMBER_METHOD -> throw SQLIntegrityConstraintViolationException()
+                    FunctionType.MEMBER_FIELD -> throw SQLIntegrityConstraintViolationException()
                 }
-                FunctionType.STATIC_FIELD -> {
-                    methodVisitor.visitFieldInsn(
-                        Opcodes.GETSTATIC,
-                        fieldSignature.ownerSignature(),
-                        fn,
-                        fieldSignature.methodSignature()
-                    )
+            } else {
+                when(gatherer.functionTypes[tmpSig.generateInternalSignature()]!!) {
+                    FunctionType.STATIC_METHOD -> {
+                        methodVisitor.visitMethodInsn(
+                            Opcodes.INVOKESTATIC,
+                            methodSignature.ownerSignature(),
+                            fn,
+                            methodSignature.methodSignature(),
+                            false
+                        )
+                    }
+                    FunctionType.STATIC_FIELD -> {
+                        methodVisitor.visitFieldInsn(
+                            Opcodes.GETSTATIC,
+                            fieldSignature.ownerSignature(),
+                            fn,
+                            fieldSignature.methodSignature()
+                        )
+                    }
+                    FunctionType.MEMBER_METHOD -> throw SQLIntegrityConstraintViolationException()
+                    FunctionType.MEMBER_FIELD -> throw SQLIntegrityConstraintViolationException()
                 }
-                FunctionType.MEMBER_METHOD -> throw SQLIntegrityConstraintViolationException()
-                FunctionType.MEMBER_FIELD -> throw SQLIntegrityConstraintViolationException()
             }
+
         } else if(localVariables.containsKey(altPath.path[0])
             && access.path.path.size == 2) {
             val variable = access.path.path[0]
@@ -702,44 +735,73 @@ class Emitter(private val functionTypes: Map<String, FunctionType>, private val 
                 evaluateType(access),
                 HeaderType.METHOD
             )
-
-            if(functions.containsKey(altSig.generateInternalSignature())) {
+            val property = gatherer.getProperty(
+                (evaluateType(Ast.Variable(variable)) as Type.Object).signature.resolve(),
+                function,
+                access.arguments.map { evaluateType(it.argument) }
+            )
+            if(property.exists) {
                 val methodSignature = JvmMethodSignature(
                     function,
-                    (evaluateType(Ast.Variable(variable)) as Type.Object).signature,
+                    PathName.parse(property.resultClass),
                     access.arguments.map { evaluateType(it.argument) },
                     evaluateType(access),
                     HeaderType.METHOD
                 )
                 val fieldSignature = JvmMethodSignature(
                     function,
-                    (evaluateType(Ast.Variable(variable)) as Type.Object).signature,
+                    PathName.parse(property.resultClass),
                     access.arguments.map { evaluateType(it.argument) },
                     evaluateType(access),
                     HeaderType.FIELD
                 )
 
-                when(functionTypes[altSig.generateInternalSignature()]!!) {
-                    FunctionType.STATIC_METHOD -> throw SQLIntegrityConstraintViolationException()
-                    FunctionType.STATIC_FIELD -> throw SQLIntegrityConstraintViolationException()
-                    FunctionType.MEMBER_METHOD -> {
-                        methodVisitor.visitMethodInsn(
-                            Opcodes.INVOKEVIRTUAL,
-                            evaluateType(Ast.Variable(access.path.path[0])).toJvmSignature().removePrefix("L").removeSuffix(";"),
-                            access.path.path[1],
-                            methodSignature.methodSignature(),
-                            false
-                        )
+                if(property.isInterface) {
+                    when(gatherer.functionTypes[altSig.generateInternalSignature()]!!) {
+                        FunctionType.STATIC_METHOD -> throw SQLIntegrityConstraintViolationException()
+                        FunctionType.STATIC_FIELD -> throw SQLIntegrityConstraintViolationException()
+                        FunctionType.MEMBER_METHOD -> {
+                            methodVisitor.visitMethodInsn(
+                                Opcodes.INVOKEVIRTUAL,
+                                evaluateType(Ast.Variable(access.path.path[0])).toJvmSignature().removePrefix("L").removeSuffix(";"),
+                                access.path.path[1],
+                                methodSignature.methodSignature(),
+                                true
+                            )
+                        }
+                        FunctionType.MEMBER_FIELD -> {
+                            methodVisitor.visitFieldInsn(
+                                Opcodes.INVOKEVIRTUAL,
+                                evaluateType(Ast.Variable(access.path.path[0])).toJvmSignature().removePrefix("L").removeSuffix(";"),
+                                access.path.path[1],
+                                fieldSignature.methodSignature()
+                            )
+                        }
                     }
-                    FunctionType.MEMBER_FIELD -> {
-                        methodVisitor.visitFieldInsn(
-                            Opcodes.INVOKEVIRTUAL,
-                            evaluateType(Ast.Variable(access.path.path[0])).toJvmSignature().removePrefix("L").removeSuffix(";"),
-                            access.path.path[1],
-                            fieldSignature.methodSignature()
-                        )
+                } else {
+                    when(gatherer.functionTypes[altSig.generateInternalSignature()]!!) {
+                        FunctionType.STATIC_METHOD -> throw SQLIntegrityConstraintViolationException()
+                        FunctionType.STATIC_FIELD -> throw SQLIntegrityConstraintViolationException()
+                        FunctionType.MEMBER_METHOD -> {
+                            methodVisitor.visitMethodInsn(
+                                Opcodes.INVOKEVIRTUAL,
+                                evaluateType(Ast.Variable(access.path.path[0])).toJvmSignature().removePrefix("L").removeSuffix(";"),
+                                access.path.path[1],
+                                methodSignature.methodSignature(),
+                                false
+                            )
+                        }
+                        FunctionType.MEMBER_FIELD -> {
+                            methodVisitor.visitFieldInsn(
+                                Opcodes.INVOKEVIRTUAL,
+                                evaluateType(Ast.Variable(access.path.path[0])).toJvmSignature().removePrefix("L").removeSuffix(";"),
+                                access.path.path[1],
+                                fieldSignature.methodSignature()
+                            )
+                        }
                     }
                 }
+
             } else {
                 throw InvalidFunction(access.nameSpan)
             }

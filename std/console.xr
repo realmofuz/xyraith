@@ -3,8 +3,7 @@ namespace std.console {
         let console: java.io.PrintStream = (java.lang.System.out)
         console.println output
     }
-
-}}
+}
 
 
 

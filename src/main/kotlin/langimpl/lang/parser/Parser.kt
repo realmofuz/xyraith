@@ -162,7 +162,8 @@ class Parser(private val tokens: List<Token>) {
                 headers,
                 isStaticClass,
                 extends,
-                annotations.contains(PathName.parse("native"))
+                annotations.contains(PathName.parse("native")),
+                annotations.contains(PathName.parse("interface"))
             )
         } else {
             throw UnexpectedToken("class or namespace keyword", keyword, keyword.span)

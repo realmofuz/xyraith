@@ -15,10 +15,8 @@ enum class FunctionType {
     MEMBER_FIELD,
     MEMBER_METHOD;
 }
-class AstValidator : AstVisitor {
+class AstValidator(val gatherer: AstGatherer) : AstVisitor {
     val classes: MutableList<PathName> = mutableListOf()
-    val functions: MutableMap<String, JvmMethodSignature> = mutableMapOf()
-    val functionTypes: MutableMap<String, FunctionType> = mutableMapOf()
     val localVariables: MutableMap<String, Type> = mutableMapOf()
     lateinit var currentClass: Ast.Class
     val annotations: MutableList<PathName> = mutableListOf()
@@ -43,10 +41,15 @@ class AstValidator : AstVisitor {
                     HeaderType.METHOD
                 )
                 val isig = funcSig.generateInternalSignature()
-                if(!functions.containsKey(isig)) {
+                val property = gatherer.getProperty(
+                    altPath.resolve(),
+                    fn,
+                    value.arguments.map { evaluateType(it.argument) }.toList()
+                )
+                if(!property.exists) {
                     throw InvalidFunction(value.nameSpan)
                 }
-                return functions[isig]!!.returns
+                return gatherer.computeType(altPath.resolve(), fn, value.arguments.map { evaluateType(it.argument) }.toList(), value.nameSpan)
             }
             Ast.Null -> TODO()
             is Ast.Number -> return Type.Number
@@ -81,8 +84,6 @@ class AstValidator : AstVisitor {
             function.returns,
             HeaderType.METHOD
         )
-        functions[sig.generateInternalSignature()] = sig
-        functionTypes[sig.generateInternalSignature()] =
             if(annotations.contains(PathName.parse("static")) || currentClass.static)
                 FunctionType.STATIC_METHOD
             else
@@ -123,14 +124,6 @@ class AstValidator : AstVisitor {
             HeaderType.FIELD
         )
 
-        functions[sig.generateInternalSignature()] = sig
-
-        functionTypes[sig.generateInternalSignature()] =
-            if(currentClass.static || annotations.contains(PathName.parse("static")))
-                FunctionType.STATIC_FIELD
-            else
-                FunctionType.MEMBER_FIELD
-
         if(!evaluateType(field.value).equalTo(field.type)
             && !annotations.contains(PathName.parse("native"))) {
             throw InvalidType(field.type, evaluateType(field.value), field.span)
@@ -162,28 +155,14 @@ class AstValidator : AstVisitor {
             return
         val path = access.path.resolve().split(".").toMutableList()
         val fn = path.removeLast()
-        val signature = JvmMethodSignature(
-            fn,
-            PathName(path),
-            access.arguments.map { evaluateType(it.argument) },
-            access.returns,
-            HeaderType.METHOD,
-        )
-        val sig = signature.generateInternalSignature()
 
-        if(!functions.containsKey(signature.generateInternalSignature())) {
+        if(!gatherer.getProperty(path.joinToString("."), fn, access.arguments.map { evaluateType(it.argument) }).exists) {
             if(path.size == 1 && localVariables.containsKey(path[0])) {
                 val path2 = access.path.resolve().split(".").toMutableList()
                 val variable = path2[0]
                 val function = path2[1]
-                val signature2 = JvmMethodSignature(
-                    function,
-                    (evaluateType(Ast.Variable(variable)) as Type.Object).signature,
-                    access.arguments.map { evaluateType(it.argument) },
-                    access.returns,
-                    HeaderType.METHOD,
-                )
-                if(!functions.containsKey(signature2.generateInternalSignature())) {
+                val clazz = (evaluateType(Ast.Variable(variable)) as Type.Object).signature
+                if(!gatherer.getProperty(clazz.resolve(), function, access.arguments.map { evaluateType(it.argument) }).exists) {
                     throw InvalidFunction(access.nameSpan)
                 }
             } else {
