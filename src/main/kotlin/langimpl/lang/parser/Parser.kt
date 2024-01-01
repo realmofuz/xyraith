@@ -261,7 +261,16 @@ class Parser(private val tokens: List<Token>) {
                     returnType
                 )
             }
-            is Token.EventKeyword -> TODO()
+            is Token.EventKeyword -> {
+                val eventKeyword = expect<Token.EventKeyword>("event keyword")
+                val eventName = expect<Token.Identifier>("event name")
+                val block = parseBlock()
+                return Ast.Event(
+                    eventName.value,
+                    block,
+                    eventName.span
+                )
+            }
             else -> throw UnexpectedToken("valid header keyword", keyword, keyword.span)
         }
     }

@@ -3,14 +3,20 @@ package langimpl.runtime
 import classes
 import langimpl.error.Unreachable
 import java.io.BufferedOutputStream
+import java.io.BufferedReader
 import java.io.File
 import java.io.FileOutputStream
+import java.io.InputStreamReader
 import java.net.URL
 
 fun startServer() {
     val serverFolder = File("./xyraithserver/")
     if(!serverFolder.exists())
         serverFolder.mkdir()
+
+    val pluginsFolder = File("./xyraithserver/plugins/")
+    if(!pluginsFolder.exists())
+        pluginsFolder.mkdir()
 
     val paperJar = File("./xyraithserver/paper.jar")
     if(!paperJar.exists()) {
@@ -58,7 +64,20 @@ fun startServer() {
         eulaTxt.writeText("#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://aka.ms/MinecraftEULA).\n" +
                 "#Timestamp\n" +
                 "eula=true\n")
+        println("By using Xyraith you are indicating your agreement to Minecraft's EULA. (https://aka.ms/MinecraftEULA)")
     }
 
     generateJar()
+
+    println("Xyraith server files initiated and Xyraith plugin created, passing it over to PaperMC.")
+    println("Show them support, they do amazing work! https://papermc.io/")
+    println("You can view the PaperMC source code here: https://github.com/PaperMC/Paper")
+
+    val jarPath = "./paper.jar"
+    val processBuilder = ProcessBuilder("java", "-jar", jarPath)
+    processBuilder.directory(File("${System.getProperty("user.dir").removeSuffix("/")}/xyraithserver"))
+    val process = processBuilder.start()
+    val exitCode = process.waitFor()
+
+    println("PaperMC exited with exit code $exitCode")
 }

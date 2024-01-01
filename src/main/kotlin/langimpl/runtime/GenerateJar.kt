@@ -1,6 +1,8 @@
 package langimpl.runtime
 
 import bytecodeClasses
+import langimpl.lang.jvm.Emitter
+import langimpl.lang.jvm.className
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -37,7 +39,16 @@ Main-Class: Main
 
     """.trimIndent())
 
-    zipDirectory("./xyraithbuild/", "xyrplugin.jar")
+    File("./xyraithbuild/plugin.yml").writeText("""
+name: $className
+version: 1.0.0
+main: $className
+description: A plugin
+author: XyraithGenerated
+api-version: '1.20'
+    """.trimIndent())
+
+    zipDirectory("./xyraithbuild/", "./xyraithserver/plugins/xyrplugin.jar")
 }
 fun zipDirectory(directoryPath: String, zipFilePath: String) {
     val sourceFile = File(directoryPath)

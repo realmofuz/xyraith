@@ -1,7 +1,7 @@
 include "std/std"
 
-namespace Main {
-    command main args:array<string> -> void {
-        std.console.log "Hello world!"
+namespace events {
+    event startup {
+        std.console.log "Bruh!"
     }
 }

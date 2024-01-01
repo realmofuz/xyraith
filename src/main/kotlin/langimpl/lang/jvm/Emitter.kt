@@ -19,6 +19,9 @@ import parser.Type
 import java.io.PrintWriter
 import java.sql.SQLIntegrityConstraintViolationException
 import java.sql.SQLWarning
+import java.util.UUID
+
+var className = ""
 
 class Emitter(private val functionTypes: Map<String, FunctionType>, private val functions: Map<String, Type>) : AstVisitor {
     private lateinit var currentMappedFunction: MappedFunction
@@ -42,6 +45,94 @@ class Emitter(private val functionTypes: Map<String, FunctionType>, private val 
 
     private val annotations: MutableList<PathName> = mutableListOf()
 
+    init {
+        val name = "MainXyraithPlugin_${UUID.randomUUID()}".replace("-", "_")
+        className = name
+        classVisitor = ClassWriter(2)
+        classWriter = classVisitor as ClassWriter
+
+        classWriter.visit(
+            Opcodes.V17,
+            Opcodes.ACC_PUBLIC,
+            name,
+            null,
+            "org/bukkit/plugin/java/JavaPlugin",
+            listOf<String>().toTypedArray()
+        )
+        val constructor = classWriter.visitMethod(
+            Opcodes.ACC_PUBLIC,
+            "<init>",
+            "()V",
+            null,
+            null,
+        )
+        constructor.visitVarInsn(Opcodes.ALOAD, 0)
+        constructor.visitMethodInsn(
+            Opcodes.INVOKESPECIAL,
+            "org/bukkit/plugin/java/JavaPlugin",
+            "<init>",
+            "()V",
+            false
+        )
+        constructor.visitInsn(Opcodes.RETURN)
+        constructor.visitMaxs(100, 2)
+        constructor.visitEnd()
+
+        val onEnable = classWriter.visitMethod(
+            Opcodes.ACC_PUBLIC,
+            "onEnable",
+            "()V",
+            null,
+            null,
+        )
+        onEnable.visitCode()
+        onEnable.visitMethodInsn(
+            Opcodes.INVOKESTATIC,
+            "org/bukkit/Bukkit",
+            "getServer",
+            "()Lorg/bukkit/Server;",
+            false
+        )
+        onEnable.visitMethodInsn(
+            Opcodes.INVOKEINTERFACE,
+            "org/bukkit/Server",
+            "getPluginManager",
+            "()Lorg/bukkit/plugin/PluginManager;",
+            true
+        )
+
+        onEnable.visitTypeInsn(Opcodes.NEW, "events")
+        onEnable.visitInsn(Opcodes.DUP)
+        onEnable.visitMethodInsn(
+            Opcodes.INVOKESPECIAL,
+            "events",
+            "<init>",
+            "()V",
+            false
+        )
+        onEnable.visitVarInsn(Opcodes.ALOAD, 0)
+        onEnable.visitMethodInsn(
+            Opcodes.INVOKEINTERFACE,
+            "org/bukkit/plugin/PluginManager",
+            "registerEvents",
+            "(Lorg/bukkit/event/Listener;Lorg/bukkit/plugin/Plugin;)V",
+            true
+        )
+        onEnable.visitMethodInsn(
+            Opcodes.INVOKESTATIC,
+            "events",
+            "event_startup",
+            "()V",
+            false
+        )
+        onEnable.visitInsn(Opcodes.RETURN)
+        onEnable.visitMaxs(20, 2)
+        onEnable.visitEnd()
+        classWriter.visitEnd()
+
+
+        emittedClasses[name] = classWriter.toByteArray()
+    }
     private fun evaluateType(value: Ast.Value): Type {
         return when(value) {
             is Ast.ArrayOf -> Type.Array(value.type)
@@ -111,14 +202,29 @@ isig: $isig
         classVisitor = CheckClassAdapter(classVisitor)
         val pw = PrintWriter(System.out)
         classVisitor = TraceClassVisitor(classVisitor, pw)
-        classVisitor.visit(
-            Opcodes.V1_5,
-            Opcodes.ACC_PUBLIC,
-            clazz.name.resolve().replace(".", "/"),
-            null,
-            clazz.inheritsFrom.signature.resolve().replace(".", "/"),
-            null
-        )
+        when(clazz.name.resolve()) {
+            "events" -> {
+                classVisitor.visit(
+                    Opcodes.V17,
+                    Opcodes.ACC_PUBLIC,
+                    clazz.name.resolve().replace(".", "/"),
+                    null,
+                    clazz.inheritsFrom.signature.resolve().replace(".", "/"),
+                    listOf("org/bukkit/event/Listener").toTypedArray()
+                )
+            }
+            else -> {
+                classVisitor.visit(
+                    Opcodes.V17,
+                    Opcodes.ACC_PUBLIC,
+                    clazz.name.resolve().replace(".", "/"),
+                    null,
+                    clazz.inheritsFrom.signature.resolve().replace(".", "/"),
+                    null
+                )
+            }
+        }
+
 
         if(clazz.isNative) {
             return
@@ -230,20 +336,58 @@ isig: $isig
         localVariableIndex = 0
         localVariables = mutableMapOf()
 
-        if(currentClass.name.resolve() != "ServerEvents") {
+        if(currentClass.name.resolve() != "events") {
             throw SQLIntegrityConstraintViolationException()
         }
 
         currentHeader = event
         currentMappedFunction = FunctionMapper().map(event, currentClass)
 
-        methodVisitor = classVisitor.visitMethod(
-            Opcodes.ACC_PUBLIC + Opcodes.ACC_STATIC,
-            "event_${event.name}",
-            "()V",
-            null,
-            null
+        localVariables["this"] = Type.Object(
+            PathName.parse("events"),
+            listOf(),
+            false
         )
+        localVariableIndices["this"] = localVariableIndex
+        localVariableIndex++
+        when(event.name) {
+            "startup" -> {
+                methodVisitor = classVisitor.visitMethod(
+                    Opcodes.ACC_PUBLIC + Opcodes.ACC_STATIC,
+                    "event_${event.name}",
+                    "()V",
+                    null,
+                    null
+                )
+            }
+            "join" -> {
+                methodVisitor = classVisitor.visitMethod(
+                    Opcodes.ACC_PUBLIC + Opcodes.ACC_STATIC,
+                    "event_join",
+                    "(Lorg/bukkit/event/player/PlayerJoinEvent;)V",
+                    null,
+                    null
+                )
+                localVariables["event"] = Type.Object(
+                    PathName.parse("org.bukkit.event.player.PlayerJoinEvent"),
+                    listOf(),
+                    false
+                )
+                localVariableIndices["event"] = localVariableIndex
+                localVariableIndex++
+            }
+            else -> {
+                throw SQLIntegrityConstraintViolationException()
+            }
+        }
+        if(event.name != "startup") {
+            methodVisitor.visitAnnotation(
+                "org/bukkit/event/EventHandler",
+                true
+            )
+
+        }
+
         methodVisitor.visitCode()
 
         val b = !annotations.contains(PathName.parse("native"))

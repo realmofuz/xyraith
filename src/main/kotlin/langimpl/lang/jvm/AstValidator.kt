@@ -165,7 +165,7 @@ class AstValidator : AstVisitor {
         println("functions:\n${functions.keys}\ncomparing: ${signature.generateInternalSignature()}")
 
         if(!functions.containsKey(signature.generateInternalSignature())) {
-            if(path.size == 1) {
+            if(path.size == 1 && localVariables.containsKey(path[0])) {
                 val path2 = access.path.resolve().split(".").toMutableList()
                 val variable = path2[0]
                 val function = path2[1]

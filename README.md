@@ -6,7 +6,7 @@
 ## Overview
 Xyraith is a dynamically-typed, object-oriented programming language 
 designed for creating Minecraft servers. Written using 
-[Minestom](https://minestom.net/) and [Kotlin](https://kotlinlang.org/).
+[PaperMC](https://github.com/PaperMC/Paper) and [Kotlin](https://kotlinlang.org/).
 
 ## Usage
 To install Xyraith, [download Xyraith.jar](https://raw.githubusercontent.com/realmofuz/xyraith/main/Xyraith.jar).
