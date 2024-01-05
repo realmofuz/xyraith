@@ -116,7 +116,17 @@ class BindingVisitor : ClassVisitor(Opcodes.ASM9) {
             "@interface\n"
         else
             ""
-        bindingString += "//access: ${access}\n@native\n${inters}class ${name!!.replace("/", ".")} : ${superName!!.replace("/", ".")} {\n"
+
+        val implements = if(interfaces != null && interfaces.isNotEmpty())
+            "implements " + interfaces.map { it.replace("/", ".") }.joinToString(",") + " "
+        else
+            ""
+
+        val extends = if(superName == "java/lang/Object")
+            ""
+        else
+            "extends ${superName!!.replace("/", ".")} "
+        bindingString += "//access: ${access}\n@native\n${inters}class ${name!!.replace("/", ".")} ${extends}${implements}{\n"
     }
 
     override fun visitEnd() {

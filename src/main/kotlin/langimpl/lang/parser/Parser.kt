@@ -138,14 +138,31 @@ class Parser(private val tokens: List<Token>) {
         if(keyword is Token.ClassKeyword || keyword is Token.NamespaceKeyword) {
             val isStaticClass = keyword is Token.NamespaceKeyword
             val name = parsePathName()
-            val extends: Type.Object = if(peek() is Token.Colon) {
-                expect<Token.Colon>("colon")
-                parseType() as Type.Object
-            } else Type.Object(
+            var extends: Type.Object = Type.Object(
                 PathName.parse("java.lang.Object"),
                 listOf(),
                 false
             )
+            var interfaces: MutableList<Type.Object> = mutableListOf()
+            while(true) {
+                when {
+                    peek() is Token.ExtendsKeyword -> {
+                        expect<Token.ExtendsKeyword>("extends")
+                        extends = parseType() as Type.Object
+                    }
+                    peek() is Token.ImplementsKeyword -> {
+                        expect<Token.ImplementsKeyword>("implements")
+                        while(true) {
+                            val type = parseType() as Type.Object
+                            interfaces.add(type)
+                            if(peek() !is Token.Comma)
+                                break
+                            val comma = expect<Token.Comma>("comma")
+                        }
+                    }
+                    else -> break
+                }
+            }
             val headers = mutableListOf<Ast.Header>()
             expect<Token.OpenBrace>("open braces")
             while(true) {
@@ -164,7 +181,8 @@ class Parser(private val tokens: List<Token>) {
                 extends,
                 annotations.contains(PathName.parse("native")),
                 annotations.contains(PathName.parse("interface")),
-                keyword.span
+                keyword.span,
+                interfaces
             )
         } else {
             throw UnexpectedToken("class or namespace keyword", keyword, keyword.span)

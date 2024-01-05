@@ -141,6 +141,8 @@ class Lexer(val source: String, val file: String) {
                         "loop" -> output.add(Token.LoopKeyword(span))
                         "break" -> output.add(Token.BreakKeyword(span))
                         "include" -> output.add(Token.IncludeKeyword(span))
+                        "extends" -> output.add(Token.ExtendsKeyword(span))
+                        "implements" -> output.add(Token.ImplementsKeyword(span))
                         else -> output.add(Token.Identifier(symbol, span))
                     }
                 }

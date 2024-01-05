@@ -100,7 +100,8 @@ sealed interface Ast {
         val inheritsFrom: Type.Object,
         val isNative: kotlin.Boolean,
         val isInterface: kotlin.Boolean,
-        val span: SpanData
+        val span: SpanData,
+        val interfaces: List<Type.Object>,
     ) : Ast {
         override fun toString(): String {
             return """{"type":"class","name":"$name","headers":$headers,"static":$static}""".trimIndent()

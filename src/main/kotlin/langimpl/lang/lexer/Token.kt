@@ -41,6 +41,8 @@ sealed class Token {
     class NewKeyword(override val span: SpanData) : Token()
     class BuiltinKeyword(override val span: SpanData) : Token()
     class IncludeKeyword(override val span: SpanData) : Token()
+    class ExtendsKeyword(override val span: SpanData) : Token()
+    class ImplementsKeyword(override val span: SpanData) : Token()
 
 
     override fun toString(): String {
@@ -83,6 +85,8 @@ sealed class Token {
             is ArrayOfKeyword -> """{"type":"arrayOf","span":$span}"""
             is LoopKeyword -> """{"type":"loop","span":$span}"""
             is BreakKeyword -> """{"type":"break","span":$span}"""
+            is ExtendsKeyword -> """{"type":"extends","span":$span}"""
+            is ImplementsKeyword -> """{"type":"implements","span":$span}"""
         }
     }
 }

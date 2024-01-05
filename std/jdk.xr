@@ -4,10 +4,10 @@ class xyrreserved.JDKHolder {}
 class java.io.OutputStream {}
 
 @native
-class java.io.FilterOutputStream : java.io.OutputStream {}
+class java.io.FilterOutputStream extends java.io.OutputStream {}
 
 @native
-class java.io.PrintStream : java.io.FilterOutputStream {
+class java.io.PrintStream extends java.io.FilterOutputStream {
     @native
     command println x: number -> void {}
 

@@ -81,6 +81,11 @@ class AstGatherer : AstVisitor {
                 ""
             )
         }
+        for(interfaze in data[clazz]!!.interfaces) {
+            val p = getProperty(data[clazz]!!.superClass.signature.resolve(), name, parameters)
+            if(p.exists)
+                return p
+        }
         return getProperty(data[clazz]!!.superClass.signature.resolve(), name, parameters)
     }
 
@@ -98,7 +103,7 @@ class AstGatherer : AstVisitor {
             throw InvalidFunction(span)
         }
         data[property.resultClass]!!.properties.forEach {
-            println("${it.name} && ${it.parameters} vs. ${name} && ${parameters}")
+            println("${it.name} && ${it.parameters} vs. $name && $parameters")
             if(it.name == name
                 && it.parameters == parameters) {
                 return it.returns
@@ -110,7 +115,7 @@ class AstGatherer : AstVisitor {
     override fun visit(clazz: Ast.Class, context: VisitorContext) {
         data[clazz.name.resolve()] = ClassData(
             clazz.inheritsFrom,
-            mutableListOf(),
+            clazz.interfaces.toMutableList(),
             mutableListOf(),
             clazz.isInterface,
         )
