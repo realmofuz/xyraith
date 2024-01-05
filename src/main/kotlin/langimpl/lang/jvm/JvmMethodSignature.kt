@@ -3,6 +3,14 @@ package langimpl.lang.jvm
 import parser.PathName
 import parser.Type
 
+/**
+ * Represents a method signature in Xyraith or the JVM.
+ * @param name Name of the method
+ * @param owner The class that owns the method
+ * @param parameters A list of types this method accepts as parameters
+ * @param headerType The HeaderType of this function.
+ * @see HeaderType
+ */
 data class JvmMethodSignature(
     val name: String,
     val owner: PathName,

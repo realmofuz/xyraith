@@ -8,6 +8,13 @@ import langimpl.lang.parser.VisitorContext
 import parser.Ast
 import parser.Type
 
+/**
+ * Represents the data surrounding a class.
+ * @param superClass The class this class inherits from.
+ * @param interfaces A list of interfaces this class inherits from.
+ * @param properties A list of properties (fields & methods) this class contains.
+ * @param isInterface Is this class an interface?
+ */
 data class ClassData(
     val superClass: Type.Object,
     val interfaces: MutableList<Type.Object>,
@@ -15,16 +22,22 @@ data class ClassData(
     val isInterface: Boolean,
 )
 
+/**
+* Contains the result of AstGatherer#getProperty.
+* @param exists Does this property exist?
+* @param isInterface Is this property part of an interface?
+* @param resultClass The containing class of the property.
+ */
 data class PropertyResult(
     val exists: Boolean,
     val isInterface: Boolean,
     val resultClass: String,
 )
 class AstGatherer : AstVisitor {
-    /*
-    Represents class data.
-    Name is the name of the class, with package delimited by `.`.
-    E.g `java.lang.Object`
+    /**
+    * Represents class data.
+    * Name is the name of the class, with package delimited by `.`.
+    * E.g `java.lang.Object`
      */
     val data: MutableMap<String, ClassData> = mutableMapOf()
     val returnTypes: MutableMap<String, Type> = mutableMapOf()
@@ -34,6 +47,14 @@ class AstGatherer : AstVisitor {
     lateinit var currentClass: Ast.Class
     lateinit var currentClassName: String
 
+    /**
+     * Recursively searches classes & their properties for a property specified.
+     * Return type is intentionally excluded to handle edge cases. Note that this may run into issues
+     * when function overloading is involved.
+     * @param clazz The root class to search in. For example, searching `java.lang.String` would search in that and `java.lang.Object`.
+     * @param name The name of the property to search for.
+     * @param parameters A list of types for the property to accept. Should be an empty list for fields.
+     */
     fun getProperty(clazz: String, name: String, parameters: List<Type>): PropertyResult {
         println("searching for: $clazz::$name w/ format: ${data.keys}")
         if(!data.containsKey(clazz)) {
@@ -63,6 +84,14 @@ class AstGatherer : AstVisitor {
         return getProperty(data[clazz]!!.superClass.signature.resolve(), name, parameters)
     }
 
+    /**
+     * Computes the return type of a property.
+     * @param clazz The root class to search in. For example, searching `java.lang.String` would search in that and `java.lang.Object`.
+     * @param name The name of the property to search for.
+     * @param parameters A list of types for the property to accept. Should be an empty list for fields.
+     * @param span SpanData to throw InvalidFunction on if the property does not exist at all or is ambiguous.
+     * @throws InvalidFunction Thrown when the property does not exist.
+     */
     fun computeType(clazz: String, name: String, parameters: List<Type>, span: SpanData): Type {
         val property = getProperty(clazz, name, parameters)
         if(!property.exists) {

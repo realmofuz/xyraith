@@ -9,12 +9,20 @@ import parser.Ast
 import parser.PathName
 import parser.Type
 
+/**
+ * Type of a property.
+ */
 enum class FunctionType {
     STATIC_FIELD,
     STATIC_METHOD,
     MEMBER_FIELD,
     MEMBER_METHOD;
 }
+
+/**
+ * Validates the provided Ast and an AstGatherer.
+ * @param gatherer AstGatherer to compare with.
+ */
 class AstValidator(val gatherer: AstGatherer) : AstVisitor {
     val classes: MutableList<PathName> = mutableListOf()
     val localVariables: MutableMap<String, Type> = mutableMapOf()

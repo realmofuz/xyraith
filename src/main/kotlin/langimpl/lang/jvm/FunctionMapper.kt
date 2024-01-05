@@ -1,11 +1,17 @@
 package langimpl.lang.jvm
 
-import langimpl.error.Unreachable
 import org.objectweb.asm.Label
 import parser.Ast
 import parser.Type
 import java.sql.SQLIntegrityConstraintViolationException
 
+/**
+ * Represents a function mapped to it's JVM blocks.
+ * @param blocks A map of labels to it's corresponding block.
+ * @param flippedBlocks A flipped map of blocks to it's corresponding labels of the `blocks` parameter`.
+ * @param loops A list of blocks that are looping - whether it's `foreach` or `loop`.
+ * @param signature The JvmMethodSignature of this function.
+ */
 data class MappedFunction(
     val blocks: MutableMap<Label, Ast.Block>,
     val flippedBlocks: MutableMap<Ast.Block, Label>,
@@ -13,6 +19,11 @@ data class MappedFunction(
     val signature: JvmMethodSignature,
 )
 
+/**
+ * Converts a provided Ast.Header into a MappedFunction.
+ * @see Ast.Header
+ * @see MappedFunction
+ */
 class FunctionMapper {
     private val blocks = mutableMapOf<Label, Ast.Block>()
     private val loops = mutableListOf<Ast.Block>()

@@ -22,6 +22,10 @@ import java.util.UUID
 
 var className = ""
 
+/**
+ * Emits JVM bytecode for the provided Ast.
+ * @param gatherer The AstGatherer to reference from.
+ */
 class Emitter(private val gatherer: AstGatherer) : AstVisitor {
     private lateinit var currentMappedFunction: MappedFunction
     private lateinit var currentClass: Ast.Class
