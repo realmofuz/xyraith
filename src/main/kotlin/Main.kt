@@ -6,6 +6,7 @@ import langimpl.lang.jvm.Emitter
 import langimpl.lang.parser.AstDebugger
 import langimpl.lang.parser.Parser
 import langimpl.lang.parser.VisitorContext
+import langimpl.runtime.generateJar
 import langimpl.runtime.startServer
 import java.io.File
 
@@ -62,8 +63,8 @@ fun runServer(withServer: Boolean) {
             val parser = Parser(tokens)
             val ast = parser.parseAll()
 
-//            val debugger = AstDebugger()
-//            ast.events.map { it.accept(debugger, VisitorContext.None) }
+            val debugger = AstDebugger()
+            ast.events.map { it.accept(debugger, VisitorContext.None) }
 
             val gatherer = AstGatherer()
             ast.events.map { it.accept(gatherer, VisitorContext.None) }
@@ -77,11 +78,17 @@ fun runServer(withServer: Boolean) {
             for(clazz in emitter.emittedClasses) {
                 if(emitter.nativeClasses.contains(clazz.key))
                     continue
+                if(!withServer && clazz.key.startsWith("MainXyraithPlugin_"))
+                    continue
                 bytecodeClasses[clazz.key] = clazz.value
             }
 
             println("Starting up...")
 
+            if(!withServer) {
+                generateJar()
+                return
+            }
             startServer()
 
 

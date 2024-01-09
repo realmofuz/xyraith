@@ -7,6 +7,7 @@ import parser.CommandArgument
 import parser.PathName
 import parser.Type
 import java.lang.IndexOutOfBoundsException
+import kotlin.math.exp
 
 class Parser(private val tokens: List<Token>) {
     var pointer = 0
@@ -210,9 +211,18 @@ class Parser(private val tokens: List<Token>) {
         }
         return when(mainName.resolve()) {
             "number" -> Type.Number
-            "string" -> Type.String
+            "string" -> Type.Object(
+                PathName.parse("java.lang.String"),
+                listOf(),
+                false
+            )
             "void", "auto" -> Type.Void
             "array" -> Type.Array(generics[0])
+            "any" -> Type.Object(
+                PathName.parse("java.lang.Object"),
+                listOf(),
+                false
+            )
             else -> Type.Object(
                 mainName,
                 generics,
@@ -313,8 +323,9 @@ class Parser(private val tokens: List<Token>) {
                 pointer++
                 if(peek() is Token.Equals) {
                     pointer--
-                    parseAccess()
+                    TODO()
                 } else {
+                    pointer--
                     parseAccess()
                 }
             }
@@ -351,6 +362,20 @@ class Parser(private val tokens: List<Token>) {
                     block
                 )
             }
+            is Token.NewKeyword -> {
+                val kw = expect<Token.NewKeyword>("new keyword")
+                val classSpan = peek()
+                val type = parseType() as Type.Object
+                val values = mutableListOf<CommandArgument>()
+                while(true) {
+                    if(peek(false) is Token.NewLine || peek() is Token.CloseParen)
+                        break
+                    val span = peek().span
+                    val value = parseValue()
+                    values.add(CommandArgument(value, span))
+                }
+                return Ast.ConstructClass(type.signature, values, classSpan.span)
+            }
             else -> throw UnexpectedToken("valid action", next, next.span)
         }
     }
@@ -383,11 +408,23 @@ class Parser(private val tokens: List<Token>) {
 
     private fun parseValue(): Ast.Value {
         return when(val next = next()) {
+            is Token.OpenBracket -> {
+                val arguments = mutableListOf<CommandArgument>()
+                while(true) {
+                    if(peek() is Token.CloseBracket)
+                        break
+                    val span = peek().span
+                    val value = parseValue()
+                    arguments.add(CommandArgument(value, span))
+                }
+                expect<Token.CloseBracket>("closing bracket")
+                return Ast.ArrayOf(Type.Void, arguments, next.span)
+            }
             is Token.Number -> Ast.Number(next.value)
             is Token.OpenParen -> {
-                val a = parseAccess()
+                val a = parseAction()
                 expect<Token.CloseParen>("close parenthesis")
-                a
+                a as Ast.Value
             }
             is Token.StringText -> Ast.StringText(next.value)
             is Token.Identifier -> {
@@ -398,7 +435,7 @@ class Parser(private val tokens: List<Token>) {
                 }
             }
             is Token.ArrayOfKeyword -> TODO()
-           else -> throw UnexpectedToken("valid value", next, next.span)
+            else -> throw UnexpectedToken("valid value", next, next.span)
         }
     }
 
@@ -407,6 +444,7 @@ class Parser(private val tokens: List<Token>) {
     e.g x.y.z -> PathName(["x", "y", "z"])
      */
     fun parsePathName(pathName: PathName = PathName(mutableListOf())): PathName {
+
         val newIdentifier = parseSafeIdentifier()
         if(peek() is Token.Dot) {
             expect<Token.Dot>("period")

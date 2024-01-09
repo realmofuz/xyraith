@@ -31,7 +31,11 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
 
     private fun evaluateType(value: Ast.Value): Type {
         return when(value) {
-            is Ast.ArrayOf -> Type.Array(value.type)
+            is Ast.ArrayOf ->
+                if(value.type !is Type.Void)
+                    Type.Array(value.type)
+                else
+                    Type.Array(evaluateType(value.arguments[0].argument))
             is Ast.Boolean -> Type.Boolean
             is Ast.ConstructClass -> Type.Object(
                 value.className,
@@ -73,7 +77,11 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
             }
             Ast.Null -> TODO()
             is Ast.Number -> return Type.Number
-            is Ast.StringText -> return Type.String
+            is Ast.StringText -> return Type.Object(
+                PathName.parse("java.lang.String"),
+                listOf(),
+                false
+            )
             is Ast.Variable -> {
                 if(localVariables.containsKey(value.value))
                     return localVariables[value.value]!!
@@ -104,14 +112,16 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
             function.returns,
             HeaderType.METHOD
         )
-            if(annotations.contains(PathName.parse("static")) || currentClass.static)
-                FunctionType.STATIC_METHOD
-            else
-                FunctionType.MEMBER_METHOD
+        if(annotations.contains(PathName.parse("static")) || currentClass.static)
+            FunctionType.STATIC_METHOD
+        else
+            FunctionType.MEMBER_METHOD
 
         for(argument in function.parameters) {
             localVariables[argument.key] = argument.value
         }
+        localVariables["this"] = Type.Object(currentClass.name, listOf(), false)
+
         val b = !annotations.contains(PathName.parse("native"))
         annotations.clear()
         return b
@@ -180,7 +190,8 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
             fn,
             access.arguments.map { evaluateType(it.argument) }
         )
-        println("path: $path | lvars: ${localVariables}")
+        println("Attempting to compare ${access.arguments.map { evaluateType(it.argument) }}")
+        println("path: $path | lvars: ${localVariables} | Types: ${access.arguments.map { evaluateType(it.argument) }}")
         if(!prop.exists) {
             if(path.size == 1 && localVariables.containsKey(path[0])) {
                 val path2 = access.path.resolve().split(".").toMutableList()
@@ -191,6 +202,7 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
                     throw InvalidFunction(access.nameSpan)
                 }
             } else {
+                println("${path.size}")
                 throw InvalidFunction(access.nameSpan)
             }
         }

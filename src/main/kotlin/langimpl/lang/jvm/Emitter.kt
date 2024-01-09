@@ -138,7 +138,11 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
     }
     private fun evaluateType(value: Ast.Value): Type {
         return when(value) {
-            is Ast.ArrayOf -> Type.Array(value.type)
+            is Ast.ArrayOf ->
+                if(value.type !is Type.Void)
+                    Type.Array(value.type)
+                else
+                    Type.Array(evaluateType(value.arguments[0].argument))
             is Ast.Boolean -> Type.Boolean
             is Ast.ConstructClass -> Type.Object(
                 value.className,
@@ -188,7 +192,11 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
             }
             Ast.Null -> TODO()
             is Ast.Number -> return Type.Number
-            is Ast.StringText -> return Type.String
+            is Ast.StringText -> return Type.Object(
+                PathName.parse("java.lang.String"),
+                listOf(),
+                false
+            )
             is Ast.Variable -> {
                 if(localVariables.containsKey(value.value))
                     return localVariables[value.value]!!
@@ -458,8 +466,13 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                     Type.Boolean -> methodVisitor.visitIntInsn(Opcodes.NEWARRAY, Opcodes.T_INT)
                     Type.Number -> methodVisitor.visitIntInsn(Opcodes.NEWARRAY, Opcodes.T_DOUBLE)
                     is Type.Object -> methodVisitor.visitInsn(Opcodes.ANEWARRAY)
-                    Type.String -> methodVisitor.visitInsn(Opcodes.ANEWARRAY)
-                    Type.Void -> TODO()
+                    Type.Void -> when(evaluateType(value.arguments[0].argument)) {
+                        is Type.Array -> methodVisitor.visitInsn(Opcodes.ANEWARRAY)
+                        Type.Boolean -> methodVisitor.visitIntInsn(Opcodes.NEWARRAY, Opcodes.T_INT)
+                        Type.Number -> methodVisitor.visitIntInsn(Opcodes.NEWARRAY, Opcodes.T_DOUBLE)
+                        is Type.Object -> methodVisitor.visitInsn(Opcodes.ANEWARRAY)
+                        Type.Void -> TODO()
+                    }
                 }
                 methodVisitor.visitInsn(Opcodes.DUP)
             }
@@ -490,7 +503,6 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                     Type.Boolean -> methodVisitor.visitVarInsn(Opcodes.ILOAD, localVariableIndices[value.value]!!)
                     Type.Number -> methodVisitor.visitVarInsn(Opcodes.DLOAD, localVariableIndices[value.value]!!)
                     is Type.Object -> methodVisitor.visitVarInsn(Opcodes.ALOAD, localVariableIndices[value.value]!!)
-                    Type.String -> methodVisitor.visitVarInsn(Opcodes.ALOAD, localVariableIndices[value.value]!!)
                     Type.Void -> TODO()
                 }
             }
@@ -502,7 +514,6 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                 Type.Boolean -> methodVisitor.visitInsn(Opcodes.IASTORE)
                 Type.Number -> methodVisitor.visitInsn(Opcodes.DASTORE)
                 is Type.Object -> methodVisitor.visitInsn(Opcodes.AASTORE)
-                Type.String -> methodVisitor.visitInsn(Opcodes.AASTORE)
                 Type.Void -> TODO()
             }
             if(!context.isLast)
@@ -539,7 +550,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                 continueLabels.add(Label())
                 // should evaluate to 1 when true, 0 when false
                 when(evaluateType(access.arguments[0].argument)) {
-                    is Type.Array, is Type.Object, is Type.String -> {
+                    is Type.Array, is Type.Object -> {
                         methodVisitor.visitJumpInsn(Opcodes.IF_ACMPEQ, branchLabels.last())
                         methodVisitor.visitLdcInsn(1)
                         methodVisitor.visitJumpInsn(Opcodes.GOTO, continueLabels.last())
@@ -583,7 +594,6 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                     Type.Boolean ->  methodVisitor.visitInsn(Opcodes.IALOAD)
                     Type.Number ->  methodVisitor.visitInsn(Opcodes.DALOAD)
                     is Type.Object -> methodVisitor.visitInsn(Opcodes.AALOAD)
-                    Type.String -> methodVisitor.visitInsn(Opcodes.AALOAD)
                     Type.Void -> TODO()
                 }
                 return false
@@ -617,7 +627,6 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                     Type.Boolean -> methodVisitor.visitInsn(Opcodes.IRETURN)
                     Type.Number -> methodVisitor.visitInsn(Opcodes.DRETURN)
                     is Type.Object -> methodVisitor.visitInsn(Opcodes.ARETURN)
-                    Type.String -> methodVisitor.visitInsn(Opcodes.ARETURN)
                     Type.Void -> methodVisitor.visitInsn(Opcodes.RETURN)
                 }
                 return false
@@ -676,20 +685,20 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         )
 
         if(property.exists) {
-            access.returns = gatherer.returnTypes[tmpSig.generateInternalSignature()]!!
+            access.returns = property.returnTypeOfProperty
 
             val methodSignature = JvmMethodSignature(
                 fn,
                 PathName.parse(property.resultClass),
-                access.arguments.map { evaluateType(it.argument) },
-                evaluateType(access),
+                property.parameterTypesRequested,
+                property.returnTypeOfProperty,
                 HeaderType.METHOD
             )
             val fieldSignature = JvmMethodSignature(
                 fn,
                 PathName.parse(property.resultClass),
-                access.arguments.map { evaluateType(it.argument) },
-                evaluateType(access),
+                property.parameterTypesRequested,
+                property.returnTypeOfProperty,
                 HeaderType.FIELD
             )
 
@@ -844,7 +853,6 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
             Type.Boolean -> methodVisitor.visitVarInsn(Opcodes.ISTORE, localVariableIndex)
             Type.Number -> methodVisitor.visitVarInsn(Opcodes.DSTORE, localVariableIndex)
             is Type.Object -> methodVisitor.visitVarInsn(Opcodes.ASTORE, localVariableIndex)
-            Type.String -> methodVisitor.visitVarInsn(Opcodes.ASTORE, localVariableIndex)
             Type.Void -> methodVisitor.visitVarInsn(Opcodes.ASTORE, localVariableIndex)
         }
     }
@@ -855,7 +863,6 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
             Type.Boolean -> methodVisitor.visitVarInsn(Opcodes.ISTORE, localVariableIndices[storeVariable.name]!!)
             Type.Number -> methodVisitor.visitVarInsn(Opcodes.DSTORE, localVariableIndices[storeVariable.name]!!)
             is Type.Object -> methodVisitor.visitVarInsn(Opcodes.ASTORE, localVariableIndices[storeVariable.name]!!)
-            Type.String -> methodVisitor.visitVarInsn(Opcodes.ASTORE, localVariableIndices[storeVariable.name]!!)
             Type.Void -> methodVisitor.visitVarInsn(Opcodes.ASTORE, localVariableIndices[storeVariable.name]!!)
         }
     }

@@ -1,13 +1,10 @@
-include "std/papermc"
 include "std/jdk"
 include "std/console"
+include "std/list"
 
-namespace events {
-    on startup {
-
-    }
-    on join {
-        let p = (event.getPlayer)
-        std.console.log (p.getName)
+namespace Main {
+    command main args:array<string> -> void {
+        let arr = (std.list.init)
+        std.console.log arr
     }
 }

@@ -1,7 +1,6 @@
 package langimpl.lang.jvm
 
 import langimpl.error.InvalidFunction
-import langimpl.error.Unreachable
 import langimpl.lang.lexer.SpanData
 import langimpl.lang.parser.AstVisitor
 import langimpl.lang.parser.VisitorContext
@@ -27,11 +26,15 @@ data class ClassData(
 * @param exists Does this property exist?
 * @param isInterface Is this property part of an interface?
 * @param resultClass The containing class of the property.
+ * @param returnTypeOfProperty The type that the property returns.
+ * @param parameterTypesRequested The types that the property needs (function parameters on functions, empty list on fields)
  */
 data class PropertyResult(
     val exists: Boolean,
     val isInterface: Boolean,
     val resultClass: String,
+    val returnTypeOfProperty: Type,
+    val parameterTypesRequested: List<Type>,
 )
 class AstGatherer : AstVisitor {
     /**
@@ -61,16 +64,25 @@ class AstGatherer : AstVisitor {
             return PropertyResult(
                 false,
                 false,
-                ""
+                "",
+                Type.Void,
+                listOf(),
             )
         }
-        data[clazz]!!.properties.forEach {
-            if(it.parameters == parameters
-                && it.name == name) {
+        println("properties: ${data[clazz]!!.properties.map { it.name }}")
+        data[clazz]!!.properties.forEach loop@ {
+            println("comparing against ${clazz}::${it.name}<${it.parameters}>")
+            it.parameters.zip(parameters).forEach {
+                if(!this.matchType(it.second, it.first))
+                    return@loop
+            }
+            if(it.name == name) {
                 return PropertyResult(
                     true,
                     data[clazz]!!.isInterface,
-                    clazz
+                    clazz,
+                    it.returns,
+                    it.parameters,
                 )
             }
         }
@@ -78,7 +90,9 @@ class AstGatherer : AstVisitor {
             return PropertyResult(
                 false,
                 false,
-                ""
+                "",
+                Type.Void,
+                listOf()
             )
         }
         for(interfaze in data[clazz]!!.interfaces) {
@@ -87,6 +101,34 @@ class AstGatherer : AstVisitor {
                 return p
         }
         return getProperty(data[clazz]!!.superClass.signature.resolve(), name, parameters)
+    }
+
+    /**
+     * Compares two types to see if they are equal, also factors in inheritance and interfaces.
+     * @param comparedType Left hand type
+     * @param constantType Right hand type
+     */
+    fun matchType(comparedType: Type, constantType: Type): Boolean {
+        println("matchType | lhs: $comparedType | rhs: $constantType")
+        if(comparedType == constantType)
+            return true
+        if(comparedType is Type.Object && constantType is Type.Object && comparedType.signature == constantType.signature)
+            return true
+
+
+        println(data)
+        if(comparedType is Type.Object) {
+            println("matchType | lhs data: ${data[comparedType.signature.resolve()]}")
+            if(comparedType.signature.resolve() == "java.lang.Object")
+                return false
+            println("matchType | Attempting recursion...")
+            val cmp = matchType(data[comparedType.signature.resolve()]!!.superClass, constantType)
+            println("matchType | Ending recursion with $cmp")
+            if(cmp)
+                return true
+        }
+        return false
+
     }
 
     /**
@@ -102,14 +144,7 @@ class AstGatherer : AstVisitor {
         if(!property.exists) {
             throw InvalidFunction(span)
         }
-        data[property.resultClass]!!.properties.forEach {
-            println("${it.name} && ${it.parameters} vs. $name && $parameters")
-            if(it.name == name
-                && it.parameters == parameters) {
-                return it.returns
-            }
-        }
-        throw Unreachable()
+        return property.returnTypeOfProperty
     }
 
     override fun visit(clazz: Ast.Class, context: VisitorContext) {

@@ -1,0 +1,14 @@
+include "std/jdk"
+
+class std.list {
+    let list: java.util.ArrayList = (new java.util.ArrayList)
+
+    command add arg: any -> void {
+        this.add arg
+    }
+
+    @static
+    command init -> std.list {
+        return (new std.list)
+    }
+}

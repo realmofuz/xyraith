@@ -69,7 +69,7 @@ abstract class StdlibTask : DefaultTask() {
                     .replace(project.rootDir.path + "\\", "")
                     .replace("\\", "/")
                     .removeSuffix(".xr")
-                output += "\"${path}\" to \"\"\"\nclass Temp_${UUID.randomUUID().toString().replace("-", "_")} {}\n${it.readText()}\"\"\"\n,"
+                output += "\"${path}\" to \"\"\"\n${it.readText()}\"\"\"\n,"
             }
         }
         output += "\n)"

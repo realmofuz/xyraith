@@ -1,5 +1,12 @@
-class xyrreserved.JDKHolder {}
+class thestupidbug {}
 
+// String stuff
+@native
+class java.lang.String extends java.lang.Object {
+
+}
+
+// Println stuff
 @native
 class java.io.OutputStream {}
 
@@ -13,6 +20,9 @@ class java.io.PrintStream extends java.io.FilterOutputStream {
 
     @native
     command println x: string -> void {}
+
+    @native
+    command println x: any -> void {}
 }
 
 @native
@@ -22,5 +32,16 @@ class java.lang.System {
     let out: java.io.PrintStream = 0
 }
 
+@native
+class java.util.AbstractCollection {}
+
+@native
+class java.util.AbstractList extends java.util.AbstractCollection {}
+
+@native
+class java.util.ArrayList extends java.util.AbstractList {
+    @native
+    command add a: java.lang.Object -> void {}
+}
 
 

@@ -1,9 +1,11 @@
 class target {
-    command sendMessage message:string -> void {
+    let list: java.util.ArrayList<org.bukkit.entity.Entity> = (new ArrayList)
 
+    command addTarget entity:org.bukkit.entity.Entity -> void {
+        list.add entity
     }
 
-    command giveItems id:string amount:number -> void {
+    command listTargets -> void {
 
     }
 }

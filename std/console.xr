@@ -1,5 +1,5 @@
 namespace std.console {
-    command log output: string -> void {
+    command log output: any -> void {
         let console: java.io.PrintStream = (java.lang.System.out)
         console.println output
     }

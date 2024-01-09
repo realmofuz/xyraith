@@ -4,9 +4,8 @@ package stdlib
 
 val stdlibFiles = mutableMapOf<String, String>(
 "std/console" to """
-class Temp_48c733a2_c3b9_4f25_9f2e_bc8cff153b69 {}
 namespace std.console {
-    command log output: string -> void {
+    command log output: any -> void {
         let console: java.io.PrintStream = (java.lang.System.out)
         console.println output
     }
@@ -16,9 +15,15 @@ namespace std.console {
 
 """
 ,"std/jdk" to """
-class Temp_4fb2d226_3b05_44d8_a5cf_e977de54f76b {}
-class xyrreserved.JDKHolder {}
+class thestupidbug {}
 
+// String stuff
+@native
+class java.lang.String extends java.lang.Object {
+
+}
+
+// Println stuff
 @native
 class java.io.OutputStream {}
 
@@ -32,6 +37,9 @@ class java.io.PrintStream extends java.io.FilterOutputStream {
 
     @native
     command println x: string -> void {}
+
+    @native
+    command println x: any -> void {}
 }
 
 @native
@@ -41,11 +49,36 @@ class java.lang.System {
     let out: java.io.PrintStream = 0
 }
 
+@native
+class java.util.AbstractCollection {}
+
+@native
+class java.util.AbstractList extends java.util.AbstractCollection {}
+
+@native
+class java.util.ArrayList extends java.util.AbstractList {
+    @native
+    command add a: java.lang.Object -> void {}
+}
 
 
 """
+,"std/list" to """
+include "std/jdk"
+
+class std.list {
+    let list: java.util.ArrayList = (new java.util.ArrayList)
+
+    command add arg: any -> void {
+        this.add arg
+    }
+
+    @static
+    command init -> std.list {
+        return (new std.list)
+    }
+}"""
 ,"std/papermc" to """
-class Temp_ff9c8dcd_8745_468d_b6a6_a59cb155a247 {}
 //access: 131105
 @native
 class co.aikar.timings.FullServerTickHandler extends co.aikar.timings.TimingHandler {
@@ -52370,11 +52403,9 @@ class org.spigotmc.event.player.PlayerSpawnLocationEvent extends org.bukkit.even
 
 """
 ,"std/std" to """
-class Temp_89f77d96_50ac_4a42_ad80_bb6da64c58de {}
 include "std/jdk"
 include "std/console""""
 ,"std/string" to """
-class Temp_5ff5550a_a69b_4789_b275_800c0e1cd89a {}
 class std.stringbuilder {
     let jvmBuilder: java.lang.StringBuilder = (new java.lang.StringBuilder)
 
@@ -52398,13 +52429,14 @@ class std.stringbuilder {
 
 """
 ,"std/targets" to """
-class Temp_84053222_d7fd_4b41_9410_f19171ee921d {}
 class target {
-    command sendMessage message:string -> void {
+    let list: java.util.ArrayList<org.bukkit.entity.Entity> = (new ArrayList)
 
+    command addTarget entity:org.bukkit.entity.Entity -> void {
+        list.add entity
     }
 
-    command giveItems id:string amount:number -> void {
+    command listTargets -> void {
 
     }
 }"""

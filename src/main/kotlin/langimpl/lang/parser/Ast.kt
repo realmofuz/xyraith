@@ -25,14 +25,6 @@ data class CommandArgument(
 }
 
 sealed interface Type {
-    data object String : Type {
-        override fun toJvmSignature(): kotlin.String {
-            return "Ljava/lang/String;"
-        }
-        fun toJvmReflectedType(): Class<*> {
-            return Class.forName("java/lang/String")
-        }
-    }
     data object Number : Type {
         override fun toJvmSignature(): kotlin.String {
             return "D"
@@ -64,12 +56,9 @@ sealed interface Type {
             return Class.forName(signature.resolve().replace(".", "/"))
         }
     }
-
     fun toJvmSignature(): kotlin.String
 
     fun equalTo(other: Type): kotlin.Boolean {
-        if(this is String && other is Object && other.signature.resolve() == "java.lang.String")
-            return true
         if(other is Object && this is Object)
             return this.signature == other.signature
         return this == other
@@ -83,8 +72,6 @@ sealed interface Ast {
     sealed interface Header : Ast
     sealed interface Value : Ast
     sealed interface Action : Ast
-
-    val evalType: Type
     fun accept(visitor: AstVisitor, context: VisitorContext)
 
     class Program(val events: List<Class>) {
@@ -123,8 +110,6 @@ sealed interface Ast {
             visitor.visitEnd(this, context)
 
         }
-        override val evalType: Type
-            get() = Type.Object(this.name, listOf())
     }
     class DeclareField(val name: String, val value: Value, val span: SpanData, val type: Type) : Ast, Header {
         override fun toString(): String {
@@ -133,8 +118,6 @@ sealed interface Ast {
         override fun accept(visitor: AstVisitor, context: VisitorContext) {
             visitor.visit(this, context)
         }
-        override val evalType: Type
-            get() = Type.Void
     }
     class StringText(val value: String) : Ast, Value {
         override fun toString(): String {
@@ -143,8 +126,6 @@ sealed interface Ast {
         override fun accept(visitor: AstVisitor, context: VisitorContext) {
             visitor.visit(this, context)
         }
-        override val evalType: Type
-            get() = Type.String
     }
     class Number(val value: Double) : Ast, Value {
         override fun toString(): String {
@@ -153,8 +134,6 @@ sealed interface Ast {
         override fun accept(visitor: AstVisitor, context: VisitorContext) {
             visitor.visit(this, context)
         }
-        override val evalType: Type
-            get() = Type.Number
     }
     class Variable(val value: String) : Ast, Value {
         override fun toString(): String {
@@ -163,8 +142,6 @@ sealed interface Ast {
         override fun accept(visitor: AstVisitor, context: VisitorContext) {
             visitor.visit(this, context)
         }
-        override val evalType: Type
-            get() = Type.Void
     }
     class Boolean(val value: kotlin.Boolean) : Ast, Value {
         override fun toString(): String {
@@ -173,8 +150,6 @@ sealed interface Ast {
         override fun accept(visitor: AstVisitor, context: VisitorContext) {
             visitor.visit(this, context)
         }
-        override val evalType: Type
-            get() = Type.Boolean
     }
 
     data object Null : Ast, Value {
@@ -184,8 +159,6 @@ sealed interface Ast {
         override fun accept(visitor: AstVisitor, context: VisitorContext) {
             visitor.visit(this, context)
         }
-        override val evalType: Type
-            get() = Type.Void
     }
 
     class Event(val name: String, val code: Block, val eventNameSpan: SpanData) : Ast, Header {
@@ -197,8 +170,6 @@ sealed interface Ast {
                 code.accept(visitor, context)
             visitor.visitEnd(this, context)
         }
-        override val evalType: Type
-            get() = Type.Void
     }
     class Function(
         val name: PathName, val code: Block, val eventNameSpan: SpanData,
@@ -215,9 +186,6 @@ sealed interface Ast {
         fun generateSignature(): String {
             return """(${parameters.values.joinToString("") { it.toJvmSignature() }})${returns.toJvmSignature()}"""
         }
-
-        override val evalType: Type
-            get() = returns
     }
     class Block(val nodes: MutableList<Ast.Action>, val eventName: String, val span: SpanData) : Ast {
         override fun toString(): String {
@@ -230,8 +198,6 @@ sealed interface Ast {
             }
             visitor.visitEnd(this, context)
         }
-        override val evalType: Type
-            get() = Type.Void
     }
     class Access(
         val path: PathName, val arguments: MutableList<CommandArgument>,
@@ -247,8 +213,6 @@ sealed interface Ast {
             visitor.visitEnd(this, context)
 
         }
-        override val evalType: Type
-            get() = Type.Void
     }
 
     class Annotation(
@@ -263,8 +227,6 @@ sealed interface Ast {
             }
             visitor.visit(this, context)
         }
-        override val evalType: Type
-            get() = Type.Void
     }
     class ArrayOf(val type: Type, val arguments: MutableList<CommandArgument>, val nameSpan: SpanData) : Ast, Value {
         override fun toString(): String {
@@ -282,8 +244,6 @@ sealed interface Ast {
             }
 
         }
-        override val evalType: Type
-            get() = Type.Array(type)
     }
     class ConstructClass(val className: PathName, val arguments: MutableList<CommandArgument>, val classSpan: SpanData) : Ast, Action, Value {
         override fun toString(): String {
@@ -292,8 +252,6 @@ sealed interface Ast {
         override fun accept(visitor: AstVisitor, context: VisitorContext) {
             visitor.visit(this, context)
         }
-        override val evalType: Type
-            get() = Type.Object(className, mutableListOf(), false)
     }
     class DeclareVariable(val name: String, val value: Value, val span: SpanData, var type: Type) : Ast, Action {
         override fun toString(): String {
@@ -303,8 +261,6 @@ sealed interface Ast {
             value.accept(visitor, context)
             visitor.visit(this, context)
         }
-        override val evalType: Type
-            get() = Type.Void
     }
     class StoreVariable(val name: String, val value: Value, val span: SpanData) : Ast, Action {
         override fun toString(): String {
@@ -314,8 +270,6 @@ sealed interface Ast {
             value.accept(visitor, context)
             visitor.visit(this, context)
         }
-        override val evalType: Type
-            get() = Type.Void
     }
     class IfStatement(val condition: Ast.Value, val ifTrue: Block) : Ast, Action {
         override fun toString(): String {
@@ -327,8 +281,6 @@ sealed interface Ast {
             ifTrue.accept(visitor, context)
             visitor.visitEnd(this, context)
         }
-        override val evalType: Type
-            get() = Type.Void
     }
     class ForEachStatement(val variable: String, val list: Ast.Value, val ifTrue: Block) : Ast, Action {
         override fun toString(): String {
@@ -340,8 +292,6 @@ sealed interface Ast {
             ifTrue.accept(visitor, context)
             visitor.visitEnd(this, context)
         }
-        override val evalType: Type
-            get() = Type.Void
     }
     class LoopStatement(val block: Block) : Ast, Action {
         override fun toString(): String {
@@ -352,8 +302,6 @@ sealed interface Ast {
             block.accept(visitor, context)
             visitor.visitEnd(this, context)
         }
-        override val evalType: Type
-            get() = Type.Void
     }
 
     data object BreakStatement : Ast, Action {
@@ -364,9 +312,6 @@ sealed interface Ast {
         override fun accept(visitor: AstVisitor, context: VisitorContext) {
             visitor.visit(this, context)
         }
-
-        override val evalType: Type
-            get() = Type.Void
     }
 }
 
