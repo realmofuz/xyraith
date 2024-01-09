@@ -76,6 +76,7 @@ class AstGatherer : AstVisitor {
                 if(!this.matchType(it.second, it.first))
                     return@loop
             }
+            println("params: ${it.parameters}")
             if(it.name == name) {
                 return PropertyResult(
                     true,

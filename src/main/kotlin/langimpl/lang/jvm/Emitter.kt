@@ -702,8 +702,10 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                 HeaderType.FIELD
             )
 
+            println("property: ${property}")
+            println(methodSignature.generateInternalSignature())
             if(property.isInterface) {
-                when(gatherer.functionTypes[tmpSig.generateInternalSignature()]!!) {
+                when(gatherer.functionTypes[methodSignature.generateInternalSignature()]!!) {
                     FunctionType.STATIC_METHOD -> {
                         methodVisitor.visitMethodInsn(
                             Opcodes.INVOKEINTERFACE,
@@ -725,7 +727,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                     FunctionType.MEMBER_FIELD -> throw SQLIntegrityConstraintViolationException()
                 }
             } else {
-                when(gatherer.functionTypes[tmpSig.generateInternalSignature()]!!) {
+                when(gatherer.functionTypes[methodSignature.generateInternalSignature()]!!) {
                     FunctionType.STATIC_METHOD -> {
                         methodVisitor.visitMethodInsn(
                             Opcodes.INVOKESTATIC,
