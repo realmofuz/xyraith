@@ -203,8 +203,8 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                     value.value,
                     listOf()
                 )
-                if(p.exists && p.headerType == HeaderType.FIELD)
-                    TODO()
+                if(p.exists && p.functionType == FunctionType.MEMBER_FIELD)
+                    return p.returnTypeOfProperty
                 if(localVariables.containsKey(value.value))
                     return localVariables[value.value]!!
                 return Type.Void
@@ -505,6 +505,17 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                 methodVisitor.visitLdcInsn(value.value)
             }
             is Ast.Variable -> {
+                val p = gatherer.getProperty(currentClass.name.resolve(), value.value, listOf())
+                if(p.exists && p.functionType == FunctionType.MEMBER_FIELD) {
+                    methodVisitor.visitVarInsn(Opcodes.ALOAD, 0)
+                    methodVisitor.visitFieldInsn(
+                        Opcodes.GETFIELD,
+                        currentClass.name.resolve().replace(".", "/"),
+                        value.value,
+                        p.returnTypeOfProperty.toJvmSignature()
+                    )
+                    return
+                }
                 when(localVariables[value.value]!!) {
                     is Type.Array -> methodVisitor.visitVarInsn(Opcodes.ALOAD, localVariableIndices[value.value]!!)
                     Type.Boolean -> methodVisitor.visitVarInsn(Opcodes.ILOAD, localVariableIndices[value.value]!!)
@@ -732,6 +743,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                     }
                     FunctionType.MEMBER_METHOD -> throw SQLIntegrityConstraintViolationException()
                     FunctionType.MEMBER_FIELD -> throw SQLIntegrityConstraintViolationException()
+                    FunctionType.NONE -> TODO()
                 }
             } else {
                 when(gatherer.functionTypes[methodSignature.generateInternalSignature()]!!) {
