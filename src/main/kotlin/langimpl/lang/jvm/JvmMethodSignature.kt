@@ -16,7 +16,7 @@ data class JvmMethodSignature(
     val owner: PathName,
     val parameters: List<Type>,
     val returns: Type,
-    val headerType: HeaderType
+    val headerType: HeaderType,
 ) {
     fun methodSignature(): String = when(headerType) {
         HeaderType.METHOD -> "(${parameters.joinToString("") { it.toJvmSignature() }})${returns.toJvmSignature()}"

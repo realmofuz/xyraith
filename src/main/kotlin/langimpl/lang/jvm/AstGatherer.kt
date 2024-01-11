@@ -5,6 +5,7 @@ import langimpl.lang.lexer.SpanData
 import langimpl.lang.parser.AstVisitor
 import langimpl.lang.parser.VisitorContext
 import parser.Ast
+import parser.PathName
 import parser.Type
 
 /**
@@ -26,15 +27,16 @@ data class ClassData(
 * @param exists Does this property exist?
 * @param isInterface Is this property part of an interface?
 * @param resultClass The containing class of the property.
- * @param returnTypeOfProperty The type that the property returns.
- * @param parameterTypesRequested The types that the property needs (function parameters on functions, empty list on fields)
- */
+* @param returnTypeOfProperty The type that the property returns.
+* @param parameterTypesRequested The types that the property needs (function parameters on functions, empty list on fields)
+*/
 data class PropertyResult(
     val exists: Boolean,
     val isInterface: Boolean,
     val resultClass: String,
     val returnTypeOfProperty: Type,
     val parameterTypesRequested: List<Type>,
+    val functionType: FunctionType
 )
 class AstGatherer : AstVisitor {
     /**
@@ -45,6 +47,7 @@ class AstGatherer : AstVisitor {
     val data: MutableMap<String, ClassData> = mutableMapOf()
     val returnTypes: MutableMap<String, Type> = mutableMapOf()
     val functionTypes: MutableMap<String, FunctionType> = mutableMapOf()
+    val fields: MutableMap<String, Type> = mutableMapOf()
     val annotations: MutableList<String> = mutableListOf()
 
     lateinit var currentClass: Ast.Class
@@ -67,6 +70,7 @@ class AstGatherer : AstVisitor {
                 "",
                 Type.Void,
                 listOf(),
+                FunctionType.NONE
             )
         }
         println("properties: ${data[clazz]!!.properties.map { it.name }}")
@@ -84,6 +88,16 @@ class AstGatherer : AstVisitor {
                     clazz,
                     it.returns,
                     it.parameters,
+                    when(it.headerType) {
+                        HeaderType.METHOD -> if(currentClass.static || annotations.contains("static"))
+                            FunctionType.STATIC_METHOD
+                        else
+                            FunctionType.MEMBER_METHOD
+                        HeaderType.FIELD -> if(currentClass.static || annotations.contains("static"))
+                            FunctionType.STATIC_FIELD
+                        else
+                            FunctionType.MEMBER_FIELD
+                    }
                 )
             }
         }
@@ -93,7 +107,8 @@ class AstGatherer : AstVisitor {
                 false,
                 "",
                 Type.Void,
-                listOf()
+                listOf(),
+                FunctionType.NONE
             )
         }
         for(interfaze in data[clazz]!!.interfaces) {

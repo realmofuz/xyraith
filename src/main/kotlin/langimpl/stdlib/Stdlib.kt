@@ -77,6 +77,30 @@ class std.list {
     command init -> std.list {
         return (new std.list)
     }
+
+    @static
+    command init e1:any -> std.list {
+        let l = (new std.list)
+        l.add e1
+        return l
+    }
+
+    @static
+    command init e1:any e2:any -> std.list {
+        let l = (new std.list)
+        l.add e1
+        l.add e2
+        return l
+    }
+
+    @static
+    command init e1:any e2:any e3:any -> std.list {
+        let l = (new std.list)
+        l.add e1
+        l.add e2
+        l.add e3
+        return l
+    }
 }"""
 ,"std/papermc" to """
 //access: 131105

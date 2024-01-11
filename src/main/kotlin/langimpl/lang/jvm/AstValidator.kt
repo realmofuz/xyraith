@@ -16,7 +16,8 @@ enum class FunctionType {
     STATIC_FIELD,
     STATIC_METHOD,
     MEMBER_FIELD,
-    MEMBER_METHOD;
+    MEMBER_METHOD,
+    NONE;
 }
 
 /**

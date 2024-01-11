@@ -77,6 +77,12 @@ abstract class StdlibTask : DefaultTask() {
     }
 }
 
+tasks.register<JavaExec>("compileServerlessly") {
+    workingDir = file("./playground")
+    args = mutableListOf("serverless")
+
+}
+
 abstract class BindingTask : DefaultTask() {
     fun forEachClassFile(run: (ClassReader) -> Unit) {
         File("${project.rootDir.path}/bindings/").walk().forEach {

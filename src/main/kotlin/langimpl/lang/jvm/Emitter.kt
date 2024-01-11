@@ -198,6 +198,13 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                 false
             )
             is Ast.Variable -> {
+                val p = gatherer.getProperty(
+                    currentClass.name.resolve(),
+                    value.value,
+                    listOf()
+                )
+                if(p.exists && p.headerType == HeaderType.FIELD)
+                    TODO()
                 if(localVariables.containsKey(value.value))
                     return localVariables[value.value]!!
                 return Type.Void
@@ -312,7 +319,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
 
         if(annotations.contains(PathName.parse("native")))
             return false
-        if(!currentClass.static && !annotations.contains(PathName.parse("static"))) {
+        if(currentClass.static || annotations.contains(PathName.parse("static"))) {
             localVariables["this"] = Type.Object(
                 currentClass.name,
                 currentClass.generics,
@@ -329,7 +336,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         }
 
 
-        if(currentClass.static && !annotations.contains(PathName.parse("static"))) {
+        if(currentClass.static || annotations.contains(PathName.parse("static"))) {
             methodVisitor = classVisitor.visitMethod(
                 Opcodes.ACC_PUBLIC + Opcodes.ACC_STATIC,
                 function.name.resolve().replace(".", "__"),

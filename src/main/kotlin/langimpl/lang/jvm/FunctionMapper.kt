@@ -46,7 +46,7 @@ class FunctionMapper {
                     clazz.name,
                     listOf(),
                     method.type,
-                    HeaderType.FIELD
+                    HeaderType.FIELD,
                 )
             }
             is Ast.Function -> {
