@@ -4,7 +4,16 @@ package stdlib
 
 val stdlibFiles = mutableMapOf<String, String>(
 "std/console" to """
-namespace std.console {
+class thestupidbug {}
+
+class std.console {
+    @static
+    command log output: any -> void {
+        let console: java.io.PrintStream = (java.lang.System.out)
+        console.println output
+    }
+
+    @static
     command log output: any -> void {
         let console: java.io.PrintStream = (java.lang.System.out)
         console.println output
