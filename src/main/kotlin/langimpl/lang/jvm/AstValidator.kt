@@ -84,8 +84,18 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
                 false
             )
             is Ast.Variable -> {
+                val prop = gatherer.getProperty(
+                    currentClass.name.resolve(),
+                    value.value,
+                    listOf()
+                )
+                println("check prop")
+                if(prop.exists && prop.functionType == FunctionType.MEMBER_FIELD)
+                    return prop.returnTypeOfProperty
+                println("var fallback")
                 if(localVariables.containsKey(value.value))
                     return localVariables[value.value]!!
+                println("void fallback")
                 return Type.Void
             }
         }
@@ -192,9 +202,20 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
             access.arguments.map { evaluateType(it.argument) }
         )
         println("Attempting to compare ${access.arguments.map { evaluateType(it.argument) }}")
-        println("path: $path | lvars: ${localVariables} | Types: ${access.arguments.map { evaluateType(it.argument) }}")
+        println("path: $path | lvars: $localVariables | Types: ${access.arguments.map { evaluateType(it.argument) }}")
         if(!prop.exists) {
-            if(path.size == 1 && localVariables.containsKey(path[0])) {
+            println("chk field prop: ${gatherer.getProperty(
+                currentClass.name.resolve(),
+                path[0],
+                listOf()
+            )}")
+            if(path.size == 1 &&
+                (localVariables.containsKey(path[0])
+                        || gatherer.getProperty(
+                            currentClass.name.resolve(),
+                            path[0],
+                            listOf()
+                        ).functionType == FunctionType.MEMBER_FIELD)) {
                 val path2 = access.path.resolve().split(".").toMutableList()
                 val variable = path2[0]
                 val function = path2[1]

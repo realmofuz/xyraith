@@ -212,6 +212,23 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         }
     }
 
+    /**
+     * Allocates a new local variable and returns the index.
+     * @param name Name of the variable
+     * @param type Type of the variable
+     */
+    private fun allocateVariable(
+        name: String,
+        type: Type
+    ): Int {
+        localVariables[name] = type
+        localVariableIndices[name] = localVariableIndex
+        // types `long` and `double` take 2 slots, all
+        // other types take 1 slot in JVM
+        localVariableIndex += if(type == Type.Number) 2 else 1
+
+        return localVariableIndices[name]!!
+    }
 
     override fun visit(clazz: Ast.Class, context: VisitorContext) {
         classes.add(clazz.name)
@@ -315,24 +332,27 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         currentMappedFunction = FunctionMapper().map(function, currentClass)
 
         localVariableIndex = 0
-        localVariables = mutableMapOf()
+        localVariables.clear()
+        localVariableIndices.clear()
 
         if(annotations.contains(PathName.parse("native")))
             return false
-        if(currentClass.static || annotations.contains(PathName.parse("static"))) {
-            localVariables["this"] = Type.Object(
-                currentClass.name,
-                currentClass.generics,
-                false
+        if(!(currentClass.static || annotations.contains(PathName.parse("static")))) {
+            allocateVariable(
+                "name",
+                Type.Object(
+                    currentClass.name,
+                    currentClass.generics,
+                    false
+                )
             )
-            localVariableIndices["this"] = localVariableIndex
-            localVariableIndex += 1
         }
 
         for(argument in function.parameters) {
-            localVariables[argument.key] = argument.value
-            localVariableIndices[argument.key] = localVariableIndex
-            localVariableIndex += if(argument.value == Type.Number) 2 else 1
+            allocateVariable(
+                argument.key,
+                argument.value
+            )
         }
 
 
@@ -393,13 +413,14 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                     null,
                     null
                 )
-                localVariables["event"] = Type.Object(
-                    PathName.parse("org.bukkit.event.player.PlayerJoinEvent"),
-                    listOf(),
-                    false
+                allocateVariable(
+                    "event",
+                    Type.Object(
+                        PathName.parse("org.bukkit.event.player.PlayerJoinEvent"),
+                        listOf(),
+                        false
+                    )
                 )
-                localVariableIndices["event"] = localVariableIndex
-                localVariableIndex++
             }
             else -> {
                 throw SQLIntegrityConstraintViolationException()
@@ -682,179 +703,133 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         }
     }
     override fun visitEnd(access: Ast.Access, context: VisitorContext) {
-        if(!handleSpecialAstAccess(access, context))
+        if (!handleSpecialAstAccess(access, context))
             return
 
         val altPath = PathName.parse(access.path.resolve())
         val fn = altPath.path.removeLast()
 
-        val tmpSig = JvmMethodSignature(
-            fn,
-            altPath,
-            access.arguments.map { evaluateType(it.argument) },
-            evaluateType(access),
-            HeaderType.METHOD
+        // check for field
+        val fieldProperty = gatherer.getProperty(
+            currentClass.name.resolve(),
+            altPath.path[0],
+            listOf()
         )
+        if (altPath.path.size == 1
+            && fieldProperty.exists
+            && fieldProperty.functionType == FunctionType.MEMBER_FIELD
+        ) {
+            methodVisitor.visitVarInsn(Opcodes.ALOAD, 0)
+            methodVisitor.visitFieldInsn(
+                Opcodes.GETFIELD,
+                fieldProperty.resultClass.replace(".", "/"),
+                altPath.path[0],
+                fieldProperty.returnTypeOfProperty.toJvmSignature()
+            )
+            val finalProperty = gatherer.getProperty(
+                (fieldProperty.returnTypeOfProperty as Type.Object).signature.resolve(),
+                fn,
+                access.arguments.map { evaluateType(it.argument) }
+            )
+            methodVisitor.visitFieldInsn(
+                Opcodes.GETFIELD,
+                fieldProperty.resultClass.replace(".", "/"),
+                fn,
+                fieldProperty.returnTypeOfProperty.toJvmSignature()
+            )
 
-        val property = gatherer.getProperty(
+            return
+        }
+
+
+        // check for variable
+        if (altPath.path.size == 1
+            && localVariables.containsKey(altPath.path[0])
+        ) {
+            visit(Ast.Variable(altPath.path[0]), context)
+
+            val variableProperty = gatherer.getProperty(
+                (evaluateType(Ast.Variable(altPath.path[0])) as Type.Object).signature.resolve(),
+                fn,
+                access.arguments.map { evaluateType(it.argument) }
+            )
+            if (!variableProperty.exists)
+                throw InvalidFunction(access.nameSpan)
+            if (variableProperty.isInterface) {
+                when (variableProperty.functionType) {
+                    FunctionType.MEMBER_FIELD -> methodVisitor.visitFieldInsn(
+                        Opcodes.GETFIELD,
+                        variableProperty.resultClass.replace(".", "/"),
+                        fn,
+                        variableProperty.returnTypeOfProperty.toJvmSignature()
+                    )
+                    FunctionType.MEMBER_METHOD -> methodVisitor.visitMethodInsn(
+                        Opcodes.INVOKEINTERFACE,
+                        variableProperty.resultClass.replace(".", "/"),
+                        fn,
+                        variableProperty.returnTypeOfProperty.toJvmSignature(),
+                        true
+                    )
+                    else -> TODO()
+                }
+            } else {
+                val sig = JvmMethodSignature(
+                    fn,
+                    PathName.parse(variableProperty.resultClass),
+                    variableProperty.parameterTypesRequested,
+                    variableProperty.returnTypeOfProperty,
+                    if(variableProperty.functionType == FunctionType.MEMBER_FIELD
+                        || variableProperty.functionType == FunctionType.STATIC_FIELD)
+                            HeaderType.FIELD
+                    else
+                            HeaderType.METHOD
+                )
+                when (variableProperty.functionType) {
+                    FunctionType.MEMBER_FIELD -> methodVisitor.visitFieldInsn(
+                        Opcodes.GETFIELD,
+                        sig.ownerSignature(),
+                        fn,
+                        sig.methodSignature()
+                    )
+
+                    FunctionType.MEMBER_METHOD -> methodVisitor.visitMethodInsn(
+                        Opcodes.INVOKEVIRTUAL,
+                        sig.ownerSignature(),
+                        fn,
+                        sig.methodSignature(),
+                        false
+                    )
+                    else -> TODO()
+                }
+            }
+            return
+        }
+
+        // check for static
+        val staticProperty = gatherer.getProperty(
             altPath.resolve(),
             fn,
             access.arguments.map { evaluateType(it.argument) }
         )
-
-        if(property.exists) {
-            access.returns = property.returnTypeOfProperty
-
-            val methodSignature = JvmMethodSignature(
-                fn,
-                PathName.parse(property.resultClass),
-                property.parameterTypesRequested,
-                property.returnTypeOfProperty,
-                HeaderType.METHOD
-            )
-            val fieldSignature = JvmMethodSignature(
-                fn,
-                PathName.parse(property.resultClass),
-                property.parameterTypesRequested,
-                property.returnTypeOfProperty,
-                HeaderType.FIELD
-            )
-
-            println("property: ${property}")
-            println(methodSignature.generateInternalSignature())
-            if(property.isInterface) {
-                when(gatherer.functionTypes[methodSignature.generateInternalSignature()]!!) {
-                    FunctionType.STATIC_METHOD -> {
-                        methodVisitor.visitMethodInsn(
-                            Opcodes.INVOKEINTERFACE,
-                            methodSignature.ownerSignature(),
-                            fn,
-                            methodSignature.methodSignature(),
-                            true
-                        )
-                    }
-                    FunctionType.STATIC_FIELD -> {
-                        methodVisitor.visitFieldInsn(
-                            Opcodes.GETSTATIC,
-                            fieldSignature.ownerSignature(),
-                            fn,
-                            fieldSignature.methodSignature()
-                        )
-                    }
-                    FunctionType.MEMBER_METHOD -> throw SQLIntegrityConstraintViolationException()
-                    FunctionType.MEMBER_FIELD -> throw SQLIntegrityConstraintViolationException()
-                    FunctionType.NONE -> TODO()
-                }
-            } else {
-                when(gatherer.functionTypes[methodSignature.generateInternalSignature()]!!) {
-                    FunctionType.STATIC_METHOD -> {
-                        methodVisitor.visitMethodInsn(
-                            Opcodes.INVOKESTATIC,
-                            methodSignature.ownerSignature(),
-                            fn,
-                            methodSignature.methodSignature(),
-                            false
-                        )
-                    }
-                    FunctionType.STATIC_FIELD -> {
-                        methodVisitor.visitFieldInsn(
-                            Opcodes.GETSTATIC,
-                            fieldSignature.ownerSignature(),
-                            fn,
-                            fieldSignature.methodSignature()
-                        )
-                    }
-                    FunctionType.MEMBER_METHOD -> throw SQLIntegrityConstraintViolationException()
-                    FunctionType.MEMBER_FIELD -> throw SQLIntegrityConstraintViolationException()
-                }
-            }
-
-        } else if(localVariables.containsKey(altPath.path[0])
-            && access.path.path.size == 2) {
-            val variable = access.path.path[0]
-            val function = access.path.path[1]
-            val altSig = JvmMethodSignature(
-                function,
-                (evaluateType(Ast.Variable(variable)) as Type.Object).signature,
-                access.arguments.map { evaluateType(it.argument) },
-                evaluateType(access),
-                HeaderType.METHOD
-            )
-            val property = gatherer.getProperty(
-                (evaluateType(Ast.Variable(variable)) as Type.Object).signature.resolve(),
-                function,
-                access.arguments.map { evaluateType(it.argument) }
-            )
-            if(property.exists) {
-                val methodSignature = JvmMethodSignature(
-                    function,
-                    PathName.parse(property.resultClass),
-                    access.arguments.map { evaluateType(it.argument) },
-                    evaluateType(access),
-                    HeaderType.METHOD
-                )
-                val fieldSignature = JvmMethodSignature(
-                    function,
-                    PathName.parse(property.resultClass),
-                    access.arguments.map { evaluateType(it.argument) },
-                    evaluateType(access),
-                    HeaderType.FIELD
-                )
-
-                if(property.isInterface) {
-                    when(gatherer.functionTypes[methodSignature.generateInternalSignature()]!!) {
-                        FunctionType.STATIC_METHOD -> throw SQLIntegrityConstraintViolationException()
-                        FunctionType.STATIC_FIELD -> throw SQLIntegrityConstraintViolationException()
-                        FunctionType.MEMBER_METHOD -> {
-                            methodVisitor.visitMethodInsn(
-                                Opcodes.INVOKEINTERFACE,
-                                property.resultClass.replace(".", "/"),
-                                access.path.path[1],
-                                methodSignature.methodSignature(),
-                                true
-                            )
-                        }
-                        FunctionType.MEMBER_FIELD -> {
-                            methodVisitor.visitFieldInsn(
-                                Opcodes.GETFIELD,
-                                property.resultClass.replace(".", "/"),
-                                access.path.path[1],
-                                fieldSignature.methodSignature()
-                            )
-                        }
-                    }
-                } else {
-                    when(gatherer.functionTypes[methodSignature.generateInternalSignature()]!!) {
-                        FunctionType.STATIC_METHOD -> throw SQLIntegrityConstraintViolationException()
-                        FunctionType.STATIC_FIELD -> throw SQLIntegrityConstraintViolationException()
-                        FunctionType.MEMBER_METHOD -> {
-                            methodVisitor.visitMethodInsn(
-                                Opcodes.INVOKEVIRTUAL,
-                                property.resultClass.replace(".", "/"),
-                                access.path.path[1],
-                                methodSignature.methodSignature(),
-                                false
-                            )
-                        }
-                        FunctionType.MEMBER_FIELD -> {
-                            methodVisitor.visitFieldInsn(
-                                Opcodes.GETFIELD,
-                                property.resultClass.replace(".", "/"),
-                                access.path.path[1],
-                                fieldSignature.methodSignature()
-                            )
-                        }
-                    }
-                }
-
-            } else {
-                throw InvalidFunction(access.nameSpan)
-            }
-        } else {
+        if (!staticProperty.exists)
             throw InvalidFunction(access.nameSpan)
+
+        when (staticProperty.functionType) {
+            FunctionType.STATIC_FIELD -> methodVisitor.visitFieldInsn(
+                Opcodes.GETSTATIC,
+                staticProperty.resultClass.replace(".", "/"),
+                fn,
+                staticProperty.returnTypeOfProperty.toJvmSignature()
+            )
+            FunctionType.STATIC_METHOD -> methodVisitor.visitMethodInsn(
+                Opcodes.INVOKESTATIC,
+                staticProperty.resultClass.replace(".", "/"),
+                fn,
+                staticProperty.returnTypeOfProperty.toJvmSignature(),
+                true
+            )
+            else -> TODO()
         }
-
-
     }
 
 
@@ -863,12 +838,15 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         methodVisitor.visitLabel(label)
         methodVisitor.visitLineNumber(declareVariable.span.calculateLineNumber(), label)
 
-        localVariableIndex += 2
-        localVariableIndices[declareVariable.name] = localVariableIndex
-
         if(declareVariable.type is Type.Void)
             declareVariable.type = evaluateType(declareVariable.value)
-        localVariables[declareVariable.name] = declareVariable.type
+
+        allocateVariable(
+            declareVariable.name,
+            declareVariable.type
+        )
+
+
         when(declareVariable.type) {
             is Type.Array -> methodVisitor.visitVarInsn(Opcodes.ASTORE, localVariableIndex)
             Type.Boolean -> methodVisitor.visitVarInsn(Opcodes.ISTORE, localVariableIndex)
@@ -938,6 +916,9 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
     override fun visitEnd(header: Ast.Header, context: VisitorContext) {
         if(annotations.contains(PathName.parse("native")))
             return
+
+        println(localVariableIndices)
+        println(localVariables)
         methodVisitor.visitInsn(Opcodes.RETURN)
         methodVisitor.visitMaxs(100, 100)
         methodVisitor.visitEnd()

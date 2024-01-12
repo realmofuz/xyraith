@@ -70,7 +70,7 @@ class std.list {
     let list: java.util.ArrayList = (new java.util.ArrayList)
 
     command add arg: any -> void {
-        this.add arg
+        list.add arg
     }
 
     @static
@@ -52434,19 +52434,19 @@ class std.stringbuilder {
     let jvmBuilder: java.lang.StringBuilder = (new java.lang.StringBuilder)
 
     command add n:number -> void {
-        jvmBuilder->(java.lang.StringBuilder)append n
+        jvmBuilder.append n
     }
 
     command add n:string -> void {
-        jvmBuilder->(java.lang.StringBuilder)append n
+        jvmBuilder.append n
     }
 
     command add n:boolean -> void {
-        jvmBuilder->(java.lang.StringBuilder)append n
+        jvmBuilder.append n
     }
 
     command toString -> string {
-        return (jvmBuilder->(string)toString)
+        return (jvmBuilder.toString)
     }
 }
 

@@ -88,16 +88,7 @@ class AstGatherer : AstVisitor {
                     clazz,
                     it.returns,
                     it.parameters,
-                    when(it.headerType) {
-                        HeaderType.METHOD -> if(currentClass.static || annotations.contains("static"))
-                            FunctionType.STATIC_METHOD
-                        else
-                            FunctionType.MEMBER_METHOD
-                        HeaderType.FIELD -> if(currentClass.static || annotations.contains("static"))
-                            FunctionType.STATIC_FIELD
-                        else
-                            FunctionType.MEMBER_FIELD
-                    }
+                    functionTypes[it.generateInternalSignature()]!!
                 )
             }
         }
@@ -217,11 +208,13 @@ class AstGatherer : AstVisitor {
         data[currentClassName]!!.properties.add(signature)
         returnTypes[signature.generateInternalSignature()] = field.type
 
+        println("Current Static? ${currentClass.static} ${annotations} ${field.name}")
         if(currentClass.static || annotations.contains("static"))
             functionTypes[signature.generateInternalSignature()] = FunctionType.STATIC_FIELD
         else
             functionTypes[signature.generateInternalSignature()] = FunctionType.MEMBER_FIELD
 
+        println("Ftype: ${functionTypes[signature.generateInternalSignature()]}")
         annotations.clear()
         return true
     }
