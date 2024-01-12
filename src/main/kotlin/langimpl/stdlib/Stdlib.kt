@@ -7,11 +7,8 @@ val stdlibFiles = mutableMapOf<String, String>(
 class thestupidbug {}
 
 class std.console {
-    @static
-    command log output: any -> void {
-        let console: java.io.PrintStream = (java.lang.System.out)
-        console.println output
-    }
+
+    command test -> void {}
 
     @static
     command log output: any -> void {

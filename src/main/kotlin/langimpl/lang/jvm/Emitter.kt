@@ -507,13 +507,15 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                     Type.Boolean -> methodVisitor.visitIntInsn(Opcodes.NEWARRAY, Opcodes.T_INT)
                     Type.Number -> methodVisitor.visitIntInsn(Opcodes.NEWARRAY, Opcodes.T_DOUBLE)
                     is Type.Object -> methodVisitor.visitInsn(Opcodes.ANEWARRAY)
-                    Type.Void -> when(evaluateType(value.arguments[0].argument)) {
-                        is Type.Array -> methodVisitor.visitInsn(Opcodes.ANEWARRAY)
-                        Type.Boolean -> methodVisitor.visitIntInsn(Opcodes.NEWARRAY, Opcodes.T_INT)
-                        Type.Number -> methodVisitor.visitIntInsn(Opcodes.NEWARRAY, Opcodes.T_DOUBLE)
-                        is Type.Object -> methodVisitor.visitInsn(Opcodes.ANEWARRAY)
-                        Type.Void -> TODO()
+                    Type.JVMFloat-> {
+                        methodVisitor.visitInsn(Opcodes.F2D)
+                        methodVisitor.visitIntInsn(Opcodes.NEWARRAY, Opcodes.T_DOUBLE)
                     }
+                    Type.JVMInteger -> {
+                        methodVisitor.visitInsn(Opcodes.I2D)
+                        methodVisitor.visitIntInsn(Opcodes.NEWARRAY, Opcodes.T_DOUBLE)
+                    }
+                    Type.Void -> TODO()
                 }
                 methodVisitor.visitInsn(Opcodes.DUP)
             }
@@ -556,6 +558,14 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                     Type.Number -> methodVisitor.visitVarInsn(Opcodes.DLOAD, localVariableIndices[value.value]!!)
                     is Type.Object -> methodVisitor.visitVarInsn(Opcodes.ALOAD, localVariableIndices[value.value]!!)
                     Type.Void -> TODO()
+                    Type.JVMFloat -> {
+                        methodVisitor.visitVarInsn(Opcodes.FLOAD, localVariableIndices[value.value]!!)
+                        methodVisitor.visitInsn(Opcodes.F2D)
+                    }
+                    Type.JVMInteger -> {
+                        methodVisitor.visitVarInsn(Opcodes.ILOAD, localVariableIndices[value.value]!!)
+                        methodVisitor.visitInsn(Opcodes.I2D)
+                    }
                 }
             }
         }
@@ -567,6 +577,14 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                 Type.Number -> methodVisitor.visitInsn(Opcodes.DASTORE)
                 is Type.Object -> methodVisitor.visitInsn(Opcodes.AASTORE)
                 Type.Void -> TODO()
+                Type.JVMFloat -> {
+                    methodVisitor.visitInsn(Opcodes.F2D)
+                    methodVisitor.visitInsn(Opcodes.DASTORE)
+                }
+                Type.JVMInteger -> {
+                    methodVisitor.visitInsn(Opcodes.I2D)
+                    methodVisitor.visitInsn(Opcodes.DASTORE)
+                }
             }
             if(!context.isLast)
                 methodVisitor.visitInsn(Opcodes.DUP)
@@ -631,6 +649,28 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                         methodVisitor.visitLabel(continueLabels.removeLast())
                     }
                     Type.Void -> TODO()
+                    Type.JVMFloat -> {
+                        methodVisitor.visitInsn(Opcodes.F2D)
+                        methodVisitor.visitInsn(Opcodes.DCMPL)
+                        methodVisitor.visitJumpInsn(Opcodes.IFEQ, branchLabels.last())
+                        methodVisitor.visitLdcInsn(1)
+                        methodVisitor.visitJumpInsn(Opcodes.GOTO, continueLabels.last())
+                        methodVisitor.visitLabel(branchLabels.removeLast())
+                        methodVisitor.visitLdcInsn(0)
+                        methodVisitor.visitJumpInsn(Opcodes.GOTO, continueLabels.last())
+                        methodVisitor.visitLabel(continueLabels.removeLast())
+                    }
+                    Type.JVMInteger -> {
+                        methodVisitor.visitInsn(Opcodes.I2D)
+                        methodVisitor.visitInsn(Opcodes.DCMPL)
+                        methodVisitor.visitJumpInsn(Opcodes.IFEQ, branchLabels.last())
+                        methodVisitor.visitLdcInsn(1)
+                        methodVisitor.visitJumpInsn(Opcodes.GOTO, continueLabels.last())
+                        methodVisitor.visitLabel(branchLabels.removeLast())
+                        methodVisitor.visitLdcInsn(0)
+                        methodVisitor.visitJumpInsn(Opcodes.GOTO, continueLabels.last())
+                        methodVisitor.visitLabel(continueLabels.removeLast())
+                    }
                 }
                 return false
             }
@@ -647,6 +687,14 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                     Type.Number ->  methodVisitor.visitInsn(Opcodes.DALOAD)
                     is Type.Object -> methodVisitor.visitInsn(Opcodes.AALOAD)
                     Type.Void -> TODO()
+                    Type.JVMFloat -> {
+                        methodVisitor.visitInsn(Opcodes.FALOAD)
+                        methodVisitor.visitInsn(Opcodes.F2D)
+                    }
+                    Type.JVMInteger -> {
+                        methodVisitor.visitInsn(Opcodes.IALOAD)
+                        methodVisitor.visitInsn(Opcodes.I2D)
+                    }
                 }
                 return false
             }
@@ -680,6 +728,14 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                     Type.Number -> methodVisitor.visitInsn(Opcodes.DRETURN)
                     is Type.Object -> methodVisitor.visitInsn(Opcodes.ARETURN)
                     Type.Void -> methodVisitor.visitInsn(Opcodes.RETURN)
+                    Type.JVMFloat -> {
+                        methodVisitor.visitInsn(Opcodes.F2D)
+                        methodVisitor.visitInsn(Opcodes.DRETURN)
+                    }
+                    Type.JVMInteger -> {
+                        methodVisitor.visitInsn(Opcodes.I2D)
+                        methodVisitor.visitInsn(Opcodes.DRETURN)
+                    }
                 }
                 return false
             }
@@ -908,6 +964,14 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
             Type.Number -> methodVisitor.visitVarInsn(Opcodes.DSTORE, index)
             is Type.Object -> methodVisitor.visitVarInsn(Opcodes.ASTORE, index)
             Type.Void -> methodVisitor.visitVarInsn(Opcodes.ASTORE, index)
+            Type.JVMFloat -> {
+                methodVisitor.visitInsn(Opcodes.F2D)
+                methodVisitor.visitVarInsn(Opcodes.DSTORE, index)
+            }
+            Type.JVMInteger -> {
+                methodVisitor.visitInsn(Opcodes.I2D)
+                methodVisitor.visitVarInsn(Opcodes.DSTORE, index)
+            }
         }
     }
 
@@ -918,6 +982,14 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
             Type.Number -> methodVisitor.visitVarInsn(Opcodes.DSTORE, localVariableIndices[storeVariable.name]!!)
             is Type.Object -> methodVisitor.visitVarInsn(Opcodes.ASTORE, localVariableIndices[storeVariable.name]!!)
             Type.Void -> methodVisitor.visitVarInsn(Opcodes.ASTORE, localVariableIndices[storeVariable.name]!!)
+            Type.JVMFloat -> {
+                methodVisitor.visitInsn(Opcodes.F2D)
+                methodVisitor.visitVarInsn(Opcodes.DSTORE, localVariableIndices[storeVariable.name]!!)
+            }
+            Type.JVMInteger -> {
+                methodVisitor.visitInsn(Opcodes.I2D)
+                methodVisitor.visitVarInsn(Opcodes.DSTORE, localVariableIndices[storeVariable.name]!!)
+            }
         }
     }
 

@@ -1,6 +1,6 @@
 include "std/jdk"
-include "std/console"
 include "std/list"
+include "std/console"
 
 namespace Main {
     command main args:array<string> -> void {

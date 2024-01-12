@@ -35,4 +35,8 @@ class std.list {
         l.add e3
         return l
     }
+
+    command get index:number -> std.list {
+
+    }
 }

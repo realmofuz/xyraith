@@ -30,7 +30,16 @@ sealed interface Type {
             return "D"
         }
     }
-    data object Boolean : Type {
+    data object JVMInteger : Type {
+        override fun toJvmSignature(): kotlin.String {
+            return "I"
+        }
+    }
+    data object JVMFloat : Type {
+        override fun toJvmSignature(): kotlin.String {
+            return "F"
+        }
+    }    data object Boolean : Type {
         override fun toJvmSignature(): kotlin.String {
             return "Z"
         }
