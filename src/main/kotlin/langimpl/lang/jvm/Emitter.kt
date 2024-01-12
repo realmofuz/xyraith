@@ -41,7 +41,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
 
     private val branchLabels: MutableList<Label> = mutableListOf()
     private val continueLabels: MutableList<Label> = mutableListOf()
-
+    private lateinit var endingLabel: Label
     private val classes: MutableList<PathName> = mutableListOf()
     val emittedClasses: MutableMap<String, ByteArray> = mutableMapOf()
     val nativeClasses: MutableList<String> = mutableListOf()
@@ -327,6 +327,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
     }
 
     override fun visit(function: Ast.Function, context: VisitorContext): Boolean {
+        endingLabel = Label()
 
         currentHeader = function
         currentMappedFunction = FunctionMapper().map(function, currentClass)
@@ -853,7 +854,14 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
             declareVariable.type
         )
 
-
+        methodVisitor.visitLocalVariable(
+            declareVariable.name,
+            declareVariable.type.toJvmSignature(),
+            null,
+            label,
+            endingLabel,
+            index
+        )
         when(declareVariable.type) {
             is Type.Array -> methodVisitor.visitVarInsn(Opcodes.ASTORE, index)
             Type.Boolean -> methodVisitor.visitVarInsn(Opcodes.ISTORE, index)
@@ -924,6 +932,10 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         if(annotations.contains(PathName.parse("native")))
             return
 
+        if(header is Ast.Function) {
+            methodVisitor.visitLabel(endingLabel)
+
+        }
         println(localVariableIndices)
         println(localVariables)
         methodVisitor.visitInsn(Opcodes.RETURN)
