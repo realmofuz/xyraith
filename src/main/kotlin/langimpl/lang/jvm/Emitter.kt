@@ -814,18 +814,25 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         if (!staticProperty.exists)
             throw InvalidFunction(access.nameSpan)
 
+        val sig = JvmMethodSignature(
+            fn,
+            PathName.parse(staticProperty.resultClass),
+            staticProperty.parameterTypesRequested,
+            staticProperty.returnTypeOfProperty,
+            staticProperty.functionType.toHeaderType()
+        )
         when (staticProperty.functionType) {
             FunctionType.STATIC_FIELD -> methodVisitor.visitFieldInsn(
                 Opcodes.GETSTATIC,
-                staticProperty.resultClass.replace(".", "/"),
+                sig.ownerSignature(),
                 fn,
-                staticProperty.returnTypeOfProperty.toJvmSignature()
+                sig.methodSignature()
             )
             FunctionType.STATIC_METHOD -> methodVisitor.visitMethodInsn(
                 Opcodes.INVOKESTATIC,
-                staticProperty.resultClass.replace(".", "/"),
+                sig.ownerSignature(),
                 fn,
-                staticProperty.returnTypeOfProperty.toJvmSignature(),
+                sig.methodSignature(),
                 true
             )
             else -> TODO()
@@ -841,18 +848,18 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         if(declareVariable.type is Type.Void)
             declareVariable.type = evaluateType(declareVariable.value)
 
-        allocateVariable(
+        val index = allocateVariable(
             declareVariable.name,
             declareVariable.type
         )
 
 
         when(declareVariable.type) {
-            is Type.Array -> methodVisitor.visitVarInsn(Opcodes.ASTORE, localVariableIndex)
-            Type.Boolean -> methodVisitor.visitVarInsn(Opcodes.ISTORE, localVariableIndex)
-            Type.Number -> methodVisitor.visitVarInsn(Opcodes.DSTORE, localVariableIndex)
-            is Type.Object -> methodVisitor.visitVarInsn(Opcodes.ASTORE, localVariableIndex)
-            Type.Void -> methodVisitor.visitVarInsn(Opcodes.ASTORE, localVariableIndex)
+            is Type.Array -> methodVisitor.visitVarInsn(Opcodes.ASTORE, index)
+            Type.Boolean -> methodVisitor.visitVarInsn(Opcodes.ISTORE, index)
+            Type.Number -> methodVisitor.visitVarInsn(Opcodes.DSTORE, index)
+            is Type.Object -> methodVisitor.visitVarInsn(Opcodes.ASTORE, index)
+            Type.Void -> methodVisitor.visitVarInsn(Opcodes.ASTORE, index)
         }
     }
 

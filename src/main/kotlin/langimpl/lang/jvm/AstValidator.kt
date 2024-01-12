@@ -18,6 +18,14 @@ enum class FunctionType {
     MEMBER_FIELD,
     MEMBER_METHOD,
     NONE;
+
+    fun toHeaderType(): HeaderType {
+        return when(this) {
+            STATIC_FIELD, MEMBER_FIELD -> HeaderType.FIELD
+            STATIC_METHOD, MEMBER_METHOD -> HeaderType.METHOD
+            NONE -> TODO()
+        }
+    }
 }
 
 /**
