@@ -36,7 +36,7 @@ class std.list {
         return l
     }
 
-    command get index:number -> std.list {
-
+    command get index:number -> any {
+        return (list.get (d2i index))
     }
 }

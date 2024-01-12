@@ -42,6 +42,12 @@ class java.util.AbstractList extends java.util.AbstractCollection {}
 class java.util.ArrayList extends java.util.AbstractList {
     @native
     command add a: java.lang.Object -> void {}
+
+    @native
+    command get a: jvm_int -> any {}
 }
 
+@native
+class java.io.File {
 
+}

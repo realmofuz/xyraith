@@ -52,6 +52,15 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
                 false
             )
             is Ast.Access -> {
+                when(value.path.resolve()) {
+                    "add" -> return Type.Number
+                    "sub" -> return Type.Number
+                    "mul" -> return Type.Number
+                    "div" -> return Type.Number
+                    "d2i" -> return Type.JVMInteger
+                    "d2f" -> return Type.JVMFloat
+                    else -> {}
+                }
                 val altPath = PathName.parse(value.path.resolve())
                 val fn = altPath.path.removeLast()
                 val funcSig = JvmMethodSignature(
@@ -198,12 +207,15 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
     override fun visit(access: Ast.Access, context: VisitorContext) {
         val reserved = listOf(
             "add", "sub", "mul", "div", "return", "jvmarraylen", "jvmarrayindex",
-            "eq"
+            "eq", "d2i", "d2f"
         )
         if(reserved.contains(access.path.resolve()))
             return
         val path = access.path.resolve().split(".").toMutableList()
         val fn = path.removeLast()
+
+        // check static:
+        println("STATIC PATH: ${path} | FN: ${fn} | A: ${access.arguments.map { evaluateType(it.argument) }}")
         val prop = gatherer.getProperty(
             path.joinToString("."),
             fn,

@@ -223,6 +223,8 @@ class Parser(private val tokens: List<Token>) {
                 listOf(),
                 false
             )
+            "jvm_int" -> Type.JVMInteger
+            "jvm_float" -> Type.JVMFloat
             else -> Type.Object(
                 mainName,
                 generics,

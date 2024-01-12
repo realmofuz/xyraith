@@ -1,0 +1,5 @@
+include "std/jdk"
+
+class std.fs {
+
+}

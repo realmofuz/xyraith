@@ -6,5 +6,10 @@ namespace Main {
     command main args:array<string> -> void {
         let arr = (std.list.init)
         std.console.log arr
+        std.console.log 15
+    }
+
+    command fib n:number -> number {
+        return n
     }
 }

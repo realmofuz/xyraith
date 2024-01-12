@@ -151,6 +151,15 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                 false
             )
             is Ast.Access -> {
+                when(value.path.resolve()) {
+                    "add" -> return Type.Number
+                    "sub" -> return Type.Number
+                    "mul" -> return Type.Number
+                    "div" -> return Type.Number
+                    "d2i" -> return Type.JVMInteger
+                    "d2f" -> return Type.JVMFloat
+                    else -> {}
+                }
                 val altPath = PathName.parse(value.path.resolve())
                 val fn = altPath.path.removeLast()
                 val funcSig = JvmMethodSignature(
@@ -739,6 +748,8 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                 }
                 return false
             }
+            "d2i" -> { methodVisitor.visitInsn(Opcodes.D2I); return false }
+            "d2f" -> { methodVisitor.visitInsn(Opcodes.D2F); return false }
             else -> return true
         }
     }
@@ -746,7 +757,8 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
     override fun visit(access: Ast.Access, context: VisitorContext) {
         when(access.path.resolve()) {
             "eq", "jvmarraylen", "jvmarrayindex",
-            "Add", "sub", "mul", "div", "return" -> {
+            "add", "sub", "mul", "div", "return",
+            "d2i", "d2f"-> {
                 return
             }
         }

@@ -7,19 +7,28 @@ val stdlibFiles = mutableMapOf<String, String>(
 class thestupidbug {}
 
 class std.console {
-
-    command test -> void {}
-
     @static
     command log output: any -> void {
         let console: java.io.PrintStream = (java.lang.System.out)
         console.println output
+    }
+
+    @static
+    command log output_n: number -> void {
+        let console: java.io.PrintStream = (java.lang.System.out)
+        console.println output_n
     }
 }
 
 
 
 """
+,"std/fs" to """
+include "std/jdk"
+
+class std.fs {
+
+}"""
 ,"std/jdk" to """
 class thestupidbug {}
 
@@ -65,10 +74,15 @@ class java.util.AbstractList extends java.util.AbstractCollection {}
 class java.util.ArrayList extends java.util.AbstractList {
     @native
     command add a: java.lang.Object -> void {}
+
+    @native
+    command get a: jvm_int -> any {}
 }
 
+@native
+class java.io.File {
 
-"""
+}"""
 ,"std/list" to """
 include "std/jdk"
 
@@ -106,6 +120,10 @@ class std.list {
         l.add e2
         l.add e3
         return l
+    }
+
+    command get index:number -> any {
+        return (list.get (d2i index))
     }
 }"""
 ,"std/papermc" to """
