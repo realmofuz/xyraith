@@ -42,9 +42,9 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
         return when(value) {
             is Ast.ArrayOf ->
                 if(value.type !is Type.Void)
-                    Type.Array(value.type)
+                    Type.Array(value.type, Type.NumberParameter(value.arguments.size))
                 else
-                    Type.Array(evaluateType(value.arguments[0].argument))
+                    Type.Array(evaluateType(value.arguments[0].argument), Type.NumberParameter(value.arguments.size))
             is Ast.Boolean -> Type.Boolean
             is Ast.ConstructClass -> Type.Object(
                 value.className,
@@ -279,7 +279,9 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
     }
 
     override fun visit(forEachStatement: Ast.ForEachStatement, context: VisitorContext) {
-
+        if(!localVariables.containsKey(forEachStatement.variable)) {
+            localVariables[forEachStatement.variable] = (evaluateType(forEachStatement.list) as Type.Array).type
+        }
     }
 
     override fun visit(loopStatement: Ast.LoopStatement, context: VisitorContext) {

@@ -40,8 +40,19 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
     private var localVariableLabels: MutableMap<String, Label> = mutableMapOf()
     private var localVariableIndex: Int = 0
 
+    /*
+    Labels that are branched in if/loop/for etc. statements, labels for the main blocks of those
+     */
     private val branchLabels: MutableList<Label> = mutableListOf()
+    /*
+    Labels that will be jumped to after a loop or if statement is completed
+     */
     private val continueLabels: MutableList<Label> = mutableListOf()
+    /*
+    A label that is jumped to after an iteration of a for loop
+     */
+    private val returnedLabels: MutableList<Label> = mutableListOf()
+
     private lateinit var endingLabel: Label
     private val classes: MutableList<PathName> = mutableListOf()
     val emittedClasses: MutableMap<String, ByteArray> = mutableMapOf()
@@ -141,9 +152,9 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         return when(value) {
             is Ast.ArrayOf ->
                 if(value.type !is Type.Void)
-                    Type.Array(value.type)
+                    Type.Array(value.type, Type.NumberParameter(value.arguments.size))
                 else
-                    Type.Array(evaluateType(value.arguments[0].argument))
+                    Type.Array(evaluateType(value.arguments[0].argument), Type.NumberParameter(value.arguments.size))
             is Ast.Boolean -> Type.Boolean
             is Ast.ConstructClass -> Type.Object(
                 value.className,
@@ -511,7 +522,12 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         when(value) {
             is Ast.ArrayOf -> {
                 methodVisitor.visitLdcInsn(value.arguments.size)
-                when(value.type) {
+                val ty =
+                    if(value.type is Type.Void)
+                        evaluateType(value.arguments[0].argument)
+                    else
+                        value.type
+                when(ty) {
                     is Type.Array -> methodVisitor.visitInsn(Opcodes.ANEWARRAY)
                     Type.Boolean -> methodVisitor.visitIntInsn(Opcodes.NEWARRAY, Opcodes.T_INT)
                     Type.Number -> methodVisitor.visitIntInsn(Opcodes.NEWARRAY, Opcodes.T_DOUBLE)
@@ -525,6 +541,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                         methodVisitor.visitIntInsn(Opcodes.NEWARRAY, Opcodes.T_DOUBLE)
                     }
                     Type.Void -> TODO()
+                    is Type.NumberParameter -> TODO()
                 }
                 methodVisitor.visitInsn(Opcodes.DUP)
             }
@@ -575,6 +592,8 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                         methodVisitor.visitVarInsn(Opcodes.ILOAD, localVariableIndices[value.value]!!)
                         methodVisitor.visitInsn(Opcodes.I2D)
                     }
+
+                    is Type.NumberParameter -> TODO()
                 }
             }
         }
@@ -594,6 +613,8 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                     methodVisitor.visitInsn(Opcodes.I2D)
                     methodVisitor.visitInsn(Opcodes.DASTORE)
                 }
+
+                is Type.NumberParameter -> TODO()
             }
             if(!context.isLast)
                 methodVisitor.visitInsn(Opcodes.DUP)
@@ -680,6 +701,8 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                         methodVisitor.visitJumpInsn(Opcodes.GOTO, continueLabels.last())
                         methodVisitor.visitLabel(continueLabels.removeLast())
                     }
+
+                    is Type.NumberParameter -> TODO()
                 }
                 return false
             }
@@ -704,6 +727,8 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                         methodVisitor.visitInsn(Opcodes.IALOAD)
                         methodVisitor.visitInsn(Opcodes.I2D)
                     }
+
+                    is Type.NumberParameter -> TODO()
                 }
                 return false
             }
@@ -745,6 +770,8 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                         methodVisitor.visitInsn(Opcodes.I2D)
                         methodVisitor.visitInsn(Opcodes.DRETURN)
                     }
+
+                    is Type.NumberParameter -> TODO()
                 }
                 return false
             }
@@ -984,6 +1011,8 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                 methodVisitor.visitInsn(Opcodes.I2D)
                 methodVisitor.visitVarInsn(Opcodes.DSTORE, index)
             }
+
+            is Type.NumberParameter -> TODO()
         }
     }
 
@@ -1002,6 +1031,8 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                 methodVisitor.visitInsn(Opcodes.I2D)
                 methodVisitor.visitVarInsn(Opcodes.DSTORE, localVariableIndices[storeVariable.name]!!)
             }
+
+            is Type.NumberParameter -> TODO()
         }
     }
 
@@ -1020,6 +1051,65 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
 
     override fun visit(forEachStatement: Ast.ForEachStatement, context: VisitorContext) {
 
+        val startingLabel = Label()
+        val returnedLabel = Label()
+        val loopLabel = Label()
+        val continueLabel = Label()
+
+
+        val loopValueVarName = "loop_value_${UUID.randomUUID().toString().replace("-", "_")}"
+        val loopValueVarIndex = allocateVariable(
+            loopValueVarName,
+            Type.Number,
+            startingLabel)
+
+
+        methodVisitor.visitVarInsn(Opcodes.ASTORE, loopValueVarIndex)
+
+        val loopIndexVarName = "loop_index_${UUID.randomUUID().toString().replace("-", "_")}"
+        val loopIndexVarIndex = allocateVariable(
+            loopIndexVarName,
+            Type.Number,
+            startingLabel)
+        methodVisitor.visitLdcInsn(-1.0)
+        methodVisitor.visitVarInsn(Opcodes.DSTORE, loopIndexVarIndex)
+        methodVisitor.visitLabel(startingLabel)
+
+        val list = evaluateType(forEachStatement.list) as Type.Array
+        val variableIndex = allocateVariable(forEachStatement.variable, list.type, startingLabel)
+
+
+
+
+
+        methodVisitor.visitLabel(returnedLabel)
+
+        methodVisitor.visitVarInsn(Opcodes.DLOAD, loopIndexVarIndex)
+        methodVisitor.visitLdcInsn(1.0)
+        methodVisitor.visitInsn(Opcodes.DADD)
+        methodVisitor.visitVarInsn(Opcodes.DSTORE, loopIndexVarIndex)
+
+        methodVisitor.visitVarInsn(Opcodes.ALOAD, loopValueVarIndex)
+        methodVisitor.visitVarInsn(Opcodes.DLOAD, loopIndexVarIndex)
+        methodVisitor.visitInsn(Opcodes.D2I)
+        methodVisitor.visitInsn(Opcodes.DALOAD)
+        methodVisitor.visitVarInsn(Opcodes.DSTORE, variableIndex)
+
+        methodVisitor.visitVarInsn(Opcodes.DLOAD, loopIndexVarIndex)
+        methodVisitor.visitInsn(Opcodes.D2I)
+        methodVisitor.visitVarInsn(Opcodes.ALOAD, loopValueVarIndex)
+        methodVisitor.visitInsn(Opcodes.ARRAYLENGTH)
+        methodVisitor.visitLdcInsn(1)
+        methodVisitor.visitInsn(Opcodes.ISUB)
+        methodVisitor.visitJumpInsn(Opcodes.IF_ICMPLE, loopLabel)
+
+        continueLabels.add(continueLabel)
+
+        methodVisitor.visitJumpInsn(Opcodes.GOTO, continueLabels.last())
+        methodVisitor.visitLabel(loopLabel)
+
+        branchLabels.add(loopLabel)
+        returnedLabels.add(returnedLabel)
     }
 
     override fun visit(loopStatement: Ast.LoopStatement, context: VisitorContext) {
@@ -1044,11 +1134,12 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
     }
 
     override fun visitEnd(forEachStatement: Ast.ForEachStatement, context: VisitorContext) {
-
+        methodVisitor.visitJumpInsn(Opcodes.GOTO, returnedLabels.removeLast())
+        methodVisitor.visitLabel(continueLabels.removeLast())
     }
 
     override fun visitEnd(loopStatement: Ast.LoopStatement, context: VisitorContext) {
-        methodVisitor.visitJumpInsn(Opcodes.GOTO, continueLabels.last())
+        methodVisitor.visitJumpInsn(Opcodes.GOTO, returnedLabels.last())
         methodVisitor.visitLabel(continueLabels.removeLast())
     }
 

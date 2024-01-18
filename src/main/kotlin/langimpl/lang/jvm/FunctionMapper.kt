@@ -88,6 +88,9 @@ class FunctionMapper {
             is Ast.LoopStatement -> {
                 mapBlock(action.block)
             }
+            is Ast.ForEachStatement -> {
+                mapBlock(action.ifTrue)
+            }
             else -> {}
         }
     }

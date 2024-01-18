@@ -25,6 +25,11 @@ data class CommandArgument(
 }
 
 sealed interface Type {
+    class NumberParameter(val num: Int) : Type {
+        override fun toJvmSignature(): String {
+            return "Error!!!OhNo;;asdlkeldef;ew/f/f.fwe.f/"
+        }
+    }
     data object Number : Type {
         override fun toJvmSignature(): kotlin.String {
             return "D"
@@ -49,7 +54,7 @@ sealed interface Type {
             return "V"
         }
     }
-    data class Array(val type: Type) : Type {
+    data class Array(val type: Type, val number: Type.NumberParameter) : Type {
         override fun toJvmSignature(): kotlin.String {
             return "[${type.toJvmSignature()}"
         }
@@ -220,7 +225,6 @@ sealed interface Ast {
                 it.argument.accept(visitor, context)
             }
             visitor.visitEnd(this, context)
-
         }
     }
 

@@ -4,9 +4,9 @@ include "std/console"
 
 namespace Main {
     command main args:array<string> -> void {
-        let arr = (std.list.init)
-        std.console.log arr
-        std.console.log 15
+        foreach x [1 2 3 4] {
+            std.console.log x
+        }
     }
 
     command fib n:number -> number {

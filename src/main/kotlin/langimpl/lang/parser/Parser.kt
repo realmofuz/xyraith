@@ -196,7 +196,11 @@ class Parser(private val tokens: List<Token>) {
     E.g array<number>, string, map<string, number>, java.lang.String, etc.
      */
     fun parseType(): Type {
-        val mainName = parsePathName()
+        val mainName = if(peek() is Token.Identifier)
+            parsePathName()
+        else
+            PathName.parse(expect<Token.Number>("number").value.toInt().toString())
+
         val generics = mutableListOf<Type>()
         if(peek() is Token.LessThan) {
             while(true) {
@@ -209,6 +213,10 @@ class Parser(private val tokens: List<Token>) {
             }
             expect<Token.GreaterThan>("less than")
         }
+        val asInt = mainName.resolve().toIntOrNull()
+        if(asInt != null) {
+            return Type.NumberParameter(asInt)
+        }
         return when(mainName.resolve()) {
             "number" -> Type.Number
             "string" -> Type.Object(
@@ -217,7 +225,10 @@ class Parser(private val tokens: List<Token>) {
                 false
             )
             "void", "auto" -> Type.Void
-            "array" -> Type.Array(generics[0])
+            "array" -> Type.Array(
+                generics[0],
+                generics.getOrNull(1) as? Type.NumberParameter ?: Type.NumberParameter(0)
+            )
             "any" -> Type.Object(
                 PathName.parse("java.lang.Object"),
                 listOf(),
@@ -321,6 +332,13 @@ class Parser(private val tokens: List<Token>) {
      */
     fun parseAction(): Ast.Action {
         return when(val next = peek()) {
+            is Token.ForEachKeyword -> {
+                expect<Token.ForEachKeyword>("foreach")
+                val variable = expect<Token.Identifier>("variable")
+                val value = parseValue()
+                val block = parseBlock()
+                return Ast.ForEachStatement(variable.value, value, block)
+            }
             is Token.Identifier -> {
                 pointer++
                 if(peek() is Token.Equals) {
