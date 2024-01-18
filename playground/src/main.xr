@@ -4,12 +4,10 @@ include "std/console"
 
 namespace Main {
     command main args:array<string> -> void {
+        std.console.log "begin loop"
         foreach x [1 2 3 4] {
             std.console.log x
         }
-    }
-
-    command fib n:number -> number {
-        return n
+        std.console.log "end loop!!!"
     }
 }

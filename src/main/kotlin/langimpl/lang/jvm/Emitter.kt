@@ -39,6 +39,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
     private var localVariableIndices: MutableMap<String, Int> = mutableMapOf()
     private var localVariableLabels: MutableMap<String, Label> = mutableMapOf()
     private var localVariableIndex: Int = 0
+    private var varHolder: Int = 0
 
     /*
     Labels that are branched in if/loop/for etc. statements, labels for the main blocks of those
@@ -1056,8 +1057,9 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         val loopLabel = Label()
         val continueLabel = Label()
 
+        varHolder++
 
-        val loopValueVarName = "loop_value_${UUID.randomUUID().toString().replace("-", "_")}"
+        val loopValueVarName = "loop_value_${varHolder}"
         val loopValueVarIndex = allocateVariable(
             loopValueVarName,
             Type.Number,
@@ -1066,20 +1068,18 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
 
         methodVisitor.visitVarInsn(Opcodes.ASTORE, loopValueVarIndex)
 
-        val loopIndexVarName = "loop_index_${UUID.randomUUID().toString().replace("-", "_")}"
+        val loopIndexVarName = "loop_index_${varHolder}"
         val loopIndexVarIndex = allocateVariable(
             loopIndexVarName,
             Type.Number,
             startingLabel)
         methodVisitor.visitLdcInsn(-1.0)
         methodVisitor.visitVarInsn(Opcodes.DSTORE, loopIndexVarIndex)
+
         methodVisitor.visitLabel(startingLabel)
 
         val list = evaluateType(forEachStatement.list) as Type.Array
         val variableIndex = allocateVariable(forEachStatement.variable, list.type, startingLabel)
-
-
-
 
 
         methodVisitor.visitLabel(returnedLabel)
@@ -1089,19 +1089,20 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         methodVisitor.visitInsn(Opcodes.DADD)
         methodVisitor.visitVarInsn(Opcodes.DSTORE, loopIndexVarIndex)
 
-        methodVisitor.visitVarInsn(Opcodes.ALOAD, loopValueVarIndex)
-        methodVisitor.visitVarInsn(Opcodes.DLOAD, loopIndexVarIndex)
-        methodVisitor.visitInsn(Opcodes.D2I)
-        methodVisitor.visitInsn(Opcodes.DALOAD)
-        methodVisitor.visitVarInsn(Opcodes.DSTORE, variableIndex)
+
 
         methodVisitor.visitVarInsn(Opcodes.DLOAD, loopIndexVarIndex)
         methodVisitor.visitInsn(Opcodes.D2I)
         methodVisitor.visitVarInsn(Opcodes.ALOAD, loopValueVarIndex)
         methodVisitor.visitInsn(Opcodes.ARRAYLENGTH)
-        methodVisitor.visitLdcInsn(1)
-        methodVisitor.visitInsn(Opcodes.ISUB)
-        methodVisitor.visitJumpInsn(Opcodes.IF_ICMPLE, loopLabel)
+        methodVisitor.visitJumpInsn(Opcodes.IF_ICMPEQ, continueLabel)
+
+        methodVisitor.visitVarInsn(Opcodes.ALOAD, loopValueVarIndex)
+        methodVisitor.visitVarInsn(Opcodes.DLOAD, loopIndexVarIndex)
+        methodVisitor.visitInsn(Opcodes.D2I)
+        methodVisitor.visitInsn(Opcodes.DALOAD)
+        methodVisitor.visitVarInsn(Opcodes.DSTORE, variableIndex)
+        methodVisitor.visitJumpInsn(Opcodes.GOTO, loopLabel)
 
         continueLabels.add(continueLabel)
 
