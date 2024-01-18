@@ -425,7 +425,22 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         }
 
 
-
+        // https://jd.papermc.io/paper/1.20/org/bukkit/event/player/package-summary.html
+        // add more events from there!
+        val eventType = when(event.name) {
+            "startup" -> "V"
+            "player_join" -> "org/bukkit/event/player/PlayerJoinEvent"
+            "leave" -> "org/bukkit/event/player/PlayerQuitEvent"
+            "interact" -> "org/bukkit/event/player/PlayerInteractEvent"
+            "interact_with_entity" -> "org/bukkit/event/player/PlayerInteractEntityEvent"
+            "drop_item" -> "org/bukkit/event/player/PlayerDropItemEvent"
+            "fish" -> "org/bukkit/event/player/PlayerFishEvent"
+            "pickup" -> "org/bukkit/event/player/PlayerPickupItemEvent"
+            "command" -> "org/bukkit/event/player/PlayerCommandPreprocessEvent"
+            "toggle_sneak" -> "org/bukkit/event/player/PlayerToggleSneakEvent"
+            "toggle_sprint" -> "org/bukkit/event/player/PlayerToggleSprintEvent"
+            else -> throw InvalidFunction(event.eventNameSpan)
+        }
         val label = Label()
         currentHeader = event
         currentMappedFunction = FunctionMapper().map(event, currentClass)
@@ -440,26 +455,23 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                     null
                 )
             }
-            "join" -> {
+            else -> {
                 methodVisitor = classVisitor.visitMethod(
                     Opcodes.ACC_PUBLIC + Opcodes.ACC_STATIC,
                     "event_join",
-                    "(Lorg/bukkit/event/player/PlayerJoinEvent;)V",
+                    "(L${eventType};)V",
                     null,
                     null
                 )
                 allocateVariable(
                     "event",
                     Type.Object(
-                        PathName.parse("org.bukkit.event.player.PlayerJoinEvent"),
+                        PathName.parse(eventType.replace("/", ".")),
                         listOf(),
                         false
                     ),
                     label
                 )
-            }
-            else -> {
-                throw SQLIntegrityConstraintViolationException()
             }
         }
         if(event.name != "startup") {
