@@ -64,6 +64,7 @@ class AstGatherer : AstVisitor {
     fun getProperty(clazz: String, name: String, parameters: List<Type>): PropertyResult {
         println("searching for: $clazz::$name w/ format: ${data.keys}")
         if(!data.containsKey(clazz)) {
+            println("class $clazz not found")
             return PropertyResult(
                 false,
                 false,

@@ -59,6 +59,10 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
                     "div" -> return Type.Number
                     "d2i" -> return Type.JVMInteger
                     "d2f" -> return Type.JVMFloat
+                    "std.mc.component" -> return Type.Object(
+                        PathName.parse("net.kyori.adventure.text.Component"),
+                        listOf()
+                    )
                     else -> {}
                 }
                 val altPath = PathName.parse(value.path.resolve())
@@ -207,7 +211,7 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
     override fun visit(access: Ast.Access, context: VisitorContext) {
         val reserved = listOf(
             "add", "sub", "mul", "div", "return", "jvmarraylen", "jvmarrayindex",
-            "eq", "d2i", "d2f"
+            "eq", "d2i", "d2f", "std.mc.component"
         )
         if(reserved.contains(access.path.resolve()))
             return

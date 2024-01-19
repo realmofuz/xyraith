@@ -1,13 +1,15 @@
 include "std/jdk"
 include "std/list"
 include "std/console"
+include "std/papermc"
 
-namespace Main {
-    command main args:array<string> -> void {
-        std.console.log "begin loop"
-        foreach x [1 2 3 4] {
-            std.console.log x
-        }
-        std.console.log "end loop!!!"
+namespace ServerEvents {
+    on startup {
+        std.console.log "Hello world!"
+    }
+
+    on join {
+        let player = (event.getPlayer)
+        player.sendMessage (std.mc.component "Hello world!")
     }
 }

@@ -790,6 +790,24 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
             }
             "d2i" -> { methodVisitor.visitInsn(Opcodes.D2I); return false }
             "d2f" -> { methodVisitor.visitInsn(Opcodes.D2F); return false }
+
+            "std.mc.component" -> {
+                methodVisitor.visitMethodInsn(
+                    Opcodes.INVOKEINTERFACE,
+                    "net.kyori.adventure.text.minimessage.MiniMessage",
+                    "miniMessage",
+                    "()Lnet/kyori/adventure/text/minimessage/MiniMessage;",
+                    true
+                )
+                methodVisitor.visitMethodInsn(
+                    Opcodes.INVOKEVIRTUAL,
+                    "net.kyori.adventure.text.minimessage.MiniMessage",
+                    "deserialize",
+                    "(Ljava/lang/String;)Lnet/kyori/adventure/text/Component;",
+                    true
+                )
+                return false
+            }
             else -> return true
         }
     }
@@ -798,7 +816,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         when(access.path.resolve()) {
             "eq", "jvmarraylen", "jvmarrayindex",
             "add", "sub", "mul", "div", "return",
-            "d2i", "d2f"-> {
+            "d2i", "d2f", "std.mc.component" -> {
                 return
             }
         }
