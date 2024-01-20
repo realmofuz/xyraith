@@ -23,13 +23,13 @@ data class ClassData(
 )
 
 /**
-* Contains the result of AstGatherer#getProperty.
-* @param exists Does this property exist?
-* @param isInterface Is this property part of an interface?
-* @param resultClass The containing class of the property.
-* @param returnTypeOfProperty The type that the property returns.
-* @param parameterTypesRequested The types that the property needs (function parameters on functions, empty list on fields)
-*/
+ * Contains the result of AstGatherer#getProperty.
+ * @param exists Does this property exist?
+ * @param isInterface Is this property part of an interface?
+ * @param resultClass The containing class of the property.
+ * @param returnTypeOfProperty The type that the property returns.
+ * @param parameterTypesRequested The types that the property needs (function parameters on functions, empty list on fields)
+ */
 data class PropertyResult(
     val exists: Boolean,
     val isInterface: Boolean,
@@ -38,11 +38,12 @@ data class PropertyResult(
     val parameterTypesRequested: List<Type>,
     val functionType: FunctionType
 )
+
 class AstGatherer : AstVisitor {
     /**
-    * Represents class data.
-    * Name is the name of the class, with package delimited by `.`.
-    * E.g `java.lang.Object`
+     * Represents class data.
+     * Name is the name of the class, with package delimited by `.`.
+     * E.g `java.lang.Object`
      */
     val data: MutableMap<String, ClassData> = mutableMapOf()
     val returnTypes: MutableMap<String, Type> = mutableMapOf()
@@ -62,8 +63,8 @@ class AstGatherer : AstVisitor {
      * @param parameters A list of types for the property to accept. Should be an empty list for fields.
      */
     fun getProperty(clazz: String, name: String, parameters: List<Type>): PropertyResult {
-        println("searching for: $clazz::$name w/ format: ${data.keys}")
-        if(!data.containsKey(clazz)) {
+        println("searching for: $clazz::$name")
+        if (!data.containsKey(clazz)) {
             println("class $clazz not found")
             return PropertyResult(
                 false,
@@ -74,15 +75,13 @@ class AstGatherer : AstVisitor {
                 FunctionType.NONE
             )
         }
-        println("properties: ${data[clazz]!!.properties.map { it.name }}")
-        data[clazz]!!.properties.forEach loop@ {
+        data[clazz]!!.properties.forEach loop@{
             println("comparing against ${clazz}::${it.name}<${it.parameters}>")
             it.parameters.zip(parameters).forEach {
-                if(!this.matchType(it.second, it.first))
+                if (!this.matchType(it.second, it.first))
                     return@loop
             }
-            println("params: ${it.parameters}")
-            if(it.name == name) {
+            if (it.name == name) {
                 return PropertyResult(
                     true,
                     data[clazz]!!.isInterface,
@@ -93,7 +92,7 @@ class AstGatherer : AstVisitor {
                 )
             }
         }
-        if(clazz == "java.lang.Object") {
+        if (clazz == "java.lang.Object") {
             return PropertyResult(
                 false,
                 false,
@@ -103,9 +102,9 @@ class AstGatherer : AstVisitor {
                 FunctionType.NONE
             )
         }
-        for(interfaze in data[clazz]!!.interfaces) {
+        for (interfaze in data[clazz]!!.interfaces) {
             val p = getProperty(data[clazz]!!.superClass.signature.resolve(), name, parameters)
-            if(p.exists)
+            if (p.exists)
                 return p
         }
         return getProperty(data[clazz]!!.superClass.signature.resolve(), name, parameters)
@@ -118,21 +117,19 @@ class AstGatherer : AstVisitor {
      */
     fun matchType(comparedType: Type, constantType: Type): Boolean {
         println("matchType | lhs: $comparedType | rhs: $constantType")
-        if(comparedType == constantType)
+        if (comparedType == constantType)
             return true
-        if(comparedType is Type.Object && constantType is Type.Object && comparedType.signature == constantType.signature)
+        if (comparedType is Type.Object && constantType is Type.Object && comparedType.signature == constantType.signature)
             return true
 
-
-        println(data)
-        if(comparedType is Type.Object) {
-            println("matchType | lhs data: ${data[comparedType.signature.resolve()]}")
-            if(comparedType.signature.resolve() == "java.lang.Object")
+        if (comparedType is Type.Object) {
+            println("matchType | lhs data: ${data[comparedType.signature.resolve()]} (${comparedType.signature.resolve()})")
+            if (comparedType.signature.resolve() == "java.lang.Object")
                 return false
             println("matchType | Attempting recursion...")
             val cmp = matchType(data[comparedType.signature.resolve()]!!.superClass, constantType)
             println("matchType | Ending recursion with $cmp")
-            if(cmp)
+            if (cmp)
                 return true
         }
         return false
@@ -149,7 +146,7 @@ class AstGatherer : AstVisitor {
      */
     fun computeType(clazz: String, name: String, parameters: List<Type>, span: SpanData): Type {
         val property = getProperty(clazz, name, parameters)
-        if(!property.exists) {
+        if (!property.exists) {
             throw InvalidFunction(span)
         }
         return property.returnTypeOfProperty
@@ -185,7 +182,7 @@ class AstGatherer : AstVisitor {
         data[currentClassName]!!.properties.add(signature)
         returnTypes[signature.generateInternalSignature()] = function.returns
 
-        if(currentClass.static || annotations.contains("static"))
+        if (currentClass.static || annotations.contains("static"))
             functionTypes[signature.generateInternalSignature()] = FunctionType.STATIC_METHOD
         else
             functionTypes[signature.generateInternalSignature()] = FunctionType.MEMBER_METHOD
@@ -210,7 +207,7 @@ class AstGatherer : AstVisitor {
         returnTypes[signature.generateInternalSignature()] = field.type
 
         println("Current Static? ${currentClass.static} ${annotations} ${field.name}")
-        if(currentClass.static || annotations.contains("static"))
+        if (currentClass.static || annotations.contains("static"))
             functionTypes[signature.generateInternalSignature()] = FunctionType.STATIC_FIELD
         else
             functionTypes[signature.generateInternalSignature()] = FunctionType.MEMBER_FIELD

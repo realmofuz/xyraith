@@ -29,7 +29,7 @@ class FunctionMapper {
     private val loops = mutableListOf<Ast.Block>()
     fun map(method: Ast.Header, clazz: Ast.Class): MappedFunction {
         val signature: JvmMethodSignature
-        when(method) {
+        when (method) {
             is Ast.Event -> {
                 signature = JvmMethodSignature(
                     "event_${method.name}",
@@ -40,6 +40,7 @@ class FunctionMapper {
                 )
                 mapBlock(method.code)
             }
+
             is Ast.DeclareField -> {
                 signature = JvmMethodSignature(
                     method.name,
@@ -49,6 +50,7 @@ class FunctionMapper {
                     HeaderType.FIELD,
                 )
             }
+
             is Ast.Function -> {
                 signature = JvmMethodSignature(
                     method.name.resolve(),
@@ -59,6 +61,7 @@ class FunctionMapper {
                 )
                 mapBlock(method.code)
             }
+
             is Ast.Annotation -> throw SQLIntegrityConstraintViolationException()
         }
         return MappedFunction(
@@ -74,23 +77,26 @@ class FunctionMapper {
         loops.clear()
         blocks[label] = block
 
-        for(action in block.nodes) {
+        for (action in block.nodes) {
             mapAction(action)
         }
     }
 
     fun mapAction(action: Ast.Action) {
-        when(action) {
+        when (action) {
             is Ast.IfStatement -> {
                 loops.add(action.ifTrue)
                 mapBlock(action.ifTrue)
             }
+
             is Ast.LoopStatement -> {
                 mapBlock(action.block)
             }
+
             is Ast.ForEachStatement -> {
                 mapBlock(action.ifTrue)
             }
+
             else -> {}
         }
     }

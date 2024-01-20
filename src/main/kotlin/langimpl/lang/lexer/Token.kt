@@ -46,7 +46,7 @@ sealed class Token {
 
 
     override fun toString(): String {
-        return when(this) {
+        return when (this) {
             is OpenParen -> """{"type":"leftParen","span":$span}"""
             is CloseParen -> """{"type":"rightParen","span":$span}"""
             is OpenBrace -> """{"type":"leftBrace","span":$span}"""

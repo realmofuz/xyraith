@@ -45,10 +45,12 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
     Labels that are branched in if/loop/for etc. statements, labels for the main blocks of those
      */
     private val branchLabels: MutableList<Label> = mutableListOf()
+
     /*
     Labels that will be jumped to after a loop or if statement is completed
      */
     private val continueLabels: MutableList<Label> = mutableListOf()
+
     /*
     A label that is jumped to after an iteration of a for loop
      */
@@ -84,11 +86,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         )
         constructor.visitVarInsn(Opcodes.ALOAD, 0)
         constructor.visitMethodInsn(
-            Opcodes.INVOKESPECIAL,
-            "org/bukkit/plugin/java/JavaPlugin",
-            "<init>",
-            "()V",
-            false
+            Opcodes.INVOKESPECIAL, "org/bukkit/plugin/java/JavaPlugin", "<init>", "()V", false
         )
         constructor.visitInsn(Opcodes.RETURN)
         constructor.visitMaxs(100, 2)
@@ -103,11 +101,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         )
         onEnable.visitCode()
         onEnable.visitMethodInsn(
-            Opcodes.INVOKESTATIC,
-            "org/bukkit/Bukkit",
-            "getServer",
-            "()Lorg/bukkit/Server;",
-            false
+            Opcodes.INVOKESTATIC, "org/bukkit/Bukkit", "getServer", "()Lorg/bukkit/Server;", false
         )
         onEnable.visitMethodInsn(
             Opcodes.INVOKEINTERFACE,
@@ -120,11 +114,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         onEnable.visitTypeInsn(Opcodes.NEW, "events")
         onEnable.visitInsn(Opcodes.DUP)
         onEnable.visitMethodInsn(
-            Opcodes.INVOKESPECIAL,
-            "events",
-            "<init>",
-            "()V",
-            false
+            Opcodes.INVOKESPECIAL, "events", "<init>", "()V", false
         )
         onEnable.visitVarInsn(Opcodes.ALOAD, 0)
         onEnable.visitMethodInsn(
@@ -135,11 +125,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
             true
         )
         onEnable.visitMethodInsn(
-            Opcodes.INVOKESTATIC,
-            "events",
-            "event_startup",
-            "()V",
-            false
+            Opcodes.INVOKESTATIC, "events", "event_startup", "()V", false
         )
         onEnable.visitInsn(Opcodes.RETURN)
         onEnable.visitMaxs(20, 2)
@@ -149,21 +135,19 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
 
         emittedClasses[name] = classWriter.toByteArray()
     }
+
     private fun evaluateType(value: Ast.Value): Type {
-        return when(value) {
-            is Ast.ArrayOf ->
-                if(value.type !is Type.Void)
-                    Type.Array(value.type, Type.NumberParameter(value.arguments.size))
-                else
-                    Type.Array(evaluateType(value.arguments[0].argument), Type.NumberParameter(value.arguments.size))
+        return when (value) {
+            is Ast.ArrayOf -> if (value.type !is Type.Void) Type.Array(value.type)
+            else Type.Array(evaluateType(value.arguments[0].argument))
+
             is Ast.Boolean -> Type.Boolean
             is Ast.ConstructClass -> Type.Object(
-                value.className,
-                listOf(),
-                false
+                value.className, listOf(), false
             )
+
             is Ast.Access -> {
-                when(value.path.resolve()) {
+                when (value.path.resolve()) {
                     "add" -> return Type.Number
                     "sub" -> return Type.Number
                     "mul" -> return Type.Number
@@ -182,8 +166,11 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                     HeaderType.METHOD
                 )
                 val isig = funcSig.generateInternalSignature()
-                if(!gatherer.getProperty(altPath.resolve(), fn, value.arguments.map { evaluateType(it.argument) }.toList()).exists) {
-                    if(altPath.path.size == 1) {
+                if (!gatherer.getProperty(
+                        altPath.resolve(), fn, value.arguments.map { evaluateType(it.argument) }.toList()
+                    ).exists
+                ) {
+                    if (altPath.path.size == 1) {
                         val path2 = value.path.resolve().split(".").toMutableList()
                         val variable = path2[0]
                         val function = path2[1]
@@ -194,10 +181,11 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                             value.returns,
                             HeaderType.METHOD,
                         )
-                        val property = gatherer.getProperty((evaluateType(Ast.Variable(variable)) as Type.Object).signature.resolve(),
-                            function,
-                            value.arguments.map { evaluateType(it.argument) })
-                        if(!property.exists) {
+                        val property =
+                            gatherer.getProperty((evaluateType(Ast.Variable(variable)) as Type.Object).signature.resolve(),
+                                function,
+                                value.arguments.map { evaluateType(it.argument) })
+                        if (!property.exists) {
                             throw InvalidFunction(value.nameSpan)
                         }
                         return gatherer.computeType(
@@ -210,25 +198,23 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                         throw InvalidFunction(value.nameSpan)
                     }
                 }
-                return gatherer.computeType(altPath.resolve(), fn, value.arguments.map { evaluateType(it.argument) }.toList(), value.nameSpan)
+                return gatherer.computeType(
+                    altPath.resolve(), fn, value.arguments.map { evaluateType(it.argument) }.toList(), value.nameSpan
+                )
             }
+
             Ast.Null -> TODO()
             is Ast.Number -> return Type.Number
             is Ast.StringText -> return Type.Object(
-                PathName.parse("java.lang.String"),
-                listOf(),
-                false
+                PathName.parse("java.lang.String"), listOf(), false
             )
+
             is Ast.Variable -> {
                 val p = gatherer.getProperty(
-                    currentClass.name.resolve(),
-                    value.value,
-                    listOf()
+                    currentClass.name.resolve(), value.value, listOf()
                 )
-                if(p.exists && p.functionType == FunctionType.MEMBER_FIELD)
-                    return p.returnTypeOfProperty
-                if(localVariables.containsKey(value.value))
-                    return localVariables[value.value]!!
+                if (p.exists && p.functionType == FunctionType.MEMBER_FIELD) return p.returnTypeOfProperty
+                if (localVariables.containsKey(value.value)) return localVariables[value.value]!!
                 return Type.Void
             }
         }
@@ -240,15 +226,13 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
      * @param type Type of the variable
      */
     private fun allocateVariable(
-        name: String,
-        type: Type,
-        startingLabel: Label
+        name: String, type: Type, startingLabel: Label
     ): Int {
         localVariables[name] = type
         localVariableIndices[name] = localVariableIndex
         // types `long` and `double` take 2 slots, all
         // other types take 1 slot in JVM
-        localVariableIndex += if(type == Type.Number) 2 else 1
+        localVariableIndex += if (type == Type.Number) 2 else 1
         localVariableLabels[name] = startingLabel
         return localVariableIndices[name]!!
     }
@@ -260,12 +244,11 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         classVisitor = ClassWriter(2)
         classWriter = classVisitor as ClassWriter
 
-        if(!clazz.isNative)
-            classVisitor = CheckClassAdapter(classVisitor)
+        if (!clazz.isNative) classVisitor = CheckClassAdapter(classVisitor)
         val pw = PrintWriter(System.out)
         classVisitor = TraceClassVisitor(classVisitor, pw)
 
-        when(clazz.name.resolve()) {
+        when (clazz.name.resolve()) {
             "events" -> {
                 classVisitor.visit(
                     Opcodes.V17,
@@ -276,6 +259,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                     listOf("org/bukkit/event/Listener").toTypedArray()
                 )
             }
+
             else -> {
                 classVisitor.visit(
                     Opcodes.V17,
@@ -291,7 +275,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         classVisitor.visitSource(clazz.span.file, "File: ${clazz.span.file}; Class: ${clazz.name}")
 
 
-        if(clazz.isNative) {
+        if (clazz.isNative) {
             return
         }
 
@@ -307,29 +291,18 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
 
         methodVisitor.visitVarInsn(Opcodes.ALOAD, 0)
         methodVisitor.visitMethodInsn(
-            Opcodes.INVOKESPECIAL,
-            "java/lang/Object",
-            "<init>",
-            "()V",
-            false
+            Opcodes.INVOKESPECIAL, "java/lang/Object", "<init>", "()V", false
         )
 
-        for(header in clazz.headers) {
-            if(header is Ast.DeclareField) {
+        for (header in clazz.headers) {
+            if (header is Ast.DeclareField) {
                 val signature = JvmMethodSignature(
-                    header.name,
-                    clazz.name,
-                    listOf(),
-                    header.type,
-                    HeaderType.FIELD
+                    header.name, clazz.name, listOf(), header.type, HeaderType.FIELD
                 )
                 methodVisitor.visitVarInsn(Opcodes.ALOAD, 0)
                 visit(header.value, context)
                 methodVisitor.visitFieldInsn(
-                    Opcodes.PUTFIELD,
-                    signature.ownerSignature(),
-                    header.name,
-                    signature.methodSignature()
+                    Opcodes.PUTFIELD, signature.ownerSignature(), header.name, signature.methodSignature()
                 )
             }
         }
@@ -360,34 +333,29 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         localVariableIndices.clear()
         localVariableLabels.clear()
 
-        if(annotations.contains(PathName.parse("native")))
-            return false
+        if (annotations.contains(PathName.parse("native"))) return false
 
         val label = Label()
 
-        if(!(currentClass.static || annotations.contains(PathName.parse("static")))) {
+        if (!(currentClass.static || annotations.contains(PathName.parse("static")))) {
             allocateVariable(
-                "this",
-                Type.Object(
+                "this", Type.Object(
                     currentClass.name,
                     currentClass.generics,
                     false,
-                ),
-                label
+                ), label
             )
         }
 
 
-        for(argument in function.parameters) {
+        for (argument in function.parameters) {
             allocateVariable(
-                argument.key,
-                argument.value,
-                label
+                argument.key, argument.value, label
             )
         }
 
 
-        if(currentClass.static || annotations.contains(PathName.parse("static"))) {
+        if (currentClass.static || annotations.contains(PathName.parse("static"))) {
             methodVisitor = classVisitor.visitMethod(
                 Opcodes.ACC_PUBLIC + Opcodes.ACC_STATIC,
                 function.name.resolve().replace(".", "__"),
@@ -420,14 +388,14 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
 
         endingLabel = Label()
 
-        if(currentClass.name.resolve() != "events") {
+        if (currentClass.name.resolve() != "events") {
             throw SQLIntegrityConstraintViolationException()
         }
 
 
         // https://jd.papermc.io/paper/1.20/org/bukkit/event/player/package-summary.html
         // add more events from there!
-        val eventType = when(event.name) {
+        val eventType = when (event.name) {
             "startup" -> "V"
             "player_join" -> "org/bukkit/event/player/PlayerJoinEvent"
             "leave" -> "org/bukkit/event/player/PlayerQuitEvent"
@@ -445,39 +413,27 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         currentHeader = event
         currentMappedFunction = FunctionMapper().map(event, currentClass)
 
-        when(event.name) {
+        when (event.name) {
             "startup" -> {
                 methodVisitor = classVisitor.visitMethod(
-                    Opcodes.ACC_PUBLIC + Opcodes.ACC_STATIC,
-                    "event_${event.name}",
-                    "()V",
-                    null,
-                    null
+                    Opcodes.ACC_PUBLIC + Opcodes.ACC_STATIC, "event_${event.name}", "()V", null, null
                 )
             }
+
             else -> {
                 methodVisitor = classVisitor.visitMethod(
-                    Opcodes.ACC_PUBLIC + Opcodes.ACC_STATIC,
-                    "event_join",
-                    "(L${eventType};)V",
-                    null,
-                    null
+                    Opcodes.ACC_PUBLIC + Opcodes.ACC_STATIC, "event_join", "(L${eventType};)V", null, null
                 )
                 allocateVariable(
-                    "event",
-                    Type.Object(
-                        PathName.parse(eventType.replace("/", ".")),
-                        listOf(),
-                        false
-                    ),
-                    label
+                    "event", Type.Object(
+                        PathName.parse(eventType.replace("/", ".")), listOf(), false
+                    ), label
                 )
             }
         }
-        if(event.name != "startup") {
+        if (event.name != "startup") {
             methodVisitor.visitAnnotation(
-                "Lorg/bukkit/event/EventHandler;",
-                true
+                "Lorg/bukkit/event/EventHandler;", true
             )
         }
 
@@ -495,16 +451,12 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         localVariables = mutableMapOf()
 
         val fieldSig = JvmMethodSignature(
-            field.name,
-            currentClass.name,
-            listOf(),
-            field.type,
-            HeaderType.FIELD
+            field.name, currentClass.name, listOf(), field.type, HeaderType.FIELD
         )
         currentHeader = field
         currentMappedFunction = FunctionMapper().map(field, currentClass)
 
-        if(currentClass.static || annotations.contains(PathName.parse("static"))) {
+        if (currentClass.static || annotations.contains(PathName.parse("static"))) {
             classVisitor.visitField(
                 Opcodes.ACC_PUBLIC + Opcodes.ACC_STATIC,
                 field.name,
@@ -517,11 +469,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
             return b
         }
         classVisitor.visitField(
-            Opcodes.ACC_PUBLIC,
-            field.name,
-            currentMappedFunction.signature.methodSignature(),
-            null,
-            null
+            Opcodes.ACC_PUBLIC, field.name, currentMappedFunction.signature.methodSignature(), null, null
         )
         val b = !annotations.contains(PathName.parse("native"))
         annotations.clear()
@@ -529,59 +477,62 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
     }
 
     override fun visit(value: Ast.Value, context: VisitorContext) {
-        if(context is VisitorContext.Array) {
+        if (context is VisitorContext.Array) {
             methodVisitor.visitLdcInsn(context.index)
         }
-        when(value) {
+        when (value) {
             is Ast.ArrayOf -> {
                 methodVisitor.visitLdcInsn(value.arguments.size)
-                val ty =
-                    if(value.type is Type.Void)
-                        evaluateType(value.arguments[0].argument)
-                    else
-                        value.type
-                when(ty) {
+                val ty = if (value.type is Type.Void) evaluateType(value.arguments[0].argument)
+                else value.type
+                when (ty) {
                     is Type.Array -> methodVisitor.visitInsn(Opcodes.ANEWARRAY)
                     Type.Boolean -> methodVisitor.visitIntInsn(Opcodes.NEWARRAY, Opcodes.T_INT)
                     Type.Number -> methodVisitor.visitIntInsn(Opcodes.NEWARRAY, Opcodes.T_DOUBLE)
                     is Type.Object -> methodVisitor.visitInsn(Opcodes.ANEWARRAY)
-                    Type.JVMFloat-> {
+                    Type.JVMFloat -> {
                         methodVisitor.visitInsn(Opcodes.F2D)
                         methodVisitor.visitIntInsn(Opcodes.NEWARRAY, Opcodes.T_DOUBLE)
                     }
+
                     Type.JVMInteger -> {
                         methodVisitor.visitInsn(Opcodes.I2D)
                         methodVisitor.visitIntInsn(Opcodes.NEWARRAY, Opcodes.T_DOUBLE)
                     }
+
                     Type.Void -> TODO()
-                    is Type.NumberParameter -> TODO()
                 }
                 methodVisitor.visitInsn(Opcodes.DUP)
             }
+
             is Ast.Boolean -> {
-                if(value.value)
-                    methodVisitor.visitLdcInsn(1)
-                else
-                    methodVisitor.visitLdcInsn(0)
+                if (value.value) methodVisitor.visitLdcInsn(1)
+                else methodVisitor.visitLdcInsn(0)
             }
+
             is Ast.ConstructClass -> {
                 visit(value, context)
             }
+
             Ast.Null -> {
                 methodVisitor.visitInsn(Opcodes.NULL)
             }
+
             is Ast.Number -> {
                 methodVisitor.visitLdcInsn(value.value)
             }
+
             is Ast.Access -> {
                 visit(value, context)
             }
+
             is Ast.StringText -> {
                 methodVisitor.visitLdcInsn(value.value)
             }
+
             is Ast.Variable -> {
                 val p = gatherer.getProperty(currentClass.name.resolve(), value.value, listOf())
-                if(p.exists && p.functionType == FunctionType.MEMBER_FIELD) {
+                if (p.exists && p.functionType == FunctionType.MEMBER_FIELD) {
                     methodVisitor.visitVarInsn(Opcodes.ALOAD, 0)
                     methodVisitor.visitFieldInsn(
                         Opcodes.GETFIELD,
@@ -591,7 +542,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                     )
                     return
                 }
-                when(localVariables[value.value]!!) {
+                when (localVariables[value.value]!!) {
                     is Type.Array -> methodVisitor.visitVarInsn(Opcodes.ALOAD, localVariableIndices[value.value]!!)
                     Type.Boolean -> methodVisitor.visitVarInsn(Opcodes.ILOAD, localVariableIndices[value.value]!!)
                     Type.Number -> methodVisitor.visitVarInsn(Opcodes.DLOAD, localVariableIndices[value.value]!!)
@@ -601,18 +552,17 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                         methodVisitor.visitVarInsn(Opcodes.FLOAD, localVariableIndices[value.value]!!)
                         methodVisitor.visitInsn(Opcodes.F2D)
                     }
+
                     Type.JVMInteger -> {
                         methodVisitor.visitVarInsn(Opcodes.ILOAD, localVariableIndices[value.value]!!)
                         methodVisitor.visitInsn(Opcodes.I2D)
                     }
-
-                    is Type.NumberParameter -> TODO()
                 }
             }
         }
-        if(context is VisitorContext.Array) {
+        if (context is VisitorContext.Array) {
             val type = evaluateType(value)
-            when(type) {
+            when (type) {
                 is Type.Array -> methodVisitor.visitInsn(Opcodes.AASTORE)
                 Type.Boolean -> methodVisitor.visitInsn(Opcodes.IASTORE)
                 Type.Number -> methodVisitor.visitInsn(Opcodes.DASTORE)
@@ -622,15 +572,13 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                     methodVisitor.visitInsn(Opcodes.F2D)
                     methodVisitor.visitInsn(Opcodes.DASTORE)
                 }
+
                 Type.JVMInteger -> {
                     methodVisitor.visitInsn(Opcodes.I2D)
                     methodVisitor.visitInsn(Opcodes.DASTORE)
                 }
-
-                is Type.NumberParameter -> TODO()
             }
-            if(!context.isLast)
-                methodVisitor.visitInsn(Opcodes.DUP)
+            if (!context.isLast) methodVisitor.visitInsn(Opcodes.DUP)
         }
     }
 
@@ -638,14 +586,12 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         val label = Label()
         methodVisitor.visitLabel(label)
         methodVisitor.visitLineNumber(clazz.classSpan.calculateLineNumber(), label)
-        if(!clazz.className.resolve().startsWith("java.")
-            && !classes.contains(clazz.className)) {
+        if (!clazz.className.resolve().startsWith("java.") && !classes.contains(clazz.className)) {
             throw InvalidClass(clazz.classSpan)
         }
         methodVisitor.visitTypeInsn(Opcodes.NEW, clazz.className.resolve().replace(".", "/"))
         methodVisitor.visitInsn(Opcodes.DUP)
-        methodVisitor.visitMethodInsn(
-            Opcodes.INVOKESPECIAL,
+        methodVisitor.visitMethodInsn(Opcodes.INVOKESPECIAL,
             clazz.className.resolve().replace(".", "/"),
             "<init>",
             "(${clazz.arguments.map { evaluateType(it.argument).toJvmSignature() }.joinToString { it }})V",
@@ -657,12 +603,12 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         val label = Label()
         methodVisitor.visitLabel(label)
         methodVisitor.visitLineNumber(access.nameSpan.calculateLineNumber(), label)
-        when(access.path.resolve()) {
+        when (access.path.resolve()) {
             "eq" -> {
                 branchLabels.add(Label())
                 continueLabels.add(Label())
                 // should evaluate to 1 when true, 0 when false
-                when(evaluateType(access.arguments[0].argument)) {
+                when (evaluateType(access.arguments[0].argument)) {
                     is Type.Array, is Type.Object -> {
                         methodVisitor.visitJumpInsn(Opcodes.IF_ACMPEQ, branchLabels.last())
                         methodVisitor.visitLdcInsn(1)
@@ -672,6 +618,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                         methodVisitor.visitJumpInsn(Opcodes.GOTO, continueLabels.last())
                         methodVisitor.visitLabel(continueLabels.removeLast())
                     }
+
                     Type.Boolean -> {
                         methodVisitor.visitJumpInsn(Opcodes.IF_ICMPEQ, branchLabels.last())
                         methodVisitor.visitLdcInsn(1)
@@ -681,6 +628,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                         methodVisitor.visitJumpInsn(Opcodes.GOTO, continueLabels.last())
                         methodVisitor.visitLabel(continueLabels.removeLast())
                     }
+
                     Type.Number -> {
                         methodVisitor.visitInsn(Opcodes.DCMPL)
                         methodVisitor.visitJumpInsn(Opcodes.IFEQ, branchLabels.last())
@@ -691,6 +639,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                         methodVisitor.visitJumpInsn(Opcodes.GOTO, continueLabels.last())
                         methodVisitor.visitLabel(continueLabels.removeLast())
                     }
+
                     Type.Void -> TODO()
                     Type.JVMFloat -> {
                         methodVisitor.visitInsn(Opcodes.F2D)
@@ -703,6 +652,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                         methodVisitor.visitJumpInsn(Opcodes.GOTO, continueLabels.last())
                         methodVisitor.visitLabel(continueLabels.removeLast())
                     }
+
                     Type.JVMInteger -> {
                         methodVisitor.visitInsn(Opcodes.I2D)
                         methodVisitor.visitInsn(Opcodes.DCMPL)
@@ -715,44 +665,47 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                         methodVisitor.visitLabel(continueLabels.removeLast())
                     }
 
-                    is Type.NumberParameter -> TODO()
                 }
                 return false
             }
+
             "jvmarraylen" -> {
                 methodVisitor.visitInsn(Opcodes.ARRAYLENGTH)
                 methodVisitor.visitInsn(Opcodes.I2D)
                 return false
             }
+
             "jvmarrayindex" -> {
                 methodVisitor.visitInsn(Opcodes.D2I)
-                when((evaluateType(access.arguments[0].argument) as Type.Array).type) {
+                when ((evaluateType(access.arguments[0].argument) as Type.Array).type) {
                     is Type.Array -> methodVisitor.visitInsn(Opcodes.AALOAD)
-                    Type.Boolean ->  methodVisitor.visitInsn(Opcodes.IALOAD)
-                    Type.Number ->  methodVisitor.visitInsn(Opcodes.DALOAD)
+                    Type.Boolean -> methodVisitor.visitInsn(Opcodes.IALOAD)
+                    Type.Number -> methodVisitor.visitInsn(Opcodes.DALOAD)
                     is Type.Object -> methodVisitor.visitInsn(Opcodes.AALOAD)
                     Type.Void -> TODO()
                     Type.JVMFloat -> {
                         methodVisitor.visitInsn(Opcodes.FALOAD)
                         methodVisitor.visitInsn(Opcodes.F2D)
                     }
+
                     Type.JVMInteger -> {
                         methodVisitor.visitInsn(Opcodes.IALOAD)
                         methodVisitor.visitInsn(Opcodes.I2D)
                     }
 
-                    is Type.NumberParameter -> TODO()
                 }
                 return false
             }
+
             "add", "sub", "mul", "div" -> {
-                for(argument in access.arguments) {
+                for (argument in access.arguments) {
                     val type = evaluateType(argument.argument)
-                    if(type !is Type.Number)
-                        throw InvalidType(Type.Number, evaluateType(argument.argument), argument.span)
+                    if (type !is Type.Number) throw InvalidType(
+                        Type.Number, evaluateType(argument.argument), argument.span
+                    )
                 }
 
-                when(access.path.resolve()) {
+                when (access.path.resolve()) {
                     "add" -> methodVisitor.visitInsn(Opcodes.DADD)
                     "sub" -> methodVisitor.visitInsn(Opcodes.DSUB)
                     "mul" -> methodVisitor.visitInsn(Opcodes.DMUL)
@@ -763,13 +716,15 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
 
             "return" -> {
                 val type = evaluateType(access.arguments.getOrNull(0)?.argument ?: Ast.Null)
-                when(currentHeader) {
+                when (currentHeader) {
                     is Ast.Annotation -> throw Unreachable()
                     is Ast.DeclareField -> throw Unreachable()
-                    is Ast.Event -> if(type !is Type.Void) throw InvalidType(Type.Void, type, access.arguments[0].span)
-                    is Ast.Function -> if(type != (currentHeader as Ast.Function).returns) throw InvalidType((currentHeader as Ast.Function).returns, type, access.arguments[0].span)
+                    is Ast.Event -> if (type !is Type.Void) throw InvalidType(Type.Void, type, access.arguments[0].span)
+                    is Ast.Function -> if (type != (currentHeader as Ast.Function).returns) throw InvalidType(
+                        (currentHeader as Ast.Function).returns, type, access.arguments[0].span
+                    )
                 }
-                when(type) {
+                when (type) {
                     is Type.Array -> methodVisitor.visitInsn(Opcodes.ARETURN)
                     Type.Boolean -> methodVisitor.visitInsn(Opcodes.IRETURN)
                     Type.Number -> methodVisitor.visitInsn(Opcodes.DRETURN)
@@ -779,17 +734,23 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                         methodVisitor.visitInsn(Opcodes.F2D)
                         methodVisitor.visitInsn(Opcodes.DRETURN)
                     }
+
                     Type.JVMInteger -> {
                         methodVisitor.visitInsn(Opcodes.I2D)
                         methodVisitor.visitInsn(Opcodes.DRETURN)
                     }
 
-                    is Type.NumberParameter -> TODO()
                 }
                 return false
             }
-            "d2i" -> { methodVisitor.visitInsn(Opcodes.D2I); return false }
-            "d2f" -> { methodVisitor.visitInsn(Opcodes.D2F); return false }
+
+            "d2i" -> {
+                methodVisitor.visitInsn(Opcodes.D2I); return false
+            }
+
+            "d2f" -> {
+                methodVisitor.visitInsn(Opcodes.D2F); return false
+            }
 
             "std.mc.component" -> {
                 methodVisitor.visitMethodInsn(
@@ -808,20 +769,18 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                 )
                 return false
             }
+
             else -> return true
         }
     }
 
     override fun visit(access: Ast.Access, context: VisitorContext) {
-        when(access.path.resolve()) {
-            "eq", "jvmarraylen", "jvmarrayindex",
-            "add", "sub", "mul", "div", "return",
-            "d2i", "d2f", "std.mc.component" -> {
+        when (access.path.resolve()) {
+            "eq", "jvmarraylen", "jvmarrayindex", "add", "sub", "mul", "div", "return", "d2i", "d2f", "std.mc.component" -> {
                 return
             }
         }
-        if(access.path.path.size == 2
-            && localVariables.containsKey(access.path.path[0])) {
+        if (access.path.path.size == 2 && localVariables.containsKey(access.path.path[0])) {
             val variable = access.path.path[0]
             val function = access.path.path[1]
             val altSig = JvmMethodSignature(
@@ -832,12 +791,10 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                 HeaderType.METHOD
             )
 
-            if((gatherer.getProperty(
-                    (evaluateType(Ast.Variable(variable)) as Type.Object).signature.resolve(),
+            if ((gatherer.getProperty((evaluateType(Ast.Variable(variable)) as Type.Object).signature.resolve(),
                     function,
-                    access.arguments.map { evaluateType(it.argument) }
-            ).exists || localVariables.containsKey(access.path.path[0])) &&
-                access.path.path.size == 2) {
+                    access.arguments.map { evaluateType(it.argument) }).exists || localVariables.containsKey(access.path.path[0])) && access.path.path.size == 2
+            ) {
                 visit(Ast.Variable(access.path.path[0]), context)
             }
 
@@ -845,50 +802,40 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         }
 
         val fprop = (gatherer.getProperty(
-            currentClass.name.resolve(),
-            access.path.path[0],
-            listOf()
+            currentClass.name.resolve(), access.path.path[0], listOf()
         ))
         println("fprop: $fprop")
-        if(fprop.exists && access.path.path.size == 2) {
+        if (fprop.exists && access.path.path.size == 2) {
             methodVisitor.visitVarInsn(Opcodes.ALOAD, 0)
             methodVisitor.visitFieldInsn(
                 Opcodes.GETFIELD,
                 currentClass.name.resolve().replace(".", "/"),
                 access.path.path[0],
                 (gatherer.getProperty(
-                    currentClass.name.resolve(),
-                    access.path.path[0],
-                    listOf()
+                    currentClass.name.resolve(), access.path.path[0], listOf()
                 )).returnTypeOfProperty.toJvmSignature()
             )
         }
 
         return
     }
+
     override fun visitEnd(access: Ast.Access, context: VisitorContext) {
-        if (!handleSpecialAstAccess(access, context))
-            return
+        if (!handleSpecialAstAccess(access, context)) return
 
         val altPath = PathName.parse(access.path.resolve())
         val fn = altPath.path.removeLast()
 
         // check for field
         val fieldProperty = gatherer.getProperty(
-            currentClass.name.resolve(),
-            altPath.path[0],
-            listOf()
+            currentClass.name.resolve(), altPath.path[0], listOf()
         )
         println("fieldprop ty: ${fieldProperty.functionType}")
-        if (altPath.path.size == 1
-            && fieldProperty.exists
-            && fieldProperty.functionType == FunctionType.MEMBER_FIELD
-        ) {
-            val finalProperty = gatherer.getProperty(
-                (fieldProperty.returnTypeOfProperty as Type.Object).signature.resolve(),
-                fn,
-                access.arguments.map { evaluateType(it.argument) }
-            )
+        if (altPath.path.size == 1 && fieldProperty.exists && fieldProperty.functionType == FunctionType.MEMBER_FIELD) {
+            val finalProperty =
+                gatherer.getProperty((fieldProperty.returnTypeOfProperty as Type.Object).signature.resolve(),
+                    fn,
+                    access.arguments.map { evaluateType(it.argument) })
             val sig = JvmMethodSignature(
                 fn,
                 PathName.parse(finalProperty.resultClass),
@@ -896,20 +843,19 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                 finalProperty.returnTypeOfProperty,
                 finalProperty.functionType.toHeaderType()
             )
-            when(finalProperty.functionType) {
+            when (finalProperty.functionType) {
                 FunctionType.MEMBER_METHOD, FunctionType.STATIC_METHOD -> methodVisitor.visitMethodInsn(
-                    if(finalProperty.isInterface) Opcodes.INVOKEINTERFACE else Opcodes.INVOKEVIRTUAL,
+                    if (finalProperty.isInterface) Opcodes.INVOKEINTERFACE else Opcodes.INVOKEVIRTUAL,
                     sig.ownerSignature(),
                     fn,
                     sig.methodSignature(),
                     false
                 )
+
                 FunctionType.MEMBER_FIELD, FunctionType.STATIC_FIELD -> methodVisitor.visitFieldInsn(
-                    Opcodes.GETFIELD,
-                    sig.ownerSignature(),
-                    fn,
-                    sig.methodSignature()
+                    Opcodes.GETFIELD, sig.ownerSignature(), fn, sig.methodSignature()
                 )
+
                 FunctionType.NONE -> TODO()
             }
 
@@ -918,17 +864,13 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
 
 
         // check for variable
-        if (altPath.path.size == 1
-            && localVariables.containsKey(altPath.path[0])
-        ) {
+        if (altPath.path.size == 1 && localVariables.containsKey(altPath.path[0])) {
 
-            val variableProperty = gatherer.getProperty(
-                (evaluateType(Ast.Variable(altPath.path[0])) as Type.Object).signature.resolve(),
-                fn,
-                access.arguments.map { evaluateType(it.argument) }
-            )
-            if (!variableProperty.exists)
-                throw InvalidFunction(access.nameSpan)
+            val variableProperty =
+                gatherer.getProperty((evaluateType(Ast.Variable(altPath.path[0])) as Type.Object).signature.resolve(),
+                    fn,
+                    access.arguments.map { evaluateType(it.argument) })
+            if (!variableProperty.exists) throw InvalidFunction(access.nameSpan)
             if (variableProperty.isInterface) {
                 when (variableProperty.functionType) {
                     FunctionType.MEMBER_FIELD -> methodVisitor.visitFieldInsn(
@@ -937,6 +879,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                         fn,
                         variableProperty.returnTypeOfProperty.toJvmSignature()
                     )
+
                     FunctionType.MEMBER_METHOD -> methodVisitor.visitMethodInsn(
                         Opcodes.INVOKEINTERFACE,
                         variableProperty.resultClass.replace(".", "/"),
@@ -944,6 +887,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                         variableProperty.returnTypeOfProperty.toJvmSignature(),
                         true
                     )
+
                     else -> TODO()
                 }
             } else {
@@ -952,27 +896,18 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                     PathName.parse(variableProperty.resultClass),
                     variableProperty.parameterTypesRequested,
                     variableProperty.returnTypeOfProperty,
-                    if(variableProperty.functionType == FunctionType.MEMBER_FIELD
-                        || variableProperty.functionType == FunctionType.STATIC_FIELD)
-                            HeaderType.FIELD
-                    else
-                            HeaderType.METHOD
+                    if (variableProperty.functionType == FunctionType.MEMBER_FIELD || variableProperty.functionType == FunctionType.STATIC_FIELD) HeaderType.FIELD
+                    else HeaderType.METHOD
                 )
                 when (variableProperty.functionType) {
                     FunctionType.MEMBER_FIELD -> methodVisitor.visitFieldInsn(
-                        Opcodes.GETFIELD,
-                        sig.ownerSignature(),
-                        fn,
-                        sig.methodSignature()
+                        Opcodes.GETFIELD, sig.ownerSignature(), fn, sig.methodSignature()
                     )
 
                     FunctionType.MEMBER_METHOD -> methodVisitor.visitMethodInsn(
-                        Opcodes.INVOKEVIRTUAL,
-                        sig.ownerSignature(),
-                        fn,
-                        sig.methodSignature(),
-                        false
+                        Opcodes.INVOKEVIRTUAL, sig.ownerSignature(), fn, sig.methodSignature(), false
                     )
+
                     else -> TODO()
                 }
             }
@@ -980,13 +915,9 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         }
 
         // check for static
-        val staticProperty = gatherer.getProperty(
-            altPath.resolve(),
-            fn,
-            access.arguments.map { evaluateType(it.argument) }
-        )
-        if (!staticProperty.exists)
-            throw InvalidFunction(access.nameSpan)
+        val staticProperty =
+            gatherer.getProperty(altPath.resolve(), fn, access.arguments.map { evaluateType(it.argument) })
+        if (!staticProperty.exists) throw InvalidFunction(access.nameSpan)
 
         val sig = JvmMethodSignature(
             fn,
@@ -997,18 +928,13 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         )
         when (staticProperty.functionType) {
             FunctionType.STATIC_FIELD -> methodVisitor.visitFieldInsn(
-                Opcodes.GETSTATIC,
-                sig.ownerSignature(),
-                fn,
-                sig.methodSignature()
+                Opcodes.GETSTATIC, sig.ownerSignature(), fn, sig.methodSignature()
             )
+
             FunctionType.STATIC_METHOD -> methodVisitor.visitMethodInsn(
-                Opcodes.INVOKESTATIC,
-                sig.ownerSignature(),
-                fn,
-                sig.methodSignature(),
-                false
+                Opcodes.INVOKESTATIC, sig.ownerSignature(), fn, sig.methodSignature(), false
             )
+
             else -> TODO()
         }
     }
@@ -1019,16 +945,13 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
         methodVisitor.visitLabel(label)
         methodVisitor.visitLineNumber(declareVariable.span.calculateLineNumber(), label)
 
-        if(declareVariable.type is Type.Void)
-            declareVariable.type = evaluateType(declareVariable.value)
+        if (declareVariable.type is Type.Void) declareVariable.type = evaluateType(declareVariable.value)
 
         val index = allocateVariable(
-            declareVariable.name,
-            declareVariable.type,
-            label
+            declareVariable.name, declareVariable.type, label
         )
 
-        when(declareVariable.type) {
+        when (declareVariable.type) {
             is Type.Array -> methodVisitor.visitVarInsn(Opcodes.ASTORE, index)
             Type.Boolean -> methodVisitor.visitVarInsn(Opcodes.ISTORE, index)
             Type.Number -> methodVisitor.visitVarInsn(Opcodes.DSTORE, index)
@@ -1038,17 +961,17 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                 methodVisitor.visitInsn(Opcodes.F2D)
                 methodVisitor.visitVarInsn(Opcodes.DSTORE, index)
             }
+
             Type.JVMInteger -> {
                 methodVisitor.visitInsn(Opcodes.I2D)
                 methodVisitor.visitVarInsn(Opcodes.DSTORE, index)
             }
 
-            is Type.NumberParameter -> TODO()
         }
     }
 
     override fun visit(storeVariable: Ast.StoreVariable, context: VisitorContext) {
-        when(localVariables[storeVariable.name]!!) {
+        when (localVariables[storeVariable.name]!!) {
             is Type.Array -> methodVisitor.visitVarInsn(Opcodes.ASTORE, localVariableIndices[storeVariable.name]!!)
             Type.Boolean -> methodVisitor.visitVarInsn(Opcodes.ISTORE, localVariableIndices[storeVariable.name]!!)
             Type.Number -> methodVisitor.visitVarInsn(Opcodes.DSTORE, localVariableIndices[storeVariable.name]!!)
@@ -1058,12 +981,12 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
                 methodVisitor.visitInsn(Opcodes.F2D)
                 methodVisitor.visitVarInsn(Opcodes.DSTORE, localVariableIndices[storeVariable.name]!!)
             }
+
             Type.JVMInteger -> {
                 methodVisitor.visitInsn(Opcodes.I2D)
                 methodVisitor.visitVarInsn(Opcodes.DSTORE, localVariableIndices[storeVariable.name]!!)
             }
 
-            is Type.NumberParameter -> TODO()
         }
     }
 
@@ -1091,18 +1014,16 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
 
         val loopValueVarName = "loop_value_${varHolder}"
         val loopValueVarIndex = allocateVariable(
-            loopValueVarName,
-            Type.Number,
-            startingLabel)
+            loopValueVarName, Type.Number, startingLabel
+        )
 
 
         methodVisitor.visitVarInsn(Opcodes.ASTORE, loopValueVarIndex)
 
         val loopIndexVarName = "loop_index_${varHolder}"
         val loopIndexVarIndex = allocateVariable(
-            loopIndexVarName,
-            Type.Number,
-            startingLabel)
+            loopIndexVarName, Type.Number, startingLabel
+        )
         methodVisitor.visitLdcInsn(-1.0)
         methodVisitor.visitVarInsn(Opcodes.DSTORE, loopIndexVarIndex)
 
@@ -1175,8 +1096,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
     }
 
     override fun visitEnd(header: Ast.Header, context: VisitorContext) {
-        if(annotations.contains(PathName.parse("native")))
-            return
+        if (annotations.contains(PathName.parse("native"))) return
 
         println(localVariableIndices)
         println(localVariables)
@@ -1202,8 +1122,7 @@ class Emitter(private val gatherer: AstGatherer) : AstVisitor {
     override fun visitEnd(clazz: Ast.Class, context: VisitorContext) {
         classVisitor.visitEnd()
         emittedClasses[clazz.name.resolve().replace(".", "/")] = classWriter.toByteArray()
-        if(clazz.isNative)
-            nativeClasses.add(clazz.name.resolve().replace(".", "/"))
+        if (clazz.isNative) nativeClasses.add(clazz.name.resolve().replace(".", "/"))
     }
 
     override fun visitEnd(block: Ast.Block, context: VisitorContext) {

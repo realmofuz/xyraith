@@ -1,3 +1,4042 @@
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.audience.Audience {
+  @native
+  command empty  -> net.kyori.adventure.audience.Audience {}
+  @native
+  command audience arga:array<Unknown<net.kyori.adventure.audience.Audience>> -> net.kyori.adventure.audience.Audience {}
+  @native
+  command audience arga:java.lang.Iterable -> net.kyori.adventure.audience.ForwardingAudience {}
+  @native
+  command toAudience  -> java.util.stream.Collector {}
+  @native
+  command sendMessage arga:net.kyori.adventure.text.ComponentLike -> void {}
+  @native
+  command sendMessage arga:net.kyori.adventure.identity.Identified argb:net.kyori.adventure.text.ComponentLike -> void {}
+  @native
+  command sendMessage arga:net.kyori.adventure.identity.Identity argb:net.kyori.adventure.text.ComponentLike -> void {}
+  @native
+  command sendMessage arga:net.kyori.adventure.text.Component -> void {}
+  @native
+  command sendMessage arga:net.kyori.adventure.identity.Identified argb:net.kyori.adventure.text.Component -> void {}
+  @native
+  command sendMessage arga:net.kyori.adventure.identity.Identity argb:net.kyori.adventure.text.Component -> void {}
+  @native
+  command sendMessage arga:net.kyori.adventure.text.ComponentLike argb:net.kyori.adventure.audience.MessageType -> void {}
+  @native
+  command sendMessage arga:net.kyori.adventure.identity.Identified argb:net.kyori.adventure.text.ComponentLike argc:net.kyori.adventure.audience.MessageType -> void {}
+  @native
+  command sendMessage arga:net.kyori.adventure.identity.Identity argb:net.kyori.adventure.text.ComponentLike argc:net.kyori.adventure.audience.MessageType -> void {}
+  @native
+  command sendMessage arga:net.kyori.adventure.text.Component argb:net.kyori.adventure.audience.MessageType -> void {}
+  @native
+  command sendMessage arga:net.kyori.adventure.identity.Identified argb:net.kyori.adventure.text.Component argc:net.kyori.adventure.audience.MessageType -> void {}
+  @native
+  command sendMessage arga:net.kyori.adventure.identity.Identity argb:net.kyori.adventure.text.Component argc:net.kyori.adventure.audience.MessageType -> void {}
+  @native
+  command sendActionBar arga:net.kyori.adventure.text.ComponentLike -> void {}
+  @native
+  command sendActionBar arga:net.kyori.adventure.text.Component -> void {}
+  @native
+  command sendPlayerListHeader arga:net.kyori.adventure.text.ComponentLike -> void {}
+  @native
+  command sendPlayerListHeader arga:net.kyori.adventure.text.Component -> void {}
+  @native
+  command sendPlayerListFooter arga:net.kyori.adventure.text.ComponentLike -> void {}
+  @native
+  command sendPlayerListFooter arga:net.kyori.adventure.text.Component -> void {}
+  @native
+  command sendPlayerListHeaderAndFooter arga:net.kyori.adventure.text.ComponentLike argb:net.kyori.adventure.text.ComponentLike -> void {}
+  @native
+  command sendPlayerListHeaderAndFooter arga:net.kyori.adventure.text.Component argb:net.kyori.adventure.text.Component -> void {}
+  @native
+  command showTitle arga:net.kyori.adventure.title.Title -> void {}
+  @native
+  command clearTitle  -> void {}
+  @native
+  command resetTitle  -> void {}
+  @native
+  command showBossBar arga:net.kyori.adventure.bossbar.BossBar -> void {}
+  @native
+  command hideBossBar arga:net.kyori.adventure.bossbar.BossBar -> void {}
+  @native
+  command playSound arga:net.kyori.adventure.sound.Sound -> void {}
+  @native
+  command playSound arga:net.kyori.adventure.sound.Sound argb:number argc:number -> void {}
+  @native
+  command stopSound arga:net.kyori.adventure.sound.SoundStop -> void {}
+  @native
+  command openBook arga:net.kyori.adventure.inventory.Book__inacc__Builder -> void {}
+  @native
+  command openBook arga:net.kyori.adventure.inventory.Book -> void {}
+  @native
+  command lambda__inacc__audience__inacc__0 arga:java.lang.Iterable -> java.lang.Iterable {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.audience.Audiences {
+  @native
+  let COLLECTOR: java.util.stream.Collector = 0
+  @native
+  command construct  -> void {}
+  @native
+  command lambda__inacc__static__inacc__0 arga:java.util.ArrayList -> net.kyori.adventure.audience.ForwardingAudience {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.audience.EmptyAudience implements net.kyori.adventure.audience.Audience {
+  @native
+  let INSTANCE: net.kyori.adventure.audience.EmptyAudience = 0
+  @native
+  command construct  -> void {}
+  @native
+  command sendMessage arga:net.kyori.adventure.text.ComponentLike -> void {}
+  @native
+  command sendMessage arga:net.kyori.adventure.identity.Identified argb:net.kyori.adventure.text.ComponentLike -> void {}
+  @native
+  command sendMessage arga:net.kyori.adventure.identity.Identity argb:net.kyori.adventure.text.ComponentLike -> void {}
+  @native
+  command sendMessage arga:net.kyori.adventure.text.ComponentLike argb:net.kyori.adventure.audience.MessageType -> void {}
+  @native
+  command sendMessage arga:net.kyori.adventure.identity.Identified argb:net.kyori.adventure.text.ComponentLike argc:net.kyori.adventure.audience.MessageType -> void {}
+  @native
+  command sendMessage arga:net.kyori.adventure.identity.Identity argb:net.kyori.adventure.text.ComponentLike argc:net.kyori.adventure.audience.MessageType -> void {}
+  @native
+  command sendActionBar arga:net.kyori.adventure.text.ComponentLike -> void {}
+  @native
+  command sendPlayerListHeader arga:net.kyori.adventure.text.ComponentLike -> void {}
+  @native
+  command sendPlayerListFooter arga:net.kyori.adventure.text.ComponentLike -> void {}
+  @native
+  command sendPlayerListHeaderAndFooter arga:net.kyori.adventure.text.ComponentLike argb:net.kyori.adventure.text.ComponentLike -> void {}
+  @native
+  command openBook arga:net.kyori.adventure.inventory.Book__inacc__Builder -> void {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command toString  -> string {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.audience.ForwardingAudience__inacc__Single implements net.kyori.adventure.audience.ForwardingAudience {
+  @native
+  command audience  -> net.kyori.adventure.audience.Audience {}
+  @native
+  command audiences  -> java.lang.Iterable {}
+  @native
+  command sendMessage arga:net.kyori.adventure.identity.Identified argb:net.kyori.adventure.text.Component argc:net.kyori.adventure.audience.MessageType -> void {}
+  @native
+  command sendMessage arga:net.kyori.adventure.identity.Identity argb:net.kyori.adventure.text.Component argc:net.kyori.adventure.audience.MessageType -> void {}
+  @native
+  command sendActionBar arga:net.kyori.adventure.text.Component -> void {}
+  @native
+  command sendPlayerListHeader arga:net.kyori.adventure.text.Component -> void {}
+  @native
+  command sendPlayerListFooter arga:net.kyori.adventure.text.Component -> void {}
+  @native
+  command sendPlayerListHeaderAndFooter arga:net.kyori.adventure.text.Component argb:net.kyori.adventure.text.Component -> void {}
+  @native
+  command showTitle arga:net.kyori.adventure.title.Title -> void {}
+  @native
+  command clearTitle  -> void {}
+  @native
+  command resetTitle  -> void {}
+  @native
+  command showBossBar arga:net.kyori.adventure.bossbar.BossBar -> void {}
+  @native
+  command hideBossBar arga:net.kyori.adventure.bossbar.BossBar -> void {}
+  @native
+  command playSound arga:net.kyori.adventure.sound.Sound -> void {}
+  @native
+  command playSound arga:net.kyori.adventure.sound.Sound argb:number argc:number -> void {}
+  @native
+  command stopSound arga:net.kyori.adventure.sound.SoundStop -> void {}
+  @native
+  command openBook arga:net.kyori.adventure.inventory.Book -> void {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.audience.ForwardingAudience implements net.kyori.adventure.audience.Audience {
+  @native
+  command audiences  -> java.lang.Iterable {}
+  @native
+  command sendMessage arga:net.kyori.adventure.identity.Identified argb:net.kyori.adventure.text.Component argc:net.kyori.adventure.audience.MessageType -> void {}
+  @native
+  command sendMessage arga:net.kyori.adventure.identity.Identity argb:net.kyori.adventure.text.Component argc:net.kyori.adventure.audience.MessageType -> void {}
+  @native
+  command sendActionBar arga:net.kyori.adventure.text.Component -> void {}
+  @native
+  command sendPlayerListHeader arga:net.kyori.adventure.text.Component -> void {}
+  @native
+  command sendPlayerListFooter arga:net.kyori.adventure.text.Component -> void {}
+  @native
+  command sendPlayerListHeaderAndFooter arga:net.kyori.adventure.text.Component argb:net.kyori.adventure.text.Component -> void {}
+  @native
+  command showTitle arga:net.kyori.adventure.title.Title -> void {}
+  @native
+  command clearTitle  -> void {}
+  @native
+  command resetTitle  -> void {}
+  @native
+  command showBossBar arga:net.kyori.adventure.bossbar.BossBar -> void {}
+  @native
+  command hideBossBar arga:net.kyori.adventure.bossbar.BossBar -> void {}
+  @native
+  command playSound arga:net.kyori.adventure.sound.Sound -> void {}
+  @native
+  command playSound arga:net.kyori.adventure.sound.Sound argb:number argc:number -> void {}
+  @native
+  command stopSound arga:net.kyori.adventure.sound.SoundStop -> void {}
+  @native
+  command openBook arga:net.kyori.adventure.inventory.Book -> void {}
+}
+
+//access: 16433
+@native
+class net.kyori.adventure.audience.MessageType extends java.lang.Enum {
+  @native
+  let CHAT: net.kyori.adventure.audience.MessageType = 0
+  @native
+  let SYSTEM: net.kyori.adventure.audience.MessageType = 0
+  @native
+  let __inacc__VALUES: array<Unknown<net.kyori.adventure.audience.MessageType>> = 0
+  @native
+  command values  -> array<Unknown<net.kyori.adventure.audience.MessageType>> {}
+  @native
+  command valueOf arga:string -> net.kyori.adventure.audience.MessageType {}
+  @native
+  command construct arga:string -> void {}
+  @native
+  command __inacc__values  -> array<Unknown<net.kyori.adventure.audience.MessageType>> {}
+}
+
+//access: 16433
+@native
+class net.kyori.adventure.bossbar.BossBar__inacc__Color extends java.lang.Enum {
+  @native
+  let PINK: net.kyori.adventure.bossbar.BossBar__inacc__Color = 0
+  @native
+  let BLUE: net.kyori.adventure.bossbar.BossBar__inacc__Color = 0
+  @native
+  let RED: net.kyori.adventure.bossbar.BossBar__inacc__Color = 0
+  @native
+  let GREEN: net.kyori.adventure.bossbar.BossBar__inacc__Color = 0
+  @native
+  let YELLOW: net.kyori.adventure.bossbar.BossBar__inacc__Color = 0
+  @native
+  let PURPLE: net.kyori.adventure.bossbar.BossBar__inacc__Color = 0
+  @native
+  let WHITE: net.kyori.adventure.bossbar.BossBar__inacc__Color = 0
+  @native
+  let NAMES: net.kyori.adventure.util.Index = 0
+  @native
+  let name: string = 0
+  @native
+  let __inacc__VALUES: array<Unknown<net.kyori.adventure.bossbar.BossBar__inacc__Color>> = 0
+  @native
+  command values  -> array<Unknown<net.kyori.adventure.bossbar.BossBar__inacc__Color>> {}
+  @native
+  command valueOf arga:string -> net.kyori.adventure.bossbar.BossBar__inacc__Color {}
+  @native
+  command construct arga:string argb:jvm_integer argc:string -> void {}
+  @native
+  command lambda__inacc__static__inacc__0 arga:net.kyori.adventure.bossbar.BossBar__inacc__Color -> string {}
+  @native
+  command __inacc__values  -> array<Unknown<net.kyori.adventure.bossbar.BossBar__inacc__Color>> {}
+}
+
+//access: 16433
+@native
+class net.kyori.adventure.bossbar.BossBar__inacc__Flag extends java.lang.Enum {
+  @native
+  let DARKEN_SCREEN: net.kyori.adventure.bossbar.BossBar__inacc__Flag = 0
+  @native
+  let PLAY_BOSS_MUSIC: net.kyori.adventure.bossbar.BossBar__inacc__Flag = 0
+  @native
+  let CREATE_WORLD_FOG: net.kyori.adventure.bossbar.BossBar__inacc__Flag = 0
+  @native
+  let NAMES: net.kyori.adventure.util.Index = 0
+  @native
+  let name: string = 0
+  @native
+  let __inacc__VALUES: array<Unknown<net.kyori.adventure.bossbar.BossBar__inacc__Flag>> = 0
+  @native
+  command values  -> array<Unknown<net.kyori.adventure.bossbar.BossBar__inacc__Flag>> {}
+  @native
+  command valueOf arga:string -> net.kyori.adventure.bossbar.BossBar__inacc__Flag {}
+  @native
+  command construct arga:string argb:jvm_integer argc:string -> void {}
+  @native
+  command lambda__inacc__static__inacc__0 arga:net.kyori.adventure.bossbar.BossBar__inacc__Flag -> string {}
+  @native
+  command __inacc__values  -> array<Unknown<net.kyori.adventure.bossbar.BossBar__inacc__Flag>> {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.bossbar.BossBar__inacc__Listener {
+  @native
+  command bossBarNameChanged arga:net.kyori.adventure.bossbar.BossBar argb:net.kyori.adventure.text.Component argc:net.kyori.adventure.text.Component -> void {}
+  @native
+  command bossBarProgressChanged arga:net.kyori.adventure.bossbar.BossBar -> void {}
+  @native
+  command bossBarPercentChanged arga:net.kyori.adventure.bossbar.BossBar -> void {}
+  @native
+  command bossBarColorChanged arga:net.kyori.adventure.bossbar.BossBar argb:net.kyori.adventure.bossbar.BossBar__inacc__Color argc:net.kyori.adventure.bossbar.BossBar__inacc__Color -> void {}
+  @native
+  command bossBarOverlayChanged arga:net.kyori.adventure.bossbar.BossBar argb:net.kyori.adventure.bossbar.BossBar__inacc__Overlay argc:net.kyori.adventure.bossbar.BossBar__inacc__Overlay -> void {}
+  @native
+  command bossBarFlagsChanged arga:net.kyori.adventure.bossbar.BossBar argb:java.util.Set argc:java.util.Set -> void {}
+}
+
+//access: 16433
+@native
+class net.kyori.adventure.bossbar.BossBar__inacc__Overlay extends java.lang.Enum {
+  @native
+  let PROGRESS: net.kyori.adventure.bossbar.BossBar__inacc__Overlay = 0
+  @native
+  let NOTCHED_6: net.kyori.adventure.bossbar.BossBar__inacc__Overlay = 0
+  @native
+  let NOTCHED_10: net.kyori.adventure.bossbar.BossBar__inacc__Overlay = 0
+  @native
+  let NOTCHED_12: net.kyori.adventure.bossbar.BossBar__inacc__Overlay = 0
+  @native
+  let NOTCHED_20: net.kyori.adventure.bossbar.BossBar__inacc__Overlay = 0
+  @native
+  let NAMES: net.kyori.adventure.util.Index = 0
+  @native
+  let name: string = 0
+  @native
+  let __inacc__VALUES: array<Unknown<net.kyori.adventure.bossbar.BossBar__inacc__Overlay>> = 0
+  @native
+  command values  -> array<Unknown<net.kyori.adventure.bossbar.BossBar__inacc__Overlay>> {}
+  @native
+  command valueOf arga:string -> net.kyori.adventure.bossbar.BossBar__inacc__Overlay {}
+  @native
+  command construct arga:string argb:jvm_integer argc:string -> void {}
+  @native
+  command lambda__inacc__static__inacc__0 arga:net.kyori.adventure.bossbar.BossBar__inacc__Overlay -> string {}
+  @native
+  command __inacc__values  -> array<Unknown<net.kyori.adventure.bossbar.BossBar__inacc__Overlay>> {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.bossbar.BossBar implements net.kyori.examination.Examinable {
+  @native
+  let MIN_PROGRESS: Unknown<F> = 0
+  @native
+  let MAX_PROGRESS: Unknown<F> = 0
+  @native
+  let MIN_PERCENT: Unknown<F> = 0
+  @native
+  let MAX_PERCENT: Unknown<F> = 0
+  @native
+  command bossBar arga:net.kyori.adventure.text.ComponentLike argb:net.kyori.adventure.bossbar.BossBar__inacc__Color argc:net.kyori.adventure.bossbar.BossBar__inacc__Overlay -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command bossBar arga:net.kyori.adventure.text.Component argb:net.kyori.adventure.bossbar.BossBar__inacc__Color argc:net.kyori.adventure.bossbar.BossBar__inacc__Overlay -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command bossBar arga:net.kyori.adventure.text.ComponentLike argb:net.kyori.adventure.bossbar.BossBar__inacc__Color argc:net.kyori.adventure.bossbar.BossBar__inacc__Overlay argd:java.util.Set -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command bossBar arga:net.kyori.adventure.text.Component argb:net.kyori.adventure.bossbar.BossBar__inacc__Color argc:net.kyori.adventure.bossbar.BossBar__inacc__Overlay argd:java.util.Set -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command name  -> net.kyori.adventure.text.Component {}
+  @native
+  command name arga:net.kyori.adventure.text.ComponentLike -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command name arga:net.kyori.adventure.text.Component -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command progress  -> Unknown<F> {}
+  @native
+  command progress  -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command percent  -> Unknown<F> {}
+  @native
+  command percent  -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command color  -> net.kyori.adventure.bossbar.BossBar__inacc__Color {}
+  @native
+  command color arga:net.kyori.adventure.bossbar.BossBar__inacc__Color -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command overlay  -> net.kyori.adventure.bossbar.BossBar__inacc__Overlay {}
+  @native
+  command overlay arga:net.kyori.adventure.bossbar.BossBar__inacc__Overlay -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command flags  -> java.util.Set {}
+  @native
+  command flags arga:java.util.Set -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command hasFlag arga:net.kyori.adventure.bossbar.BossBar__inacc__Flag -> boolean {}
+  @native
+  command addFlag arga:net.kyori.adventure.bossbar.BossBar__inacc__Flag -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command removeFlag arga:net.kyori.adventure.bossbar.BossBar__inacc__Flag -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command addFlags arga:array<Unknown<net.kyori.adventure.bossbar.BossBar__inacc__Flag>> -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command removeFlags arga:array<Unknown<net.kyori.adventure.bossbar.BossBar__inacc__Flag>> -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command addFlags arga:java.lang.Iterable -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command removeFlags arga:java.lang.Iterable -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command addListener arga:net.kyori.adventure.bossbar.BossBar__inacc__Listener -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command removeListener arga:net.kyori.adventure.bossbar.BossBar__inacc__Listener -> net.kyori.adventure.bossbar.BossBar {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.bossbar.BossBarImpl extends net.kyori.adventure.bossbar.HackyBossBarPlatformBridge implements net.kyori.adventure.bossbar.BossBar {
+  @native
+  let FLAGS_ADDED: java.util.function.BiConsumer = 0
+  @native
+  let FLAGS_REMOVED: java.util.function.BiConsumer = 0
+  @native
+  let listeners: java.util.List = 0
+  @native
+  let name: net.kyori.adventure.text.Component = 0
+  @native
+  let progress: Unknown<F> = 0
+  @native
+  let color: net.kyori.adventure.bossbar.BossBar__inacc__Color = 0
+  @native
+  let overlay: net.kyori.adventure.bossbar.BossBar__inacc__Overlay = 0
+  @native
+  let flags: java.util.Set = 0
+  @native
+  command construct arga:net.kyori.adventure.text.Component argb:net.kyori.adventure.bossbar.BossBar__inacc__Color argc:net.kyori.adventure.bossbar.BossBar__inacc__Overlay -> void {}
+  @native
+  command construct arga:net.kyori.adventure.text.Component argb:net.kyori.adventure.bossbar.BossBar__inacc__Color argc:net.kyori.adventure.bossbar.BossBar__inacc__Overlay argd:java.util.Set -> void {}
+  @native
+  command name  -> net.kyori.adventure.text.Component {}
+  @native
+  command name arga:net.kyori.adventure.text.Component -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command progress  -> Unknown<F> {}
+  @native
+  command progress  -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+	@static
+  command checkProgress  -> void {}
+  @native
+  command color  -> net.kyori.adventure.bossbar.BossBar__inacc__Color {}
+  @native
+  command color arga:net.kyori.adventure.bossbar.BossBar__inacc__Color -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command overlay  -> net.kyori.adventure.bossbar.BossBar__inacc__Overlay {}
+  @native
+  command overlay arga:net.kyori.adventure.bossbar.BossBar__inacc__Overlay -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command flags  -> java.util.Set {}
+  @native
+  command flags arga:java.util.Set -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command hasFlag arga:net.kyori.adventure.bossbar.BossBar__inacc__Flag -> boolean {}
+  @native
+  command addFlag arga:net.kyori.adventure.bossbar.BossBar__inacc__Flag -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command removeFlag arga:net.kyori.adventure.bossbar.BossBar__inacc__Flag -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command editFlags arga:net.kyori.adventure.bossbar.BossBar__inacc__Flag argb:java.util.function.BiPredicate argc:java.util.function.BiConsumer -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command addFlags arga:array<Unknown<net.kyori.adventure.bossbar.BossBar__inacc__Flag>> -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command removeFlags arga:array<Unknown<net.kyori.adventure.bossbar.BossBar__inacc__Flag>> -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command editFlags arga:array<Unknown<net.kyori.adventure.bossbar.BossBar__inacc__Flag>> argb:array<Unknown<java.util.function.BiPredicate>> argc:array<Unknown<java.util.function.BiConsumer>> -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command addFlags arga:java.lang.Iterable -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command removeFlags arga:java.lang.Iterable -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command editFlags arga:java.lang.Iterable argb:java.util.function.BiPredicate argc:java.util.function.BiConsumer -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command addListener arga:net.kyori.adventure.bossbar.BossBar__inacc__Listener -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command removeListener arga:net.kyori.adventure.bossbar.BossBar__inacc__Listener -> net.kyori.adventure.bossbar.BossBar {}
+  @native
+  command forEachListener arga:java.util.function.Consumer -> void {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command toString  -> string {}
+  @native
+  command lambda__inacc__flags__inacc__9 arga:java.util.Set argb:java.util.Set argc:net.kyori.adventure.bossbar.BossBar__inacc__Listener -> void {}
+  @native
+  command lambda__inacc__flags__inacc__8 arga:java.util.Set argb:net.kyori.adventure.bossbar.BossBar__inacc__Listener -> void {}
+  @native
+  command lambda__inacc__overlay__inacc__7 arga:net.kyori.adventure.bossbar.BossBar__inacc__Overlay argb:net.kyori.adventure.bossbar.BossBar__inacc__Overlay argc:net.kyori.adventure.bossbar.BossBar__inacc__Listener -> void {}
+  @native
+  command lambda__inacc__color__inacc__6 arga:net.kyori.adventure.bossbar.BossBar__inacc__Color argb:net.kyori.adventure.bossbar.BossBar__inacc__Color argc:net.kyori.adventure.bossbar.BossBar__inacc__Listener -> void {}
+  @native
+  command lambda__inacc__progress__inacc__5 arga:net.kyori.adventure.bossbar.BossBar__inacc__Listener -> void {}
+  @native
+  command lambda__inacc__name__inacc__4 arga:net.kyori.adventure.text.Component argb:net.kyori.adventure.text.Component argc:net.kyori.adventure.bossbar.BossBar__inacc__Listener -> void {}
+  @native
+  command lambda__inacc__static__inacc__3 arga:net.kyori.adventure.bossbar.BossBarImpl argb:java.util.Set -> void {}
+  @native
+  command lambda__inacc__static__inacc__2 arga:net.kyori.adventure.bossbar.BossBarImpl argb:java.util.Set argc:net.kyori.adventure.bossbar.BossBar__inacc__Listener -> void {}
+  @native
+  command lambda__inacc__static__inacc__1 arga:net.kyori.adventure.bossbar.BossBarImpl argb:java.util.Set -> void {}
+  @native
+  command lambda__inacc__static__inacc__0 arga:net.kyori.adventure.bossbar.BossBarImpl argb:java.util.Set argc:net.kyori.adventure.bossbar.BossBar__inacc__Listener -> void {}
+}
+
+//access: 132128
+@native
+class net.kyori.adventure.bossbar.HackyBossBarPlatformBridge {
+  @native
+  command construct  -> void {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.identity.Identified {
+  @native
+  command identity  -> net.kyori.adventure.identity.Identity {}
+}
+
+//access: 32
+@native
+class net.kyori.adventure.identity.Identities__inacc__1 implements net.kyori.adventure.identity.Identity {
+  @native
+  let uuid: java.util.UUID = 0
+  @native
+  command construct  -> void {}
+  @native
+  command uuid  -> java.util.UUID {}
+  @native
+  command toString  -> string {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.identity.Identities {
+  @native
+  let NIL: net.kyori.adventure.identity.Identity = 0
+  @native
+  command construct  -> void {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.identity.Identity implements net.kyori.examination.Examinable {
+  @native
+  command nil  -> net.kyori.adventure.identity.Identity {}
+  @native
+  command identity arga:java.util.UUID -> net.kyori.adventure.identity.Identity {}
+  @native
+  command uuid  -> java.util.UUID {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.identity.IdentityImpl implements net.kyori.examination.Examinable,net.kyori.adventure.identity.Identity {
+  @native
+  let uuid: java.util.UUID = 0
+  @native
+  command construct arga:java.util.UUID -> void {}
+  @native
+  command uuid  -> java.util.UUID {}
+  @native
+  command toString  -> string {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.inventory.Book__inacc__Builder implements net.kyori.adventure.util.Buildable__inacc__Builder {
+  @native
+  command title arga:net.kyori.adventure.text.Component -> net.kyori.adventure.inventory.Book__inacc__Builder {}
+  @native
+  command author arga:net.kyori.adventure.text.Component -> net.kyori.adventure.inventory.Book__inacc__Builder {}
+  @native
+  command addPage arga:net.kyori.adventure.text.Component -> net.kyori.adventure.inventory.Book__inacc__Builder {}
+  @native
+  command pages arga:array<Unknown<net.kyori.adventure.text.Component>> -> net.kyori.adventure.inventory.Book__inacc__Builder {}
+  @native
+  command pages arga:java.util.Collection -> net.kyori.adventure.inventory.Book__inacc__Builder {}
+  @native
+  command build  -> net.kyori.adventure.inventory.Book {}
+  @native
+  command build  -> java.lang.Object {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.inventory.Book implements net.kyori.adventure.util.Buildable,net.kyori.examination.Examinable {
+  @native
+  command book arga:net.kyori.adventure.text.Component argb:net.kyori.adventure.text.Component argc:java.util.Collection -> net.kyori.adventure.inventory.Book {}
+  @native
+  command book arga:net.kyori.adventure.text.Component argb:net.kyori.adventure.text.Component argc:array<Unknown<net.kyori.adventure.text.Component>> -> net.kyori.adventure.inventory.Book {}
+  @native
+  command builder  -> net.kyori.adventure.inventory.Book__inacc__Builder {}
+  @native
+  command title  -> net.kyori.adventure.text.Component {}
+  @native
+  command title arga:net.kyori.adventure.text.Component -> net.kyori.adventure.inventory.Book {}
+  @native
+  command author  -> net.kyori.adventure.text.Component {}
+  @native
+  command author arga:net.kyori.adventure.text.Component -> net.kyori.adventure.inventory.Book {}
+  @native
+  command pages  -> java.util.List {}
+  @native
+  command pages arga:array<Unknown<net.kyori.adventure.text.Component>> -> net.kyori.adventure.inventory.Book {}
+  @native
+  command pages arga:java.util.List -> net.kyori.adventure.inventory.Book {}
+  @native
+  command toBuilder  -> net.kyori.adventure.inventory.Book__inacc__Builder {}
+  @native
+  command toBuilder  -> net.kyori.adventure.util.Buildable__inacc__Builder {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.inventory.BookImpl__inacc__BuilderImpl implements net.kyori.adventure.inventory.Book__inacc__Builder {
+  @native
+  let title: net.kyori.adventure.text.Component = 0
+  @native
+  let author: net.kyori.adventure.text.Component = 0
+  @native
+  let pages: java.util.List = 0
+  @native
+  command construct  -> void {}
+  @native
+  command title arga:net.kyori.adventure.text.Component -> net.kyori.adventure.inventory.Book__inacc__Builder {}
+  @native
+  command author arga:net.kyori.adventure.text.Component -> net.kyori.adventure.inventory.Book__inacc__Builder {}
+  @native
+  command addPage arga:net.kyori.adventure.text.Component -> net.kyori.adventure.inventory.Book__inacc__Builder {}
+  @native
+  command pages arga:java.util.Collection -> net.kyori.adventure.inventory.Book__inacc__Builder {}
+  @native
+  command pages arga:array<Unknown<net.kyori.adventure.text.Component>> -> net.kyori.adventure.inventory.Book__inacc__Builder {}
+  @native
+  command build  -> net.kyori.adventure.inventory.Book {}
+  @native
+  command build  -> java.lang.Object {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.inventory.BookImpl implements net.kyori.adventure.inventory.Book {
+  @native
+  let title: net.kyori.adventure.text.Component = 0
+  @native
+  let author: net.kyori.adventure.text.Component = 0
+  @native
+  let pages: java.util.List = 0
+  @native
+  command construct arga:net.kyori.adventure.text.Component argb:net.kyori.adventure.text.Component argc:java.util.List -> void {}
+  @native
+  command title  -> net.kyori.adventure.text.Component {}
+  @native
+  command title arga:net.kyori.adventure.text.Component -> net.kyori.adventure.inventory.Book {}
+  @native
+  command author  -> net.kyori.adventure.text.Component {}
+  @native
+  command author arga:net.kyori.adventure.text.Component -> net.kyori.adventure.inventory.Book {}
+  @native
+  command pages  -> java.util.List {}
+  @native
+  command pages arga:java.util.List -> net.kyori.adventure.inventory.Book {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command toString  -> string {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.nbt.api.BinaryTagHolder {
+  @native
+  command encode arga:java.lang.Object argb:net.kyori.adventure.util.Codec -> net.kyori.adventure.nbt.api.BinaryTagHolder {}
+  @native
+  command of arga:string -> net.kyori.adventure.nbt.api.BinaryTagHolder {}
+  @native
+  command string  -> string {}
+  @native
+  command get arga:net.kyori.adventure.util.Codec -> java.lang.Object {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.nbt.api.BinaryTagHolderImpl implements net.kyori.adventure.nbt.api.BinaryTagHolder {
+  @native
+  let string: string = 0
+  @native
+  command construct arga:string -> void {}
+  @native
+  command string  -> string {}
+  @native
+  command get arga:net.kyori.adventure.util.Codec -> java.lang.Object {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command toString  -> string {}
+}
+
+//access: 32
+@native
+class net.kyori.adventure.sound.Sound__inacc__1 extends net.kyori.adventure.sound.SoundImpl {
+  @native
+  let val__inacc__name: net.kyori.adventure.key.Key = 0
+  @native
+  command construct arga:net.kyori.adventure.sound.Sound__inacc__Source argb:net.kyori.adventure.key.Key -> void {}
+  @native
+  command name  -> net.kyori.adventure.key.Key {}
+}
+
+//access: 32
+@native
+class net.kyori.adventure.sound.Sound__inacc__2 extends net.kyori.adventure.sound.SoundImpl {
+  @native
+  let val__inacc__type: java.util.function.Supplier = 0
+  @native
+  command construct arga:net.kyori.adventure.sound.Sound__inacc__Source argb:java.util.function.Supplier -> void {}
+  @native
+  command name  -> net.kyori.adventure.key.Key {}
+}
+
+//access: 16433
+@native
+class net.kyori.adventure.sound.Sound__inacc__Source extends java.lang.Enum {
+  @native
+  let MASTER: net.kyori.adventure.sound.Sound__inacc__Source = 0
+  @native
+  let MUSIC: net.kyori.adventure.sound.Sound__inacc__Source = 0
+  @native
+  let RECORD: net.kyori.adventure.sound.Sound__inacc__Source = 0
+  @native
+  let WEATHER: net.kyori.adventure.sound.Sound__inacc__Source = 0
+  @native
+  let BLOCK: net.kyori.adventure.sound.Sound__inacc__Source = 0
+  @native
+  let HOSTILE: net.kyori.adventure.sound.Sound__inacc__Source = 0
+  @native
+  let NEUTRAL: net.kyori.adventure.sound.Sound__inacc__Source = 0
+  @native
+  let PLAYER: net.kyori.adventure.sound.Sound__inacc__Source = 0
+  @native
+  let AMBIENT: net.kyori.adventure.sound.Sound__inacc__Source = 0
+  @native
+  let VOICE: net.kyori.adventure.sound.Sound__inacc__Source = 0
+  @native
+  let NAMES: net.kyori.adventure.util.Index = 0
+  @native
+  let name: string = 0
+  @native
+  let __inacc__VALUES: array<Unknown<net.kyori.adventure.sound.Sound__inacc__Source>> = 0
+  @native
+  command values  -> array<Unknown<net.kyori.adventure.sound.Sound__inacc__Source>> {}
+  @native
+  command valueOf arga:string -> net.kyori.adventure.sound.Sound__inacc__Source {}
+  @native
+  command construct arga:string argb:jvm_integer argc:string -> void {}
+  @native
+  command lambda__inacc__static__inacc__0 arga:net.kyori.adventure.sound.Sound__inacc__Source -> string {}
+  @native
+  command __inacc__values  -> array<Unknown<net.kyori.adventure.sound.Sound__inacc__Source>> {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.sound.Sound__inacc__Type implements net.kyori.adventure.key.Keyed {
+  @native
+  command key  -> net.kyori.adventure.key.Key {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.sound.Sound implements net.kyori.examination.Examinable {
+  @native
+  command sound arga:net.kyori.adventure.key.Key argb:net.kyori.adventure.sound.Sound__inacc__Source -> net.kyori.adventure.sound.Sound {}
+  @native
+  command sound arga:net.kyori.adventure.sound.Sound__inacc__Type argb:net.kyori.adventure.sound.Sound__inacc__Source -> net.kyori.adventure.sound.Sound {}
+  @native
+  command sound arga:java.util.function.Supplier argb:net.kyori.adventure.sound.Sound__inacc__Source -> net.kyori.adventure.sound.Sound {}
+  @native
+  command name  -> net.kyori.adventure.key.Key {}
+  @native
+  command source  -> net.kyori.adventure.sound.Sound__inacc__Source {}
+  @native
+  command volume  -> Unknown<F> {}
+  @native
+  command pitch  -> Unknown<F> {}
+}
+
+//access: 1056
+@native
+class net.kyori.adventure.sound.SoundImpl implements net.kyori.adventure.sound.Sound {
+  @native
+  let source: net.kyori.adventure.sound.Sound__inacc__Source = 0
+  @native
+  let volume: Unknown<F> = 0
+  @native
+  let pitch: Unknown<F> = 0
+  @native
+  command construct arga:net.kyori.adventure.sound.Sound__inacc__Source -> void {}
+  @native
+  command source  -> net.kyori.adventure.sound.Sound__inacc__Source {}
+  @native
+  command volume  -> Unknown<F> {}
+  @native
+  command pitch  -> Unknown<F> {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command toString  -> string {}
+}
+
+//access: 32
+@native
+class net.kyori.adventure.sound.SoundStop__inacc__1 extends net.kyori.adventure.sound.SoundStopImpl {
+  @native
+  let val__inacc__sound: net.kyori.adventure.key.Key = 0
+  @native
+  command construct arga:net.kyori.adventure.sound.Sound__inacc__Source argb:net.kyori.adventure.key.Key -> void {}
+  @native
+  command sound  -> net.kyori.adventure.key.Key {}
+}
+
+//access: 32
+@native
+class net.kyori.adventure.sound.SoundStop__inacc__2 extends net.kyori.adventure.sound.SoundStopImpl {
+  @native
+  let val__inacc__sound: net.kyori.adventure.sound.Sound__inacc__Type = 0
+  @native
+  command construct arga:net.kyori.adventure.sound.Sound__inacc__Source argb:net.kyori.adventure.sound.Sound__inacc__Type -> void {}
+  @native
+  command sound  -> net.kyori.adventure.key.Key {}
+}
+
+//access: 32
+@native
+class net.kyori.adventure.sound.SoundStop__inacc__3 extends net.kyori.adventure.sound.SoundStopImpl {
+  @native
+  let val__inacc__sound: java.util.function.Supplier = 0
+  @native
+  command construct arga:net.kyori.adventure.sound.Sound__inacc__Source argb:java.util.function.Supplier -> void {}
+  @native
+  command sound  -> net.kyori.adventure.key.Key {}
+}
+
+//access: 32
+@native
+class net.kyori.adventure.sound.SoundStop__inacc__4 extends net.kyori.adventure.sound.SoundStopImpl {
+  @native
+  command construct arga:net.kyori.adventure.sound.Sound__inacc__Source -> void {}
+  @native
+  command sound  -> net.kyori.adventure.key.Key {}
+}
+
+//access: 32
+@native
+class net.kyori.adventure.sound.SoundStop__inacc__5 extends net.kyori.adventure.sound.SoundStopImpl {
+  @native
+  let val__inacc__sound: net.kyori.adventure.key.Key = 0
+  @native
+  command construct arga:net.kyori.adventure.sound.Sound__inacc__Source argb:net.kyori.adventure.key.Key -> void {}
+  @native
+  command sound  -> net.kyori.adventure.key.Key {}
+}
+
+//access: 32
+@native
+class net.kyori.adventure.sound.SoundStop__inacc__6 extends net.kyori.adventure.sound.SoundStopImpl {
+  @native
+  let val__inacc__sound: java.util.function.Supplier = 0
+  @native
+  command construct arga:net.kyori.adventure.sound.Sound__inacc__Source argb:java.util.function.Supplier -> void {}
+  @native
+  command sound  -> net.kyori.adventure.key.Key {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.sound.SoundStop implements net.kyori.examination.Examinable {
+  @native
+  command all  -> net.kyori.adventure.sound.SoundStop {}
+  @native
+  command named arga:net.kyori.adventure.key.Key -> net.kyori.adventure.sound.SoundStop {}
+  @native
+  command named arga:net.kyori.adventure.sound.Sound__inacc__Type -> net.kyori.adventure.sound.SoundStop {}
+  @native
+  command named arga:java.util.function.Supplier -> net.kyori.adventure.sound.SoundStop {}
+  @native
+  command source arga:net.kyori.adventure.sound.Sound__inacc__Source -> net.kyori.adventure.sound.SoundStop {}
+  @native
+  command namedOnSource arga:net.kyori.adventure.key.Key argb:net.kyori.adventure.sound.Sound__inacc__Source -> net.kyori.adventure.sound.SoundStop {}
+  @native
+  command namedOnSource arga:net.kyori.adventure.sound.Sound__inacc__Type argb:net.kyori.adventure.sound.Sound__inacc__Source -> net.kyori.adventure.sound.SoundStop {}
+  @native
+  command namedOnSource arga:java.util.function.Supplier argb:net.kyori.adventure.sound.Sound__inacc__Source -> net.kyori.adventure.sound.SoundStop {}
+  @native
+  command sound  -> net.kyori.adventure.key.Key {}
+  @native
+  command source  -> net.kyori.adventure.sound.Sound__inacc__Source {}
+}
+
+//access: 32
+@native
+class net.kyori.adventure.sound.SoundStopImpl__inacc__1 extends net.kyori.adventure.sound.SoundStopImpl {
+  @native
+  command construct arga:net.kyori.adventure.sound.Sound__inacc__Source -> void {}
+  @native
+  command sound  -> net.kyori.adventure.key.Key {}
+}
+
+//access: 1056
+@native
+class net.kyori.adventure.sound.SoundStopImpl implements net.kyori.adventure.sound.SoundStop {
+  @native
+  let ALL: net.kyori.adventure.sound.SoundStop = 0
+  @native
+  let source: net.kyori.adventure.sound.Sound__inacc__Source = 0
+  @native
+  command construct arga:net.kyori.adventure.sound.Sound__inacc__Source -> void {}
+  @native
+  command source  -> net.kyori.adventure.sound.Sound__inacc__Source {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command toString  -> string {}
+}
+
+//access: 1057
+@native
+class net.kyori.adventure.text.AbstractComponent implements net.kyori.adventure.text.Component {
+  @native
+  let children: java.util.List = 0
+  @native
+  let style: net.kyori.adventure.text.format.Style = 0
+  @native
+	@static
+  command asComponents arga:java.util.List -> java.util.List {}
+  @native
+	@static
+  command asComponents arga:java.util.List -> java.util.List {}
+  @native
+	@static
+  command addOne arga:java.util.List argb:java.lang.Object -> java.util.List {}
+  @native
+  command construct arga:java.util.List argb:net.kyori.adventure.text.format.Style -> void {}
+  @native
+  command children  -> java.util.List {}
+  @native
+  command style  -> net.kyori.adventure.text.format.Style {}
+  @native
+  command replaceText arga:java.util.function.Consumer -> net.kyori.adventure.text.Component {}
+  @native
+  command replaceText arga:net.kyori.adventure.text.TextReplacementConfig -> net.kyori.adventure.text.Component {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command toString  -> string {}
+}
+
+//access: 1056
+@native
+class net.kyori.adventure.text.AbstractComponentBuilder implements net.kyori.adventure.text.ComponentBuilder {
+  @native
+  let children: java.util.List = 0
+  @native
+  let style: net.kyori.adventure.text.format.Style = 0
+  @native
+  let styleBuilder: net.kyori.adventure.text.format.Style__inacc__Builder = 0
+  @native
+  command construct  -> void {}
+  @native
+  command construct arga:net.kyori.adventure.text.BuildableComponent -> void {}
+  @native
+  command append arga:net.kyori.adventure.text.Component -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command append arga:array<Unknown<net.kyori.adventure.text.Component>> -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command append arga:array<Unknown<net.kyori.adventure.text.ComponentLike>> -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command append arga:java.lang.Iterable -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command prepareChildren  -> void {}
+  @native
+  command applyDeep arga:java.util.function.Consumer -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command mapChildren arga:java.util.function.Function -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command mapChildrenDeep arga:java.util.function.Function -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command style arga:java.util.function.Consumer -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command font arga:net.kyori.adventure.key.Key -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command color arga:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command colorIfAbsent arga:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command decoration arga:net.kyori.adventure.text.format.TextDecoration argb:net.kyori.adventure.text.format.TextDecoration__inacc__State -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command clickEvent arga:net.kyori.adventure.text.event.ClickEvent -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command hoverEvent arga:net.kyori.adventure.text.event.HoverEventSource -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command insertion arga:string -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command mergeStyle arga:net.kyori.adventure.text.Component argb:java.util.Set -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command resetStyle  -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command styleBuilder  -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command hasStyle  -> boolean {}
+  @native
+  command buildStyle  -> net.kyori.adventure.text.format.Style {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.BlockNBTComponent__inacc__Builder implements net.kyori.adventure.text.NBTComponentBuilder {
+  @native
+  command pos arga:net.kyori.adventure.text.BlockNBTComponent__inacc__Pos -> net.kyori.adventure.text.BlockNBTComponent__inacc__Builder {}
+  @native
+  command localPos arga:number argb:number -> net.kyori.adventure.text.BlockNBTComponent__inacc__Builder {}
+  @native
+  command worldPos arga:net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate argb:net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate argc:net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate -> net.kyori.adventure.text.BlockNBTComponent__inacc__Builder {}
+  @native
+  command absoluteWorldPos arga:jvm_integer argb:jvm_integer -> net.kyori.adventure.text.BlockNBTComponent__inacc__Builder {}
+  @native
+  command relativeWorldPos arga:jvm_integer argb:jvm_integer -> net.kyori.adventure.text.BlockNBTComponent__inacc__Builder {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.BlockNBTComponent__inacc__LocalPos implements net.kyori.adventure.text.BlockNBTComponent__inacc__Pos {
+  @native
+  command of arga:number argb:number -> net.kyori.adventure.text.BlockNBTComponent__inacc__LocalPos {}
+  @native
+  command left  -> number {}
+  @native
+  command up  -> number {}
+  @native
+  command forwards  -> number {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.BlockNBTComponent__inacc__Pos implements net.kyori.examination.Examinable {
+  @native
+  command fromString arga:string -> net.kyori.adventure.text.BlockNBTComponent__inacc__Pos {}
+  @native
+  command asString  -> string {}
+}
+
+//access: 16433
+@native
+class net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate__inacc__Type extends java.lang.Enum {
+  @native
+  let ABSOLUTE: net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate__inacc__Type = 0
+  @native
+  let RELATIVE: net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate__inacc__Type = 0
+  @native
+  let __inacc__VALUES: array<Unknown<net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate__inacc__Type>> = 0
+  @native
+  command values  -> array<Unknown<net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate__inacc__Type>> {}
+  @native
+  command valueOf arga:string -> net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate__inacc__Type {}
+  @native
+  command construct arga:string -> void {}
+  @native
+  command __inacc__values  -> array<Unknown<net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate__inacc__Type>> {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate implements net.kyori.examination.Examinable {
+  @native
+  command absolute  -> net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate {}
+  @native
+  command relative  -> net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate {}
+  @native
+  command of arga:jvm_integer argb:net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate__inacc__Type -> net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate {}
+  @native
+  command value  -> jvm_integer {}
+  @native
+  command type  -> net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate__inacc__Type {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos implements net.kyori.adventure.text.BlockNBTComponent__inacc__Pos {
+  @native
+  command of arga:net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate argb:net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate argc:net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate -> net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos {}
+  @native
+  command x  -> net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate {}
+  @native
+  command y  -> net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate {}
+  @native
+  command z  -> net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.BlockNBTComponent implements net.kyori.adventure.text.NBTComponent,net.kyori.adventure.text.ScopedComponent {
+  @native
+  command pos  -> net.kyori.adventure.text.BlockNBTComponent__inacc__Pos {}
+  @native
+  command pos arga:net.kyori.adventure.text.BlockNBTComponent__inacc__Pos -> net.kyori.adventure.text.BlockNBTComponent {}
+  @native
+  command localPos arga:number argb:number -> net.kyori.adventure.text.BlockNBTComponent {}
+  @native
+  command worldPos arga:net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate argb:net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate argc:net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate -> net.kyori.adventure.text.BlockNBTComponent {}
+  @native
+  command absoluteWorldPos arga:jvm_integer argb:jvm_integer -> net.kyori.adventure.text.BlockNBTComponent {}
+  @native
+  command relativeWorldPos arga:jvm_integer argb:jvm_integer -> net.kyori.adventure.text.BlockNBTComponent {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.BlockNBTComponentImpl__inacc__BuilderImpl extends net.kyori.adventure.text.NBTComponentImpl__inacc__BuilderImpl implements net.kyori.adventure.text.BlockNBTComponent__inacc__Builder {
+  @native
+  let pos: net.kyori.adventure.text.BlockNBTComponent__inacc__Pos = 0
+  @native
+  command construct  -> void {}
+  @native
+  command construct arga:net.kyori.adventure.text.BlockNBTComponent -> void {}
+  @native
+  command pos arga:net.kyori.adventure.text.BlockNBTComponent__inacc__Pos -> net.kyori.adventure.text.BlockNBTComponent__inacc__Builder {}
+  @native
+  command build  -> net.kyori.adventure.text.BlockNBTComponent {}
+  @native
+  command build  -> net.kyori.adventure.text.BuildableComponent {}
+  @native
+  command build  -> java.lang.Object {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.BlockNBTComponentImpl__inacc__LocalPosImpl implements net.kyori.adventure.text.BlockNBTComponent__inacc__LocalPos {
+  @native
+  let left: number = 0
+  @native
+  let up: number = 0
+  @native
+  let forwards: number = 0
+  @native
+  command construct arga:number argb:number -> void {}
+  @native
+  command left  -> number {}
+  @native
+  command up  -> number {}
+  @native
+  command forwards  -> number {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command toString  -> string {}
+  @native
+  command asString  -> string {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.BlockNBTComponentImpl__inacc__Tokens {
+  @native
+  let LOCAL_PATTERN: java.util.regex.Pattern = 0
+  @native
+  let WORLD_PATTERN: java.util.regex.Pattern = 0
+  @native
+  let LOCAL_SYMBOL: string = 0
+  @native
+  let RELATIVE_SYMBOL: string = 0
+  @native
+  let ABSOLUTE_SYMBOL: string = 0
+  @native
+  command construct  -> void {}
+  @native
+	@static
+  command deserializeCoordinate arga:string argb:string -> net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate {}
+  @native
+	@static
+  command serializeLocal  -> string {}
+  @native
+	@static
+  command serializeCoordinate arga:net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate -> string {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.BlockNBTComponentImpl__inacc__WorldPosImpl__inacc__CoordinateImpl implements net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate {
+  @native
+  let value: jvm_integer = 0
+  @native
+  let type: net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate__inacc__Type = 0
+  @native
+  command construct arga:jvm_integer argb:net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate__inacc__Type -> void {}
+  @native
+  command value  -> jvm_integer {}
+  @native
+  command type  -> net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate__inacc__Type {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command toString  -> string {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.BlockNBTComponentImpl__inacc__WorldPosImpl implements net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos {
+  @native
+  let x: net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate = 0
+  @native
+  let y: net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate = 0
+  @native
+  let z: net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate = 0
+  @native
+  command construct arga:net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate argb:net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate argc:net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate -> void {}
+  @native
+  command x  -> net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate {}
+  @native
+  command y  -> net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate {}
+  @native
+  command z  -> net.kyori.adventure.text.BlockNBTComponent__inacc__WorldPos__inacc__Coordinate {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command toString  -> string {}
+  @native
+  command asString  -> string {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.BlockNBTComponentImpl extends net.kyori.adventure.text.NBTComponentImpl implements net.kyori.adventure.text.BlockNBTComponent {
+  @native
+  let pos: net.kyori.adventure.text.BlockNBTComponent__inacc__Pos = 0
+  @native
+  command construct arga:java.util.List argb:net.kyori.adventure.text.format.Style argc:string argd:boolean arge:net.kyori.adventure.text.BlockNBTComponent__inacc__Pos -> void {}
+  @native
+  command nbtPath arga:string -> net.kyori.adventure.text.BlockNBTComponent {}
+  @native
+  command interpret  -> net.kyori.adventure.text.BlockNBTComponent {}
+  @native
+  command pos  -> net.kyori.adventure.text.BlockNBTComponent__inacc__Pos {}
+  @native
+  command pos arga:net.kyori.adventure.text.BlockNBTComponent__inacc__Pos -> net.kyori.adventure.text.BlockNBTComponent {}
+  @native
+  command children arga:java.util.List -> net.kyori.adventure.text.BlockNBTComponent {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.BlockNBTComponent {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command toBuilder  -> net.kyori.adventure.text.BlockNBTComponent__inacc__Builder {}
+  @native
+  command interpret  -> net.kyori.adventure.text.NBTComponent {}
+  @native
+  command nbtPath arga:string -> net.kyori.adventure.text.NBTComponent {}
+  @native
+  command toBuilder  -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command toBuilder  -> net.kyori.adventure.util.Buildable__inacc__Builder {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.Component {}
+  @native
+  command children arga:java.util.List -> net.kyori.adventure.text.Component {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.BuildableComponent implements net.kyori.adventure.util.Buildable,net.kyori.adventure.text.Component {
+  @native
+  command toBuilder  -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command toBuilder  -> net.kyori.adventure.util.Buildable__inacc__Builder {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.Component implements net.kyori.adventure.text.ComponentBuilderApplicable,net.kyori.adventure.text.ComponentLike,net.kyori.examination.Examinable,net.kyori.adventure.text.event.HoverEventSource {
+  @native
+  command empty  -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command newline  -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command space  -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command join arga:net.kyori.adventure.text.ComponentLike argb:array<Unknown<net.kyori.adventure.text.ComponentLike>> -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command join arga:net.kyori.adventure.text.ComponentLike argb:java.lang.Iterable -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command blockNBT  -> net.kyori.adventure.text.BlockNBTComponent__inacc__Builder {}
+  @native
+  command blockNBT arga:java.util.function.Consumer -> net.kyori.adventure.text.BlockNBTComponent {}
+  @native
+  command blockNBT arga:string argb:net.kyori.adventure.text.BlockNBTComponent__inacc__Pos -> net.kyori.adventure.text.BlockNBTComponent {}
+  @native
+  command blockNBT arga:string argb:boolean argc:net.kyori.adventure.text.BlockNBTComponent__inacc__Pos -> net.kyori.adventure.text.BlockNBTComponent {}
+  @native
+  command entityNBT  -> net.kyori.adventure.text.EntityNBTComponent__inacc__Builder {}
+  @native
+  command entityNBT arga:java.util.function.Consumer -> net.kyori.adventure.text.EntityNBTComponent {}
+  @native
+  command entityNBT arga:string argb:string -> net.kyori.adventure.text.EntityNBTComponent {}
+  @native
+  command keybind  -> net.kyori.adventure.text.KeybindComponent__inacc__Builder {}
+  @native
+  command keybind arga:java.util.function.Consumer -> net.kyori.adventure.text.KeybindComponent {}
+  @native
+  command keybind arga:string -> net.kyori.adventure.text.KeybindComponent {}
+  @native
+  command keybind arga:string argb:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.KeybindComponent {}
+  @native
+  command keybind arga:string argb:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.KeybindComponent {}
+  @native
+  command keybind arga:string argb:net.kyori.adventure.text.format.TextColor argc:array<Unknown<net.kyori.adventure.text.format.TextDecoration>> -> net.kyori.adventure.text.KeybindComponent {}
+  @native
+  command keybind arga:string argb:net.kyori.adventure.text.format.TextColor argc:java.util.Set -> net.kyori.adventure.text.KeybindComponent {}
+  @native
+  command score  -> net.kyori.adventure.text.ScoreComponent__inacc__Builder {}
+  @native
+  command score arga:java.util.function.Consumer -> net.kyori.adventure.text.ScoreComponent {}
+  @native
+  command score arga:string argb:string -> net.kyori.adventure.text.ScoreComponent {}
+  @native
+  command score arga:string argb:string argc:string -> net.kyori.adventure.text.ScoreComponent {}
+  @native
+  command selector  -> net.kyori.adventure.text.SelectorComponent__inacc__Builder {}
+  @native
+  command selector arga:java.util.function.Consumer -> net.kyori.adventure.text.SelectorComponent {}
+  @native
+  command selector arga:string -> net.kyori.adventure.text.SelectorComponent {}
+  @native
+  command storageNBT  -> net.kyori.adventure.text.StorageNBTComponent__inacc__Builder {}
+  @native
+  command storageNBT arga:java.util.function.Consumer -> net.kyori.adventure.text.StorageNBTComponent {}
+  @native
+  command storageNBT arga:string argb:net.kyori.adventure.key.Key -> net.kyori.adventure.text.StorageNBTComponent {}
+  @native
+  command storageNBT arga:string argb:boolean argc:net.kyori.adventure.key.Key -> net.kyori.adventure.text.StorageNBTComponent {}
+  @native
+  command text  -> net.kyori.adventure.text.TextComponent__inacc__Builder {}
+  @native
+  command text arga:java.util.function.Consumer -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:string -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:string argb:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:string argb:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:string argb:net.kyori.adventure.text.format.TextColor argc:array<Unknown<net.kyori.adventure.text.format.TextDecoration>> -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:string argb:net.kyori.adventure.text.format.TextColor argc:java.util.Set -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text  -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:boolean argb:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:boolean argb:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:boolean argb:net.kyori.adventure.text.format.TextColor argc:array<Unknown<net.kyori.adventure.text.format.TextDecoration>> -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:boolean argb:net.kyori.adventure.text.format.TextColor argc:java.util.Set -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text  -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:net.kyori.adventure.text.format.TextColor argb:array<Unknown<net.kyori.adventure.text.format.TextDecoration>> -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:net.kyori.adventure.text.format.TextColor argb:java.util.Set -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text  -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:number argb:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:number argb:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:number argb:net.kyori.adventure.text.format.TextColor argc:array<Unknown<net.kyori.adventure.text.format.TextDecoration>> -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:number argb:net.kyori.adventure.text.format.TextColor argc:java.util.Set -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text  -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:net.kyori.adventure.text.format.TextColor argb:array<Unknown<net.kyori.adventure.text.format.TextDecoration>> -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:net.kyori.adventure.text.format.TextColor argb:java.util.Set -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text  -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:jvm_integer argb:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:jvm_integer argb:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:jvm_integer argb:net.kyori.adventure.text.format.TextColor argc:array<Unknown<net.kyori.adventure.text.format.TextDecoration>> -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:jvm_integer argb:net.kyori.adventure.text.format.TextColor argc:java.util.Set -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text  -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:net.kyori.adventure.text.format.TextColor argb:array<Unknown<net.kyori.adventure.text.format.TextDecoration>> -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command text arga:net.kyori.adventure.text.format.TextColor argb:java.util.Set -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command translatable  -> net.kyori.adventure.text.TranslatableComponent__inacc__Builder {}
+  @native
+  command translatable arga:java.util.function.Consumer -> net.kyori.adventure.text.TranslatableComponent {}
+  @native
+  command translatable arga:string -> net.kyori.adventure.text.TranslatableComponent {}
+  @native
+  command translatable arga:string argb:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.TranslatableComponent {}
+  @native
+  command translatable arga:string argb:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.TranslatableComponent {}
+  @native
+  command translatable arga:string argb:net.kyori.adventure.text.format.TextColor argc:array<Unknown<net.kyori.adventure.text.format.TextDecoration>> -> net.kyori.adventure.text.TranslatableComponent {}
+  @native
+  command translatable arga:string argb:net.kyori.adventure.text.format.TextColor argc:java.util.Set -> net.kyori.adventure.text.TranslatableComponent {}
+  @native
+  command translatable arga:string argb:array<Unknown<net.kyori.adventure.text.ComponentLike>> -> net.kyori.adventure.text.TranslatableComponent {}
+  @native
+  command translatable arga:string argb:net.kyori.adventure.text.format.Style argc:array<Unknown<net.kyori.adventure.text.ComponentLike>> -> net.kyori.adventure.text.TranslatableComponent {}
+  @native
+  command translatable arga:string argb:net.kyori.adventure.text.format.TextColor argc:array<Unknown<net.kyori.adventure.text.ComponentLike>> -> net.kyori.adventure.text.TranslatableComponent {}
+  @native
+  command translatable arga:string argb:net.kyori.adventure.text.format.TextColor argc:java.util.Set argd:array<Unknown<net.kyori.adventure.text.ComponentLike>> -> net.kyori.adventure.text.TranslatableComponent {}
+  @native
+  command translatable arga:string argb:java.util.List -> net.kyori.adventure.text.TranslatableComponent {}
+  @native
+  command translatable arga:string argb:net.kyori.adventure.text.format.Style argc:java.util.List -> net.kyori.adventure.text.TranslatableComponent {}
+  @native
+  command translatable arga:string argb:net.kyori.adventure.text.format.TextColor argc:java.util.List -> net.kyori.adventure.text.TranslatableComponent {}
+  @native
+  command translatable arga:string argb:net.kyori.adventure.text.format.TextColor argc:java.util.Set argd:java.util.List -> net.kyori.adventure.text.TranslatableComponent {}
+  @native
+  command children  -> java.util.List {}
+  @native
+  command children arga:java.util.List -> net.kyori.adventure.text.Component {}
+  @native
+  command contains arga:net.kyori.adventure.text.Component -> boolean {}
+  @native
+  command detectCycle arga:net.kyori.adventure.text.Component -> void {}
+  @native
+  command append arga:net.kyori.adventure.text.Component -> net.kyori.adventure.text.Component {}
+  @native
+  command append arga:net.kyori.adventure.text.ComponentLike -> net.kyori.adventure.text.Component {}
+  @native
+  command append arga:net.kyori.adventure.text.ComponentBuilder -> net.kyori.adventure.text.Component {}
+  @native
+  command style  -> net.kyori.adventure.text.format.Style {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.Component {}
+  @native
+  command style arga:java.util.function.Consumer -> net.kyori.adventure.text.Component {}
+  @native
+  command style arga:java.util.function.Consumer argb:net.kyori.adventure.text.format.Style__inacc__Merge__inacc__Strategy -> net.kyori.adventure.text.Component {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style__inacc__Builder -> net.kyori.adventure.text.Component {}
+  @native
+  command mergeStyle arga:net.kyori.adventure.text.Component -> net.kyori.adventure.text.Component {}
+  @native
+  command mergeStyle arga:net.kyori.adventure.text.Component argb:array<Unknown<net.kyori.adventure.text.format.Style__inacc__Merge>> -> net.kyori.adventure.text.Component {}
+  @native
+  command mergeStyle arga:net.kyori.adventure.text.Component argb:java.util.Set -> net.kyori.adventure.text.Component {}
+  @native
+  command color  -> net.kyori.adventure.text.format.TextColor {}
+  @native
+  command color arga:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.Component {}
+  @native
+  command colorIfAbsent arga:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.Component {}
+  @native
+  command hasDecoration arga:net.kyori.adventure.text.format.TextDecoration -> boolean {}
+  @native
+  command decorate arga:net.kyori.adventure.text.format.TextDecoration -> net.kyori.adventure.text.Component {}
+  @native
+  command decoration arga:net.kyori.adventure.text.format.TextDecoration -> net.kyori.adventure.text.format.TextDecoration__inacc__State {}
+  @native
+  command decoration arga:net.kyori.adventure.text.format.TextDecoration -> net.kyori.adventure.text.Component {}
+  @native
+  command decoration arga:net.kyori.adventure.text.format.TextDecoration argb:net.kyori.adventure.text.format.TextDecoration__inacc__State -> net.kyori.adventure.text.Component {}
+  @native
+  command decorations  -> java.util.Map {}
+  @native
+  command decorations arga:java.util.Map -> net.kyori.adventure.text.Component {}
+  @native
+  command clickEvent  -> net.kyori.adventure.text.event.ClickEvent {}
+  @native
+  command clickEvent arga:net.kyori.adventure.text.event.ClickEvent -> net.kyori.adventure.text.Component {}
+  @native
+  command hoverEvent  -> net.kyori.adventure.text.event.HoverEvent {}
+  @native
+  command hoverEvent arga:net.kyori.adventure.text.event.HoverEventSource -> net.kyori.adventure.text.Component {}
+  @native
+  command insertion  -> string {}
+  @native
+  command insertion arga:string -> net.kyori.adventure.text.Component {}
+  @native
+  command hasStyling  -> boolean {}
+  @native
+  command replaceText arga:java.util.function.Consumer -> net.kyori.adventure.text.Component {}
+  @native
+  command replaceText arga:net.kyori.adventure.text.TextReplacementConfig -> net.kyori.adventure.text.Component {}
+  @native
+  command replaceText arga:string argb:net.kyori.adventure.text.ComponentLike -> net.kyori.adventure.text.Component {}
+  @native
+  command replaceText arga:java.util.regex.Pattern argb:java.util.function.Function -> net.kyori.adventure.text.Component {}
+  @native
+  command replaceFirstText arga:string argb:net.kyori.adventure.text.ComponentLike -> net.kyori.adventure.text.Component {}
+  @native
+  command replaceFirstText arga:java.util.regex.Pattern argb:java.util.function.Function -> net.kyori.adventure.text.Component {}
+  @native
+  command replaceText arga:string argb:net.kyori.adventure.text.ComponentLike -> net.kyori.adventure.text.Component {}
+  @native
+  command replaceText arga:java.util.regex.Pattern argb:java.util.function.Function -> net.kyori.adventure.text.Component {}
+  @native
+  command replaceText arga:string argb:net.kyori.adventure.text.ComponentLike argc:net.kyori.adventure.util.IntFunction2 -> net.kyori.adventure.text.Component {}
+  @native
+  command replaceText arga:java.util.regex.Pattern argb:java.util.function.Function argc:net.kyori.adventure.util.IntFunction2 -> net.kyori.adventure.text.Component {}
+  @native
+  command componentBuilderApply arga:net.kyori.adventure.text.ComponentBuilder -> void {}
+  @native
+  command asComponent  -> net.kyori.adventure.text.Component {}
+  @native
+  command asHoverEvent arga:java.util.function.UnaryOperator -> net.kyori.adventure.text.event.HoverEvent {}
+  @native
+  command lambda__inacc__replaceText__inacc__7 arga:java.util.regex.Pattern argb:java.util.function.Function argc:net.kyori.adventure.util.IntFunction2 argd:net.kyori.adventure.text.TextReplacementConfig__inacc__Builder -> void {}
+  @native
+  command lambda__inacc__replaceText__inacc__6 arga:string argb:net.kyori.adventure.text.ComponentLike argc:net.kyori.adventure.util.IntFunction2 argd:net.kyori.adventure.text.TextReplacementConfig__inacc__Builder -> void {}
+  @native
+  command lambda__inacc__replaceText__inacc__5 arga:java.util.regex.Pattern argb:jvm_integer argc:java.util.function.Function argd:net.kyori.adventure.text.TextReplacementConfig__inacc__Builder -> void {}
+  @native
+  command lambda__inacc__replaceText__inacc__4 arga:string argb:jvm_integer argc:net.kyori.adventure.text.ComponentLike argd:net.kyori.adventure.text.TextReplacementConfig__inacc__Builder -> void {}
+  @native
+  command lambda__inacc__replaceFirstText__inacc__3 arga:java.util.regex.Pattern argb:java.util.function.Function argc:net.kyori.adventure.text.TextReplacementConfig__inacc__Builder -> void {}
+  @native
+  command lambda__inacc__replaceFirstText__inacc__2 arga:string argb:net.kyori.adventure.text.ComponentLike argc:net.kyori.adventure.text.TextReplacementConfig__inacc__Builder -> void {}
+  @native
+  command lambda__inacc__replaceText__inacc__1 arga:java.util.regex.Pattern argb:java.util.function.Function argc:net.kyori.adventure.text.TextReplacementConfig__inacc__Builder -> void {}
+  @native
+  command lambda__inacc__replaceText__inacc__0 arga:string argb:net.kyori.adventure.text.ComponentLike argc:net.kyori.adventure.text.TextReplacementConfig__inacc__Builder -> void {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.ComponentApplicable {
+  @native
+  command componentApply arga:net.kyori.adventure.text.Component -> net.kyori.adventure.text.Component {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.ComponentBuilder implements net.kyori.adventure.util.Buildable__inacc__Builder,net.kyori.adventure.text.ComponentBuilderApplicable,net.kyori.adventure.text.ComponentLike {
+  @native
+  command append arga:net.kyori.adventure.text.Component -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command append arga:net.kyori.adventure.text.ComponentLike -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command append arga:net.kyori.adventure.text.ComponentBuilder -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command append arga:array<Unknown<net.kyori.adventure.text.Component>> -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command append arga:array<Unknown<net.kyori.adventure.text.ComponentLike>> -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command append arga:java.lang.Iterable -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command apply arga:java.util.function.Consumer -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command applyDeep arga:java.util.function.Consumer -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command mapChildren arga:java.util.function.Function -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command mapChildrenDeep arga:java.util.function.Function -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command style arga:java.util.function.Consumer -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command font arga:net.kyori.adventure.key.Key -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command color arga:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command colorIfAbsent arga:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command decorations arga:java.util.Set -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command decorate arga:net.kyori.adventure.text.format.TextDecoration -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command decorate arga:array<Unknown<net.kyori.adventure.text.format.TextDecoration>> -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command decoration arga:net.kyori.adventure.text.format.TextDecoration -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command decoration arga:net.kyori.adventure.text.format.TextDecoration argb:net.kyori.adventure.text.format.TextDecoration__inacc__State -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command clickEvent arga:net.kyori.adventure.text.event.ClickEvent -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command hoverEvent arga:net.kyori.adventure.text.event.HoverEventSource -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command insertion arga:string -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command mergeStyle arga:net.kyori.adventure.text.Component -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command mergeStyle arga:net.kyori.adventure.text.Component argb:array<Unknown<net.kyori.adventure.text.format.Style__inacc__Merge>> -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command mergeStyle arga:net.kyori.adventure.text.Component argb:java.util.Set -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command resetStyle  -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command build  -> net.kyori.adventure.text.BuildableComponent {}
+  @native
+  command applicableApply arga:net.kyori.adventure.text.ComponentBuilderApplicable -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command componentBuilderApply arga:net.kyori.adventure.text.ComponentBuilder -> void {}
+  @native
+  command asComponent  -> net.kyori.adventure.text.Component {}
+  @native
+  command build  -> java.lang.Object {}
+  @native
+  command lambda__inacc__decorations__inacc__0 arga:net.kyori.adventure.text.format.TextDecoration__inacc__State argb:net.kyori.adventure.text.format.TextDecoration -> void {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.ComponentBuilderApplicable {
+  @native
+  command componentBuilderApply arga:net.kyori.adventure.text.ComponentBuilder -> void {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.ComponentLike {
+  @native
+  command asComponent  -> net.kyori.adventure.text.Component {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.EntityNBTComponent__inacc__Builder implements net.kyori.adventure.text.NBTComponentBuilder {
+  @native
+  command selector arga:string -> net.kyori.adventure.text.EntityNBTComponent__inacc__Builder {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.EntityNBTComponent implements net.kyori.adventure.text.NBTComponent,net.kyori.adventure.text.ScopedComponent {
+  @native
+  command selector  -> string {}
+  @native
+  command selector arga:string -> net.kyori.adventure.text.EntityNBTComponent {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.EntityNBTComponentImpl__inacc__BuilderImpl extends net.kyori.adventure.text.NBTComponentImpl__inacc__BuilderImpl implements net.kyori.adventure.text.EntityNBTComponent__inacc__Builder {
+  @native
+  let selector: string = 0
+  @native
+  command construct  -> void {}
+  @native
+  command construct arga:net.kyori.adventure.text.EntityNBTComponent -> void {}
+  @native
+  command selector arga:string -> net.kyori.adventure.text.EntityNBTComponent__inacc__Builder {}
+  @native
+  command build  -> net.kyori.adventure.text.EntityNBTComponent {}
+  @native
+  command build  -> net.kyori.adventure.text.BuildableComponent {}
+  @native
+  command build  -> java.lang.Object {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.EntityNBTComponentImpl extends net.kyori.adventure.text.NBTComponentImpl implements net.kyori.adventure.text.EntityNBTComponent {
+  @native
+  let selector: string = 0
+  @native
+  command construct arga:java.util.List argb:net.kyori.adventure.text.format.Style argc:string argd:boolean arge:string -> void {}
+  @native
+  command nbtPath arga:string -> net.kyori.adventure.text.EntityNBTComponent {}
+  @native
+  command interpret  -> net.kyori.adventure.text.EntityNBTComponent {}
+  @native
+  command selector  -> string {}
+  @native
+  command selector arga:string -> net.kyori.adventure.text.EntityNBTComponent {}
+  @native
+  command children arga:java.util.List -> net.kyori.adventure.text.EntityNBTComponent {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.EntityNBTComponent {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command toBuilder  -> net.kyori.adventure.text.EntityNBTComponent__inacc__Builder {}
+  @native
+  command interpret  -> net.kyori.adventure.text.NBTComponent {}
+  @native
+  command nbtPath arga:string -> net.kyori.adventure.text.NBTComponent {}
+  @native
+  command toBuilder  -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command toBuilder  -> net.kyori.adventure.util.Buildable__inacc__Builder {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.Component {}
+  @native
+  command children arga:java.util.List -> net.kyori.adventure.text.Component {}
+}
+
+//access: 16433
+@native
+class net.kyori.adventure.text.event.ClickEvent__inacc__Action extends java.lang.Enum {
+  @native
+  let OPEN_URL: net.kyori.adventure.text.event.ClickEvent__inacc__Action = 0
+  @native
+  let OPEN_FILE: net.kyori.adventure.text.event.ClickEvent__inacc__Action = 0
+  @native
+  let RUN_COMMAND: net.kyori.adventure.text.event.ClickEvent__inacc__Action = 0
+  @native
+  let SUGGEST_COMMAND: net.kyori.adventure.text.event.ClickEvent__inacc__Action = 0
+  @native
+  let CHANGE_PAGE: net.kyori.adventure.text.event.ClickEvent__inacc__Action = 0
+  @native
+  let COPY_TO_CLIPBOARD: net.kyori.adventure.text.event.ClickEvent__inacc__Action = 0
+  @native
+  let NAMES: net.kyori.adventure.util.Index = 0
+  @native
+  let name: string = 0
+  @native
+  let readable: boolean = 0
+  @native
+  let __inacc__VALUES: array<Unknown<net.kyori.adventure.text.event.ClickEvent__inacc__Action>> = 0
+  @native
+  command values  -> array<Unknown<net.kyori.adventure.text.event.ClickEvent__inacc__Action>> {}
+  @native
+  command valueOf arga:string -> net.kyori.adventure.text.event.ClickEvent__inacc__Action {}
+  @native
+  command construct arga:string argb:jvm_integer argc:string -> void {}
+  @native
+  command readable  -> boolean {}
+  @native
+  command toString  -> string {}
+  @native
+  command lambda__inacc__static__inacc__0 arga:net.kyori.adventure.text.event.ClickEvent__inacc__Action -> string {}
+  @native
+  command __inacc__values  -> array<Unknown<net.kyori.adventure.text.event.ClickEvent__inacc__Action>> {}
+}
+
+//access: 49
+@native
+class net.kyori.adventure.text.event.ClickEvent implements net.kyori.examination.Examinable,net.kyori.adventure.text.format.StyleBuilderApplicable {
+  @native
+  let action: net.kyori.adventure.text.event.ClickEvent__inacc__Action = 0
+  @native
+  let value: string = 0
+  @native
+  command openUrl arga:string -> net.kyori.adventure.text.event.ClickEvent {}
+  @native
+  command openUrl arga:java.net.URL -> net.kyori.adventure.text.event.ClickEvent {}
+  @native
+  command openFile arga:string -> net.kyori.adventure.text.event.ClickEvent {}
+  @native
+  command runCommand arga:string -> net.kyori.adventure.text.event.ClickEvent {}
+  @native
+  command suggestCommand arga:string -> net.kyori.adventure.text.event.ClickEvent {}
+  @native
+  command changePage arga:string -> net.kyori.adventure.text.event.ClickEvent {}
+  @native
+  command changePage  -> net.kyori.adventure.text.event.ClickEvent {}
+  @native
+  command copyToClipboard arga:string -> net.kyori.adventure.text.event.ClickEvent {}
+  @native
+  command clickEvent arga:net.kyori.adventure.text.event.ClickEvent__inacc__Action argb:string -> net.kyori.adventure.text.event.ClickEvent {}
+  @native
+  command construct arga:net.kyori.adventure.text.event.ClickEvent__inacc__Action argb:string -> void {}
+  @native
+  command action  -> net.kyori.adventure.text.event.ClickEvent__inacc__Action {}
+  @native
+  command value  -> string {}
+  @native
+  command styleApply arga:net.kyori.adventure.text.format.Style__inacc__Builder -> void {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command toString  -> string {}
+}
+
+//access: 32
+@native
+class net.kyori.adventure.text.event.HoverEvent__inacc__Action__inacc__1 implements net.kyori.adventure.text.event.HoverEvent__inacc__Action__inacc__Renderer {
+  @native
+  command construct  -> void {}
+  @native
+  command render arga:net.kyori.adventure.text.renderer.ComponentRenderer argb:java.lang.Object argc:net.kyori.adventure.text.Component -> net.kyori.adventure.text.Component {}
+  @native
+  command render arga:net.kyori.adventure.text.renderer.ComponentRenderer argb:java.lang.Object argc:java.lang.Object -> java.lang.Object {}
+}
+
+//access: 32
+@native
+class net.kyori.adventure.text.event.HoverEvent__inacc__Action__inacc__2 implements net.kyori.adventure.text.event.HoverEvent__inacc__Action__inacc__Renderer {
+  @native
+  command construct  -> void {}
+  @native
+  command render arga:net.kyori.adventure.text.renderer.ComponentRenderer argb:java.lang.Object argc:net.kyori.adventure.text.event.HoverEvent__inacc__ShowItem -> net.kyori.adventure.text.event.HoverEvent__inacc__ShowItem {}
+  @native
+  command render arga:net.kyori.adventure.text.renderer.ComponentRenderer argb:java.lang.Object argc:java.lang.Object -> java.lang.Object {}
+}
+
+//access: 32
+@native
+class net.kyori.adventure.text.event.HoverEvent__inacc__Action__inacc__3 implements net.kyori.adventure.text.event.HoverEvent__inacc__Action__inacc__Renderer {
+  @native
+  command construct  -> void {}
+  @native
+  command render arga:net.kyori.adventure.text.renderer.ComponentRenderer argb:java.lang.Object argc:net.kyori.adventure.text.event.HoverEvent__inacc__ShowEntity -> net.kyori.adventure.text.event.HoverEvent__inacc__ShowEntity {}
+  @native
+  command render arga:net.kyori.adventure.text.renderer.ComponentRenderer argb:java.lang.Object argc:java.lang.Object -> java.lang.Object {}
+}
+
+//access: 1536
+@native
+@interface
+class net.kyori.adventure.text.event.HoverEvent__inacc__Action__inacc__Renderer {
+  @native
+  command render arga:net.kyori.adventure.text.renderer.ComponentRenderer argb:java.lang.Object argc:java.lang.Object -> java.lang.Object {}
+}
+
+//access: 49
+@native
+class net.kyori.adventure.text.event.HoverEvent__inacc__Action {
+  @native
+  let SHOW_TEXT: net.kyori.adventure.text.event.HoverEvent__inacc__Action = 0
+  @native
+  let SHOW_ITEM: net.kyori.adventure.text.event.HoverEvent__inacc__Action = 0
+  @native
+  let SHOW_ENTITY: net.kyori.adventure.text.event.HoverEvent__inacc__Action = 0
+  @native
+  let NAMES: net.kyori.adventure.util.Index = 0
+  @native
+  let name: string = 0
+  @native
+  let type: java.lang.Class = 0
+  @native
+  let readable: boolean = 0
+  @native
+  let renderer: net.kyori.adventure.text.event.HoverEvent__inacc__Action__inacc__Renderer = 0
+  @native
+  command construct arga:string argb:java.lang.Class argc:boolean argd:net.kyori.adventure.text.event.HoverEvent__inacc__Action__inacc__Renderer -> void {}
+  @native
+  command type  -> java.lang.Class {}
+  @native
+  command readable  -> boolean {}
+  @native
+  command toString  -> string {}
+  @native
+  command lambda__inacc__static__inacc__0 arga:net.kyori.adventure.text.event.HoverEvent__inacc__Action -> string {}
+  @native
+  command access__inacc__000 arga:net.kyori.adventure.text.event.HoverEvent__inacc__Action -> net.kyori.adventure.text.event.HoverEvent__inacc__Action__inacc__Renderer {}
+}
+
+//access: 49
+@native
+class net.kyori.adventure.text.event.HoverEvent__inacc__ShowEntity implements net.kyori.examination.Examinable {
+  @native
+  let type: net.kyori.adventure.key.Key = 0
+  @native
+  let id: java.util.UUID = 0
+  @native
+  let name: net.kyori.adventure.text.Component = 0
+  @native
+  command of arga:net.kyori.adventure.key.Key argb:java.util.UUID -> net.kyori.adventure.text.event.HoverEvent__inacc__ShowEntity {}
+  @native
+  command of arga:net.kyori.adventure.key.Key argb:java.util.UUID argc:net.kyori.adventure.text.Component -> net.kyori.adventure.text.event.HoverEvent__inacc__ShowEntity {}
+  @native
+  command construct arga:net.kyori.adventure.key.Key argb:java.util.UUID argc:net.kyori.adventure.text.Component -> void {}
+  @native
+  command type  -> net.kyori.adventure.key.Key {}
+  @native
+  command type arga:net.kyori.adventure.key.Key -> net.kyori.adventure.text.event.HoverEvent__inacc__ShowEntity {}
+  @native
+  command id  -> java.util.UUID {}
+  @native
+  command id arga:java.util.UUID -> net.kyori.adventure.text.event.HoverEvent__inacc__ShowEntity {}
+  @native
+  command name  -> net.kyori.adventure.text.Component {}
+  @native
+  command name arga:net.kyori.adventure.text.Component -> net.kyori.adventure.text.event.HoverEvent__inacc__ShowEntity {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command toString  -> string {}
+  @native
+  command access__inacc__100 arga:net.kyori.adventure.text.event.HoverEvent__inacc__ShowEntity -> net.kyori.adventure.text.Component {}
+}
+
+//access: 49
+@native
+class net.kyori.adventure.text.event.HoverEvent__inacc__ShowItem implements net.kyori.examination.Examinable {
+  @native
+  let item: net.kyori.adventure.key.Key = 0
+  @native
+  let count: jvm_integer = 0
+  @native
+  let nbt: net.kyori.adventure.nbt.api.BinaryTagHolder = 0
+  @native
+  command of arga:net.kyori.adventure.key.Key -> net.kyori.adventure.text.event.HoverEvent__inacc__ShowItem {}
+  @native
+  command of arga:net.kyori.adventure.key.Key argb:jvm_integer argc:net.kyori.adventure.nbt.api.BinaryTagHolder -> net.kyori.adventure.text.event.HoverEvent__inacc__ShowItem {}
+  @native
+  command construct arga:net.kyori.adventure.key.Key argb:jvm_integer argc:net.kyori.adventure.nbt.api.BinaryTagHolder -> void {}
+  @native
+  command item  -> net.kyori.adventure.key.Key {}
+  @native
+  command item arga:net.kyori.adventure.key.Key -> net.kyori.adventure.text.event.HoverEvent__inacc__ShowItem {}
+  @native
+  command count  -> jvm_integer {}
+  @native
+  command count  -> net.kyori.adventure.text.event.HoverEvent__inacc__ShowItem {}
+  @native
+  command nbt  -> net.kyori.adventure.nbt.api.BinaryTagHolder {}
+  @native
+  command nbt arga:net.kyori.adventure.nbt.api.BinaryTagHolder -> net.kyori.adventure.text.event.HoverEvent__inacc__ShowItem {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command toString  -> string {}
+}
+
+//access: 49
+@native
+class net.kyori.adventure.text.event.HoverEvent implements net.kyori.examination.Examinable,net.kyori.adventure.text.event.HoverEventSource,net.kyori.adventure.text.format.StyleBuilderApplicable {
+  @native
+  let action: net.kyori.adventure.text.event.HoverEvent__inacc__Action = 0
+  @native
+  let value: java.lang.Object = 0
+  @native
+  command showText arga:net.kyori.adventure.text.ComponentLike -> net.kyori.adventure.text.event.HoverEvent {}
+  @native
+  command showText arga:net.kyori.adventure.text.Component -> net.kyori.adventure.text.event.HoverEvent {}
+  @native
+  command showItem arga:net.kyori.adventure.key.Key -> net.kyori.adventure.text.event.HoverEvent {}
+  @native
+  command showItem arga:net.kyori.adventure.key.Key argb:jvm_integer argc:net.kyori.adventure.nbt.api.BinaryTagHolder -> net.kyori.adventure.text.event.HoverEvent {}
+  @native
+  command showItem arga:net.kyori.adventure.text.event.HoverEvent__inacc__ShowItem -> net.kyori.adventure.text.event.HoverEvent {}
+  @native
+  command showEntity arga:net.kyori.adventure.key.Key argb:java.util.UUID -> net.kyori.adventure.text.event.HoverEvent {}
+  @native
+  command showEntity arga:net.kyori.adventure.key.Key argb:java.util.UUID argc:net.kyori.adventure.text.Component -> net.kyori.adventure.text.event.HoverEvent {}
+  @native
+  command showEntity arga:net.kyori.adventure.text.event.HoverEvent__inacc__ShowEntity -> net.kyori.adventure.text.event.HoverEvent {}
+  @native
+  command hoverEvent arga:net.kyori.adventure.text.event.HoverEvent__inacc__Action argb:java.lang.Object -> net.kyori.adventure.text.event.HoverEvent {}
+  @native
+  command construct arga:net.kyori.adventure.text.event.HoverEvent__inacc__Action argb:java.lang.Object -> void {}
+  @native
+  command action  -> net.kyori.adventure.text.event.HoverEvent__inacc__Action {}
+  @native
+  command value  -> java.lang.Object {}
+  @native
+  command value arga:java.lang.Object -> net.kyori.adventure.text.event.HoverEvent {}
+  @native
+  command withRenderedValue arga:net.kyori.adventure.text.renderer.ComponentRenderer argb:java.lang.Object -> net.kyori.adventure.text.event.HoverEvent {}
+  @native
+  command asHoverEvent  -> net.kyori.adventure.text.event.HoverEvent {}
+  @native
+  command asHoverEvent arga:java.util.function.UnaryOperator -> net.kyori.adventure.text.event.HoverEvent {}
+  @native
+  command styleApply arga:net.kyori.adventure.text.format.Style__inacc__Builder -> void {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command toString  -> string {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.event.HoverEventSource {
+  @native
+  command unbox arga:net.kyori.adventure.text.event.HoverEventSource -> net.kyori.adventure.text.event.HoverEvent {}
+  @native
+  command asHoverEvent  -> net.kyori.adventure.text.event.HoverEvent {}
+  @native
+  command asHoverEvent arga:java.util.function.UnaryOperator -> net.kyori.adventure.text.event.HoverEvent {}
+}
+
+//access: 49
+@native
+class net.kyori.adventure.text.format.NamedTextColor implements net.kyori.adventure.text.format.TextColor {
+  @native
+  let BLACK_VALUE: jvm_integer = 0
+  @native
+  let DARK_BLUE_VALUE: jvm_integer = 0
+  @native
+  let DARK_GREEN_VALUE: jvm_integer = 0
+  @native
+  let DARK_AQUA_VALUE: jvm_integer = 0
+  @native
+  let DARK_RED_VALUE: jvm_integer = 0
+  @native
+  let DARK_PURPLE_VALUE: jvm_integer = 0
+  @native
+  let GOLD_VALUE: jvm_integer = 0
+  @native
+  let GRAY_VALUE: jvm_integer = 0
+  @native
+  let DARK_GRAY_VALUE: jvm_integer = 0
+  @native
+  let BLUE_VALUE: jvm_integer = 0
+  @native
+  let GREEN_VALUE: jvm_integer = 0
+  @native
+  let AQUA_VALUE: jvm_integer = 0
+  @native
+  let RED_VALUE: jvm_integer = 0
+  @native
+  let LIGHT_PURPLE_VALUE: jvm_integer = 0
+  @native
+  let YELLOW_VALUE: jvm_integer = 0
+  @native
+  let WHITE_VALUE: jvm_integer = 0
+  @native
+  let BLACK: net.kyori.adventure.text.format.NamedTextColor = 0
+  @native
+  let DARK_BLUE: net.kyori.adventure.text.format.NamedTextColor = 0
+  @native
+  let DARK_GREEN: net.kyori.adventure.text.format.NamedTextColor = 0
+  @native
+  let DARK_AQUA: net.kyori.adventure.text.format.NamedTextColor = 0
+  @native
+  let DARK_RED: net.kyori.adventure.text.format.NamedTextColor = 0
+  @native
+  let DARK_PURPLE: net.kyori.adventure.text.format.NamedTextColor = 0
+  @native
+  let GOLD: net.kyori.adventure.text.format.NamedTextColor = 0
+  @native
+  let GRAY: net.kyori.adventure.text.format.NamedTextColor = 0
+  @native
+  let DARK_GRAY: net.kyori.adventure.text.format.NamedTextColor = 0
+  @native
+  let BLUE: net.kyori.adventure.text.format.NamedTextColor = 0
+  @native
+  let GREEN: net.kyori.adventure.text.format.NamedTextColor = 0
+  @native
+  let AQUA: net.kyori.adventure.text.format.NamedTextColor = 0
+  @native
+  let RED: net.kyori.adventure.text.format.NamedTextColor = 0
+  @native
+  let LIGHT_PURPLE: net.kyori.adventure.text.format.NamedTextColor = 0
+  @native
+  let YELLOW: net.kyori.adventure.text.format.NamedTextColor = 0
+  @native
+  let WHITE: net.kyori.adventure.text.format.NamedTextColor = 0
+  @native
+  let VALUES: java.util.List = 0
+  @native
+  let NAMES: net.kyori.adventure.util.Index = 0
+  @native
+  let name: string = 0
+  @native
+  let value: jvm_integer = 0
+  @native
+  command ofExact  -> net.kyori.adventure.text.format.NamedTextColor {}
+  @native
+  command nearestTo arga:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.format.NamedTextColor {}
+  @native
+  command distanceSquared arga:net.kyori.adventure.text.format.TextColor argb:net.kyori.adventure.text.format.TextColor -> jvm_integer {}
+  @native
+  command construct arga:string -> void {}
+  @native
+  command value  -> jvm_integer {}
+  @native
+  command toString  -> string {}
+  @native
+  command lambda__inacc__static__inacc__0 arga:net.kyori.adventure.text.format.NamedTextColor -> string {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.format.Style__inacc__Builder implements net.kyori.adventure.util.Buildable__inacc__Builder {
+  @native
+  command font arga:net.kyori.adventure.key.Key -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command color arga:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command colorIfAbsent arga:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command decorate arga:net.kyori.adventure.text.format.TextDecoration -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command decorate arga:array<Unknown<net.kyori.adventure.text.format.TextDecoration>> -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command decoration arga:net.kyori.adventure.text.format.TextDecoration -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command decoration arga:net.kyori.adventure.text.format.TextDecoration argb:net.kyori.adventure.text.format.TextDecoration__inacc__State -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command clickEvent arga:net.kyori.adventure.text.event.ClickEvent -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command hoverEvent arga:net.kyori.adventure.text.event.HoverEventSource -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command insertion arga:string -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command merge arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command merge arga:net.kyori.adventure.text.format.Style argb:net.kyori.adventure.text.format.Style__inacc__Merge__inacc__Strategy -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command merge arga:net.kyori.adventure.text.format.Style argb:array<Unknown<net.kyori.adventure.text.format.Style__inacc__Merge>> -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command merge arga:net.kyori.adventure.text.format.Style argb:net.kyori.adventure.text.format.Style__inacc__Merge__inacc__Strategy argc:array<Unknown<net.kyori.adventure.text.format.Style__inacc__Merge>> -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command merge arga:net.kyori.adventure.text.format.Style argb:java.util.Set -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command merge arga:net.kyori.adventure.text.format.Style argb:net.kyori.adventure.text.format.Style__inacc__Merge__inacc__Strategy argc:java.util.Set -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command apply arga:net.kyori.adventure.text.format.StyleBuilderApplicable -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command build  -> net.kyori.adventure.text.format.Style {}
+  @native
+  command build  -> java.lang.Object {}
+}
+
+//access: 16433
+@native
+class net.kyori.adventure.text.format.Style__inacc__Merge__inacc__Strategy extends java.lang.Enum {
+  @native
+  let ALWAYS: net.kyori.adventure.text.format.Style__inacc__Merge__inacc__Strategy = 0
+  @native
+  let NEVER: net.kyori.adventure.text.format.Style__inacc__Merge__inacc__Strategy = 0
+  @native
+  let IF_ABSENT_ON_TARGET: net.kyori.adventure.text.format.Style__inacc__Merge__inacc__Strategy = 0
+  @native
+  let __inacc__VALUES: array<Unknown<net.kyori.adventure.text.format.Style__inacc__Merge__inacc__Strategy>> = 0
+  @native
+  command values  -> array<Unknown<net.kyori.adventure.text.format.Style__inacc__Merge__inacc__Strategy>> {}
+  @native
+  command valueOf arga:string -> net.kyori.adventure.text.format.Style__inacc__Merge__inacc__Strategy {}
+  @native
+  command construct arga:string -> void {}
+  @native
+  command __inacc__values  -> array<Unknown<net.kyori.adventure.text.format.Style__inacc__Merge__inacc__Strategy>> {}
+}
+
+//access: 16433
+@native
+class net.kyori.adventure.text.format.Style__inacc__Merge extends java.lang.Enum {
+  @native
+  let COLOR: net.kyori.adventure.text.format.Style__inacc__Merge = 0
+  @native
+  let DECORATIONS: net.kyori.adventure.text.format.Style__inacc__Merge = 0
+  @native
+  let EVENTS: net.kyori.adventure.text.format.Style__inacc__Merge = 0
+  @native
+  let INSERTION: net.kyori.adventure.text.format.Style__inacc__Merge = 0
+  @native
+  let FONT: net.kyori.adventure.text.format.Style__inacc__Merge = 0
+  @native
+  let ALL: java.util.Set = 0
+  @native
+  let COLOR_AND_DECORATIONS: java.util.Set = 0
+  @native
+  let __inacc__VALUES: array<Unknown<net.kyori.adventure.text.format.Style__inacc__Merge>> = 0
+  @native
+  command values  -> array<Unknown<net.kyori.adventure.text.format.Style__inacc__Merge>> {}
+  @native
+  command valueOf arga:string -> net.kyori.adventure.text.format.Style__inacc__Merge {}
+  @native
+  command construct arga:string -> void {}
+  @native
+  command all  -> java.util.Set {}
+  @native
+  command colorAndDecorations  -> java.util.Set {}
+  @native
+  command of arga:array<Unknown<net.kyori.adventure.text.format.Style__inacc__Merge>> -> java.util.Set {}
+  @native
+	@static
+  command hasAll arga:java.util.Set -> boolean {}
+  @native
+  command __inacc__values  -> array<Unknown<net.kyori.adventure.text.format.Style__inacc__Merge>> {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.format.Style implements net.kyori.adventure.util.Buildable,net.kyori.examination.Examinable {
+  @native
+  let DEFAULT_FONT: net.kyori.adventure.key.Key = 0
+  @native
+  command empty  -> net.kyori.adventure.text.format.Style {}
+  @native
+  command style  -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command style arga:java.util.function.Consumer -> net.kyori.adventure.text.format.Style {}
+  @native
+  command style arga:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.format.Style {}
+  @native
+  command style arga:net.kyori.adventure.text.format.TextDecoration -> net.kyori.adventure.text.format.Style {}
+  @native
+  command style arga:net.kyori.adventure.text.format.TextColor argb:array<Unknown<net.kyori.adventure.text.format.TextDecoration>> -> net.kyori.adventure.text.format.Style {}
+  @native
+  command style arga:net.kyori.adventure.text.format.TextColor argb:java.util.Set -> net.kyori.adventure.text.format.Style {}
+  @native
+  command style arga:array<Unknown<net.kyori.adventure.text.format.StyleBuilderApplicable>> -> net.kyori.adventure.text.format.Style {}
+  @native
+  command style arga:java.lang.Iterable -> net.kyori.adventure.text.format.Style {}
+  @native
+  command edit arga:java.util.function.Consumer -> net.kyori.adventure.text.format.Style {}
+  @native
+  command edit arga:java.util.function.Consumer argb:net.kyori.adventure.text.format.Style__inacc__Merge__inacc__Strategy -> net.kyori.adventure.text.format.Style {}
+  @native
+  command font  -> net.kyori.adventure.key.Key {}
+  @native
+  command font arga:net.kyori.adventure.key.Key -> net.kyori.adventure.text.format.Style {}
+  @native
+  command color  -> net.kyori.adventure.text.format.TextColor {}
+  @native
+  command color arga:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.format.Style {}
+  @native
+  command colorIfAbsent arga:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.format.Style {}
+  @native
+  command hasDecoration arga:net.kyori.adventure.text.format.TextDecoration -> boolean {}
+  @native
+  command decoration arga:net.kyori.adventure.text.format.TextDecoration -> net.kyori.adventure.text.format.TextDecoration__inacc__State {}
+  @native
+  command decorate arga:net.kyori.adventure.text.format.TextDecoration -> net.kyori.adventure.text.format.Style {}
+  @native
+  command decoration arga:net.kyori.adventure.text.format.TextDecoration -> net.kyori.adventure.text.format.Style {}
+  @native
+  command decoration arga:net.kyori.adventure.text.format.TextDecoration argb:net.kyori.adventure.text.format.TextDecoration__inacc__State -> net.kyori.adventure.text.format.Style {}
+  @native
+  command decorations  -> java.util.Map {}
+  @native
+  command decorations arga:java.util.Map -> net.kyori.adventure.text.format.Style {}
+  @native
+  command clickEvent  -> net.kyori.adventure.text.event.ClickEvent {}
+  @native
+  command clickEvent arga:net.kyori.adventure.text.event.ClickEvent -> net.kyori.adventure.text.format.Style {}
+  @native
+  command hoverEvent  -> net.kyori.adventure.text.event.HoverEvent {}
+  @native
+  command hoverEvent arga:net.kyori.adventure.text.event.HoverEventSource -> net.kyori.adventure.text.format.Style {}
+  @native
+  command insertion  -> string {}
+  @native
+  command insertion arga:string -> net.kyori.adventure.text.format.Style {}
+  @native
+  command merge arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.format.Style {}
+  @native
+  command merge arga:net.kyori.adventure.text.format.Style argb:net.kyori.adventure.text.format.Style__inacc__Merge__inacc__Strategy -> net.kyori.adventure.text.format.Style {}
+  @native
+  command merge arga:net.kyori.adventure.text.format.Style argb:net.kyori.adventure.text.format.Style__inacc__Merge -> net.kyori.adventure.text.format.Style {}
+  @native
+  command merge arga:net.kyori.adventure.text.format.Style argb:net.kyori.adventure.text.format.Style__inacc__Merge__inacc__Strategy argc:net.kyori.adventure.text.format.Style__inacc__Merge -> net.kyori.adventure.text.format.Style {}
+  @native
+  command merge arga:net.kyori.adventure.text.format.Style argb:array<Unknown<net.kyori.adventure.text.format.Style__inacc__Merge>> -> net.kyori.adventure.text.format.Style {}
+  @native
+  command merge arga:net.kyori.adventure.text.format.Style argb:net.kyori.adventure.text.format.Style__inacc__Merge__inacc__Strategy argc:array<Unknown<net.kyori.adventure.text.format.Style__inacc__Merge>> -> net.kyori.adventure.text.format.Style {}
+  @native
+  command merge arga:net.kyori.adventure.text.format.Style argb:java.util.Set -> net.kyori.adventure.text.format.Style {}
+  @native
+  command merge arga:net.kyori.adventure.text.format.Style argb:net.kyori.adventure.text.format.Style__inacc__Merge__inacc__Strategy argc:java.util.Set -> net.kyori.adventure.text.format.Style {}
+  @native
+  command isEmpty  -> boolean {}
+  @native
+  command toBuilder  -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command toBuilder  -> net.kyori.adventure.util.Buildable__inacc__Builder {}
+  @native
+  command lambda__inacc__edit__inacc__0 arga:net.kyori.adventure.text.format.Style__inacc__Merge__inacc__Strategy argb:java.util.function.Consumer argc:net.kyori.adventure.text.format.Style__inacc__Builder -> void {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.format.StyleBuilderApplicable implements net.kyori.adventure.text.ComponentBuilderApplicable {
+  @native
+  command styleApply arga:net.kyori.adventure.text.format.Style__inacc__Builder -> void {}
+  @native
+  command componentBuilderApply arga:net.kyori.adventure.text.ComponentBuilder -> void {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.format.StyleImpl__inacc__BuilderImpl implements net.kyori.adventure.text.format.Style__inacc__Builder {
+  @native
+  let font: net.kyori.adventure.key.Key = 0
+  @native
+  let color: net.kyori.adventure.text.format.TextColor = 0
+  @native
+  let obfuscated: net.kyori.adventure.text.format.TextDecoration__inacc__State = 0
+  @native
+  let bold: net.kyori.adventure.text.format.TextDecoration__inacc__State = 0
+  @native
+  let strikethrough: net.kyori.adventure.text.format.TextDecoration__inacc__State = 0
+  @native
+  let underlined: net.kyori.adventure.text.format.TextDecoration__inacc__State = 0
+  @native
+  let italic: net.kyori.adventure.text.format.TextDecoration__inacc__State = 0
+  @native
+  let clickEvent: net.kyori.adventure.text.event.ClickEvent = 0
+  @native
+  let hoverEvent: net.kyori.adventure.text.event.HoverEvent = 0
+  @native
+  let insertion: string = 0
+  @native
+  command construct  -> void {}
+  @native
+  command construct arga:net.kyori.adventure.text.format.StyleImpl -> void {}
+  @native
+  command font arga:net.kyori.adventure.key.Key -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command color arga:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command colorIfAbsent arga:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command decorate arga:net.kyori.adventure.text.format.TextDecoration -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command decorate arga:array<Unknown<net.kyori.adventure.text.format.TextDecoration>> -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command decoration arga:net.kyori.adventure.text.format.TextDecoration argb:net.kyori.adventure.text.format.TextDecoration__inacc__State -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command clickEvent arga:net.kyori.adventure.text.event.ClickEvent -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command hoverEvent arga:net.kyori.adventure.text.event.HoverEventSource -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command insertion arga:string -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command merge arga:net.kyori.adventure.text.format.Style argb:net.kyori.adventure.text.format.Style__inacc__Merge__inacc__Strategy argc:java.util.Set -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command mergeLogic arga:net.kyori.adventure.text.format.Style__inacc__Merge__inacc__Strategy -> net.kyori.adventure.text.format.StyleImpl__inacc__MergeLogic {}
+  @native
+  command build  -> net.kyori.adventure.text.format.StyleImpl {}
+  @native
+  command isEmpty  -> boolean {}
+  @native
+  command build  -> net.kyori.adventure.text.format.Style {}
+  @native
+  command build  -> java.lang.Object {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.format.StyleImpl__inacc__MergeLogic__inacc__Constant extends net.kyori.adventure.text.format.StyleImpl__inacc__MergeLogic {
+  @native
+  let FALSE: net.kyori.adventure.text.format.StyleImpl__inacc__MergeLogic__inacc__Constant = 0
+  @native
+  let TRUE: net.kyori.adventure.text.format.StyleImpl__inacc__MergeLogic__inacc__Constant = 0
+  @native
+  let value: boolean = 0
+  @native
+  command construct  -> void {}
+  @native
+  command mergeColor arga:net.kyori.adventure.text.format.StyleImpl__inacc__BuilderImpl argb:net.kyori.adventure.text.format.TextColor -> boolean {}
+  @native
+  command mergeDecoration arga:net.kyori.adventure.text.format.StyleImpl__inacc__BuilderImpl argb:net.kyori.adventure.text.format.TextDecoration -> boolean {}
+  @native
+  command mergeClickEvent arga:net.kyori.adventure.text.format.StyleImpl__inacc__BuilderImpl argb:net.kyori.adventure.text.event.ClickEvent -> boolean {}
+  @native
+  command mergeHoverEvent arga:net.kyori.adventure.text.format.StyleImpl__inacc__BuilderImpl argb:net.kyori.adventure.text.event.HoverEvent -> boolean {}
+  @native
+  command mergeInsertion arga:net.kyori.adventure.text.format.StyleImpl__inacc__BuilderImpl argb:string -> boolean {}
+  @native
+  command mergeFont arga:net.kyori.adventure.text.format.StyleImpl__inacc__BuilderImpl argb:net.kyori.adventure.key.Key -> boolean {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.format.StyleImpl__inacc__MergeLogic__inacc__IfAbsentOnTarget extends net.kyori.adventure.text.format.StyleImpl__inacc__MergeLogic {
+  @native
+  let INSTANCE: net.kyori.adventure.text.format.StyleImpl__inacc__MergeLogic__inacc__IfAbsentOnTarget = 0
+  @native
+  command construct  -> void {}
+  @native
+  command mergeColor arga:net.kyori.adventure.text.format.StyleImpl__inacc__BuilderImpl argb:net.kyori.adventure.text.format.TextColor -> boolean {}
+  @native
+  command mergeDecoration arga:net.kyori.adventure.text.format.StyleImpl__inacc__BuilderImpl argb:net.kyori.adventure.text.format.TextDecoration -> boolean {}
+  @native
+  command mergeClickEvent arga:net.kyori.adventure.text.format.StyleImpl__inacc__BuilderImpl argb:net.kyori.adventure.text.event.ClickEvent -> boolean {}
+  @native
+  command mergeHoverEvent arga:net.kyori.adventure.text.format.StyleImpl__inacc__BuilderImpl argb:net.kyori.adventure.text.event.HoverEvent -> boolean {}
+  @native
+  command mergeInsertion arga:net.kyori.adventure.text.format.StyleImpl__inacc__BuilderImpl argb:string -> boolean {}
+  @native
+  command mergeFont arga:net.kyori.adventure.text.format.StyleImpl__inacc__BuilderImpl argb:net.kyori.adventure.key.Key -> boolean {}
+}
+
+//access: 1056
+@native
+class net.kyori.adventure.text.format.StyleImpl__inacc__MergeLogic {
+  @native
+  command construct  -> void {}
+  @native
+  command mergeColor arga:net.kyori.adventure.text.format.StyleImpl__inacc__BuilderImpl argb:net.kyori.adventure.text.format.TextColor -> boolean {}
+  @native
+  command mergeDecoration arga:net.kyori.adventure.text.format.StyleImpl__inacc__BuilderImpl argb:net.kyori.adventure.text.format.TextDecoration -> boolean {}
+  @native
+  command mergeClickEvent arga:net.kyori.adventure.text.format.StyleImpl__inacc__BuilderImpl argb:net.kyori.adventure.text.event.ClickEvent -> boolean {}
+  @native
+  command mergeHoverEvent arga:net.kyori.adventure.text.format.StyleImpl__inacc__BuilderImpl argb:net.kyori.adventure.text.event.HoverEvent -> boolean {}
+  @native
+  command mergeInsertion arga:net.kyori.adventure.text.format.StyleImpl__inacc__BuilderImpl argb:string -> boolean {}
+  @native
+  command mergeFont arga:net.kyori.adventure.text.format.StyleImpl__inacc__BuilderImpl argb:net.kyori.adventure.key.Key -> boolean {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.format.StyleImpl implements net.kyori.adventure.text.format.Style {
+  @native
+  let EMPTY: net.kyori.adventure.text.format.StyleImpl = 0
+  @native
+  let DECORATIONS: array<Unknown<net.kyori.adventure.text.format.TextDecoration>> = 0
+  @native
+  let font: net.kyori.adventure.key.Key = 0
+  @native
+  let color: net.kyori.adventure.text.format.TextColor = 0
+  @native
+  let obfuscated: net.kyori.adventure.text.format.TextDecoration__inacc__State = 0
+  @native
+  let bold: net.kyori.adventure.text.format.TextDecoration__inacc__State = 0
+  @native
+  let strikethrough: net.kyori.adventure.text.format.TextDecoration__inacc__State = 0
+  @native
+  let underlined: net.kyori.adventure.text.format.TextDecoration__inacc__State = 0
+  @native
+  let italic: net.kyori.adventure.text.format.TextDecoration__inacc__State = 0
+  @native
+  let clickEvent: net.kyori.adventure.text.event.ClickEvent = 0
+  @native
+  let hoverEvent: net.kyori.adventure.text.event.HoverEvent = 0
+  @native
+  let insertion: string = 0
+  @native
+	@static
+  command decorate arga:net.kyori.adventure.text.format.Style__inacc__Builder argb:array<Unknown<net.kyori.adventure.text.format.TextDecoration>> -> void {}
+  @native
+  command construct arga:net.kyori.adventure.key.Key argb:net.kyori.adventure.text.format.TextColor argc:net.kyori.adventure.text.format.TextDecoration__inacc__State argd:net.kyori.adventure.text.format.TextDecoration__inacc__State arge:net.kyori.adventure.text.format.TextDecoration__inacc__State argf:net.kyori.adventure.text.format.TextDecoration__inacc__State argg:net.kyori.adventure.text.format.TextDecoration__inacc__State argh:net.kyori.adventure.text.event.ClickEvent argi:net.kyori.adventure.text.event.HoverEvent argj:string -> void {}
+  @native
+  command font  -> net.kyori.adventure.key.Key {}
+  @native
+  command font arga:net.kyori.adventure.key.Key -> net.kyori.adventure.text.format.Style {}
+  @native
+  command color  -> net.kyori.adventure.text.format.TextColor {}
+  @native
+  command color arga:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.format.Style {}
+  @native
+  command colorIfAbsent arga:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.format.Style {}
+  @native
+  command decoration arga:net.kyori.adventure.text.format.TextDecoration -> net.kyori.adventure.text.format.TextDecoration__inacc__State {}
+  @native
+  command decoration arga:net.kyori.adventure.text.format.TextDecoration argb:net.kyori.adventure.text.format.TextDecoration__inacc__State -> net.kyori.adventure.text.format.Style {}
+  @native
+  command decorations  -> java.util.Map {}
+  @native
+  command decorations arga:java.util.Map -> net.kyori.adventure.text.format.Style {}
+  @native
+  command clickEvent  -> net.kyori.adventure.text.event.ClickEvent {}
+  @native
+  command clickEvent arga:net.kyori.adventure.text.event.ClickEvent -> net.kyori.adventure.text.format.Style {}
+  @native
+  command hoverEvent  -> net.kyori.adventure.text.event.HoverEvent {}
+  @native
+  command hoverEvent arga:net.kyori.adventure.text.event.HoverEventSource -> net.kyori.adventure.text.format.Style {}
+  @native
+  command insertion  -> string {}
+  @native
+  command insertion arga:string -> net.kyori.adventure.text.format.Style {}
+  @native
+  command merge arga:net.kyori.adventure.text.format.Style argb:net.kyori.adventure.text.format.Style__inacc__Merge__inacc__Strategy argc:java.util.Set -> net.kyori.adventure.text.format.Style {}
+  @native
+  command isEmpty  -> boolean {}
+  @native
+  command toBuilder  -> net.kyori.adventure.text.format.Style__inacc__Builder {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command toString  -> string {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command toBuilder  -> net.kyori.adventure.util.Buildable__inacc__Builder {}
+  @native
+  command access__inacc__000 arga:net.kyori.adventure.text.format.StyleImpl -> net.kyori.adventure.text.format.TextColor {}
+  @native
+  command access__inacc__100 arga:net.kyori.adventure.text.format.StyleImpl -> net.kyori.adventure.text.format.TextDecoration__inacc__State {}
+  @native
+  command access__inacc__200 arga:net.kyori.adventure.text.format.StyleImpl -> net.kyori.adventure.text.format.TextDecoration__inacc__State {}
+  @native
+  command access__inacc__300 arga:net.kyori.adventure.text.format.StyleImpl -> net.kyori.adventure.text.format.TextDecoration__inacc__State {}
+  @native
+  command access__inacc__400 arga:net.kyori.adventure.text.format.StyleImpl -> net.kyori.adventure.text.format.TextDecoration__inacc__State {}
+  @native
+  command access__inacc__500 arga:net.kyori.adventure.text.format.StyleImpl -> net.kyori.adventure.text.format.TextDecoration__inacc__State {}
+  @native
+  command access__inacc__600 arga:net.kyori.adventure.text.format.StyleImpl -> net.kyori.adventure.text.event.ClickEvent {}
+  @native
+  command access__inacc__700 arga:net.kyori.adventure.text.format.StyleImpl -> net.kyori.adventure.text.event.HoverEvent {}
+  @native
+  command access__inacc__800 arga:net.kyori.adventure.text.format.StyleImpl -> string {}
+  @native
+  command access__inacc__900 arga:net.kyori.adventure.text.format.StyleImpl -> net.kyori.adventure.key.Key {}
+  @native
+  command access__inacc__1000  -> array<Unknown<net.kyori.adventure.text.format.TextDecoration>> {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.format.TextColor implements java.lang.Comparable,net.kyori.examination.Examinable,net.kyori.adventure.util.RGBLike,net.kyori.adventure.text.format.StyleBuilderApplicable,net.kyori.adventure.text.format.TextFormat {
+  @native
+  command color  -> net.kyori.adventure.text.format.TextColor {}
+  @native
+  command color arga:net.kyori.adventure.util.RGBLike -> net.kyori.adventure.text.format.TextColor {}
+  @native
+  command color arga:jvm_integer argb:jvm_integer -> net.kyori.adventure.text.format.TextColor {}
+  @native
+  command color  -> net.kyori.adventure.text.format.TextColor {}
+  @native
+  command fromHexString arga:string -> net.kyori.adventure.text.format.TextColor {}
+  @native
+  command fromCSSHexString arga:string -> net.kyori.adventure.text.format.TextColor {}
+  @native
+  command value  -> jvm_integer {}
+  @native
+  command asHexString  -> string {}
+  @native
+  command red  -> jvm_integer {}
+  @native
+  command green  -> jvm_integer {}
+  @native
+  command blue  -> jvm_integer {}
+  @native
+  command styleApply arga:net.kyori.adventure.text.format.Style__inacc__Builder -> void {}
+  @native
+  command compareTo arga:net.kyori.adventure.text.format.TextColor -> jvm_integer {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command compareTo arga:java.lang.Object -> jvm_integer {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.format.TextColorImpl implements net.kyori.adventure.text.format.TextColor {
+  @native
+  let value: jvm_integer = 0
+  @native
+  command construct  -> void {}
+  @native
+  command value  -> jvm_integer {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command toString  -> string {}
+}
+
+//access: 16433
+@native
+class net.kyori.adventure.text.format.TextDecoration__inacc__State extends java.lang.Enum {
+  @native
+  let NOT_SET: net.kyori.adventure.text.format.TextDecoration__inacc__State = 0
+  @native
+  let FALSE: net.kyori.adventure.text.format.TextDecoration__inacc__State = 0
+  @native
+  let TRUE: net.kyori.adventure.text.format.TextDecoration__inacc__State = 0
+  @native
+  let name: string = 0
+  @native
+  let __inacc__VALUES: array<Unknown<net.kyori.adventure.text.format.TextDecoration__inacc__State>> = 0
+  @native
+  command values  -> array<Unknown<net.kyori.adventure.text.format.TextDecoration__inacc__State>> {}
+  @native
+  command valueOf arga:string -> net.kyori.adventure.text.format.TextDecoration__inacc__State {}
+  @native
+  command construct arga:string argb:jvm_integer argc:string -> void {}
+  @native
+  command toString  -> string {}
+  @native
+  command byBoolean  -> net.kyori.adventure.text.format.TextDecoration__inacc__State {}
+  @native
+  command byBoolean arga:java.lang.Boolean -> net.kyori.adventure.text.format.TextDecoration__inacc__State {}
+  @native
+  command __inacc__values  -> array<Unknown<net.kyori.adventure.text.format.TextDecoration__inacc__State>> {}
+}
+
+//access: 16433
+@native
+class net.kyori.adventure.text.format.TextDecoration extends java.lang.Enum implements net.kyori.adventure.text.format.StyleBuilderApplicable,net.kyori.adventure.text.format.TextFormat {
+  @native
+  let OBFUSCATED: net.kyori.adventure.text.format.TextDecoration = 0
+  @native
+  let BOLD: net.kyori.adventure.text.format.TextDecoration = 0
+  @native
+  let STRIKETHROUGH: net.kyori.adventure.text.format.TextDecoration = 0
+  @native
+  let UNDERLINED: net.kyori.adventure.text.format.TextDecoration = 0
+  @native
+  let ITALIC: net.kyori.adventure.text.format.TextDecoration = 0
+  @native
+  let NAMES: net.kyori.adventure.util.Index = 0
+  @native
+  let name: string = 0
+  @native
+  let __inacc__VALUES: array<Unknown<net.kyori.adventure.text.format.TextDecoration>> = 0
+  @native
+  command values  -> array<Unknown<net.kyori.adventure.text.format.TextDecoration>> {}
+  @native
+  command valueOf arga:string -> net.kyori.adventure.text.format.TextDecoration {}
+  @native
+  command construct arga:string argb:jvm_integer argc:string -> void {}
+  @native
+  command styleApply arga:net.kyori.adventure.text.format.Style__inacc__Builder -> void {}
+  @native
+  command toString  -> string {}
+  @native
+  command lambda__inacc__static__inacc__0 arga:net.kyori.adventure.text.format.TextDecoration -> string {}
+  @native
+  command __inacc__values  -> array<Unknown<net.kyori.adventure.text.format.TextDecoration>> {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.format.TextFormat {
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.KeybindComponent__inacc__Builder implements net.kyori.adventure.text.ComponentBuilder {
+  @native
+  command keybind arga:string -> net.kyori.adventure.text.KeybindComponent__inacc__Builder {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.KeybindComponent implements net.kyori.adventure.text.BuildableComponent,net.kyori.adventure.text.ScopedComponent {
+  @native
+  command keybind  -> string {}
+  @native
+  command keybind arga:string -> net.kyori.adventure.text.KeybindComponent {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.KeybindComponentImpl__inacc__BuilderImpl extends net.kyori.adventure.text.AbstractComponentBuilder implements net.kyori.adventure.text.KeybindComponent__inacc__Builder {
+  @native
+  let keybind: string = 0
+  @native
+  command construct  -> void {}
+  @native
+  command construct arga:net.kyori.adventure.text.KeybindComponent -> void {}
+  @native
+  command keybind arga:string -> net.kyori.adventure.text.KeybindComponent__inacc__Builder {}
+  @native
+  command build  -> net.kyori.adventure.text.KeybindComponent {}
+  @native
+  command build  -> net.kyori.adventure.text.BuildableComponent {}
+  @native
+  command build  -> java.lang.Object {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.KeybindComponentImpl extends net.kyori.adventure.text.AbstractComponent implements net.kyori.adventure.text.KeybindComponent {
+  @native
+  let keybind: string = 0
+  @native
+  command construct arga:java.util.List argb:net.kyori.adventure.text.format.Style argc:string -> void {}
+  @native
+  command keybind  -> string {}
+  @native
+  command keybind arga:string -> net.kyori.adventure.text.KeybindComponent {}
+  @native
+  command children arga:java.util.List -> net.kyori.adventure.text.KeybindComponent {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.KeybindComponent {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command toBuilder  -> net.kyori.adventure.text.KeybindComponent__inacc__Builder {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.Component {}
+  @native
+  command children arga:java.util.List -> net.kyori.adventure.text.Component {}
+  @native
+  command toBuilder  -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command toBuilder  -> net.kyori.adventure.util.Buildable__inacc__Builder {}
+}
+
+//access: 49
+@native
+class net.kyori.adventure.text.LinearComponents {
+  @native
+  command construct  -> void {}
+  @native
+  command linear arga:array<Unknown<net.kyori.adventure.text.ComponentBuilderApplicable>> -> net.kyori.adventure.text.Component {}
+  @native
+  command nothingComponentLike  -> java.lang.IllegalStateException {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.NBTComponent implements net.kyori.adventure.text.BuildableComponent {
+  @native
+  command nbtPath  -> string {}
+  @native
+  command nbtPath arga:string -> net.kyori.adventure.text.NBTComponent {}
+  @native
+  command interpret  -> boolean {}
+  @native
+  command interpret  -> net.kyori.adventure.text.NBTComponent {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.NBTComponentBuilder implements net.kyori.adventure.text.ComponentBuilder {
+  @native
+  command nbtPath arga:string -> net.kyori.adventure.text.NBTComponentBuilder {}
+  @native
+  command interpret  -> net.kyori.adventure.text.NBTComponentBuilder {}
+}
+
+//access: 1056
+@native
+class net.kyori.adventure.text.NBTComponentImpl__inacc__BuilderImpl extends net.kyori.adventure.text.AbstractComponentBuilder implements net.kyori.adventure.text.NBTComponentBuilder {
+  @native
+  let nbtPath: string = 0
+  @native
+  let interpret: boolean = 0
+  @native
+  command construct  -> void {}
+  @native
+  command construct arga:net.kyori.adventure.text.NBTComponent -> void {}
+  @native
+  command nbtPath arga:string -> net.kyori.adventure.text.NBTComponentBuilder {}
+  @native
+  command interpret  -> net.kyori.adventure.text.NBTComponentBuilder {}
+}
+
+//access: 1056
+@native
+class net.kyori.adventure.text.NBTComponentImpl extends net.kyori.adventure.text.AbstractComponent implements net.kyori.adventure.text.NBTComponent {
+  @native
+  let INTERPRET_DEFAULT: boolean = 0
+  @native
+  let nbtPath: string = 0
+  @native
+  let interpret: boolean = 0
+  @native
+  command construct arga:java.util.List argb:net.kyori.adventure.text.format.Style argc:string -> void {}
+  @native
+  command nbtPath  -> string {}
+  @native
+  command interpret  -> boolean {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+}
+
+//access: 16433
+@native
+class net.kyori.adventure.text.PatternReplacementResult extends java.lang.Enum {
+  @native
+  let REPLACE: net.kyori.adventure.text.PatternReplacementResult = 0
+  @native
+  let CONTINUE: net.kyori.adventure.text.PatternReplacementResult = 0
+  @native
+  let STOP: net.kyori.adventure.text.PatternReplacementResult = 0
+  @native
+  let __inacc__VALUES: array<Unknown<net.kyori.adventure.text.PatternReplacementResult>> = 0
+  @native
+  command values  -> array<Unknown<net.kyori.adventure.text.PatternReplacementResult>> {}
+  @native
+  command valueOf arga:string -> net.kyori.adventure.text.PatternReplacementResult {}
+  @native
+  command construct arga:string -> void {}
+  @native
+  command __inacc__values  -> array<Unknown<net.kyori.adventure.text.PatternReplacementResult>> {}
+}
+
+//access: 1057
+@native
+class net.kyori.adventure.text.renderer.AbstractComponentRenderer implements net.kyori.adventure.text.renderer.ComponentRenderer {
+  @native
+  command construct  -> void {}
+  @native
+  command render arga:net.kyori.adventure.text.Component argb:java.lang.Object -> net.kyori.adventure.text.Component {}
+  @native
+  command renderBlockNbt arga:net.kyori.adventure.text.BlockNBTComponent argb:java.lang.Object -> net.kyori.adventure.text.Component {}
+  @native
+  command renderEntityNbt arga:net.kyori.adventure.text.EntityNBTComponent argb:java.lang.Object -> net.kyori.adventure.text.Component {}
+  @native
+  command renderStorageNbt arga:net.kyori.adventure.text.StorageNBTComponent argb:java.lang.Object -> net.kyori.adventure.text.Component {}
+  @native
+  command renderKeybind arga:net.kyori.adventure.text.KeybindComponent argb:java.lang.Object -> net.kyori.adventure.text.Component {}
+  @native
+  command renderScore arga:net.kyori.adventure.text.ScoreComponent argb:java.lang.Object -> net.kyori.adventure.text.Component {}
+  @native
+  command renderSelector arga:net.kyori.adventure.text.SelectorComponent argb:java.lang.Object -> net.kyori.adventure.text.Component {}
+  @native
+  command renderText arga:net.kyori.adventure.text.TextComponent argb:java.lang.Object -> net.kyori.adventure.text.Component {}
+  @native
+  command renderTranslatable arga:net.kyori.adventure.text.TranslatableComponent argb:java.lang.Object -> net.kyori.adventure.text.Component {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.renderer.ComponentRenderer {
+  @native
+  command render arga:net.kyori.adventure.text.Component argb:java.lang.Object -> net.kyori.adventure.text.Component {}
+  @native
+  command mapContext arga:java.util.function.Function -> net.kyori.adventure.text.renderer.ComponentRenderer {}
+  @native
+  command lambda__inacc__mapContext__inacc__0 arga:java.util.function.Function argb:net.kyori.adventure.text.Component argc:java.lang.Object -> net.kyori.adventure.text.Component {}
+}
+
+//access: 32
+@native
+class net.kyori.adventure.text.renderer.TranslatableComponentRenderer__inacc__1 extends net.kyori.adventure.text.renderer.TranslatableComponentRenderer {
+  @native
+  let val__inacc__source: net.kyori.adventure.translation.Translator = 0
+  @native
+  command construct arga:net.kyori.adventure.translation.Translator -> void {}
+  @native
+  command translate arga:string argb:java.util.Locale -> java.text.MessageFormat {}
+  @native
+  command translate arga:string argb:java.lang.Object -> java.text.MessageFormat {}
+}
+
+//access: 1057
+@native
+class net.kyori.adventure.text.renderer.TranslatableComponentRenderer extends net.kyori.adventure.text.renderer.AbstractComponentRenderer {
+  @native
+  let MERGES: java.util.Set = 0
+  @native
+  command construct  -> void {}
+  @native
+  command usingTranslationSource arga:net.kyori.adventure.translation.Translator -> net.kyori.adventure.text.renderer.TranslatableComponentRenderer {}
+  @native
+  command translate arga:string argb:java.lang.Object -> java.text.MessageFormat {}
+  @native
+  command renderBlockNbt arga:net.kyori.adventure.text.BlockNBTComponent argb:java.lang.Object -> net.kyori.adventure.text.Component {}
+  @native
+  command renderEntityNbt arga:net.kyori.adventure.text.EntityNBTComponent argb:java.lang.Object -> net.kyori.adventure.text.Component {}
+  @native
+  command renderStorageNbt arga:net.kyori.adventure.text.StorageNBTComponent argb:java.lang.Object -> net.kyori.adventure.text.Component {}
+  @native
+  command nbt arga:net.kyori.adventure.text.NBTComponentBuilder argb:net.kyori.adventure.text.NBTComponent -> net.kyori.adventure.text.NBTComponentBuilder {}
+  @native
+  command renderKeybind arga:net.kyori.adventure.text.KeybindComponent argb:java.lang.Object -> net.kyori.adventure.text.Component {}
+  @native
+  command renderScore arga:net.kyori.adventure.text.ScoreComponent argb:java.lang.Object -> net.kyori.adventure.text.Component {}
+  @native
+  command renderSelector arga:net.kyori.adventure.text.SelectorComponent argb:java.lang.Object -> net.kyori.adventure.text.Component {}
+  @native
+  command renderText arga:net.kyori.adventure.text.TextComponent argb:java.lang.Object -> net.kyori.adventure.text.Component {}
+  @native
+  command renderTranslatable arga:net.kyori.adventure.text.TranslatableComponent argb:java.lang.Object -> net.kyori.adventure.text.Component {}
+  @native
+  command mergeStyleAndOptionallyDeepRender arga:net.kyori.adventure.text.Component argb:net.kyori.adventure.text.ComponentBuilder argc:java.lang.Object -> net.kyori.adventure.text.BuildableComponent {}
+  @native
+  command optionallyRenderChildrenAppendAndBuild arga:java.util.List argb:net.kyori.adventure.text.ComponentBuilder argc:java.lang.Object -> net.kyori.adventure.text.BuildableComponent {}
+  @native
+  command mergeStyle arga:net.kyori.adventure.text.Component argb:net.kyori.adventure.text.ComponentBuilder argc:java.lang.Object -> void {}
+  @native
+  command lambda__inacc__optionallyRenderChildrenAppendAndBuild__inacc__0 arga:net.kyori.adventure.text.ComponentBuilder argb:java.lang.Object argc:net.kyori.adventure.text.Component -> void {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.ScopedComponent implements net.kyori.adventure.text.Component {
+  @native
+  command children arga:java.util.List -> net.kyori.adventure.text.Component {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.Component {}
+  @native
+  command style arga:java.util.function.Consumer -> net.kyori.adventure.text.Component {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style__inacc__Builder -> net.kyori.adventure.text.Component {}
+  @native
+  command mergeStyle arga:net.kyori.adventure.text.Component -> net.kyori.adventure.text.Component {}
+  @native
+  command mergeStyle arga:net.kyori.adventure.text.Component argb:array<Unknown<net.kyori.adventure.text.format.Style__inacc__Merge>> -> net.kyori.adventure.text.Component {}
+  @native
+  command append arga:net.kyori.adventure.text.Component -> net.kyori.adventure.text.Component {}
+  @native
+  command append arga:net.kyori.adventure.text.ComponentLike -> net.kyori.adventure.text.Component {}
+  @native
+  command append arga:net.kyori.adventure.text.ComponentBuilder -> net.kyori.adventure.text.Component {}
+  @native
+  command mergeStyle arga:net.kyori.adventure.text.Component argb:java.util.Set -> net.kyori.adventure.text.Component {}
+  @native
+  command color arga:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.Component {}
+  @native
+  command colorIfAbsent arga:net.kyori.adventure.text.format.TextColor -> net.kyori.adventure.text.Component {}
+  @native
+  command decorate arga:net.kyori.adventure.text.format.TextDecoration -> net.kyori.adventure.text.Component {}
+  @native
+  command decoration arga:net.kyori.adventure.text.format.TextDecoration -> net.kyori.adventure.text.Component {}
+  @native
+  command decoration arga:net.kyori.adventure.text.format.TextDecoration argb:net.kyori.adventure.text.format.TextDecoration__inacc__State -> net.kyori.adventure.text.Component {}
+  @native
+  command clickEvent arga:net.kyori.adventure.text.event.ClickEvent -> net.kyori.adventure.text.Component {}
+  @native
+  command hoverEvent arga:net.kyori.adventure.text.event.HoverEventSource -> net.kyori.adventure.text.Component {}
+  @native
+  command insertion arga:string -> net.kyori.adventure.text.Component {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.ScoreComponent__inacc__Builder implements net.kyori.adventure.text.ComponentBuilder {
+  @native
+  command name arga:string -> net.kyori.adventure.text.ScoreComponent__inacc__Builder {}
+  @native
+  command objective arga:string -> net.kyori.adventure.text.ScoreComponent__inacc__Builder {}
+  @native
+  command value arga:string -> net.kyori.adventure.text.ScoreComponent__inacc__Builder {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.ScoreComponent implements net.kyori.adventure.text.BuildableComponent,net.kyori.adventure.text.ScopedComponent {
+  @native
+  command name  -> string {}
+  @native
+  command name arga:string -> net.kyori.adventure.text.ScoreComponent {}
+  @native
+  command objective  -> string {}
+  @native
+  command objective arga:string -> net.kyori.adventure.text.ScoreComponent {}
+  @native
+  command value  -> string {}
+  @native
+  command value arga:string -> net.kyori.adventure.text.ScoreComponent {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.ScoreComponentImpl__inacc__BuilderImpl extends net.kyori.adventure.text.AbstractComponentBuilder implements net.kyori.adventure.text.ScoreComponent__inacc__Builder {
+  @native
+  let name: string = 0
+  @native
+  let objective: string = 0
+  @native
+  let value: string = 0
+  @native
+  command construct  -> void {}
+  @native
+  command construct arga:net.kyori.adventure.text.ScoreComponent -> void {}
+  @native
+  command name arga:string -> net.kyori.adventure.text.ScoreComponent__inacc__Builder {}
+  @native
+  command objective arga:string -> net.kyori.adventure.text.ScoreComponent__inacc__Builder {}
+  @native
+  command value arga:string -> net.kyori.adventure.text.ScoreComponent__inacc__Builder {}
+  @native
+  command build  -> net.kyori.adventure.text.ScoreComponent {}
+  @native
+  command build  -> net.kyori.adventure.text.BuildableComponent {}
+  @native
+  command build  -> java.lang.Object {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.ScoreComponentImpl extends net.kyori.adventure.text.AbstractComponent implements net.kyori.adventure.text.ScoreComponent {
+  @native
+  let name: string = 0
+  @native
+  let objective: string = 0
+  @native
+  let value: string = 0
+  @native
+  command construct arga:java.util.List argb:net.kyori.adventure.text.format.Style argc:string argd:string arge:string -> void {}
+  @native
+  command name  -> string {}
+  @native
+  command name arga:string -> net.kyori.adventure.text.ScoreComponent {}
+  @native
+  command objective  -> string {}
+  @native
+  command objective arga:string -> net.kyori.adventure.text.ScoreComponent {}
+  @native
+  command value  -> string {}
+  @native
+  command value arga:string -> net.kyori.adventure.text.ScoreComponent {}
+  @native
+  command children arga:java.util.List -> net.kyori.adventure.text.ScoreComponent {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.ScoreComponent {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command toBuilder  -> net.kyori.adventure.text.ScoreComponent__inacc__Builder {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.Component {}
+  @native
+  command children arga:java.util.List -> net.kyori.adventure.text.Component {}
+  @native
+  command toBuilder  -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command toBuilder  -> net.kyori.adventure.util.Buildable__inacc__Builder {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.SelectorComponent__inacc__Builder implements net.kyori.adventure.text.ComponentBuilder {
+  @native
+  command pattern arga:string -> net.kyori.adventure.text.SelectorComponent__inacc__Builder {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.SelectorComponent implements net.kyori.adventure.text.BuildableComponent,net.kyori.adventure.text.ScopedComponent {
+  @native
+  command pattern  -> string {}
+  @native
+  command pattern arga:string -> net.kyori.adventure.text.SelectorComponent {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.SelectorComponentImpl__inacc__BuilderImpl extends net.kyori.adventure.text.AbstractComponentBuilder implements net.kyori.adventure.text.SelectorComponent__inacc__Builder {
+  @native
+  let pattern: string = 0
+  @native
+  command construct  -> void {}
+  @native
+  command construct arga:net.kyori.adventure.text.SelectorComponent -> void {}
+  @native
+  command pattern arga:string -> net.kyori.adventure.text.SelectorComponent__inacc__Builder {}
+  @native
+  command build  -> net.kyori.adventure.text.SelectorComponent {}
+  @native
+  command build  -> net.kyori.adventure.text.BuildableComponent {}
+  @native
+  command build  -> java.lang.Object {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.SelectorComponentImpl extends net.kyori.adventure.text.AbstractComponent implements net.kyori.adventure.text.SelectorComponent {
+  @native
+  let pattern: string = 0
+  @native
+  command construct arga:java.util.List argb:net.kyori.adventure.text.format.Style argc:string -> void {}
+  @native
+  command pattern  -> string {}
+  @native
+  command pattern arga:string -> net.kyori.adventure.text.SelectorComponent {}
+  @native
+  command children arga:java.util.List -> net.kyori.adventure.text.SelectorComponent {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.SelectorComponent {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command toBuilder  -> net.kyori.adventure.text.SelectorComponent__inacc__Builder {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.Component {}
+  @native
+  command children arga:java.util.List -> net.kyori.adventure.text.Component {}
+  @native
+  command toBuilder  -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command toBuilder  -> net.kyori.adventure.util.Buildable__inacc__Builder {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.serializer.ComponentSerializer {
+  @native
+  command deserialize arga:java.lang.Object -> net.kyori.adventure.text.Component {}
+  @native
+  command serialize arga:net.kyori.adventure.text.Component -> java.lang.Object {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.StorageNBTComponent__inacc__Builder implements net.kyori.adventure.text.NBTComponentBuilder {
+  @native
+  command storage arga:net.kyori.adventure.key.Key -> net.kyori.adventure.text.StorageNBTComponent__inacc__Builder {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.StorageNBTComponent implements net.kyori.adventure.text.NBTComponent,net.kyori.adventure.text.ScopedComponent {
+  @native
+  command storage  -> net.kyori.adventure.key.Key {}
+  @native
+  command storage arga:net.kyori.adventure.key.Key -> net.kyori.adventure.text.StorageNBTComponent {}
+}
+
+//access: 32
+@native
+class net.kyori.adventure.text.StorageNBTComponentImpl__inacc__BuilderImpl extends net.kyori.adventure.text.NBTComponentImpl__inacc__BuilderImpl implements net.kyori.adventure.text.StorageNBTComponent__inacc__Builder {
+  @native
+  let storage: net.kyori.adventure.key.Key = 0
+  @native
+  command construct  -> void {}
+  @native
+  command construct arga:net.kyori.adventure.text.StorageNBTComponent -> void {}
+  @native
+  command storage arga:net.kyori.adventure.key.Key -> net.kyori.adventure.text.StorageNBTComponent__inacc__Builder {}
+  @native
+  command build  -> net.kyori.adventure.text.StorageNBTComponent {}
+  @native
+  command build  -> net.kyori.adventure.text.BuildableComponent {}
+  @native
+  command build  -> java.lang.Object {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.StorageNBTComponentImpl extends net.kyori.adventure.text.NBTComponentImpl implements net.kyori.adventure.text.StorageNBTComponent {
+  @native
+  let storage: net.kyori.adventure.key.Key = 0
+  @native
+  command construct arga:java.util.List argb:net.kyori.adventure.text.format.Style argc:string argd:boolean arge:net.kyori.adventure.key.Key -> void {}
+  @native
+  command nbtPath arga:string -> net.kyori.adventure.text.StorageNBTComponent {}
+  @native
+  command interpret  -> net.kyori.adventure.text.StorageNBTComponent {}
+  @native
+  command storage  -> net.kyori.adventure.key.Key {}
+  @native
+  command storage arga:net.kyori.adventure.key.Key -> net.kyori.adventure.text.StorageNBTComponent {}
+  @native
+  command children arga:java.util.List -> net.kyori.adventure.text.StorageNBTComponent {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.StorageNBTComponent {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command toBuilder  -> net.kyori.adventure.text.StorageNBTComponent__inacc__Builder {}
+  @native
+  command interpret  -> net.kyori.adventure.text.NBTComponent {}
+  @native
+  command nbtPath arga:string -> net.kyori.adventure.text.NBTComponent {}
+  @native
+  command toBuilder  -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command toBuilder  -> net.kyori.adventure.util.Buildable__inacc__Builder {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.Component {}
+  @native
+  command children arga:java.util.List -> net.kyori.adventure.text.Component {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.TextComponent__inacc__Builder implements net.kyori.adventure.text.ComponentBuilder {
+  @native
+  command content  -> string {}
+  @native
+  command content arga:string -> net.kyori.adventure.text.TextComponent__inacc__Builder {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.TextComponent implements net.kyori.adventure.text.BuildableComponent,net.kyori.adventure.text.ScopedComponent {
+  @native
+  command ofChildren arga:array<Unknown<net.kyori.adventure.text.ComponentLike>> -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command content  -> string {}
+  @native
+  command content arga:string -> net.kyori.adventure.text.TextComponent {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.TextComponentImpl__inacc__BuilderImpl extends net.kyori.adventure.text.AbstractComponentBuilder implements net.kyori.adventure.text.TextComponent__inacc__Builder {
+  @native
+  let content: string = 0
+  @native
+  command construct  -> void {}
+  @native
+  command construct arga:net.kyori.adventure.text.TextComponent -> void {}
+  @native
+  command content arga:string -> net.kyori.adventure.text.TextComponent__inacc__Builder {}
+  @native
+  command content  -> string {}
+  @native
+  command build  -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command isEmpty  -> boolean {}
+  @native
+  command build  -> net.kyori.adventure.text.BuildableComponent {}
+  @native
+  command build  -> java.lang.Object {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.TextComponentImpl extends net.kyori.adventure.text.AbstractComponent implements net.kyori.adventure.text.TextComponent {
+  @native
+  let EMPTY: net.kyori.adventure.text.TextComponent = 0
+  @native
+  let NEWLINE: net.kyori.adventure.text.TextComponent = 0
+  @native
+  let SPACE: net.kyori.adventure.text.TextComponent = 0
+  @native
+  let content: string = 0
+  @native
+  command createDirect arga:string -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command construct arga:java.util.List argb:net.kyori.adventure.text.format.Style argc:string -> void {}
+  @native
+  command content  -> string {}
+  @native
+  command content arga:string -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command children arga:java.util.List -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.TextComponent {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command toBuilder  -> net.kyori.adventure.text.TextComponent__inacc__Builder {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.Component {}
+  @native
+  command children arga:java.util.List -> net.kyori.adventure.text.Component {}
+  @native
+  command toBuilder  -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command toBuilder  -> net.kyori.adventure.util.Buildable__inacc__Builder {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.TextReplacementConfig__inacc__Builder implements net.kyori.adventure.util.Buildable__inacc__Builder {
+  @native
+  command matchLiteral arga:string -> net.kyori.adventure.text.TextReplacementConfig__inacc__Builder {}
+  @native
+  command match arga:string -> net.kyori.adventure.text.TextReplacementConfig__inacc__Builder {}
+  @native
+  command match arga:java.util.regex.Pattern -> net.kyori.adventure.text.TextReplacementConfig__inacc__Builder {}
+  @native
+  command once  -> net.kyori.adventure.text.TextReplacementConfig__inacc__Builder {}
+  @native
+  command times  -> net.kyori.adventure.text.TextReplacementConfig__inacc__Builder {}
+  @native
+  command condition arga:net.kyori.adventure.util.IntFunction2 -> net.kyori.adventure.text.TextReplacementConfig__inacc__Builder {}
+  @native
+  command replacement arga:string -> net.kyori.adventure.text.TextReplacementConfig__inacc__Builder {}
+  @native
+  command replacement arga:net.kyori.adventure.text.ComponentLike -> net.kyori.adventure.text.TextReplacementConfig__inacc__Builder {}
+  @native
+  command replacement arga:java.util.function.Function -> net.kyori.adventure.text.TextReplacementConfig__inacc__Builder {}
+  @native
+  command replacement arga:java.util.function.BiFunction -> net.kyori.adventure.text.TextReplacementConfig__inacc__Builder {}
+  @native
+  command lambda__inacc__replacement__inacc__3 arga:java.util.function.Function argb:java.util.regex.MatchResult argc:net.kyori.adventure.text.TextComponent__inacc__Builder -> net.kyori.adventure.text.ComponentLike {}
+  @native
+  command lambda__inacc__replacement__inacc__2 arga:net.kyori.adventure.text.Component argb:java.util.regex.MatchResult argc:net.kyori.adventure.text.TextComponent__inacc__Builder -> net.kyori.adventure.text.ComponentLike {}
+  @native
+  command lambda__inacc__replacement__inacc__1 arga:string argb:net.kyori.adventure.text.TextComponent__inacc__Builder -> net.kyori.adventure.text.ComponentLike {}
+  @native
+  command lambda__inacc__times__inacc__0 arga:jvm_integer argb:jvm_integer -> net.kyori.adventure.text.PatternReplacementResult {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.TextReplacementConfig implements net.kyori.adventure.util.Buildable,net.kyori.examination.Examinable {
+  @native
+  command builder  -> net.kyori.adventure.text.TextReplacementConfig__inacc__Builder {}
+  @native
+  command matchPattern  -> java.util.regex.Pattern {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.TextReplacementConfigImpl__inacc__Builder implements net.kyori.adventure.text.TextReplacementConfig__inacc__Builder {
+  @native
+  let matchPattern: java.util.regex.Pattern = 0
+  @native
+  let replacement: java.util.function.BiFunction = 0
+  @native
+  let continuer: net.kyori.adventure.util.IntFunction2 = 0
+  @native
+  command construct  -> void {}
+  @native
+  command construct arga:net.kyori.adventure.text.TextReplacementConfigImpl -> void {}
+  @native
+  command match arga:java.util.regex.Pattern -> net.kyori.adventure.text.TextReplacementConfigImpl__inacc__Builder {}
+  @native
+  command condition arga:net.kyori.adventure.util.IntFunction2 -> net.kyori.adventure.text.TextReplacementConfigImpl__inacc__Builder {}
+  @native
+  command replacement arga:java.util.function.BiFunction -> net.kyori.adventure.text.TextReplacementConfigImpl__inacc__Builder {}
+  @native
+  command build  -> net.kyori.adventure.text.TextReplacementConfig {}
+  @native
+  command replacement arga:java.util.function.BiFunction -> net.kyori.adventure.text.TextReplacementConfig__inacc__Builder {}
+  @native
+  command condition arga:net.kyori.adventure.util.IntFunction2 -> net.kyori.adventure.text.TextReplacementConfig__inacc__Builder {}
+  @native
+  command match arga:java.util.regex.Pattern -> net.kyori.adventure.text.TextReplacementConfig__inacc__Builder {}
+  @native
+  command build  -> java.lang.Object {}
+  @native
+  command lambda__inacc__new__inacc__0 arga:jvm_integer -> net.kyori.adventure.text.PatternReplacementResult {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.TextReplacementConfigImpl implements net.kyori.adventure.text.TextReplacementConfig {
+  @native
+  let matchPattern: java.util.regex.Pattern = 0
+  @native
+  let replacement: java.util.function.BiFunction = 0
+  @native
+  let continuer: net.kyori.adventure.util.IntFunction2 = 0
+  @native
+  command construct arga:net.kyori.adventure.text.TextReplacementConfigImpl__inacc__Builder -> void {}
+  @native
+  command matchPattern  -> java.util.regex.Pattern {}
+  @native
+  command createState  -> net.kyori.adventure.text.TextReplacementRenderer__inacc__State {}
+  @native
+  command toBuilder  -> net.kyori.adventure.text.TextReplacementConfig__inacc__Builder {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command toString  -> string {}
+  @native
+  command toBuilder  -> net.kyori.adventure.util.Buildable__inacc__Builder {}
+  @native
+  command access__inacc__000 arga:net.kyori.adventure.text.TextReplacementConfigImpl -> java.util.regex.Pattern {}
+  @native
+  command access__inacc__100 arga:net.kyori.adventure.text.TextReplacementConfigImpl -> java.util.function.BiFunction {}
+  @native
+  command access__inacc__200 arga:net.kyori.adventure.text.TextReplacementConfigImpl -> net.kyori.adventure.util.IntFunction2 {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.TextReplacementRenderer__inacc__State {
+  @native
+  let pattern: java.util.regex.Pattern = 0
+  @native
+  let replacement: java.util.function.BiFunction = 0
+  @native
+  let continuer: net.kyori.adventure.util.IntFunction2 = 0
+  @native
+  let running: boolean = 0
+  @native
+  let matchCount: jvm_integer = 0
+  @native
+  let replaceCount: jvm_integer = 0
+  @native
+  let firstMatch: boolean = 0
+  @native
+  command construct arga:java.util.regex.Pattern argb:java.util.function.BiFunction argc:net.kyori.adventure.util.IntFunction2 -> void {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.TextReplacementRenderer implements net.kyori.adventure.text.renderer.ComponentRenderer {
+  @native
+  let INSTANCE: net.kyori.adventure.text.TextReplacementRenderer = 0
+  @native
+  command construct  -> void {}
+  @native
+  command render arga:net.kyori.adventure.text.Component argb:net.kyori.adventure.text.TextReplacementRenderer__inacc__State -> net.kyori.adventure.text.Component {}
+  @native
+  command render arga:net.kyori.adventure.text.Component argb:java.lang.Object -> net.kyori.adventure.text.Component {}
+  @native
+  command lambda__inacc__render__inacc__0 arga:net.kyori.adventure.text.event.HoverEvent argb:net.kyori.adventure.text.format.Style__inacc__Builder -> void {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.TranslatableComponent__inacc__Builder implements net.kyori.adventure.text.ComponentBuilder {
+  @native
+  command key arga:string -> net.kyori.adventure.text.TranslatableComponent__inacc__Builder {}
+  @native
+  command args arga:net.kyori.adventure.text.ComponentBuilder -> net.kyori.adventure.text.TranslatableComponent__inacc__Builder {}
+  @native
+  command args arga:array<Unknown<net.kyori.adventure.text.ComponentBuilder>> -> net.kyori.adventure.text.TranslatableComponent__inacc__Builder {}
+  @native
+  command args arga:net.kyori.adventure.text.Component -> net.kyori.adventure.text.TranslatableComponent__inacc__Builder {}
+  @native
+  command args arga:array<Unknown<net.kyori.adventure.text.ComponentLike>> -> net.kyori.adventure.text.TranslatableComponent__inacc__Builder {}
+  @native
+  command args arga:java.util.List -> net.kyori.adventure.text.TranslatableComponent__inacc__Builder {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.text.TranslatableComponent implements net.kyori.adventure.text.BuildableComponent,net.kyori.adventure.text.ScopedComponent {
+  @native
+  command key  -> string {}
+  @native
+  command key arga:string -> net.kyori.adventure.text.TranslatableComponent {}
+  @native
+  command args  -> java.util.List {}
+  @native
+  command args arga:array<Unknown<net.kyori.adventure.text.ComponentLike>> -> net.kyori.adventure.text.TranslatableComponent {}
+  @native
+  command args arga:java.util.List -> net.kyori.adventure.text.TranslatableComponent {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.TranslatableComponentImpl__inacc__BuilderImpl extends net.kyori.adventure.text.AbstractComponentBuilder implements net.kyori.adventure.text.TranslatableComponent__inacc__Builder {
+  @native
+  let key: string = 0
+  @native
+  let args: java.util.List = 0
+  @native
+  command construct  -> void {}
+  @native
+  command construct arga:net.kyori.adventure.text.TranslatableComponent -> void {}
+  @native
+  command key arga:string -> net.kyori.adventure.text.TranslatableComponent__inacc__Builder {}
+  @native
+  command args arga:net.kyori.adventure.text.ComponentBuilder -> net.kyori.adventure.text.TranslatableComponent__inacc__Builder {}
+  @native
+  command args arga:array<Unknown<net.kyori.adventure.text.ComponentBuilder>> -> net.kyori.adventure.text.TranslatableComponent__inacc__Builder {}
+  @native
+  command args arga:net.kyori.adventure.text.Component -> net.kyori.adventure.text.TranslatableComponent__inacc__Builder {}
+  @native
+  command args arga:array<Unknown<net.kyori.adventure.text.ComponentLike>> -> net.kyori.adventure.text.TranslatableComponent__inacc__Builder {}
+  @native
+  command args arga:java.util.List -> net.kyori.adventure.text.TranslatableComponent__inacc__Builder {}
+  @native
+  command build  -> net.kyori.adventure.text.TranslatableComponentImpl {}
+  @native
+  command build  -> net.kyori.adventure.text.BuildableComponent {}
+  @native
+  command build  -> java.lang.Object {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.text.TranslatableComponentImpl extends net.kyori.adventure.text.AbstractComponent implements net.kyori.adventure.text.TranslatableComponent {
+  @native
+  let key: string = 0
+  @native
+  let args: java.util.List = 0
+  @native
+  command construct arga:java.util.List argb:net.kyori.adventure.text.format.Style argc:string argd:array<Unknown<net.kyori.adventure.text.ComponentLike>> -> void {}
+  @native
+  command construct arga:java.util.List argb:net.kyori.adventure.text.format.Style argc:string argd:java.util.List -> void {}
+  @native
+  command key  -> string {}
+  @native
+  command key arga:string -> net.kyori.adventure.text.TranslatableComponent {}
+  @native
+  command args  -> java.util.List {}
+  @native
+  command args arga:array<Unknown<net.kyori.adventure.text.ComponentLike>> -> net.kyori.adventure.text.TranslatableComponent {}
+  @native
+  command args arga:java.util.List -> net.kyori.adventure.text.TranslatableComponent {}
+  @native
+  command children arga:java.util.List -> net.kyori.adventure.text.TranslatableComponent {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.TranslatableComponent {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command toBuilder  -> net.kyori.adventure.text.TranslatableComponent__inacc__Builder {}
+  @native
+  command style arga:net.kyori.adventure.text.format.Style -> net.kyori.adventure.text.Component {}
+  @native
+  command children arga:java.util.List -> net.kyori.adventure.text.Component {}
+  @native
+  command toBuilder  -> net.kyori.adventure.text.ComponentBuilder {}
+  @native
+  command toBuilder  -> net.kyori.adventure.util.Buildable__inacc__Builder {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.title.Title__inacc__Times implements net.kyori.examination.Examinable {
+  @native
+  command of arga:java.time.Duration argb:java.time.Duration argc:java.time.Duration -> net.kyori.adventure.title.Title__inacc__Times {}
+  @native
+  command fadeIn  -> java.time.Duration {}
+  @native
+  command stay  -> java.time.Duration {}
+  @native
+  command fadeOut  -> java.time.Duration {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.title.Title implements net.kyori.examination.Examinable {
+  @native
+  let DEFAULT_TIMES: net.kyori.adventure.title.Title__inacc__Times = 0
+  @native
+  command title arga:net.kyori.adventure.text.Component argb:net.kyori.adventure.text.Component -> net.kyori.adventure.title.Title {}
+  @native
+  command title arga:net.kyori.adventure.text.Component argb:net.kyori.adventure.text.Component argc:net.kyori.adventure.title.Title__inacc__Times -> net.kyori.adventure.title.Title {}
+  @native
+  command title  -> net.kyori.adventure.text.Component {}
+  @native
+  command subtitle  -> net.kyori.adventure.text.Component {}
+  @native
+  command times  -> net.kyori.adventure.title.Title__inacc__Times {}
+}
+
+//access: 32
+@native
+class net.kyori.adventure.title.TitleImpl__inacc__TimesImpl implements net.kyori.adventure.title.Title__inacc__Times {
+  @native
+  let fadeIn: java.time.Duration = 0
+  @native
+  let stay: java.time.Duration = 0
+  @native
+  let fadeOut: java.time.Duration = 0
+  @native
+  command construct arga:java.time.Duration argb:java.time.Duration argc:java.time.Duration -> void {}
+  @native
+  command fadeIn  -> java.time.Duration {}
+  @native
+  command stay  -> java.time.Duration {}
+  @native
+  command fadeOut  -> java.time.Duration {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command toString  -> string {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.title.TitleImpl implements net.kyori.adventure.title.Title {
+  @native
+  let title: net.kyori.adventure.text.Component = 0
+  @native
+  let subtitle: net.kyori.adventure.text.Component = 0
+  @native
+  let times: net.kyori.adventure.title.Title__inacc__Times = 0
+  @native
+  command construct arga:net.kyori.adventure.text.Component argb:net.kyori.adventure.text.Component argc:net.kyori.adventure.title.Title__inacc__Times -> void {}
+  @native
+  command title  -> net.kyori.adventure.text.Component {}
+  @native
+  command subtitle  -> net.kyori.adventure.text.Component {}
+  @native
+  command times  -> net.kyori.adventure.title.Title__inacc__Times {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command toString  -> string {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.translation.GlobalTranslator implements net.kyori.adventure.translation.Translator,net.kyori.examination.Examinable {
+  @native
+  command get  -> net.kyori.adventure.translation.GlobalTranslator {}
+  @native
+  command renderer  -> net.kyori.adventure.text.renderer.TranslatableComponentRenderer {}
+  @native
+  command render arga:net.kyori.adventure.text.Component argb:java.util.Locale -> net.kyori.adventure.text.Component {}
+  @native
+  command sources  -> java.lang.Iterable {}
+  @native
+  command addSource arga:net.kyori.adventure.translation.Translator -> boolean {}
+  @native
+  command removeSource arga:net.kyori.adventure.translation.Translator -> boolean {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.translation.GlobalTranslatorImpl implements net.kyori.adventure.translation.GlobalTranslator {
+  @native
+  let NAME: net.kyori.adventure.key.Key = 0
+  @native
+  let INSTANCE: net.kyori.adventure.translation.GlobalTranslatorImpl = 0
+  @native
+  let renderer: net.kyori.adventure.text.renderer.TranslatableComponentRenderer = 0
+  @native
+  let sources: java.util.Set = 0
+  @native
+  command construct  -> void {}
+  @native
+  command name  -> net.kyori.adventure.key.Key {}
+  @native
+  command sources  -> java.lang.Iterable {}
+  @native
+  command addSource arga:net.kyori.adventure.translation.Translator -> boolean {}
+  @native
+  command removeSource arga:net.kyori.adventure.translation.Translator -> boolean {}
+  @native
+  command translate arga:string argb:java.util.Locale -> java.text.MessageFormat {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.translation.TranslationLocales {
+  @native
+  let GLOBAL: java.util.function.Supplier = 0
+  @native
+  command construct  -> void {}
+  @native
+	@static
+  command global  -> java.util.Locale {}
+  @native
+  command lambda__inacc__static__inacc__1 arga:java.util.Locale -> java.util.Locale {}
+  @native
+  command lambda__inacc__static__inacc__0  -> java.util.Locale {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.translation.TranslationRegistry implements net.kyori.adventure.translation.Translator {
+  @native
+  let SINGLE_QUOTE_PATTERN: java.util.regex.Pattern = 0
+  @native
+  command create arga:net.kyori.adventure.key.Key -> net.kyori.adventure.translation.TranslationRegistry {}
+  @native
+  command translate arga:string argb:java.util.Locale -> java.text.MessageFormat {}
+  @native
+  command defaultLocale arga:java.util.Locale -> void {}
+  @native
+  command register arga:string argb:java.util.Locale argc:java.text.MessageFormat -> void {}
+  @native
+  command registerAll arga:java.util.Locale argb:java.util.Map -> void {}
+  @native
+  command registerAll arga:java.util.Locale argb:java.nio.file.Path -> void {}
+  @native
+  command registerAll arga:java.util.Locale argb:java.util.ResourceBundle -> void {}
+  @native
+  command registerAll arga:java.util.Locale argb:java.util.Set argc:java.util.function.Function -> void {}
+  @native
+  command unregister arga:string -> void {}
+  @native
+  command lambda__inacc__registerAll__inacc__0 arga:java.util.ResourceBundle argb:boolean argc:java.util.Locale argd:string -> java.text.MessageFormat {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.translation.TranslationRegistryImpl__inacc__Translation implements net.kyori.examination.Examinable {
+  @native
+  let key: string = 0
+  @native
+  let formats: java.util.Map = 0
+  @native
+  let this__inacc__0: net.kyori.adventure.translation.TranslationRegistryImpl = 0
+  @native
+  command construct arga:net.kyori.adventure.translation.TranslationRegistryImpl argb:string -> void {}
+  @native
+  command register arga:java.util.Locale argb:java.text.MessageFormat -> void {}
+  @native
+  command translate arga:java.util.Locale -> java.text.MessageFormat {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command toString  -> string {}
+}
+
+//access: 48
+@native
+class net.kyori.adventure.translation.TranslationRegistryImpl implements net.kyori.examination.Examinable,net.kyori.adventure.translation.TranslationRegistry {
+  @native
+  let name: net.kyori.adventure.key.Key = 0
+  @native
+  let translations: java.util.Map = 0
+  @native
+  let defaultLocale: java.util.Locale = 0
+  @native
+  command construct arga:net.kyori.adventure.key.Key -> void {}
+  @native
+  command register arga:string argb:java.util.Locale argc:java.text.MessageFormat -> void {}
+  @native
+  command unregister arga:string -> void {}
+  @native
+  command name  -> net.kyori.adventure.key.Key {}
+  @native
+  command translate arga:string argb:java.util.Locale -> java.text.MessageFormat {}
+  @native
+  command defaultLocale arga:java.util.Locale -> void {}
+  @native
+  command examinableProperties  -> java.util.stream.Stream {}
+  @native
+  command equals arga:java.lang.Object -> boolean {}
+  @native
+  command hashCode  -> jvm_integer {}
+  @native
+  command toString  -> string {}
+  @native
+  command lambda__inacc__register__inacc__0 arga:string -> net.kyori.adventure.translation.TranslationRegistryImpl__inacc__Translation {}
+  @native
+  command access__inacc__000 arga:net.kyori.adventure.translation.TranslationRegistryImpl -> java.util.Locale {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.translation.Translator {
+  @native
+  command parseLocale arga:string -> java.util.Locale {}
+  @native
+  command name  -> net.kyori.adventure.key.Key {}
+  @native
+  command translate arga:string argb:java.util.Locale -> java.text.MessageFormat {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.util.Buildable__inacc__Builder {
+  @native
+  command build  -> java.lang.Object {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.util.Buildable {
+  @native
+  command configureAndBuild arga:net.kyori.adventure.util.Buildable__inacc__Builder argb:java.util.function.Consumer -> net.kyori.adventure.util.Buildable {}
+  @native
+  command toBuilder  -> net.kyori.adventure.util.Buildable__inacc__Builder {}
+}
+
+//access: 32
+@native
+class net.kyori.adventure.util.Codec__inacc__1 implements net.kyori.adventure.util.Codec {
+  @native
+  let val__inacc__decoder: net.kyori.adventure.util.Codec__inacc__Decoder = 0
+  @native
+  let val__inacc__encoder: net.kyori.adventure.util.Codec__inacc__Encoder = 0
+  @native
+  command construct arga:net.kyori.adventure.util.Codec__inacc__Decoder argb:net.kyori.adventure.util.Codec__inacc__Encoder -> void {}
+  @native
+  command decode arga:java.lang.Object -> java.lang.Object {}
+  @native
+  command encode arga:java.lang.Object -> java.lang.Object {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.util.Codec__inacc__Decoder {
+  @native
+  command decode arga:java.lang.Object -> java.lang.Object {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.util.Codec__inacc__Encoder {
+  @native
+  command encode arga:java.lang.Object -> java.lang.Object {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.util.Codec {
+  @native
+  command of arga:net.kyori.adventure.util.Codec__inacc__Decoder argb:net.kyori.adventure.util.Codec__inacc__Encoder -> net.kyori.adventure.util.Codec {}
+  @native
+  command decode arga:java.lang.Object -> java.lang.Object {}
+  @native
+  command encode arga:java.lang.Object -> java.lang.Object {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.util.ComponentMessageThrowable {
+  @native
+  command getMessage arga:java.lang.Throwable -> net.kyori.adventure.text.Component {}
+  @native
+  command getOrConvertMessage arga:java.lang.Throwable -> net.kyori.adventure.text.Component {}
+  @native
+  command componentMessage  -> net.kyori.adventure.text.Component {}
+}
+
+//access: 49
+@native
+class net.kyori.adventure.util.Index {
+  @native
+  let keyToValue: java.util.Map = 0
+  @native
+  let valueToKey: java.util.Map = 0
+  @native
+  command construct arga:java.util.Map argb:java.util.Map -> void {}
+  @native
+  command create arga:java.lang.Class argb:java.util.function.Function -> net.kyori.adventure.util.Index {}
+  @native
+  command create arga:java.lang.Class argb:java.util.function.Function argc:array<Unknown<java.lang.Enum>> -> net.kyori.adventure.util.Index {}
+  @native
+  command create arga:java.util.function.Function argb:array<Unknown<java.lang.Object>> -> net.kyori.adventure.util.Index {}
+  @native
+  command create arga:java.util.function.Function argb:java.util.List -> net.kyori.adventure.util.Index {}
+  @native
+  command create arga:array<Unknown<java.lang.Object>> argb:array<Unknown<java.util.function.IntFunction>> argc:array<Unknown<java.util.function.Function>> -> net.kyori.adventure.util.Index {}
+  @native
+  command create arga:java.util.List argb:java.util.function.IntFunction argc:java.util.function.Function -> net.kyori.adventure.util.Index {}
+  @native
+  command keys  -> java.util.Set {}
+  @native
+  command key arga:java.lang.Object -> java.lang.Object {}
+  @native
+  command values  -> java.util.Set {}
+  @native
+  command value arga:java.lang.Object -> java.lang.Object {}
+  @native
+  command lambda__inacc__create__inacc__0 arga:java.lang.Class -> java.util.Map {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.util.IntFunction2 {
+  @native
+  command apply arga:jvm_integer -> java.lang.Object {}
+}
+
+//access: 1057
+@native
+class net.kyori.adventure.util.Listenable {
+  @native
+  let listeners: java.util.List = 0
+  @native
+  command construct  -> void {}
+  @native
+  command forEachListener arga:java.util.function.Consumer -> void {}
+  @native
+  command addListener0 arga:java.lang.Object -> void {}
+  @native
+  command removeListener0 arga:java.lang.Object -> void {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.util.RGBLike {
+  @native
+  command red  -> jvm_integer {}
+  @native
+  command green  -> jvm_integer {}
+  @native
+  command blue  -> jvm_integer {}
+}
+
+//access: 49
+@native
+class net.kyori.adventure.util.ShadyPines {
+  @native
+  command construct  -> void {}
+  @native
+  command enumSet arga:java.lang.Class argb:array<Unknown<java.lang.Enum>> -> java.util.Set {}
+  @native
+  command equals arga:number -> boolean {}
+  @native
+  command equals  -> boolean {}
+}
+
+//access: 1537
+@native
+@interface
+class net.kyori.adventure.util.Ticks {
+  @native
+  let TICKS_PER_SECOND: jvm_integer = 0
+  @native
+  let SINGLE_TICK_DURATION_MS: Unknown<J> = 0
+  @native
+  command duration  -> java.time.Duration {}
+}
+
+//access: 49
+@native
+class net.kyori.adventure.util.UTF8ResourceBundleControl extends java.util.ResourceBundle__inacc__Control {
+  @native
+  let INSTANCE: net.kyori.adventure.util.UTF8ResourceBundleControl = 0
+  @native
+  command construct  -> void {}
+  @native
+  command get  -> java.util.ResourceBundle__inacc__Control {}
+  @native
+  command newBundle arga:string argb:java.util.Locale argc:string argd:java.lang.ClassLoader -> java.util.ResourceBundle {}
+  @native
+  command lambda__inacc__newBundle__inacc__0 arga:boolean argb:java.lang.ClassLoader argc:string -> java.io.InputStream {}
+}
+
 //access: 131105
 @native
 class co.aikar.timings.FullServerTickHandler extends co.aikar.timings.TimingHandler {

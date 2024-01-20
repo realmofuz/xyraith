@@ -126,6 +126,27 @@ class std.list {
         return (list.get (d2i index))
     }
 }"""
+,"std/mc" to """
+include "std/papermc"
+
+class thestupidbug {}
+
+@native
+@interface
+class net.kyori.adventure.text.Component {
+
+}
+
+@native
+@interface
+class net.kyori.adventure.text.minimessage.MiniMessage {
+    @native
+    @static
+    command miniMessage -> net.kyori.adventure.text.minimessage.MiniMessage {}
+
+    @native
+    command deserialize a: string -> net.kyori.adventure.text.Component {}
+}"""
 ,"std/papermc" to """
 //access: 131105
 @native

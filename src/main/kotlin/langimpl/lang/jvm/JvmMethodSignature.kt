@@ -18,7 +18,7 @@ data class JvmMethodSignature(
     val returns: Type,
     val headerType: HeaderType,
 ) {
-    fun methodSignature(): String = when(headerType) {
+    fun methodSignature(): String = when (headerType) {
         HeaderType.METHOD -> "(${parameters.joinToString("") { it.toJvmSignature() }})${returns.toJvmSignature()}"
         HeaderType.FIELD -> returns.toJvmSignature()
     }
@@ -33,6 +33,5 @@ data class JvmMethodSignature(
 }
 
 enum class HeaderType {
-    METHOD,
-    FIELD
+    METHOD, FIELD
 }

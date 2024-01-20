@@ -20,7 +20,7 @@ enum class FunctionType {
     NONE;
 
     fun toHeaderType(): HeaderType {
-        return when(this) {
+        return when (this) {
             STATIC_FIELD, MEMBER_FIELD -> HeaderType.FIELD
             STATIC_METHOD, MEMBER_METHOD -> HeaderType.METHOD
             NONE -> TODO()
@@ -39,20 +39,22 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
     val annotations: MutableList<PathName> = mutableListOf()
 
     private fun evaluateType(value: Ast.Value): Type {
-        return when(value) {
+        return when (value) {
             is Ast.ArrayOf ->
-                if(value.type !is Type.Void)
-                    Type.Array(value.type, Type.NumberParameter(value.arguments.size))
+                if (value.type !is Type.Void)
+                    Type.Array(value.type)
                 else
-                    Type.Array(evaluateType(value.arguments[0].argument), Type.NumberParameter(value.arguments.size))
+                    Type.Array(evaluateType(value.arguments[0].argument))
+
             is Ast.Boolean -> Type.Boolean
             is Ast.ConstructClass -> Type.Object(
                 value.className,
                 listOf(),
                 false
             )
+
             is Ast.Access -> {
-                when(value.path.resolve()) {
+                when (value.path.resolve()) {
                     "add" -> return Type.Number
                     "sub" -> return Type.Number
                     "mul" -> return Type.Number
@@ -63,6 +65,7 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
                         PathName.parse("net.kyori.adventure.text.Component"),
                         listOf()
                     )
+
                     else -> {}
                 }
                 val altPath = PathName.parse(value.path.resolve())
@@ -80,8 +83,8 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
                     fn,
                     value.arguments.map { evaluateType(it.argument) }.toList()
                 )
-                if(!property.exists) {
-                    if(value.path.path.size == 2) {
+                if (!property.exists) {
+                    if (value.path.path.size == 2) {
                         val variable = value.path.path[0]
                         val function = value.path.path[1]
                         val type = evaluateType(Ast.Variable(variable)) as Type.Object
@@ -95,8 +98,14 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
                         throw InvalidFunction(value.nameSpan)
                     }
                 }
-                return gatherer.computeType(altPath.resolve(), fn, value.arguments.map { evaluateType(it.argument) }.toList(), value.nameSpan)
+                return gatherer.computeType(
+                    altPath.resolve(),
+                    fn,
+                    value.arguments.map { evaluateType(it.argument) }.toList(),
+                    value.nameSpan
+                )
             }
+
             Ast.Null -> TODO()
             is Ast.Number -> return Type.Number
             is Ast.StringText -> return Type.Object(
@@ -104,6 +113,7 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
                 listOf(),
                 false
             )
+
             is Ast.Variable -> {
                 val prop = gatherer.getProperty(
                     currentClass.name.resolve(),
@@ -111,10 +121,10 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
                     listOf()
                 )
                 println("check prop")
-                if(prop.exists && prop.functionType == FunctionType.MEMBER_FIELD)
+                if (prop.exists && prop.functionType == FunctionType.MEMBER_FIELD)
                     return prop.returnTypeOfProperty
                 println("var fallback")
-                if(localVariables.containsKey(value.value))
+                if (localVariables.containsKey(value.value))
                     return localVariables[value.value]!!
                 println("void fallback")
                 return Type.Void
@@ -144,12 +154,12 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
             function.returns,
             HeaderType.METHOD
         )
-        if(annotations.contains(PathName.parse("static")) || currentClass.static)
+        if (annotations.contains(PathName.parse("static")) || currentClass.static)
             FunctionType.STATIC_METHOD
         else
             FunctionType.MEMBER_METHOD
 
-        for(argument in function.parameters) {
+        for (argument in function.parameters) {
             localVariables[argument.key] = argument.value
         }
         localVariables["this"] = Type.Object(currentClass.name, listOf(), false)
@@ -160,7 +170,7 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
     }
 
     override fun visit(event: Ast.Event, context: VisitorContext): Boolean {
-        when(event.name) {
+        when (event.name) {
             "startup" -> {}
             "join" -> {
                 localVariables["event"] = Type.Object(
@@ -169,6 +179,7 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
                     false
                 )
             }
+
             else -> throw InvalidFunction(event.eventNameSpan)
         }
 
@@ -186,8 +197,9 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
             HeaderType.FIELD
         )
 
-        if(!evaluateType(field.value).equalTo(field.type)
-            && !annotations.contains(PathName.parse("native"))) {
+        if (!evaluateType(field.value).equalTo(field.type)
+            && !annotations.contains(PathName.parse("native"))
+        ) {
             throw InvalidType(field.type, evaluateType(field.value), field.span)
         }
         val b = !annotations.contains(PathName.parse("native"))
@@ -200,8 +212,9 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
     }
 
     override fun visit(clazz: Ast.ConstructClass, context: VisitorContext) {
-        if(!classes.contains(clazz.className)
-            && !clazz.className.resolve().startsWith("java.")) {
+        if (!classes.contains(clazz.className)
+            && !clazz.className.resolve().startsWith("java.")
+        ) {
             throw InvalidClass(clazz.classSpan)
         }
     }
@@ -213,7 +226,7 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
             "add", "sub", "mul", "div", "return", "jvmarraylen", "jvmarrayindex",
             "eq", "d2i", "d2f", "std.mc.component"
         )
-        if(reserved.contains(access.path.resolve()))
+        if (reserved.contains(access.path.resolve()))
             return
         val path = access.path.resolve().split(".").toMutableList()
         val fn = path.removeLast()
@@ -227,24 +240,33 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
         )
         println("Attempting to compare ${access.arguments.map { evaluateType(it.argument) }}")
         println("path: $path | lvars: $localVariables | Types: ${access.arguments.map { evaluateType(it.argument) }}")
-        if(!prop.exists) {
-            println("chk field prop: ${gatherer.getProperty(
-                currentClass.name.resolve(),
-                path[0],
-                listOf()
-            )}")
-            if(path.size == 1 &&
+        if (!prop.exists) {
+            println(
+                "chk field prop: ${
+                    gatherer.getProperty(
+                        currentClass.name.resolve(),
+                        path[0],
+                        listOf()
+                    )
+                }"
+            )
+            if (path.size == 1 &&
                 (localVariables.containsKey(path[0])
                         || gatherer.getProperty(
-                            currentClass.name.resolve(),
-                            path[0],
-                            listOf()
-                        ).functionType == FunctionType.MEMBER_FIELD)) {
+                    currentClass.name.resolve(),
+                    path[0],
+                    listOf()
+                ).functionType == FunctionType.MEMBER_FIELD)
+            ) {
                 val path2 = access.path.resolve().split(".").toMutableList()
                 val variable = path2[0]
                 val function = path2[1]
                 val clazz = (evaluateType(Ast.Variable(variable)) as Type.Object).signature
-                if(!gatherer.getProperty(clazz.resolve(), function, access.arguments.map { evaluateType(it.argument) }).exists) {
+                if (!gatherer.getProperty(
+                        clazz.resolve(),
+                        function,
+                        access.arguments.map { evaluateType(it.argument) }).exists
+                ) {
                     throw InvalidFunction(access.nameSpan)
                 }
             } else {
@@ -255,26 +277,29 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
     }
 
     override fun visit(declareVariable: Ast.DeclareVariable, context: VisitorContext) {
-        localVariables[declareVariable.name] = if(declareVariable.type is Type.Void)
+        localVariables[declareVariable.name] = if (declareVariable.type is Type.Void)
             evaluateType(declareVariable.value)
         else
             declareVariable.type
 
-        if(!evaluateType(declareVariable.value).equalTo(localVariables[declareVariable.name]!!)
-            && declareVariable.type !is Type.Void) {
+        if (!evaluateType(declareVariable.value).equalTo(localVariables[declareVariable.name]!!)
+            && declareVariable.type !is Type.Void
+        ) {
             throw InvalidType(
                 localVariables[declareVariable.name]!!,
                 evaluateType(declareVariable.value),
-                declareVariable.span)
+                declareVariable.span
+            )
         }
     }
 
     override fun visit(storeVariable: Ast.StoreVariable, context: VisitorContext) {
-        if(!evaluateType(storeVariable.value).equalTo(localVariables[storeVariable.name]!!)) {
+        if (!evaluateType(storeVariable.value).equalTo(localVariables[storeVariable.name]!!)) {
             throw InvalidType(
                 localVariables[storeVariable.name]!!,
                 evaluateType(storeVariable.value),
-                storeVariable.span)
+                storeVariable.span
+            )
         }
     }
 
@@ -283,7 +308,7 @@ class AstValidator(val gatherer: AstGatherer) : AstVisitor {
     }
 
     override fun visit(forEachStatement: Ast.ForEachStatement, context: VisitorContext) {
-        if(!localVariables.containsKey(forEachStatement.variable)) {
+        if (!localVariables.containsKey(forEachStatement.variable)) {
             localVariables[forEachStatement.variable] = (evaluateType(forEachStatement.list) as Type.Array).type
         }
     }

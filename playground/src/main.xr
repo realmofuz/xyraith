@@ -1,7 +1,6 @@
 include "std/jdk"
-include "std/list"
 include "std/console"
-include "std/papermc"
+include "std/mc"
 
 namespace ServerEvents {
     on startup {
