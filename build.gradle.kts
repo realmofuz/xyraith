@@ -1,6 +1,6 @@
 import org.jetbrains.kotlin.backend.wasm.ir2wasm.bind
 import org.objectweb.asm.*
-import java.util.UUID
+import java.util.*
 
 val majorVersion = 0
 val minorVersion = 3
@@ -104,6 +104,51 @@ abstract class BindingTask : DefaultTask() {
                 .replace("package-info", "java__package_info"))
         }
         return """"""
+    }
+}
+
+abstract class JDKBindingTask : DefaultTask() {
+    fun forEachClassFile(run: (ClassReader) -> Unit) {
+        val r =
+            ClassLoader.getSystemClassLoader()
+                .getResources("java/")
+
+        println("r: ${r.toList()}")
+        while(r.hasMoreElements()) {
+            println("Getting more elements... ($r)")
+            val resource = r.nextElement()
+
+            if(resource.file.lowercase(Locale.getDefault()).endsWith(".jar")) {
+                println("JAR: " + resource.file)
+            } else {
+                println("Directory: " + resource.file)
+            }
+        }
+        println("Done")
+//        File("${project.rootDir.path}/bindings/classlist")
+//            .readText()
+//            .split("\n")
+//            .map {
+//                if(!it.startsWith("#") && it.isNotEmpty()) {
+//                    val array = ByteArray(10000)
+//                    println(it)
+//                    ClassLoader.getSystemClassLoader().getResourceAsStream(it.replace("/", "."))!!.read(array)
+//                    run(ClassReader(it))
+//                }
+//            }
+    }
+    @TaskAction
+    fun generateBindings(): String {
+        val visitor = BindingVisitor()
+        forEachClassFile {
+            it.accept(
+                visitor,
+                ClassReader.SKIP_CODE)
+            File("./std/jdk.xr").writeText(visitor.bindingString
+                .replace("$", "")
+                .replace("package-info", "java__package_info"))
+        }
+        return ""
     }
 }
 
@@ -238,3 +283,4 @@ class BindingVisitor : ClassVisitor(Opcodes.ASM9) {
 }
 tasks.register<BindingTask>("generateBindings")
 tasks.register<StdlibTask>("generateStdlib")
+tasks.register<JDKBindingTask>("generateJdk")
