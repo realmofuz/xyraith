@@ -109,33 +109,18 @@ abstract class BindingTask : DefaultTask() {
 
 abstract class JDKBindingTask : DefaultTask() {
     fun forEachClassFile(run: (ClassReader) -> Unit) {
-        val r =
-            ClassLoader.getSystemClassLoader()
-                .getResources("java/")
+        File("./bindings/classlist")
+            .readText()
+            .split("\n")
+            .forEach {
+                if(it.isEmpty() || it.startsWith("@") || it.startsWith("#") || it.contains("$"))
+                    return@forEach
 
-        println("r: ${r.toList()}")
-        while(r.hasMoreElements()) {
-            println("Getting more elements... ($r)")
-            val resource = r.nextElement()
-
-            if(resource.file.lowercase(Locale.getDefault()).endsWith(".jar")) {
-                println("JAR: " + resource.file)
-            } else {
-                println("Directory: " + resource.file)
+                val clazz = Class.forName(it.trim().replace("/", "."))
+                clazz.methods.forEach {
+                    println("${clazz.name}#${it.name}${it.parameters}")
+                }
             }
-        }
-        println("Done")
-//        File("${project.rootDir.path}/bindings/classlist")
-//            .readText()
-//            .split("\n")
-//            .map {
-//                if(!it.startsWith("#") && it.isNotEmpty()) {
-//                    val array = ByteArray(10000)
-//                    println(it)
-//                    ClassLoader.getSystemClassLoader().getResourceAsStream(it.replace("/", "."))!!.read(array)
-//                    run(ClassReader(it))
-//                }
-//            }
     }
     @TaskAction
     fun generateBindings(): String {
