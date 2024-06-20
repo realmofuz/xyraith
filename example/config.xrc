@@ -1,0 +1,5 @@
+[
+    pack_version = 48,
+    description = "This is my pack!",
+    load = "example:main"
+]

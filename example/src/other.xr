@@ -1,0 +1,7 @@
+define function realmofuz:example/kill_all_entities {
+    as @e {
+        say "I am being killed. Goodnight :("
+        kill
+    }
+    say "Wow! I just killed all the entities! Shame on me..."
+}

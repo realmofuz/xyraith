@@ -1,0 +1,10 @@
+{
+  "criteria": {
+    "Event Trigger": {
+      "trigger": "${event}"
+    }
+  },
+  "rewards": {
+    "function": "${function}"
+  }
+}
