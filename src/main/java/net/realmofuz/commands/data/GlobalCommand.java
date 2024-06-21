@@ -56,7 +56,7 @@ public class GlobalCommand implements Command {
             .append(mcOp)
             .append(" ")
             .append(ctx.args().<Ast.Value.Literal>get("variable").value())
-            .append(" globals ")
+            .append(" __globals ")
             .appendInteger(ctx.args().<Ast.Value.Number>get("value").number())
             .append('\n');
     }
@@ -70,7 +70,7 @@ public class GlobalCommand implements Command {
         ctx.builder().append("scoreboard players operation ")
             .append(" ")
             .append(ctx.args().<Ast.Value.Literal>get("variable").value())
-            .append(" globals ")
+            .append(" __globals ")
             .append(mcOp)
             .append(" ")
             .append(otherScoreObjective)
@@ -83,15 +83,15 @@ public class GlobalCommand implements Command {
         CompileContext ctx,
         String mcOp
     ) {
-        ctx.builder().append("scoreboard players set __tmp globals ")
+        ctx.builder().append("scoreboard players set __tmp __globals ")
             .appendInteger(ctx.args().<Ast.Value.Number>get("value").number())
             .append('\n');
 
         ctx.builder().append("scoreboard players operation ")
             .append(ctx.args().<Ast.Value.Literal>get("variable").value())
-            .append(" globals ")
+            .append(" __globals ")
             .append(mcOp)
-            .append(" __tmp globals")
+            .append(" __tmp __globals")
             .append('\n');
     }
 }
