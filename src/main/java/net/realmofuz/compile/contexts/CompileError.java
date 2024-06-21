@@ -177,6 +177,27 @@ public sealed interface CompileError {
         }
     }
 
+    final class ReservedIdentifier extends Error implements CompileError {
+        String badIdentifier;
+        SpanData span;
+
+        public ReservedIdentifier(String badIdentifier, SpanData span) {
+            this.badIdentifier = badIdentifier;
+            this.span = span;
+        }
+
+        @Override
+        public SpanData span() {
+            return this.span;
+        }
+
+        @Override
+        public String errorLog() {
+            return "The identifier " + badIdentifier + " is invalid as it is reserved with 2 underscores.";
+        }
+    }
+
+
     String errorLog();
     SpanData span();
 }

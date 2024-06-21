@@ -1,6 +1,7 @@
 package net.realmofuz.parser;
 
 import net.realmofuz.StringIterator;
+import net.realmofuz.compile.contexts.CompileError;
 import net.realmofuz.parser.tree.Ast;
 import net.realmofuz.util.ResourceLocation;
 
@@ -21,6 +22,12 @@ public class Parser {
         while ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-/:_".contains(String.valueOf(iterator.peek()))) {
             sb.append(iterator.next());
         }
+        if(sb.toString().startsWith("__")) {
+            throw new CompileError.ReservedIdentifier(
+                sb.toString(),
+                new SpanData(fileName, iterator.index())
+            );
+        }
         return sb.toString();
     }
 
@@ -28,6 +35,12 @@ public class Parser {
         var sb = new StringBuilder();
         while ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-/:+-*=%_".contains(String.valueOf(iterator.peek()))) {
             sb.append(iterator.next());
+        }
+        if(sb.toString().startsWith("__")) {
+            throw new CompileError.ReservedIdentifier(
+                sb.toString(),
+                new SpanData(fileName, iterator.index())
+            );
         }
         return sb.toString();
     }
