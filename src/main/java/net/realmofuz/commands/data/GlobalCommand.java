@@ -42,7 +42,7 @@ public class GlobalCommand implements Command {
             .append(" ")
             .append(ctx.args().<Ast.Value.Literal>get("variable").value())
             .append(" globals ")
-            .append(ctx.args().<Ast.Value.Number>get("value").number())
+            .appendInteger(ctx.args().<Ast.Value.Number>get("value").number())
             .append('\n');
     }
 

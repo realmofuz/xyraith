@@ -76,6 +76,7 @@ public class Parser {
             iterator.skipSpaces();
 
             System.out.println(iterator.peek());
+            System.out.println(iterator.index());
 
             if (iterator.peek() == '\n' || iterator.peek() == '\r' || iterator.peek() == ';')
                 break;

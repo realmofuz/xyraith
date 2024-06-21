@@ -1,6 +1,4 @@
 # Example program
-define function realmofuz:example/tp {
-    teleport [x=0, y=-60, z=0]
+define event realmofuz:consume_item {
+    global x += 5
 }
-
-define event realmofuz:consume_item {}
