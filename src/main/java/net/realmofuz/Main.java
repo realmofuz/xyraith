@@ -74,6 +74,20 @@ public class Main {
             row++;
         }
 
+        /*
+        Example error:
+╔═ Failed to compile file: .\src\main.xr ═════════════════════════════════════╗
+╠═══════╬═════════════════════════════════════════════════════════════════════╣
+║ Error ║ The identifier __x is invalid.                                      ║
+╠═══════╬═════════════════════════════════════════════════════════════════════╣
+║       ║                                                                     ║
+║ 3     ║ global __x += 15                                                    ║
+║       ║                                                                     ║
+╠═══════╬═════════════════════════════════════════════════════════════════════╣
+║  Help ║ Remove the two leading underscores.                                 ║
+╚═══════╩═════════════════════════════════════════════════════════════════════╝
+         */
+
         var line = currentLine.toString().trim();
         System.out.println("╔═ Failed to compile file: " + ce.span().fileName() + " " + "═".repeat(78-28-ce.span().fileName().length()) + "╗");
         System.out.println("╠═══════╬═════════════════════════════════════════════════════════════════════╣");
