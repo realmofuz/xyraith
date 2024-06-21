@@ -75,7 +75,7 @@ public class Main {
         }
 
         var line = currentLine.toString().trim();
-        System.out.println("╔ Failed to compile file: " + ce.span().fileName());
+        System.out.println("╔═ Failed to compile file: " + ce.span().fileName() + " " + "═".repeat(78-28-ce.span().fileName().length()) + "╗");
         System.out.println("╠═══════╬═════════════════════════════════════════════════════════════════════╣");
         System.out.println("║ Error ║ " + ce.errorLog() + " ".repeat(78-10-ce.errorLog().length()) + "║");
         System.out.println("╠═══════╬═════════════════════════════════════════════════════════════════════╣");
