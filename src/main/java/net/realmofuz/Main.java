@@ -84,7 +84,7 @@ public class Main {
 ║ 3     ║ global __x += 15                                                    ║
 ║       ║                                                                     ║
 ╠═══════╬═════════════════════════════════════════════════════════════════════╣
-║  Help ║ Remove the two leading underscores.                                 ║
+║  Help ║ Remove the two leading underscores: x                               ║
 ╚═══════╩═════════════════════════════════════════════════════════════════════╝
          */
 
@@ -98,7 +98,7 @@ public class Main {
             + " ║ " + line + " ".repeat(78-10-line.length()) + "║");
         System.out.println("║       ║                                                                     ║");
         System.out.println("╠═══════╬═════════════════════════════════════════════════════════════════════╣");
-        System.out.println("║  Help ║ TODO                                                                ║");
+        System.out.println("║  Help ║ " + ce.helpMessage() + " ".repeat(78-10-ce.helpMessage().length()) + "║");
         System.out.println("╚═══════╩═════════════════════════════════════════════════════════════════════╝");
     }
 }

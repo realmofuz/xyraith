@@ -3,6 +3,8 @@ package net.realmofuz.compile.contexts;
 import net.realmofuz.parser.SpanData;
 import net.realmofuz.parser.tree.Type;
 
+import java.util.Optional;
+
 /**
  * Represents a compilation error.
  */
@@ -27,6 +29,11 @@ public sealed interface CompileError {
         public String errorLog() {
             return "Expected " + expectedType + ", found " + found;
         }
+
+        @Override
+        public String helpMessage() {
+            return "Change the value to type " + expectedType;
+        }
     }
 
     final class NotACommand extends Error implements CompileError {
@@ -46,6 +53,11 @@ public sealed interface CompileError {
         @Override
         public String errorLog() {
             return desired + " is not a valid command.";
+        }
+
+        @Override
+        public String helpMessage() {
+            return "No help providable";
         }
     }
 
@@ -67,6 +79,11 @@ public sealed interface CompileError {
         public String errorLog() {
             return "Found unexpected literal " + found;
         }
+
+        @Override
+        public String helpMessage() {
+            return "Change the literal to a valid one in this context.";
+        }
     }
 
     final class UnexpectedEndOfCommand extends Error implements CompileError {
@@ -86,6 +103,11 @@ public sealed interface CompileError {
         @Override
         public String errorLog() {
             return "Found end of command when wanting a " + desired;
+        }
+
+        @Override
+        public String helpMessage() {
+            return "Add a value of type " + desired + " to the end of the arguments";
         }
     }
 
@@ -109,6 +131,11 @@ public sealed interface CompileError {
         public String errorLog() {
             return "Too many arguments: wanted " + amountDesired + ", got " + amountFound;
         }
+
+        @Override
+        public String helpMessage() {
+            return "Remove " + (amountFound - amountDesired) + " arguments from the end.";
+        }
     }
 
     final class MapMissingKey extends Error implements CompileError {
@@ -130,6 +157,11 @@ public sealed interface CompileError {
         @Override
         public String errorLog() {
             return "This map is missing key " + missingKey + " of type " + missingType;
+        }
+
+        @Override
+        public String helpMessage() {
+            return "Add the " + missingKey + " key to the map.";
         }
     }
 
@@ -155,6 +187,11 @@ public sealed interface CompileError {
         public String errorLog() {
             return "This map's key " + badKey + " is of type " + foundType + ", but expected type " + expectedType;
         }
+
+        @Override
+        public String helpMessage() {
+            return "Change the key to the " + expectedType + " type.";
+        }
     }
 
     final class UnexpectedMapKey extends Error implements CompileError {
@@ -175,6 +212,11 @@ public sealed interface CompileError {
         public String errorLog() {
             return "This map's key " + badKey + " should not be present.";
         }
+
+        @Override
+        public String helpMessage() {
+            return "Remove the key from the map.";
+        }
     }
 
     final class ReservedIdentifier extends Error implements CompileError {
@@ -193,11 +235,17 @@ public sealed interface CompileError {
 
         @Override
         public String errorLog() {
-            return "The identifier " + badIdentifier + " is invalid as it is reserved with 2 underscores.";
+            return "The identifier " + badIdentifier + " is invalid.";
+        }
+
+        @Override
+        public String helpMessage() {
+            return "Remove the two leading underscores: " + badIdentifier.replaceFirst("__", "");
         }
     }
 
 
     String errorLog();
+    String helpMessage();
     SpanData span();
 }
