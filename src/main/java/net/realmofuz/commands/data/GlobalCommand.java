@@ -32,7 +32,22 @@ public class GlobalCommand implements Command {
                 .literal("-")
                 .literal("=")
                 .argument("value", Type.NUMBER)
-                .executes(ctx -> modifyGlobalByConstant(ctx, "remove"))
+                .executes(ctx -> modifyGlobalByConstant(ctx, "remove")),
+            ParameterBuilder.of()
+                .argument("variable", Type.LITERAL)
+                .literal("*=")
+                .argument("value", Type.NUMBER)
+                .executes(ctx -> modifyOperationGlobalByConstant(ctx, "*=")),
+            ParameterBuilder.of()
+                .argument("variable", Type.LITERAL)
+                .literal("/=")
+                .argument("value", Type.NUMBER)
+                .executes(ctx -> modifyOperationGlobalByConstant(ctx, "/=")),
+            ParameterBuilder.of()
+                .argument("variable", Type.LITERAL)
+                .literal("%=")
+                .argument("value", Type.NUMBER)
+                .executes(ctx -> modifyOperationGlobalByConstant(ctx, "%="))
         ).build());
     }
 
@@ -46,7 +61,7 @@ public class GlobalCommand implements Command {
             .append('\n');
     }
 
-    public static void modifyGlobalByOtherScore(
+    public static void modifyOperationGlobalByOtherScore(
         CompileContext ctx,
         String mcOp,
         String otherScoreObjective,
@@ -61,6 +76,22 @@ public class GlobalCommand implements Command {
             .append(otherScoreObjective)
             .append(" ")
             .append(otherScorePlayer)
+            .append('\n');
+    }
+
+    public static void modifyOperationGlobalByConstant(
+        CompileContext ctx,
+        String mcOp
+    ) {
+        ctx.builder().append("scoreboard players set __tmp globals ")
+            .appendInteger(ctx.args().<Ast.Value.Number>get("value").number())
+            .append('\n');
+
+        ctx.builder().append("scoreboard players operation ")
+            .append(ctx.args().<Ast.Value.Literal>get("variable").value())
+            .append(" globals ")
+            .append(mcOp)
+            .append(" __tmp globals")
             .append('\n');
     }
 }

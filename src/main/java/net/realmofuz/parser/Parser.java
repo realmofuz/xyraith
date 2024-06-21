@@ -26,7 +26,7 @@ public class Parser {
 
     public String parseSpecialIdentifier() {
         var sb = new StringBuilder();
-        while ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-/:+-*=_".contains(String.valueOf(iterator.peek()))) {
+        while ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-/:+-*=%_".contains(String.valueOf(iterator.peek()))) {
             sb.append(iterator.next());
         }
         return sb.toString();

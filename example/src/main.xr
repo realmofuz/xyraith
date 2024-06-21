@@ -1,4 +1,7 @@
 # Example program
 define event realmofuz:consume_item {
-    global x += 5
+    global x += 15
+    global x %= 20
+    global x /= 3
+    global x *= 2
 }
