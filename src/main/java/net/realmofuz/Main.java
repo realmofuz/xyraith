@@ -88,6 +88,8 @@ public class Main {
 ╚═══════╩═════════════════════════════════════════════════════════════════════╝
          */
 
+        // testing
+
         var line = currentLine.toString().trim();
         System.out.println("╔═ Failed to compile file: " + ce.span().fileName() + " " + "═".repeat(78-28-ce.span().fileName().length()) + "╗");
         System.out.println("╠═══════╬═════════════════════════════════════════════════════════════════════╣");
