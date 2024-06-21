@@ -5,6 +5,7 @@ import net.realmofuz.compile.contexts.CompileContext;
 import net.realmofuz.compile.contexts.CompileError;
 import net.realmofuz.parser.tree.Ast;
 import net.realmofuz.parser.tree.Type;
+import net.realmofuz.util.Logger;
 import net.realmofuz.util.Result;
 
 import java.util.ArrayList;
@@ -45,8 +46,6 @@ public sealed interface ParameterNode {
                     depth
                 ));
             var next = iterator.next();
-            System.out.println(next.type() + " vs. " + this.type);
-            System.out.println(next );
             if((next.type() instanceof Type.RestrictedMap
             || next.type() instanceof Type.DynamicComponent)
             && this.type instanceof Type.RestrictedMap rm

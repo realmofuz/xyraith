@@ -10,11 +10,10 @@ public class FileCollector {
 
     public void collect() throws IOException {
         try(var walk = Files.walk(Path.of("./"))) {
-            System.out.println("got here");
+            Logger.debug("got here");
             walk
                 .filter(it -> it.getFileName().toString().endsWith(".xr"))
                 .forEach(it -> {
-                    System.out.println(it);
                     try {
                         files.put(it.toString(), Files.readString(it));
                     } catch (IOException _) {}

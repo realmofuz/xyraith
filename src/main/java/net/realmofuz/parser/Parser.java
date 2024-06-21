@@ -3,6 +3,7 @@ package net.realmofuz.parser;
 import net.realmofuz.StringIterator;
 import net.realmofuz.compile.contexts.CompileError;
 import net.realmofuz.parser.tree.Ast;
+import net.realmofuz.util.Logger;
 import net.realmofuz.util.ResourceLocation;
 
 import java.util.ArrayList;
@@ -88,9 +89,6 @@ public class Parser {
         while (true) {
             iterator.skipSpaces();
 
-            System.out.println(iterator.peek());
-            System.out.println(iterator.index());
-
             if (iterator.peek() == '\n' || iterator.peek() == '\r' || iterator.peek() == ';')
                 break;
 
@@ -103,8 +101,6 @@ public class Parser {
         }
 
         iterator.skipSpaces();
-
-        System.out.println(iterator.peek());
 
         if (iterator.peek() != '\n' && iterator.peek() != '\r' && iterator.peek() != ';')
             throw new RuntimeException("expected newline or semicolon");
@@ -179,7 +175,7 @@ public class Parser {
             iterator.skipWhitespace();
             var key = parseIdentifier();
 
-            System.out.println(iterator.peek());
+            Logger.debug(iterator.peek());
             if (iterator.next() != '=') {
                 throw new RuntimeException("component needs a = " + iterator.index());
             }

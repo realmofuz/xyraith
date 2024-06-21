@@ -4,6 +4,7 @@ import net.realmofuz.commanddata.ParseFailure;
 import net.realmofuz.compile.contexts.CompileContext;
 import net.realmofuz.compile.contexts.CompileSingleCommandResult;
 import net.realmofuz.parser.tree.Ast;
+import net.realmofuz.util.Logger;
 import net.realmofuz.util.Result;
 
 import java.util.HashMap;
@@ -19,7 +20,6 @@ public record ParameterSet(
         Ast.Command command
     ) {
         var as = new ArgumentSet(new HashMap<>());
-        System.out.println(commandName);
         var r = this.parameters().validateArgument(
             new ArgumentIterator(arguments, command),
             commandName,

@@ -14,6 +14,7 @@ import net.realmofuz.compile.contexts.CompileSingleCommandResult;
 import net.realmofuz.compile.contexts.CompileError;
 import net.realmofuz.compile.parameters.ParameterSet;
 import net.realmofuz.parser.tree.Ast;
+import net.realmofuz.util.Logger;
 import net.realmofuz.util.Result;
 
 import java.util.List;
@@ -77,7 +78,6 @@ public interface Command {
         Ast.Command command,
         Command compare
     ) {
-        System.out.println(compare.typeSet());
         var tryArgs = compare.typeSet().tryParseArguments(command.values(), command.name(), command);
 
         return switch (tryArgs) {
